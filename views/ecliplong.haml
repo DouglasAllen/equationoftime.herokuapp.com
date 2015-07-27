@@ -1,0 +1,116 @@
+%html
+  %head
+    %title ecliptic_longitude
+  %body    
+    %h1 
+      &lambda; or lambda = Ecliptic Longitude of the Sun
+    %h3
+      %pre
+        :preserve
+            The ecliptic is the path that we see the Sun, Moon and planets take.
+          From our east horizon to our west horizon we observe them.
+          It is offset like a sine wave from the Celestial Equator.
+          The obliquity(tilt) of the Earth determines this amount known as Declination.
+          The ecliptic is either on, above, or below this imaginary Celestial Equator.
+          Some of these points you may be familiar with like Solstice and Equinox.
+          We need a reasonable starting point again like we did with the anomalies.
+          Here we use a term similar to the first ( Mean ) Anomaly called the Mean
+          Longitude. The formula is below.
+    
+            These terms are calculated with the Universal Time Coordinate or GMT 
+          of the current time.
+    
+          DateTime.now.to_time.utc.to_datetime = 
+    %h5
+      #{@current} 
+    %h3
+      %pre
+        :preserve
+          The array value =
+    %h5              
+      #{@now}        
+    %h3      
+      %pre
+        :preserve
+          Ruby Eot#gml_Sun( ) method:
+          This was put into a C extension.
+          
+          def gml_Sun( ta = A2000 )
+            ta = check_jct_zero( ta )
+            total = 
+               #ta[ 4 ] *    -5.030e-7   +
+               #ta[ 3 ] *    -6.536e-5   +
+               #ta[ 2 ] *     2.003e-5   +
+               #ta[ 1 ] *   303.203e-6   +
+               #ta[ 0 ] * 36000.76982779 +
+               #            280.4664567  +
+            [ 1.0/-19880000.0,  1.0/-152990.0, 1.0/499310.0,
+              0.0003032028, 36000.76982779,  280.4664567 ].inject(0.0) {|p, a| p * ta[ 0 ] + a}               
+            mod_360( total )
+          end
+
+          Mean Longitude Sun decimal degrees =          
+    %h5   
+      #{@gml}
+    %h3      
+      %pre
+        :preserve
+           The above was also put into C code extension.
+           double mlSun(double t)
+           {
+            double a;
+
+            /* Mean geocentric longitude of the Sun */
+            a = fmod(      280.4664567      +
+            t * (            36000.76982779     +
+            t * (                    0.0003032028 +
+            t * (       1.0 / 499310.0              +
+            t * (      1.0 / -152990.0              +
+            t * (  1.0 / -19880000.0 ) ) ) ) ), 360.0 ) * 0.017453292519943295769236907684886;
+
+            return a;
+           }      
+    %h3
+      %pre
+        :preserve
+            As with the Mean Anomaly we need to correct for elliptical Keplerian orbit.
+          We use Equation of Center as before with Mean Anomaly.
+          True Longitude will be returned.
+    %h3      
+      %pre
+        :preserve
+          Ruby Eot#tl_Sun( ) method:
+          This was put into a C extension.
+          
+          def tl_Sun( ta = A2000 )
+            ta = check_jct_zero( ta )
+            mod_360(
+                     gml_Sun( ta ) + 
+                     center( ta )
+                   )            
+          end
+          
+          Equation of Center in decimal degrees =
+    %h5
+      #{@eqc} 
+    %h3
+      %pre
+        :preserve    
+          After adding them together we get
+          True Ecliptic Longitude of the Sun in decimal degrees =
+    %h5      
+      #{@tl} 
+    %h3
+      %pre
+        :preserve
+          degrees:minutes:seconds =        
+    %h5
+      #{@tl_string}
+    %h3
+      %pre
+        :preserve
+            There is one more method that takes True Ecliptic Longitude of the Sun
+          and converts it to Apparent Longitude but for now I won't bore you with 
+          those details and it was put inta a C extension also.    
+    %h3
+      %a{:href => "/rghtascn"} Right Ascension

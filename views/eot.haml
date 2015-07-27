@@ -1,0 +1,65 @@
+- if @henge
+
+  - @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd
+  - @solar.ma_ta_set
+  - @al = @solar.al_sun() * @r2d
+  - @ma = @solar.ma_sun() * @r2d
+  - @ra = @solar.ra_sun() * @r2d
+  - @ta = @solar.ta_sun() * @r2d
+  - @sal = format("%3.9f", @al)
+  - @sma = format("%3.9f", @ma)
+  - @sra = format("%3.9f", @ra)  
+  - @sta = format("%3.9f", @ta)
+  - @sd1 = format("%3.9f", @ma - @ta)
+  - @sd2 = format("%3.9f", @al - @ra)
+  - @sdt = format("%3.9f", @sd1.to_f + @sd2.to_f)
+  - @smt = format("%3.9f", @sdt.to_f * @s_min)
+  - @mt  = @solar.show_minutes(@smt.to_f)
+#eot
+  %h3      
+    %pre{style: "color: #000000; text-align: center;"}
+      Delta = ( Mu - nu ) + ( lambda - alpha )
+    
+      &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
+    
+      These terms are calculated using current date and time UTC.
+
+  %pre
+    %table{border: 1, cellpadding: 10}      
+      %tr
+        %th  Mu             
+        %th  nu      
+        %th  Mu - nu
+      %tr
+        %td #{@sma}
+        %td #{@sta}
+        %td #{@sd1}
+
+    %table{border: 1, cellpadding: 10}
+      %tr
+        %th  lambda      
+        %th  alpha              
+        %th  lambda - alpha 
+      %tr
+        %td #{@sal}                  
+        %td #{@sra}                  
+        %td #{@sd2}
+
+    %table{border: 1, cellpadding: 10}
+      %tr
+        %th Delta degrees total        
+        %th minutes               
+        %th   
+      %tr
+        %td #{@sdt}                   
+        %td #{@smt}                  
+        %td #{@mt}
+             
+    Check that at http://www.celnav.de/longterm.htm under Equation of Time    
+        
+    %div{:style => "background-color: orange; color: #000; text-align: center;"}      
+        
+      Date and time #{@solar.ajd_to_datetime(@solar.ajd).to_time.httpdate} to enter there.
+     
+    %h3
+      %a{:href => "/mysuntimes"} Sunrise and Sunset    

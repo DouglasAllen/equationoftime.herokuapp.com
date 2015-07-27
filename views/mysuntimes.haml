@@ -1,0 +1,67 @@
+%html
+  %head
+    %title suntimes
+  %body
+    %h1 Sun Times
+    %h3
+      %pre
+        :preserve
+            This uses equation of time gem and Google Geocoding API.
+          If you have Ruby installed then install the gem if you like.
+            
+          cmd prompt> gem install equation_of_time
+      
+          Or clone it from here      
+          https://github.com/DouglasAllen/equation_of_time
+          
+          cmd prompt> git clone git@github.com:DouglasAllen/equation_of_time.git
+    
+            The default date is today. Time Zone is not used here. 
+          All time results will be in UTC time.
+          The default Sunrise and Sunset are from Latitude and Longitude of the
+          Royal Observatory, Greenwich, England.
+          Make your entries as precise as possible using comma separated parts 
+          or you may experience errors.
+          
+          EX: 1600 Amphitheatre Parkway, Mountain View, CA
+          
+          But you don't need any caps.            
+          
+    - if @solar
+          
+      %form{"accept-charset" => "utf-8", :action => "/mysuntimes", :method => "post"}
+        %p
+          %b Enter an address
+          %br/           
+          %input{:style => "font-weight: bold; width :850px; color: #00a", :name => "address", :type => "text", :value => "#{@geo.addr}"}/           
+        %p
+          %input{:type => "submit", :value => "calculate"}/
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "latitude", :type => "text", :value => "  #{@solar.latitude}"} Resulting Latitude : ( minus if south )          
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "longitude", :type => "text", :value => "  #{@solar.longitude}"}Resulting Longitude : ( minus if west )            
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunrise", :size => "24", :type => "text", :value => "   #{@solar.sunrise_dt().to_time.httpdate}"}Resulting Sunrise
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunset", :size => "24", :type => "text", :value => "   #{@solar.sunset_dt().to_time.httpdate}"}Resulting Sunset
+    %h3      
+      %pre
+        :preserve
+        
+          Compare these results with a well known web calculator.
+          http://www.esrl.noaa.gov/gmd/grad/solcalc/
+          and
+          http://www.esrl.noaa.gov/gmd/grad/solcalc/sunrise.html
+
+          Those are all done in Javascript but this site is pure Ruby.
+          https://www.ruby-lang.org/en/          
+    %h5
+      %a{:href => "/links"} External Links

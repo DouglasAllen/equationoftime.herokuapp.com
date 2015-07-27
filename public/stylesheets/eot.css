@@ -1,0 +1,401 @@
+/* a:link {color:#ffff00;}      unvisited link */
+/* a:visited {color:#ffff00;}   visited link */
+/* a:hover {color:#ffff00;}     mouse over link */
+/* a:active {color:#ffff00;}    selected link */
+
+
+
+titlerow navrow contentrow footerrow  {
+  display: table-row;
+}
+
+navcontainer {
+  background-color: #0000ff;
+  color: blue;
+  border-top: solid 4px;
+  border-bottom: solid 4px;
+  padding: 5px 0 5px 0;
+}
+
+navcontainer ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: blue;
+  text-align: center;
+  margin: 0;
+  padding: .2em 0;
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+navcontainer ul li {
+  display: inline;
+  border-right: 0px solid #aa2004;
+  border-left: 0px solid #aa2004;
+}
+
+navcontainer ul li a {
+  padding: 5px 10px 5px 10px;
+  color: blue;
+  #text-decoration: none;  
+}
+
+span.disabled {
+  padding: 5px 10px 5px 10px;
+  color: blue;;
+  text-decoration: none;
+  border-right: 1px solid #C12820;
+}
+
+navcontainer ul li a:hover {
+  #color: #aa2004;
+}
+
+first a { 
+  border-left: 1px solid #C12820;
+}
+
+/* ========================================================== */
+
+body {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-weight : bold; 
+  background-color: #c0c0c0;
+  color: #0c0c0c;  
+  margin-left: 30px;
+  margin-right: 30px;
+//  font-family: arial black;
+//  font-size: 1.2em;
+}
+
+img {
+  border: 0px;
+}
+
+font {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-weight : normal;
+}
+
+b {
+  font-weight: bold;
+}
+
+a {
+  display: inline;
+}
+
+a.offsite:link 	{
+   background: none;
+   font-style: italic;
+   font-family : Helvetica, sans-serif, Arial; 
+   }
+
+a.offsite:visited {
+   background: none;
+   #color : #444488; 
+   font-style: italic;
+   font-family : Helvetica, sans-serif, Arial; 
+   }
+
+a:link 	{
+   background: none;
+   font-family : Helvetica, sans-serif, Arial; 
+   }
+
+a:visited {
+   #color : #444488; 
+   background: none;
+   font-family : Helvetica, sans-serif, Arial; 
+}
+
+a:active  {
+   background: none;
+   font-family : Helvetica, sans-serif, Arial; 
+}
+
+a:hover  {
+   #color : #6699CC; 
+   background: none;
+   font-family : Helvetica, sans-serif, Arial; 
+}	
+
+
+.terminalinstructions {
+	border: 2px solid #000000;
+	padding: 5px;
+	margin-left: 50px;
+	margin-right: 50px;
+	font-size:12px;
+}
+
+
+.configurationvalues {
+	margin-left: 50px;
+	padding: 5px;
+	margin-right: 50px;
+	font-size:12px;
+}
+
+
+h2.biglink {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight: bold;
+}
+
+.headerlinks {
+   background: none;
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 16px;
+
+}
+
+div.title {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight: bold;
+   color: #aa2004;
+}
+
+div.subtitle {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight: bold;
+   color: #C12820;
+}
+
+div.subhead {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight: bold;
+   padding-bottom: 3px;
+}
+
+div.para {
+   font-family : Helvetica, sans-serif, Arial; 
+   padding-bottom: 20px;
+}
+
+font.divider {
+   font-family : Helvetica, sans-serif, Arial; 
+   font-weight: bold;
+}
+
+pre, tt, code { 
+   font-family : monospace;
+   font-size: 14px;
+   background: #FFFFFF; 
+   font-weight : normal; 
+}
+
+td.divider {
+   background-color: #C12820;
+}
+
+div.resume-heading { 
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight : bold; 
+   padding-bottom: 2px;
+   padding-top: 2px;
+}
+
+div.resume-subheading { 
+   font-family : Helvetica, sans-serif, Arial; 
+   font-size: 24px;
+   font-weight : bold; 
+   padding-bottom: 2px;
+   padding-top: 2px;
+}
+
+div.dttext {
+   font-size: 18px;
+   font-weight: bold;
+}
+
+div.dtsubtext {
+   font-size: 10px;
+   padding-left: 15px;
+}
+
+div.ddaddress {
+   font-size: 14px;
+   padding-left: 15px;
+}
+
+div.ddtext {
+   font-size: 14px;
+   padding-bottom: 15px;
+   padding-left: 15px;
+}
+
+div.warning {
+   font-size: 18px;
+   font-weight: bold;
+   color: red;
+   padding-top: 15px;
+   padding-bottom: 10px;
+   padding-left: 25px;
+   padding-right: 25px;
+   border: thick solid red 
+}
+
+div.imgbox {
+   padding-top: 15px;
+   padding-bottom: 15px;
+   padding-left: 25px;
+   padding-right: 25px;
+}
+
+
+td.odd {
+    background-color: #6090b0;
+}
+
+td.even {
+    background-color: #edc0c0;
+}
+
+
+/* =================================== */
+
+/* Body of the webpages. */
+
+h2 {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h3 {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 18px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 14px;
+}
+
+blockquote {
+  font-size: 14px;
+}
+
+p.big {
+  font-size: 20px;
+  text-align: center;
+}
+
+dt {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: -12px;
+}
+
+dd {
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+div.separator {
+  background-color: #C12820;
+  margin: 0;
+  width: 570px;
+  height: 4px;
+}
+
+contentrow ul {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 14px;
+}
+
+/* ======================================================= */
+
+#container {
+  display: table;
+  width: 600px;
+  text-align: center;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+#titlerow #navrow #contentrow #footerrow  {
+  display: table-row;
+}
+
+#contentrow {
+  text-align: left;
+  padding-left: 5px;
+}
+
+#left, #middle {
+  display: table-cell;
+  padding-left: 5px;
+  text-align: left;
+}
+
+#right, #middle {
+  display: table-cell;
+  text-align: right;
+  width: 100%;
+  padding-right: 10px;
+}
+
+#title {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 24px;
+  font-weight: bold;
+  color: #aa2004;
+  text-align: left;
+}
+
+#subtitle {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 22px;
+  font-weight: bold;
+  text-align: right;
+  color: #aa2004;
+}
+
+h5 {
+  color: #0000FF;   
+}
+
+/* @group Source Code */
+
+pre {
+  font-family : Helvetica, sans-serif, Arial;
+  font-size: 18px; 
+  font-weight : bold;
+  margin: 0.5em 0;
+  border: 1px dashed #999;
+  padding: 0.5em;
+  background: #dedede;
+  color: #0c0c0c;
+  //color: black;
+  overflow: auto;
+}
+
+code {
+  margin: 0.5em 0;
+  //border: 1px dashed #999;
+  padding: 0.5em;
+  background: #dedede;
+  color: black;
+  overflow: auto;
+}
+
+.ruby-constant   { color: #7fffd4; background: transparent; }
+.ruby-keyword    { color: #00ffff; background: transparent; }
+.ruby-ivar       { color: #eedd82; background: transparent; }
+.ruby-operator   { color: #00ffee; background: transparent; }
+.ruby-identifier { color: #ffdead; background: transparent; }
+.ruby-node       { color: #ffa07a; background: transparent; }
+.ruby-comment    { color: #dc0000; background: transparent; }
+.ruby-regexp     { color: #ffa07a; background: transparent; }
+.ruby-value      { color: #7fffd4; background: transparent; }

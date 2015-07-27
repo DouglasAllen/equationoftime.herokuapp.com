@@ -1,0 +1,58 @@
+%html
+  %head
+    %title suntimes
+  %body
+    %h1 Sun Times
+    %h2
+      To use this gem 'gem install RubySunrise' and go to
+      %a{:href => "http://www.mikereedell.com/2010/03/15/RubySunrise-Gem.html"} Mikes' site
+    %h2 Enter the values for the Latitude and Longitude of interest.
+    %h3
+      \&nbsp&nbsp;Time Zone is not used here. All time results will be in UTC time.
+      %br/
+      The default Latitude and Longitude are both set to zero therefore a calculation without any entry
+      %br/
+      to the text fields will compute sunrise and sunset for latitude = 0 and longitude = 0.
+      %br/
+      Make your entries in decimal format. Ex: 20.456 and 0.123
+      %br/
+      The default date is today.
+    %p
+      Compare to
+      %a{:href => "http://www.esrl.noaa.gov/gmd/grad/solcalc/"} web calculator
+    - if @solar
+      %form{"accept-charset" => "utf-8", :action => "/times", :method => "post"}
+        / <p>
+        / <b>Time Zone : ( Country/City )</b><br />
+        / <input type="text" name="timezone"  />
+        / </p>
+        %p
+          %b Latitude : ( minus if south )
+          %br/
+          %input{:name => "latitude", :type => "text"}/
+        %p
+          %b Longitude : ( minus if west )
+          %br/
+          %input{:name => "longitude", :type => "text"}/
+        %p
+          %b Sunrise :
+          %br/
+          %input{:name => "sunrise", :size => "24", :type => "text", :value => "&nbsp&nbsp;#{@sunrise}"}/
+        %p
+          %b Sunset :
+          %br/
+          %input{:name => "sunset", :size => "24", :type => "text", :value => "&nbsp&nbsp;#{@sunset}"}/
+        %input{:type => "submit", :value => "calculate"}/
+    %p
+    %p
+      def suntimes(latitude, longitude)
+      \&nbsp&nbsp;&nbsp&nbsp; SolarEventCalculator.new(Date.today, BigDecimal.new(latitude.to_s), BigDecimal.new(longitude.to_s))
+      end
+    %p
+      def sunrise(latitude, longitude)
+      \&nbsp&nbsp;&nbsp&nbsp;suntimes(latitude, longitude).compute_utc_official_sunrise
+      end
+    %p
+      def sunset(latitude, longitude)
+      \&nbsp&nbsp;&nbsp&nbsp;suntimes(latitude, longitude).compute_utc_official_sunset
+      end

@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %title Equation of Time
+    %link{ :rel  => 'icon', 
+           :type => 'image/icon', 
+           :href => '/images/favicon.ico' }
+    %link{ :rel  => 'stylesheet', 
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
+    %link{ :rel  => 'stylesheet', 
+           :type => 'text/css', 
+           :href => '/stylesheets/foundation.css' }
+    %script{:type => 'text/javascript', :src => 'javascript/jquery-latest.js'}
+  :javascript
+    $(getUpdate);
+     function getUpdate(){
+       $("#stonehenge").load("/");
+       $("#eot").load("/eot")
+       setTimeout(getUpdate,1000);
+     }
+  %navrow
+    %navcontainer
+      %ul
+        %li
+          %a{ :href => '/home', :target => '_blank', :class => 'button success'} Home
+        %li
+          %a{ :href => '/analemma', :target => '_blank', :class => 'button success' } 2015 data
+        %li
+          %a{ :href => '/tut', :target => '_blank', :class => 'button success'  } Tutorial
+        %li
+          %a{ :href => 'https://rubygems.org/gems/equationoftime/', :target => '_blank', :class => 'button success'  } eot gem
+        %li
+          %a{ :href => '/links', :target => '_blank', :class => 'button success'  } Links
+        %li
+          %a{ :href => '/eot', :target => '_blank', :class => 'button success'  } eot today
+        %li
+          %a{ :href => 'http://douglasallen.github.io/gh-pages/aboutme2/', :target => '_blank', :class => 'button success'  } About me
+    %br
+    %hr
+   
+  %body= yield
