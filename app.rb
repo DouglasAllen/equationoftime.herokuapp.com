@@ -1,33 +1,33 @@
 # app.rb
 #
-# require 'dm-core'
-# require 'dm-migrations'
+#require 'dm-core'
+#require 'dm-migrations'
 require 'cgi'
 
 require 'haml'
 require 'sinatra'
-require 'jquery'
+#require 'jquery'
 require 'find'
-require 'rdiscount'
-require 'liquid'
-# require 'sinatra/reloader' if development?
-# require 'json/pure'
+#require 'rdiscount'
+#require 'liquid'
+require 'sinatra/reloader' if development?
+#require 'json/pure'
 
-# DataMapper.setup(:default, 'sqlite3::memory:')
+#DataMapper.setup(:default, 'sqlite3::memory:')
  
 #class Message
-  # include DataMapper::Resource
+#  include DataMapper::Resource
  
-#   property :id, Serial
-#   property :name, String
-#   property :message, String
-# end
+#  property :id, Serial
+#  property :name, String
+#  property :message, String
+#end
  
-# Message.auto_migrate!
+#Message.auto_migrate!
 
 
-# lib = File.expand_path('../lib', __FILE__)
-# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+#lib = File.expand_path('../lib', __FILE__)
+#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 def get_files(path)
   dir_list_array = Array.new
@@ -87,7 +87,7 @@ before do
   @solar.ajd      = @current.jd.to_f
   @solar.date     = DateTime.now.to_time.utc.to_date
   @solar.jd       = @solar.date.jd   
-  @now            = @solar.ta
+  @now            = @solar.t
   @ma             = @solar.ma_sun()   * @r2d  
   @eqc            = @solar.center()   * @r2d  
   @ta             = @solar.ta_sun()   * @r2d 
@@ -314,41 +314,3 @@ get '/alex' do
   haml :alex
 end
 
-get '/area20_district71_aa' do
-  #"Hello world" 
-  erb :index, :layout => false
-end
-
-get '/contact.html' do
-  #"Hello World"
-  erb :contact, :layout => false
-end
-
-get '/index.html' do
-  #"Hello World"
-  erb :index, :layout => false
-end
-
-get '/meetings.html' do
-  #"Hello World"
-  erb :meetings, :layout => false
-end
-
-get '/Calcium.html' do
-  #"Hello World"
-  erb :Calcium, :layout => false
-end
-
-get '/Al-Anon.html' do
-  #"Hello World"
-  erb :Al_Anon, :layout => false
-end
-
-get '/ms.html' do
-  #"Hello World"
-  erb :ms, :layout => false
-end
-
-get '/cgi-bin/Calcium40.pl' do
-  "Hello World"
-end
