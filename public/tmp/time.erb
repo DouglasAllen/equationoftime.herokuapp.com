@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>julian_century_time</title>
+  </head>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <a href="/">Home</a>
+    <h1>Astronomical Julian Period Day Number to </br>
+        Julian Century Time t</h1>
+    <h2>These terms are calculated with the Universal Time Coordinate<br />
+        or GMT of the current time.</h2>
+  <h3>
+  The Ruby method is:
+    
+    <pre>
+      def  time_julian_centurey(jd = ajd_time)
+        # Time in fractional century
+		  # Julian Period Day Number J2000.0 subtracted
+	     # The J2000.0 epoch is precisely Julian date 2451545.0 TT (Terrestrial Time), or January 1, 2000, noon TT.
+        # bd(var) is BigDecimal(var.to_s)
+		  bd((jd - 2451545.0) / 36525.0)	  
+      end
+    </pre>
+	 <% if @solar %>
+    <p>
+	   <input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.ajd_time.to_s %>"/>  = AJPDN  +  Time.now.utc
+    </p>
+    <p>      
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= (@solar.time_julian_centurey * 1.0).to_s %>"/> = t   is time in fractional centurys since J2000.0
+    </p>
+    <p>
+    This is used for the time parameter passed into most of the calculation methods.
+    <% end %>
+	 </h3>
+	 <a href="/mean">next</a>
+  </body>
+</html>

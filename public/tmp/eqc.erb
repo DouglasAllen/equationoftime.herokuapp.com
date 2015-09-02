@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>true anomaly sun</title>
+  </head>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <a href="/">Home</a>    
+    <h1>&nu; True Anomaly Sun</h1>
+	 <h3>
+    <p>
+      The True Anomaly of the Sun is a correction to the Mean Anomaly via a formula for something called The Equation of Center.
+      Since True Anomaly is just Mean Anomaly + Equation of Center, I will just show that method.
+      The Equation of Center is a sine series of the Mean Anomaly &Mu;
+    </p>
+    <h2>These terms are calculated with the Universal Time Coordinate<br />
+          or GMT of the current time.</h2>
+    <h3>
+	 <% if @solar %>
+	 <p>      
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= (@solar.time_julian_centurey * 1.0).to_s %>"/> = t time in fractional centurys since J2000.0
+    </p>
+    <p>
+      Ruby method:</br>
+      def sun_eq_of_center(t = time_julian_centurey())</br>
+        &nbsp&nbsp;&nbsp&nbsp;mean_anomaly = mean_anomaly(t)</br>
+        &nbsp&nbsp;&nbsp&nbsp;ma_rad = bd(degrees_to_radians(mean_anomaly))</br>
+        &nbsp&nbsp;&nbsp&nbsp;sinmarad = bd(sin(ma_rad))</br>
+        &nbsp&nbsp;&nbsp&nbsp;sin2marad = bd(sin(2.0 * ma_rad))</br>
+        &nbsp&nbsp;&nbsp&nbsp;sin3marad = bd(sin(3.0 * ma_rad))</br>
+        &nbsp&nbsp;&nbsp&nbsp;bd(sinmarad * (1.914602 - </br>
+        &nbsp&nbsp;&nbsp&nbsp;t * (0.004817 + 0.000014 * t)) + </br>
+	     &nbsp&nbsp;&nbsp&nbsp;sin2marad * (0.019993 - 0.000101 * t) + </br>
+	     &nbsp&nbsp;&nbsp&nbsp;sin3marad * 0.000289) </br>
+      end     
+    </p>
+    <p>
+      <% eqc = @solar.equation_of_center %>
+      <% s_time = @solar.bd(4.0 * 360.0 / 360.98564736629).round(10) * 1.0 %>
+      <% eqcstring = @solar.display_degrees(eqc) %>
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= eqc.to_s %>"> = Equation of Center in degrees decimal.</br>      
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= eqcstring %>"> = Equation of Center in degrees:minutes:seconds.
+    </p>
+    <p>
+      We get this next number by taking 4 (minutes per degree clock time or one 'dana') and using the ratio of</br>
+      360 (supposed rotation per day) / 360.98564736629 (actual rotation to align with the Sun again because of Earth's orbit)
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= s_time.to_s %>"> minutes per degree sidereal time * Equation of Center = </br>
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.display_equation_of_time(s_time * eqc / 60.0) %>"> = &Delta;t minutes:seconds</br>
+    </p>
+    <p>
+      <% mean_anomaly = @solar.mean_anomaly %>
+      <% true_anomaly = @solar.mean_anomaly + eqc %>
+      <% e1 = @solar.bd(((mean_anomaly - true_anomaly) * s_time) / 60.0).round(10) * 1.0 %>
+      <% e1string = @solar.display_equation_of_time(e1) %>
+      But wait! We added Equation of Center to Mean Anomaly and now we need the difference &Delta;t = (&Mu; - &nu;)</br>
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e1.to_s %>"> = &Delta;t minutes decimal in E1</br>
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e1string %>"> = &Delta;t minutes:seconds in E1</br>
+    </p>
+    <% end %>
+	 <a href="/ecliplong">next</a>
+  </body>
+</html>
+ 

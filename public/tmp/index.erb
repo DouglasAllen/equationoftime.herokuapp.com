@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Main Page</title>    
+  </head>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <h1>Welcome to a Heroku app built for Ruby/Rack using Sinatra</br>
+	        called Equation of Time.</br>
+        The formula : &Delta;t = (&Mu; - &nu;) + (&lambda; - &alpha;)</br>
+		  <h2>Delta = (Mu - nu) + (lambda - alpha)</h2>
+    </h1>
+    <p><h3>
+    &nbsp&nbsp;&nbsp&nbsp;The Equation of Time is used to correct time for Solar to Clock at most locations</br>
+    except those closer to the North and South poles.</p>
+    <p>
+    &nbsp&nbsp;&nbsp&nbsp;To convert your longitude to time, divide it by 15.0 and you will have your longitude hour.</br>
+    12:00 noon UTC plus your longitude hour West of UTC or minus for East of UTC is your Mean Solar Transit Time.</br>
+    Example: 12 + 75 / 15.0 = 17 hours </br>
+    </br>
+    &nbsp&nbsp;&nbsp&nbsp;The Equation of Time is then subtracted from your mean solar time to give you the actual clock time of Solar Transit.</br>
+    Example : 17:54 - (-00:12) = 18:06</br>
+    The result will be your True Solar Transit at UTC.</br>
+    Just convert the time for your time zone by adding your zone offset. - 4 West, + 5.5 East</br>
+    A shadow of a stake would point North or South at this time depending on your location from the Equator.
+    </p>
+	 <h3>
+    <table>
+      <tr>
+		  <td><h3>Calculations using Ruby equation_of_time gem.</td>
+        <td><h3><li><a href="eot">Equation of Time</a></li></td>			
+      </tr>
+      <tr>
+		  <td><h3>Calculations using Ruby classes and methods Date.ajd() and Time.now().</td>
+        <td><h3><li><a href="date">Julian Period Day Number</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using Ruby method for time conversion.</td>
+		  <td><h3><li><a href="time">Julian Century Time</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using Ruby method for mean anomaly sun.</td>
+		  <td><h3><li><a href="mean">Mean Anomaly Sun</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using Ruby method for true anomaly sun.</td>
+	     <td><h3><li><a href="eqc">True Anomaly Sun</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using Ruby method for ecliptic (true) longitude sun.</td>
+	     <td><h3><li><a href="ecliplong">Ecliptic Longitude Sun</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using Ruby method for right ascension sun.</td>
+	     <td><h3><li><a href="rghtascn">Right Ascension Sun</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Calculations using equation_of_time gem </td>
+	     <td><h3><li><a href="mysuntimes">My Sun Times</a></li></td>
+      </tr>
+      <tr>  
+	     <td><h3>Some links to learn more about the equation of time.</td>
+	     <td><h3><li><a href="links">External Links</a></li></td>
+      </tr>      
+    </table>	 
+  </body>
+</html>

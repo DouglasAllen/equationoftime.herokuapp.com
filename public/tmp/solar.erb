@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<HTML> 
+  <HEAD>
+    <title>equation_of_time</title>
+    <script type="text/javascript">	
+    </script>
+  </HEAD>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <a href="http://equationoftime.herokuapp.com"><b>Home</b></a>
+    <b>
+    <h2>&Delta;t = (&Mu; - &nu;) + (&lambda; - &alpha;)</h2>
+    <h2>These terms are calculated with the Universal Time Coordinate<br />
+        or GMT of the current time.</h2>
+    <% if @solar %>
+      <p>
+        <% today = @solar.ajd%>
+	      <% now = @solar.julian_day_fraction_time_now %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= (today + now).to_s %>"> = Astronomical Julian Period Day + time now.
+      </p>
+      <p>
+	      <% t = @solar.time_julian_centurey(today + now) %>
+	      <% mean_anomaly = @solar.mean_anomaly(t) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= mean_anomaly.to_s %>"> = &Mu; Mean Anomaly of Sun in degrees decimal.<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.mean_anomaly_string(t) %>"> = &Mu; Mean Anomaly in degrees:minutes:seconds.
+      </p>
+      <p>
+        <% true_anomaly = @solar.true_anomaly(t) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= true_anomaly.to_s %>"> = &nu; True Anomaly of Sun in degrees decimal.<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.true_anomaly_string(t) %>"> = &nu; True Anomaly in degrees:minutes:seconds.
+      </p>
+      <p>
+        
+      </p>
+      <p>
+	<% s_time = @solar.bd(4.0 * 360.0 / 360.98564736629).round(10) * 1.0 %>
+	<% e1 = @solar.bd(((mean_anomaly - true_anomaly) * s_time) / 60.0).round(10) * 1.0 %>
+	<% e1string = @solar.display_equation_of_time(e1) %>
+	<input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.display_time(s_time) %>"> = minutes per degree sidereal time</br>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= s_time.to_s %>"> = minutes per degree sidereal time and multiplying we get</br>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e1.to_s %>"> = &Delta;t decimal Mean and True Anomalies</br>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e1string %>"> = &Delta;t minutes:seconds in E1
+      </p>
+      <p>
+        <% lambda_perihelion = 282.9764 %>
+	<% lambda = @solar.apparent_longitude(t) %>
+	<% lambdastring = @solar.display_degrees(lambda) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= lambda.to_s %>"> = &lambda; Ecliptic Longitude of Sun in degrees decimal.<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= lambdastring %>"> = &lambda; Ecliptic Longitude in degrees:minutes:seconds.
+      </p>
+      <p>
+        <% ra = @solar.right_ascension(t) %>
+	<% radstring = @solar.display_degrees(ra) %>
+	<% ratstring = @solar.display_time(ra / 15.0) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= ra.to_s %>"> = &alpha; Right Ascension of Sun in degrees decimal.<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= radstring %>"> = &alpha; Right Ascension in degrees:minutes:seconds.<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= ratstring %>"> = &alpha; Right Ascension in hours:minutes:seconds
+      </p>
+      <p>
+        
+      </p>
+      <p>
+        <% e2 = @solar.bd(((lambda - ra) * s_time) / 60.0).round(10) * 1.0%>
+	<% e2string = @solar.display_equation_of_time(e2) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= s_time.to_s %>"> = minutes per degree sidereal time and multiplying we get<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e2.to_s %>"> = &Delta;t minutes decimal Ecliptic Longitude and Right Ascension<br />
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= e2string %>"> = &Delta;t minutes:seconds in E2
+      </p>
+      <p>
+        <% totlastring = @solar.display_equation_of_time(e1 + e2) %>
+        <input style="font-weight: bold" value="&nbsp;&nbsp;<%= totlastring %>"> = &Delta;t Total Equation of Time now (E1 + E2).
+      </p>
+      <% end %>
+      <div style="background-color: orange">
+        Using Delta T of 66.5706 &#x000D;
+        Check it at <a href="http://douglasallen.github.com/planets/">http://douglasallen.github.com/planets/</a>  for <%= Time.now.utc %>
+      </div>
+    </b>
+
+  </body>
+</HTML>

@@ -1,0 +1,216 @@
+%html
+  %head
+    %link{ :rel  => 'header', 
+           :type => 'image', 
+           :href => '/images/Equation_of_Time.jpg' }    
+  %body
+    
+    %h3
+      %pre
+        :preserve
+		
+            Welcome to Equation of Time Heroku application.          
+          This is a Ruby Rack app using  Sinatra and Haml.      
+          Without too much detail I will only attempt to describe how the equation_ot_time 
+          Ruby gem works so that you will be better prepared to use it.
+    %img{ :src => '/images/Equation_of_Time.jpg', :width => '950', :height => '400'}
+    %h2
+      &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
+    %h2 
+      Equation of Time : delta = mu - nu + lambda - alpha  
+    %h2
+      Equation of Time =
+      %br
+      ( Mean Anomaly - True Anomaly ) + 
+      %br
+      ( True Solar Longitude - True Solar Right Ascension )    
+    %h3
+      %pre
+        :preserve
+        
+            The "Equation of Time" is a formula to align solar time with clock time.
+          So who would care if you don't use a sundial to find out the time?
+          When I first started to research this a few years ago that was not my intent.
+          I wanted to know how to calculate sunrise and sunset. My intent was to find
+          or write a program that would do that because I got lazy about putting up
+          and taking down the "Red, White, and Blue". You may just keep it up if you
+          display it with a light at night. But then when to turn that on and off?
+          I had a program written by a radio amateur written in BASIC but was kind
+          of hard for me to get it accurate enough and was kind of what they call 
+          spaghetti code. But I was able to get it to use a port to switch the light 
+          on and off. But then I had to figure out when the computer had to turn on 
+          and off. Well this might be a nice idea for an embedded device but I don't
+          want to deal with patents and all. So go ahead and make one for me please.
+          
+            I found that the "Equation of Time" was needed to complete these calculations.
+          It all made sense when you realize that you need equal amounts of daylight 
+          from noon to daybreak and from noon to nightfall. But when does "Noon" for 
+          your location actually occur? Keep this in mind as you read further.
+    %h3
+      %pre
+        :preserve    
+            Looking at the graph above you'll see three wave forms. The two dashed
+          wave forms sum together to form the solid red wave form. Notice that one occurs
+          at two cycles of change. This is the Ecliptic cycle. It's caused by the tilt 
+          of the Earth spinning on its' axis making the Sun appear higher and lower in
+          the sky at different seasons.  Notice that it crosses zero at four times
+          a year. You may be familiar with these times. They are the Equinoxes of Spring and 
+          Fall and Solstices of Summer and Winter. Check the data for it at links>/analemma
+      %pre
+        :preserve    
+            Again looking at the graph we see a one cycle wave form. This is the Elliptic
+          cycle or sometimes called the orbital time change. It's the Earth orbit around 
+          the Sun like all the other planets. It shows how time is effected by the angle 
+          away from the Sun at different seasons. 
+      %pre
+        :preserve    
+            The Sun only crosses that imaginary Celestial Equator twice a year and is not a graph
+          of time but of solar altitude. You could trace it from time laps photos creating what 
+          is known as an Analemma. There's a link about it at links>http://www.analemma.com/.         
+      %pre
+        :preserve     
+            Your longitude is needed first to calculate what is termed "Mean local noon".
+          If you are west of the Greenwich Prime Meridian then your longitude has a 
+          minus sign. If you are east of the Greenwich Prime Meridian then your 
+          longitude has a positive sign.( not needed though )   
+      
+            Longitude can be converted to a time by just dividing it by 15.0.      
+          Your longitude converted to time will tell you your Mean local noon.
+                  
+            local_mean_noon = noon_utc - longitude / 15.0.
+      
+            Example: You are at 75.324 degrees longitude west = - 75.324
+      
+            local_mean_noon = 12 - (-75.342 / 15.0)
+            local_mean_noon = 12 - (-5.0228)
+            local_mean_noon = 12 + 5.0228
+            local_mean_noon = 17.0228 (hours UTC)
+      %pre
+        :preserve
+          UTC is the reference Time Zone throughout the world and so is often called
+          "zulu" time for the Zero time zone.      
+      
+          The "Equation of Time" is then subtracted from your "Mean Noon Time".
+     
+          This is what you may see at the top of the graph above but 
+          pay careful attention to the sign.      
+      
+          Lets say that True - Mean = - 4 minutes and 40 seconds. ( -0.0777778 ) hr.
+      
+            Example : local_mean_noon = 17.0228 (hours UTC)
+          
+            local_noon = 17.0228 - ( -0.0777778 ) 
+            local_noon = 17.0228 + 0.0777778 
+            local_noon = 17.1005778 (hours UTC.)
+      
+          Note: This time is in decimal format. You will have to convert it.
+      %pre
+        :preserve    
+      
+            This will be the actual clock time of your "True Solar Transit Time".      
+          This time can then be converted to your time zone by adding your zone offset.
+      
+          Example : - 5 if West or + 5 if East of the Prime Meridian by 5 time zones.      
+      
+            Now we have a reasonable place to start if we wish to calculate the sunrise      
+          or sunset for your location. It works for most locations except those at or 
+          past the arctic circles. (+/- 90.0 latitude). Note: Of course you will want to
+          know your latitude as well when it comes to calculating rise and set times.
+
+            I have included methods in this Ruby gem to do exactly that. See below:
+      
+            Please note: The gem has undergone some major changes but I am using the current 
+          one here.  I'll just add notes on each page about them and leave much of the original
+          information in tact.  Thank you for your interest in this gem.
+          
+    %table
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Explains about using Julian Numbers in Ruby 
+        %td
+          %h5
+            %li
+              %a{ :href => "date" } Julian Number                   
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Use of time_julian_century( ) method
+        %td
+          %h5
+            %li
+              %a{ :href => "time" } Julian Century        
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Use of mean_anomaly( ) method.
+        %td
+          %h5
+            %li
+              %a{ :href => "mean" } &Mu;ean anomaly                   
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Use of true_anomaly( ) method.
+        %td
+          %h5
+            %li
+              %a{ :href => "eqc" } &nu;               
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Use of true_longitude( ) method.
+        %td
+          %h5
+            %li
+              %a{ :href => "ecliplong" } &lambda;            
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Use of right_ascension( ) method.  
+        %td
+          %h5
+            %li
+              %a{ :href => "rghtascn" } &alpha;
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Equation of time live calculations using this gem.
+        %td
+          %h5 
+            %li
+              %a{ :href => "eot" } &Delta; Time now                  
+      %tr
+        %td
+          %h3
+            %pre
+              :preserve
+                Live calculations of sunrise and sunset times today. 
+        %td        
+          %h5
+            %li
+              %a{ :href => "mysuntimes" } Times                   
+      %tr        
+        %td
+          %h3
+            %pre
+              :preserve
+                Some links that I learned more about the Equation of Time with plus.
+        %td
+          %h5
+            %li
+              %a{ :href => "links" } Links 

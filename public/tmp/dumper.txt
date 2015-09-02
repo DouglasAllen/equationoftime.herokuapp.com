@@ -1,0 +1,36 @@
+//    %script{:type => "text/javascript", :src => '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'}
+//    %script(:type => "text/javascript", :src => 'http://rightjs.org/hotlink/right.js')    
+//    %script{:type => "text/javascript", :src => 'http://code.jquery.com/jquery-2.1.0.min.js'}
+//    %script{:type => 'text/javascript', :src => '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' }
+//    %script{:type => 'text/javascript', :src => 'jquery-2.1.1.min.js'}
+//    %script{:type => 'text/javascript', :src => 'jquery-latest.js'}
+//  :javascript
+//    var j$ = jQuery.noConflict();
+//    $.ajaxSetup ({ cache: false });
+//    $(document).ready(function() { update_lst(); });
+//    fetch text from the server, wait 5 secs and repeat
+//    function update_lst() {  
+//      $.get("/update", function(data) {
+//        $("body").html(data);
+//        window.setTimeout(update_lst, 997);
+//      }, 'text');
+//    }
+//    $(getUpdate);
+//     function getUpdate(){
+//       $("body").load("/update");
+//       setTimeout(getUpdate,1000);
+//     }      
+
+//    $.ajaxSetup ({ cache: false });
+//    $(document).ready(function() { update_time(); });
+    
+//    // fetch text from the server, wait 5 secs and repeat
+//      function update_time() {
+//        $.get("/update", function(data) {
+//          $("doc").html(data);
+//          window.setTimeout(update_time, 7000);
+//        }, 'text');
+//      }
+
+    
+  

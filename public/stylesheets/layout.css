@@ -1460,7 +1460,7 @@ html{
 }
 
 body{
-	margin:0
+	margin:2
 }
 
 a:focus{
@@ -1700,8 +1700,8 @@ html{
 }
 
 body{
-	font-family:"Source Sans Pro","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
-	font-size:22px;
+	//font-family:"Source Sans Pro","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+	font-size:23px;
 	line-height:1.42857;
 	color:#a9bac9;
 	background-color:#181e23
@@ -1783,7 +1783,7 @@ hr{
 }
 
 p{
-	margin:0 0 10px
+	margin:2 0 10px
 }
 
 .lead{
@@ -2771,7 +2771,7 @@ table{
 }
 
 th{
-	text-align:left
+	text-align:center
 }
 
 .table{

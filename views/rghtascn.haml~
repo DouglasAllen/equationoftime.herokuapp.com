@@ -1,0 +1,215 @@
+%html
+  %head
+    %title right_ascension
+  %body
+    %h1 
+      &alpha; or alpha = Right Ascension of the Sun
+    %h3
+      %pre
+        :preserve
+            Right Ascension is measured along the imaginary celestial equator starting from 
+          the First Point of Aries which is also known as the Vernal Equinox. The ecliptic 
+          crosses the celestial equator two times a year. The Autumnal Equinox is the other 
+          crossing point also known as the Ascending Node. These two points are also when the
+          declination of the Sun is zero. Two other points along the ecliptic are the
+          Solstices ( Summer and Winter ). The declination of the Sun is at maximum north or 
+          maximum south during these times.
+      
+            Normally Right Ascension is measured in hours, minutes, and seconds from zero. 
+          In this case we need to take the difference in degrees from Lambda &lambda;. 
+          This is the Obliquity component ( &lambda; - &alpha; ) for the Equation of Time. 
+          The other was the elliptic Orbital component( &Mu; - &nu; ). 
+          The Right Ascension and Ecliptic Longitude form an angle at the cross over points 
+          we will refer to as &epsilon; Epsilon in the Ruby methods. The other two methods 
+          are &alpha; Alpha and &lambda; Lambda.
+    
+            These terms are calculated with the Universal Time Coordinate or GMT 
+          of the current time.
+    
+          DateTime.now.to_time.utc.to_datetime = 
+    %h5
+      #{@current} 
+    %h3
+      %pre
+        :preserve
+          The array value =
+    %h5
+      #{@now}        
+    %h3      
+      %pre
+        :preserve
+        
+          Ruby Eot#mo_Earth( ) method:
+          This done with the Celes extension now.
+
+          see http://aa.usno.navy.mil/publications/docs/Circular_179.pdf page 46 (5.19)
+
+          def mo_Earth( ta = A2000 )
+            ta = check_jct_zero( ta )
+           #( 
+           #     -0.0000000434 * ta[ 4 ] +
+           #     -0.000000576  * ta[ 3 ] +
+           #      0.00200340   * ta[ 2 ] +
+           #     -0.0001831    * ta[ 1 ] +
+           #    -46.836769     * ta[ 0 ] +
+           #  84381.406         
+           # ) / ARCSEC
+            [ -0.0000000434, -0.000000576,  0.00200340,
+              -0.0001831,   -46.836769, 84381.406 ].inject(0.0) {|p, a| p * ta[ 0 ] + a} / ASD
+          end
+          
+          Mean obliquity ( Earth's tilt ) decimal degrees
+    %h5
+      #{@mo} 
+    %h3
+      %pre
+        :preserve
+            Next we need some corrections for Nutation.
+          The data is loaded when the EOT class is initialized.
+          A new EOT class instance will set all attributes except data to nill unless 
+          you include up to three of them. (latitude, longitude, date).      
+      
+          Ruby Eot#delta_equinox( ) method:
+
+          # nutation data terms are used here.
+          # arc seconds are used for these terms
+          #
+          # see http://aa.usno.navy.mil/publications/docs/Circular_179.pdf page 46 (5.19) 
+    
+          def delta_equinox( ta = A2000 )
+            ta = check_jct_zero( ta )
+            # Values are in arc seconds see above link for definitions of terms.
+            ma_moon = [-0.00024470, 0.051635, 31.8792, 1717915923.2178, 485868.249036].inject(0.0) {|p, a| p * ta[ 0 ] + a}			
+
+            ma_sun = [-0.00001149, 0.000136, -0.5532, 129596581.0481, 1287104.79305].inject(0.0) {|p, a| p * ta[ 0 ] + a}	
+                    
+            md_moon = [0.00000417, -0.001037, -12.7512, 1739527262.8478, 335779.526232].inject(0.0) {|p, a| p * ta[ 0 ] + a}
+            
+            me_moon = [-0.00003169, 0.006593, -6.3706, 1602961601.2090, 1072260.70369].inject(0.0) {|p, a| p * ta[ 0 ] + a} 
+           
+            omega = [-0.00005939, 0.007702, 7.4722, -6962890.5431, 450160.398036].inject(0.0) {|p, a| p * ta[ 0 ] + a}           
+
+            # Note: we will now be using the data array in nutation_table5_3a.yaml
+            # I found the data @ ftp://tai.bipm.org/iers/conv2003/chapter5/tab5.3a.txt
+            # Then it was converted to a yaml file nutation_table5_3a.yaml
+            
+            # declare and clear these two variables for the sigma loop. 
+            delta_psi, delta_eps = 0, 0
+            lines = data.size - 1
+            for i in 0..lines
+            
+              fma_moon  = data[i][0].to_i
+              fma_sun   = data[i][1].to_i
+              fmd_moon  = data[i][2].to_i
+              fme_moon  = data[i][3].to_i
+              fomega    = data[i][4].to_i
+              
+              sine = sind( fma_moon * ma_moon +
+                           fma_sun  * ma_sun  +
+                           fmd_moon * md_moon +
+                           fme_moon * me_moon +
+                           fomega   * omega )
+                           
+              cosine = cosd( fma_moon * ma_moon +
+                             fma_sun  * ma_sun  +
+                             fmd_moon * md_moon +
+                             fme_moon * me_moon +
+                             fomega   * omega )
+                             
+              delta_psi += ( data[i][6].to_f  +
+                             data[i][7].to_f  * t[0] ) * sine +
+                             data[i][10].to_f * cosine
+              
+              delta_eps += ( data[i][8].to_f  +
+                             data[i][9].to_f  * t[0] ) * cosine +         
+                             data[i][12].to_f * sine                      
+            end
+
+            delta_eps = to_deg( delta_eps ) / 1000.0
+            delta_psi = to_deg( delta_psi ) / 1000.0
+            [delta_eps, delta_psi, ma_sun, omega, ma_moon, md_moon, me_moon]   
+          end          
+      %h3        
+        %pre
+          :preserve
+            Ruby Eot#delta_epsilon( ) method:
+          
+            def delta_epsilon( ta = A2000 )
+              delta_equinox( ta )[0]
+            end
+
+            Ruby Eot#to_Earth( ) method:
+            def to_Earth( ta = A2000 )
+              mean_obliquity( ta ) + delta_epsilon( ta )
+            end
+            
+            Epsilon ( Earth's tilt ) decimal degrees =            
+      %h5        
+        #{@to}
+      %h3
+        %pre
+          :preserve
+            All that above was replaced by the following:
+            Celes.obl06(@ajd, 0)
+            Celes.nut06a(@ajd, 0)[0]
+            Celes.nut06a(@ajd, 0)[1]
+             
+      %h3
+        %pre
+          :preserve
+            Note: A slight change. Very small though.  
+            
+            Now we may calculate Right Ascension         
+      %h3
+        %pre
+          :preserve
+          
+            Ruby Eot#ra_Sun( ) method:
+            
+            def ra_Sun( ta = A2000 )             
+              y0 = cosine_true_obliquity( ta ) * 
+                   sine_true_longitude( ta )
+              x0 = cosine_true_longitude( ta )
+              radians_to_degrees( atan2( -y0, -x0 )) + 180.0
+            end
+            
+            True Ecliptic Longitude of the Sun decimal degrees =
+      %h5
+        #{@tl}  -
+      %h3
+        %pre
+          :preserve
+            Right Ascension decimal degrees =
+      %h5         
+        #{@ra}
+      %h3
+        %pre
+          :preserve
+            &Delta; degress (&lambda; - &alpha;) decimal degrees *        
+      %h5
+        #{@tl - @ra}
+      %h3
+        %pre
+          :preserve
+            minutes per degree sidereal time =        
+      %h5
+        #{@s_min}
+      %h3
+        %pre
+          :preserve
+            &Delta; time (&lambda; - &alpha;) decimal minutes        
+      %h5
+        #{@s_min * (@tl - @ra)}
+      %h3
+        %pre
+          :preserve  
+            &Delta; time minutes and seconds in ecliptic portion =
+      %h5
+        #{@solar.show_minutes(@s_min * (@tl - @ra))}
+      %h3
+        %pre
+          :preserve
+              Most of this was changed to local C extensions or using the Celes gem.
+            Handy to have some of the old algorithms hanging around though.
+      %h3
+        %a{:href => "/final"} Final Equation

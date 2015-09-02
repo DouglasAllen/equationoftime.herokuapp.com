@@ -1,26 +1,41 @@
+%link{ :rel  => 'stylesheet',
+       :type => 'text/css', 
+       :href => '/stylesheets/eot.css' }
 %h1
  %div{:id => "utc"}
  %div{:id => "gmst"}
+ %div{:id => "cst"}
  %div{:id => "lmst"}
+
 :javascript
  function calculate() {
-  var longit = -88.743;
-  var tDate = new Date();
+  var longit       = -88.7431;
+  var tDate        = new Date();
   var utSeconds    = tDate.getUTCSeconds();
   var utMinutes    = tDate.getUTCMinutes();
   var utHours      = tDate.getUTCHours();
   var utDay        = tDate.getUTCDate();
   var utMonth      = tDate.getUTCMonth() + 1;
   var utYear       = tDate.getUTCFullYear();
-  var UT        = utHours + utMinutes/60 + utSeconds/3600;
-  var LMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longit);
-  var GMST      = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),0.0);
+  var UT           = utHours + utMinutes/60 + utSeconds/3600;
+  var LMST         = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),longit);
+  var GMST         = LM_Sidereal_Time(JulDay (utDay, utMonth, utYear, UT),0.0);
+  var ltSeconds    = tDate.getSeconds();
+  var ltMinutes    = tDate.getMinutes();
+  var ltHours      = tDate.getHours();
+
+  var dch = ltHours.toString();
+  if ( ltHours < 10 ) var dch = "0" + ltHours.toString();
+  var dcmin = ltMinutes.toString();
+  if ( ltMinutes < 10 ) var dcmin = "0" + ltMinutes.toString();
+  var dcsecs = ltSeconds.toString();
+  if ( ltSeconds < 10 ) var  dcsecs = "0" + ltSeconds.toString();
 
   var cuth = utHours.toString();
   if ( utHours < 10 ) var cuth = "0" + utHours.toString(); 
-  var cutm = utMinutes.toString()
+  var cutm = utMinutes.toString();
   if ( utMinutes < 10 ) var cutm = "0" + utMinutes.toString(); 
-  cuts = utSeconds.toString();
+  var cuts = utSeconds.toString();
   if ( utSeconds < 10 ) var  cuts = "0" + utSeconds.toString(); 
 
   var h = Math.floor(LMST);
@@ -54,9 +69,11 @@
   var utc_div = document.getElementById('utc');
   utc_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Coordinated Universal Time (UTC) &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>"+"</font>"
   var gmst_div = document.getElementById('gmst');
-  gmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Greenwich Local Sidereal Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<br>"+"</font>"
+  gmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Greenwich Sidereal Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<br>"+"</font>"
+  var cst_div = document.getElementById('cst');
+  cst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> De Kalb Time &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +dch + ":"  + dcmin  + ":" +dcsecs+ "</font>";
   var lmst_div = document.getElementById('lmst');
-  lmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> De Kalb Local Sidereal Time &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "</font>";
+  lmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Local Sidereal Time De Kalb &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "</font>";
   setTimeout("calculate()",997);
  }
 

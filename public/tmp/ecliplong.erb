@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>ecliptic_longitude</title>
+  </head>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <a href="/">Home</a>	 
+    <p>
+    <h1>&lambda; (lambda) Ecliptic Longitude Sun</h1>
+	 <h3>
+    All planetary orbits are referenced from the ecliptic. The ecliptic is the path that we see</br>
+    the Sun, Moon and planets take from our east horizon to our west horizon. It is offset from</br>
+    the Celestial Equator by the amount of tilt (Obliquity) to that of the Earth. The Ecliptic is either</br>
+    above or below this imaginary Celestial Equator depending on the time of year or where the Earth is</br>
+    in relation to the orbit around the Sun. Again we need a reasonable assumption as a starting point.</br>
+    Here we use a term similar to the first (Mean) Anomaly called the Mean Longitude. The formula is below.    
+    </p>
+    <p>
+    <h2>These terms are calculated with the Universal Time Coordinate<br />
+          or GMT of the current time.</h2>
+    </p>
+	 <h3>
+	 <% if @solar %>
+    <p>      
+      <input style="font-weight: bold" value="&nbsp;&nbsp;<%= (@solar.time_julian_centurey * 1.0).to_s %>"/> = t  time in fractional centurys since J2000.0
+    </p>
+    <p>
+      Ruby method:</br>
+      def geometric_mean_longitude(t = time_julian_centurey())</br>
+        &nbsp&nbsp;&nbsp&nbsp;#Mean longitude of the sun</br>
+        &nbsp&nbsp;&nbsp&nbsp;t2 = t * t</br>
+        &nbsp&nbsp;&nbsp&nbsp;t3 = t2 * t</br>
+        &nbsp&nbsp;&nbsp&nbsp;t4 = t3 * t</br>
+        &nbsp&nbsp;&nbsp&nbsp;t5 = t4 * t</br>
+        &nbsp&nbsp;&nbsp&nbsp;bd(truncate(280.4664567 +</br> 
+        &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * 36000.76982779 +</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t2 * 0.0003032028 +</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t3 / 49931.0 -</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t4 / 15299.0 -</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t5 / 1988000.0))</br>
+      end      
+    </p>
+    <p>
+      Ruby method: (modified to use Horner's method) </br>
+      def geometric_mean_longitude(t = time_julian_centurey())</br>
+        &nbsp&nbsp;&nbsp&nbsp;#Mean longitude of the sun</br>
+        &nbsp&nbsp;&nbsp&nbsp;bd(truncate(280.4664567 +</br> 
+        &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * (36000.76982779 +</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * (0.0003032028 +</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * (2.00276381406e-05 -</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * (6.53637492647e-05 +</br>
+	     &nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;t * 5.03018108652e-07))))))</br>	
+      end</br>      
+    </p>
+    <p>
+		<input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.geometric_mean_longitude.to_s %>"/> = Mean Longitude Sun degrees decimal
+    </p>
+    As with the Mean Anomaly Sun we need to correct for eliptical Keplerian orbit. We use </br>
+    Equation of Center as before only this time I will show the method for true longitude.
+    <p>
+    </p>
+    <p>
+    Ruby method:</br>
+    def true_longitude(t = time_julian_centurey()) </br>
+    &nbsp&nbsp;&nbsp&nbsp;bd(truncate(geometric_mean_longitude(t) + equation_of_center(t)))</br>    
+    end
+    </p>
+    <p>    
+		<input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.equation_of_center.to_s %>"> = Equation of Center in degrees decimal.</br>
+    </p>
+    <p>    
+		<input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.true_longitude.to_s %>"> = lambda, Ecliptic Longitude Sun degrees decimal
+    </p>
+    <% end %>
+	 <a href="/rghtascn">next</a>
+  </body>
+</html>

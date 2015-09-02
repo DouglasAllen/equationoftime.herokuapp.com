@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<HTML> 
+  <HEAD>
+    <title>julian_time</title>
+    <script type="text/javascript">	
+    </script>
+  </HEAD>
+  <body link=#bbeeff" vlink="#ffffff" alink="#FF0000" style="background-color: #000000; color: #aaddff">
+    <a href="/">Home</a>
+    <% if @solar %>
+    <h1>The Astronomical Julian Period Day Number (ajd) = </br>
+        Julian Period Day Number (jd) - 0.5 = midnight the day before.</h1>  
+	 <h3>The time reference we need starts at midnight UTC the day before.</br>
+        Normally we use just Julian Period Day Number (Midday) today</br>
+        for calculations like Sunrise and Sunset.</br>
+        Astronomers use Julian Period Day Number (Midday) for logging of astronomical observations</br>
+        as this would be the start and end of a nightly session.</h3>
+    <p>
+      <h2>These terms are calculated with the Universal Time Coordinate<br />
+          or GMT of the current time.</h2>
+    </p>
+    <p>
+	   <h1>In Ruby we use class Date and many methods or functions in this class.</h1>
+		<h2>One method used here is jd() which gives us a Julian Period Day Number.</h2>
+		<h2>We can set the jd attribute from a function in Equation_of_Time class named jd=()</h2>		
+      <h2>First create a Equation_of_Time class instance. I used @solar = Equation_of_Time.new</h2>      
+      <h2>Then create a Date class instance using the Time class instance in UTC time.</h2>
+		<h2>@t = Time.now.utc</h2>
+      <h2>@date = Date.parse(@t.year.to_s + "-" + @t.month.to_s + "-" + @t.day.to_s)</h2>
+      <h2>Finally set the Equation_of_Time class attribute jd using the Date class instance.</h2>
+      <h2>@solar.jd = @date.jd		
+      <h3><input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.jd.to_s %>"/> : Julian Period Day Number UTC today at noon.</h3>
+    </p>  
+    <p>
+      <h2>Now use the function in Equation_of_Time class named ajd=()</h2>
+		<h2>@solar.ajd = @date.ajd * 1.0</h2>
+      <h2>The AJD is multiplied by 1.0 because otherwise we would get a rational number
+      <h3><input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.ajd.to_s %>"/>      
+      <h3><input style="font-weight: bold" value="&nbsp;&nbsp;<%= (@solar.ajd * 1.0).to_s %>"/> : Astronomical Julian Period Day Number UTC midnight.</h3>
+    </p>
+    <p>
+      <h1>class Equation_of_Time</h1>
+		<h1>method  day_fraction_time(t = Time.now.utc)</h1> note the default is Time now UTC
+      <h2>now = @solar.day_fraction_time(t = Time.now.utc)</h2>
+      <h3><input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.day_fraction_time.to_s %>"/> : Day fraction of Julian Period Day Number is hours decimal / 24.0</h3>
+    </p>
+    <p>
+      <h1>Combined</h1>
+		<h1>method ajd_time(t = Time.now.utc)</h1>
+      <h2> combined = @solar.ajd_time(t = Time.now.utc)</h2>
+      <h3><input style="font-weight: bold" value="&nbsp;&nbsp;<%= @solar.ajd_time.to_s %>"/> : Astronomical Julian Period Day Number + julian day fraction.<br />
+		This is the calculated value passed as a parameter to the julian_century_time calculation method.<br />
+       see: Julian Century Time
+		 </h3>
+    </p>  
+    <% end %>
+	 <a href="/time">next</a>
+  </body>
+</HTML>

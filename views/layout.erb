@@ -1,51 +1,22 @@
 <title> Equation of Time </title>
-<!-- <script src="http://rightjs.org/hotlink/right.js"></script>
-<script type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js'></script>
-<script type="text/javascript", src="http://code.jquery.com/jquery-2.1.0.min.js"> </script> -->
+
 <link rel='icon', type='image/icon', href='/images/favicon.ico'></link>
-<link rel='stylesheet', type='text/css', href='/stylesheets/eot.css'></link>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js'></script>
-<link href="/stylesheets/layout.css" media="all" rel="stylesheet" type="text/css" />
-<nav id="nav" class="l-nav navbar" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a href="/" class="btn btn-link logo"></a>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right text-center">
-      <li>
-        <a href="https://www.facebook.com/pages/AA-Electronics/468197253195444?ref=br_tf", :target => '_blank'>Work</a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/groups/randys9group/", :target => '_blank'>Services</a>
-      </li>
-      <li>
-        <a href="http://nepomuker.blogspot.com/" class="is-active", :target => '_blank'>Blog</a>
-      </li>
-      <li>
-        <a href="http://douglasallen.github.io/gh-pages/aboutme2/", :target => '_blank'>About Us</a>
-      </li> 
-      <li>
-        <a href="https://github.com/DouglasAllen/", :target => '_blank'>Open Source</a>
-      </li>
-      <li>
-        <a href="http://jpassion.com/portal/", :target => '_blank'>Hire Us , I owe him</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<%= yield %>
-<div style="margin-left:47px">
-<img src="images/39160.jpg" alt="TARDIS" style="width:303px;height:202px">
-<img src="images/Swan_Cygnet_270_B.png" alt="Swan" style="width:303px;height:202px">
-<img src="images/25056-travel_stonehenge_wallpaper.jpg" alt="Stonehenge" style="width:303px;height:202px">
+<link href="/stylesheets/normalize.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/eot.css" media="all" rel="stylesheet" type="text/css" />
+
+<div class="horizontal">
+ <ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/gm", TARGET = "_blank">Museum</a></li>
+  <li><a href="/tut", TARGET = "_blank">Tutorial</a></li>
+  <li><a href="https://github.com/DouglasAllen/", TARGET = "_blank">Contact</a></li>
+  <li><a href="/md",TARGET = "_blank">Articles</a></li>
+  <li><a href="/mysuntimes">Sun-Times</a></li>
+  <li><a href="/links",TARGET = "_blank" >Links</a></li>
+  <li><a href="http://douglasallen.github.io/gh-pages/aboutme2/", TARGET = "_blank">About</a></li>
+  <li><a href="/eot",TARGET = "_blank">Today</a></li>
+  <li><a href="/analemma",TARGET = "_blank">Data</a></li>
+  <li><a href="/graph",TARGET = "_blank">Graph</a></li>
+ </ul>
 </div>
-<div style="margin-left:47px">
-<img src="images/analog_gmst_clock.png" alt="24 hour clock" style="width:303px;height:202px">
-<img src="images/tomcat.gif" alt="24 hour clock" style="width:303px;height:202px">
-</div> 
+<%= yield %>

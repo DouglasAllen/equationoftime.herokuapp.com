@@ -1,29 +1,33 @@
 !!!
 %html
   %head
+
     %title Equation of Time
+
     %link{ :rel  => 'icon', 
            :type => 'image/icon', 
            :href => '/images/favicon.ico' }
-    %link{ :rel  => 'stylesheet', 
-           :type => 'text/css', 
-           :href => '/stylesheets/eot.css' }
-    %link{ :rel  => 'stylesheet', 
+ 
+    %link{ :rel  => 'stylesheet',
            :type => 'text/css', 
            :href => '/stylesheets/foundation.css' }
+
     %script{:type => 'text/javascript', :src => 'javascript/jquery-latest.js'}
+
   :javascript
-    $(getUpdate);
-     function getUpdate(){
-       $("#stonehenge").load("/");
-       $("#eot").load("/eot")
-       setTimeout(getUpdate,1000);
-     }
-  %navrow
-    %navcontainer
+    //$(getUpdate);
+     //function getUpdate(){
+       //$("#stonehenge").load("/");
+       //$("#eot").load("/eot")
+       //setTimeout(getUpdate,1000);
+    // }
+  %style
+    %li{:display => 'inline'}
+  %navcontainer
+    %navrow    
       %ul
         %li
-          %a{ :href => '/home', :target => '_blank', :class => 'button success'} Home
+          %a{ :href => '/', :target => '_blank', :class => 'button success'} Home
         %li
           %a{ :href => '/analemma', :target => '_blank', :class => 'button success' } 2015 data
         %li

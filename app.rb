@@ -1,33 +1,34 @@
 # app.rb
 #
-#require 'dm-core'
-#require 'dm-migrations'
+# require 'dm-core'
+# require 'dm-migrations'
 require 'cgi'
 
 require 'haml'
 require 'sinatra'
-#require 'jquery'
+require 'jquery'
+# require 'jquery-cdn'
 require 'find'
-#require 'rdiscount'
-#require 'liquid'
+require 'rdiscount'
+require 'liquid'
 require 'sinatra/reloader' if development?
-#require 'json/pure'
+require 'json/pure'
 
-#DataMapper.setup(:default, 'sqlite3::memory:')
+# DataMapper.setup(:default, 'sqlite3::memory:')
  
 #class Message
-#  include DataMapper::Resource
+  # include DataMapper::Resource
  
-#  property :id, Serial
-#  property :name, String
-#  property :message, String
-#end
+#   property :id, Serial
+#   property :name, String
+#   property :message, String
+# end
  
-#Message.auto_migrate!
+# Message.auto_migrate!
 
 
-#lib = File.expand_path('../lib', __FILE__)
-#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# lib = File.expand_path('../lib', __FILE__)
+# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 def get_files(path)
   dir_list_array = Array.new
@@ -116,12 +117,17 @@ class HelpTime
   end
 end
 
-get "/" do   
-  haml :stonehenge, :layout => (request.xhr? ? false : :layout)
+get "/" do
+  markdown :"eot", :layout_engine => :erb  
+  #haml :stonehenge, :layout => (request.xhr? ? false : :layout)
 end
 
 get "/home" do  
   haml :index
+end
+
+get "/gm" do
+  haml :gmm, :layout => (request.xhr? ? false : :layout)
 end
 
 post "/index" do
@@ -170,7 +176,15 @@ get '/lst' do
 end
 
 get "/tut" do
-  haml :tut
+  markdown :"tut", :layout_engine => :erb 
+end
+
+get "/graph" do
+  markdown :"graph", :layout_engine => :erb
+end
+
+get "/gist" do
+  markdown :"gist"
 end
 
 get "/eot" do
@@ -254,7 +268,7 @@ get '/hello' do
 end
 
 get '/hellos' do
-  "Hello Sinatra!"
+  
 end
 
 get '/frank' do
@@ -313,4 +327,3 @@ end
 get '/alex' do
   haml :alex
 end
-

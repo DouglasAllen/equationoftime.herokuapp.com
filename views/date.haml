@@ -2,6 +2,9 @@
 %html
   %head
     %title julian_time
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
     %body
     
     - if @solar
@@ -41,7 +44,7 @@
             Time class to find the current time.  ( time = Time.now )            
        
             datetime = DateTime.now
-        %input{:style => "font-weight: bold; width: 225px", :value => "  #{DateTime.now}"}        
+        %input{:style => "font-weight: bold; width: 250px", :value => "  #{DateTime.now}"}        
       %h3
         %pre
           :preserve          
@@ -51,7 +54,7 @@
             Let's convert it to a Time class with the to_time() method as shown.
             
             time = DateTime.now.to_time
-        %input{:style => "font-weight: bold; width: 225px", :value => "  #{DateTime.now.to_time}"}        
+        %input{:style => "font-weight: bold; width: 250px", :value => "  #{DateTime.now.to_time}"}        
       %h3
         %pre
           :preserve
@@ -60,7 +63,7 @@
             Let's make sure we have a time in UTC with utc() method.
             
             time = DateTime.now.to_time.utc
-        %input{:style => "font-weight: bold; width: 225px", :value => "  #{DateTime.now.to_time.utc}"}        
+        %input{:style => "font-weight: bold; width: 250px", :value => "  #{DateTime.now.to_time.utc}"}        
       %h3
         %pre
           :preserve                        
