@@ -1,0 +1,69 @@
+- if @henge
+
+  - @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd
+  - @solar.ma_ta_set
+  - @al = @solar.al_sun() * @r2d
+  - @ma = @solar.ma_sun() * @r2d
+  - @ra = @solar.ra_sun() * @r2d
+  - @ta = @solar.ta_sun() * @r2d
+  - @sal = format("%3.9f", @al)
+  - @sma = format("%3.9f", @ma)
+  - @sra = format("%3.9f", @ra)  
+  - @sta = format("%3.9f", @ta)
+  - @sd1 = format("%3.9f", @ma - @ta)
+  - @sd2 = format("%3.9f", @al - @ra)
+  - @sdt = format("%3.9f", @sd1.to_f + @sd2.to_f)
+  - @smt = format("%3.9f", @sdt.to_f * @s_min)
+  - @mt  = @solar.show_minutes(@smt.to_f)
+#eot
+  %link{ :rel  => 'stylesheet',
+         :type => 'text/css', 
+         :href => '/stylesheets/eot.css' }
+  %h3      
+    %pre{style: "color: #000000, text-align: center"}
+      Delta = ( Mu - nu ) + ( lambda - alpha )
+    
+      &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
+    
+      These terms are calculated using current date and time UTC.
+  
+  %pre
+    %div{style: "align: center"}
+      %table{style: "border: 1, cellpadding: 10"}      
+        %tr
+          %th{style: "text-align: center"}  Mu             
+          %th{style: "text-align: center"}  nu      
+          %th{style: "text-align: center"}  Mu - nu
+        %tr
+          %td{style: "text-align: center"} #{@sma}
+          %td{style: "text-align: center"} #{@sta}
+          %td{style: "text-align: center"} #{@sd1}
+
+      %table{style: "border: 1, cellpadding: 10"}
+        %tr
+          %th{style: "text-align: center"}  lambda      
+          %th{style: "text-align: center"}  alpha              
+          %th{style: "text-align: center"}  lambda - alpha 
+        %tr
+          %td{style: "text-align: center"} #{@sal}                  
+          %td{style: "text-align: center"} #{@sra}                  
+          %td{style: "text-align: center"} #{@sd2}
+
+      %table{style: "border: 1, cellpadding: 10"}
+        %tr
+          %th{style: "text-align: center"} Delta degrees total        
+          %th{style: "text-align: center"} minutes               
+          %th{style: "text-align: center"} time  
+        %tr
+          %td{style: "text-align: center"} #{@sdt}                   
+          %td{style: "text-align: center"} #{@smt}                  
+          %td{style: "text-align: center"} #{@mt}
+             
+    Check that at http://www.celnav.de/longterm.htm under Equation of Time    
+        
+    %div{style: "background-color: orange, color: #000, text-align: center"}      
+        
+      Date and time #{@solar.ajd_to_datetime(@solar.ajd).to_time.httpdate} to enter there.
+     
+    %h3
+      %a{href: "/mysuntimes"} Sunrise and Sunset    

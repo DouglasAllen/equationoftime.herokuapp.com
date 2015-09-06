@@ -1,0 +1,160 @@
+%html
+  %head
+    %title true anomaly sun
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
+  %body
+    %h1
+      &nu; or nu = True Anomaly
+    %h1      
+      Mean Anomaly + Equation of Center =      
+      %br
+      True Anomaly
+    %h3      
+      %pre
+        :preserve
+        
+            The True Anomaly of the Sun is a correction to the Mean Anomaly via a formula 
+          called the 'Equation of Center'. 
+          Since: 
+                True Anomaly = Mean Anomaly + Equation of Center
+
+          I will just show that Ruby method here. 
+          The Equation of Center is a sine series of the Mean Anomaly &Mu; or mu
+    
+          These terms are calculated with the Universal Time Coordinate(UTC)
+          current time UTC below.
+        
+          DateTime.now.to_time.utc.to_datetime = 
+    %h5
+      #{DateTime.now.to_time.utc.to_datetime}
+          
+    %h3      
+      %pre
+        :preserve 
+        
+          The @ta value =
+    %h5      
+      #{@now}      
+    %h3      
+      %pre
+        :preserve
+        
+          Ruby Eot class Equation of Center method:
+          This was put in a C extension.
+
+          def center( )
+              
+            sine_1M = sin( 1.0 * @ma )
+            sine_2M = sin( 2.0 * @ma )
+            sine_3M = sin( 3.0 * @ma )
+            sine_4M = sin( 4.0 * @ma )
+            sine_5M = sin( 5.0 * @ma )
+            e       = eccentricity_Earth()
+            sine_1M * ( e     *    2.0         - e**3 * 1.0/4.0 + e**5 *  5.0/96.0 ) +  
+            sine_2M * ( e * e *    5.0 /  4.0  - 0.0            - e**4 * 11.0/24.0 ) + 
+            sine_3M * ( e**3  *   13.0 / 12.0  - 0.0            - e**5 * 43.0/64.0 ) +
+            sine_4M *   e**4  *  103.0 / 96.0  - 0.0            - 0.0                +
+            sine_5M *   e**5  * 1097.0 / 960.0 - 0.0            - 0.0
+                    
+          end
+          
+          Equation of Center in radians =           
+    %h5
+      #{@eqc * @pi / 180.0}
+    %h3
+      %pre
+        :preserve
+          degrees:minutes:seconds =        
+    %h5
+      #{@eqc_string}
+    %h3      
+      %pre
+        :preserve
+            The above Ruby method was replaced by a C extension which does the same work
+          only is much faster.
+
+          double eqc(double ma, double t)
+          {             
+           double a1, a2, a3, a4, a5, s1, s2, s3, s4, s5, e;
+           e   = eoe(t);  
+           s1  = sin( 1.0 * ma );
+           s2  = sin( 2.0 * ma );
+           s3  = sin( 3.0 * ma );
+           s4  = sin( 4.0 * ma );
+           s5  = sin( 5.0 * ma );
+           a1  = s1 * 2;
+           a2  = s2 * 5.0/4.0;
+           a3  = s3 * 13.0/12.0 - s1 * 1.0/4.0;
+           a4  = s4 * 103.0/96.0 - s2 * 11.0/24.0;
+           a5  = s5 * 1097.0/960.0 + s1 * 5.0/96.0 - s3 * 43.0/64.0;
+           return e * (a1 + e * (a2 + e * (a3 + e * (a4 + e * a5))));
+          }
+    %h3
+      %pre
+        :preserve
+            Then multiplying with 4.0 * 360.0 / 360.98564736629 (4 minutes to a degree)
+          360.0 / 360.98564736629 is a ratio of Earth rotation per 24 hour day.
+          A sidereal day is 360 degrees long. The Earth actually rotates 360.98564736629
+          in 24 hours approximately(see: the analemma site in links page for more info.)
+                    
+          minutes per degree in sidereal time =     			
+    %h5
+      #{@s_min}    
+    %h3
+      %pre
+        :preserve
+          &Delta;t of the orbital component in minutes decimal =
+    %h5 
+      #{@s_min * @eqc}
+    %h3
+      %pre
+        :preserve
+           minutes:seconds =        
+    %h5            
+      #{@solar.show_minutes(@s_min * @eqc)}      
+    %h3
+      %pre
+        :preserve
+            Remember we added Equation of Center to Mean Anomaly? 
+          Here we need the difference for &Mu; - &nu;
+          I only showed you equation_of_center() method.
+          There is a method in Eot class that yields &nu; or True Anomaly 
+          that adds Equation of Center to Mean Anomaly.
+          
+          def ta_Sun()    
+            @ma + centre()
+          end
+
+          decimal degrees =          
+    %h5 
+      #{@ta}
+    %h3
+      %pre
+        :preserve
+          Mean anomaly - true anomaly = delta orbital angle
+          decimal degrees =         
+    %h5 
+      #{@ma - @ta}
+    %h3
+      %pre
+        :preserve
+          minutes per degree in sidereal time =        
+    %h5
+      #{@s_min}  
+    %h3
+      %pre
+        :preserve
+          Multiplying we get
+          &Delta;t decimal minutes =          
+    %h5 
+      #{@e1}
+    %h3
+      %pre
+        :preserve
+          &Delta;t minutes:seconds in orbital portion =
+    %h5
+      #{@solar.show_minutes(@e1)}  
+    %h3
+      %a{:href => "/ecliplong"} Ecliptic Longitude

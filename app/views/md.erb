@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <title>
+   </title>
+   <meta name="description" content="" />
+   <meta name="keywords" content="" />
+ </head>
+ <body>
+   <p>
+   <h2>Ruby Markdown</h2>
+   </p>
+   <ul> 
+   <% @arr.each do |page| %>
+     <li>
+       <a href="/mdview/<%= page%>"><%= formatter(page) %></a>
+     </li>
+   <% end %>
+   </ul>
+ </body>
+</html>  

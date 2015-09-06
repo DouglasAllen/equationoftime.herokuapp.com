@@ -1,0 +1,54 @@
+/home/kb9agt/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150904-9948-3352vn.rb extconf.rb
+checking for sqlite3.h... yes
+checking for sqlite3_open() in -lsqlite3... yes
+checking for localtime_r()... yes
+checking for gmtime_r()... yes
+checking for sqlite3_prepare_v2()... yes
+checking for sqlite3_open_v2()... yes
+checking for sqlite3_enable_load_extension()... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling do_sqlite3_extension.c
+do_sqlite3_extension.c: In function ‘do_sqlite3_cExtension_enable_load_extension’:
+do_sqlite3_extension.c:19:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c:23:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c:32:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c: In function ‘do_sqlite3_cExtension_load_extension’:
+do_sqlite3_extension.c:51:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c:55:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c:59:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3_extension.c:66:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+compiling do_sqlite3.c
+do_sqlite3.c: In function ‘do_sqlite3_typecast’:
+do_sqlite3.c:35:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cConnection_initialize’:
+do_sqlite3.c:171:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cConnection_dispose’:
+do_sqlite3.c:194:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cConnection_quote_string’:
+do_sqlite3.c:220:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cCommand_execute_non_query’:
+do_sqlite3.c:247:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:251:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:255:3: warning: implicit declaration of function ‘gettimeofday’ [-Wimplicit-function-declaration]
+do_sqlite3.c:264:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cCommand_execute_reader’:
+do_sqlite3.c:279:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:283:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:295:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:302:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:314:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c: In function ‘do_sqlite3_cReader_next’:
+do_sqlite3.c:353:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:367:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+do_sqlite3.c:376:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+compiling do_common.c
+do_common.c: In function ‘data_objects_debug’:
+do_common.c:58:3: warning: implicit declaration of function ‘gettimeofday’ [-Wimplicit-function-declaration]
+linking shared-object do_sqlite3/do_sqlite3.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 do_sqlite3.so ./.gem.20150904-9948-1q3ohzp/do_sqlite3

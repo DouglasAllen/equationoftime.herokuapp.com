@@ -1,0 +1,109 @@
+%html
+  %head
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
+      
+  %body
+    %h1 Equation of Time 
+    %h2
+      %pre
+        :preserve		
+                    Welcome to Heroku Equation of Time application.  This is a Ruby Rack application using Sinatra, 
+                    
+                Haml, and of course the Ruby gem "equationoftime".  Without too much detail I will only attempt to 
+
+                describe how this Ruby gem works.
+         
+                Then you aught to be better prepared to use it in your Ruby applications.
+
+                    
+                    In case you would like to know where I got the graphic image from
+
+                I renered it from the same code that is R code on the image page of the
+
+                wikipedia equation of time info. 
+    
+    %h1 Sun Times
+    %h3
+      %pre
+        :preserve    
+                    The default date is today.  Time Zone is not used here.  All time results will be in UTC.         
+                
+          
+    - if @solar
+      %form{"accept-charset" => "utf-8", :action => "/index", :method => "post"}
+        %p
+          %b Enter an latitude and longitude
+          %br/             
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "latitude", :type => "text", :value => "  #{@latitude}"}   Latitude : ( minus if south )         
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "longitude", :type => "text", :value => "  #{@longitude}"}  Longitude : ( minus if west )  
+        %p
+          %input{:type => "submit", :value => "calculate"}/        
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunrise", :size => "24", :type => "text", :value => "   #{@solar.sunrise_dt.to_time.httpdate}"}  Resulting Sunrise UTC
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunset", :size => "24", :type => "text", :value => "   #{@solar.sunset_dt.to_time.httpdate}"}  Resulting Sunset UTC
+    %h3      
+      %pre
+        :preserve        
+                    Compare these results if you like with some well known web calculators.
+          
+                http://www.esrl.noaa.gov/gmd/grad/solcalc/
+          
+                or
+
+                http://www.esrl.noaa.gov/gmd/grad/solcalc/sunrise.html
+
+                or
+
+                http://aa.usno.navy.mil/data/docs/RS_OneDay.php
+
+                Those are all done in Javascript but this site is pure Ruby.(a little C thrown it)
+                
+                https://www.ruby-lang.org/en/
+
+    %h3      
+      %pre
+        :preserve
+                      You may use this lookup when the daily quota has not been exceeded.
+
+                Otherwise you can always look up your coordinates online in a search.
+
+                The default address below is for the Royal Observatory, Greenwich, England. 
+          
+                Make your entries as precise as possible using comma separated parts or you may experience errors.
+          
+                EX: 1600 Amphitheatre Parkway, Mountain View, CA
+          
+                You don't need any caps and you can just type return when ready.            
+
+                Please use this sparingly as geo has a daily quota that might get exceeded.
+
+    - if @solar                     
+      %form{"accept-charset" => "utf-8", :action => "/index", :method => "post"}
+        %p
+          %b Enter an address
+          %br/           
+          %input{:style => "font-weight: bold; width :850px; color: #00a", :name => "address", :type => "text", :value => "#{@geo.addr}"}/           
+        %p
+          %input{:type => "submit", :value => "retrieve"}/
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "latitude2", :type => "text", :value => "  #{@latitude2}"}   Resulting Latitude : ( minus if south )          
+        %p
+          %b 
+          %br/
+          %input{:style => "font-weight: bold; color: #00a", :name => "longitude2", :type => "text", :value => "  #{@longitude2}"}  Resulting Longitude : ( minus if west )   
+    

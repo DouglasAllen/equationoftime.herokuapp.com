@@ -1,0 +1,88 @@
+%html
+  %head
+    %title equation_of_time
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
+  %body
+    %h2 &Delta;t = (&Mu; - &nu;) + (&lambda; - &alpha;)
+    %h2
+      These terms are calculated with the Universal Time Coordinate
+      %br/
+      or GMT of the current time.
+    - if @solar
+      - ajd = @solar.ajd
+      - now = @solar.now
+      - t = @solar.ta
+      - mean_anomaly = @solar.mean_anomaly
+      - true_anomaly = @solar.true_anomaly
+      - s_min = 4.0 * 360.0 / 360.98564736628622399296352823421
+      - e1 = (mean_anomaly - true_anomaly) * s_min
+      - e1string = @solar.string_time(e1)
+      - lambda_perihelion = 282.9764
+      - lambda = @solar.true_longitude
+      - lambdastring = @solar.degrees_to_s(lambda)
+      - ra = @solar.right_ascension
+      - radstring = @solar.degrees_to_s(ra)
+      - ratstring = @solar.string_time(ra / 15.0)
+      - e2 = (lambda - ra) * s_min
+      - e2string = @solar.string_time(e2)
+      - totalstring = @solar.string_time(e1 + e2)
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{ajd + now}"} = Astronomical Julian Day + time now.
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{mean_anomaly}"}/
+        \= &Mu; Mean Anomaly of Sun in degrees decimal.
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{@solar.mean_anomaly_string}"}/
+        \= &Mu; Mean Anomaly in degrees:minutes:seconds.
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{true_anomaly}"}/
+        \= &nu; True Anomaly of Sun in degrees decimal.
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{@solar.true_anomaly_string}"}/
+        \= &nu; True Anomaly in degrees:minutes:seconds.
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{@solar.string_time(s_min)}"}/
+        \= minutes per degree sidereal time
+      %p
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{s_min}"}/
+        \= minutes per degree sidereal time and multiplying we get
+      %p
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{e1}"}/
+        \= &Delta;t decimal Mean - True Anomalies
+      %p
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{e1string}"}/
+        \= &Delta;t minutes:seconds in E1
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{lambda}"}/
+        \= &lambda; Ecliptic Longitude of Sun in degrees decimal.
+      %p
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{lambdastring}"}/
+        \= &lambda; Ecliptic Longitude in degrees:minutes:seconds.
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{ra}"}/
+        \= &alpha; Right Ascension of Sun in degrees decimal.
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{radstring}"}/
+        \= &alpha; Right Ascension in degrees:minutes:seconds.
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{ratstring}"}/
+        \= &alpha; Right Ascension in hours:minutes:seconds
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{s_min}"}/
+        \= minutes per degree sidereal time and multiplying we get
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{e2}"}/
+        \= &Delta;t minutes decimal Ecliptic Longitude - Right Ascension
+        %br/
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{e2string}"}/
+        \= &Delta;t minutes:seconds in E2
+      %p        
+        %input{:style => "font-weight: bold; color: #00a", :value => "  #{totalstring}"}/
+        \= &Delta;t Total Equation of Time now (E1 + E2).
+    %div{:style => "background-color: orange"}
+      Using Delta T of 66.5706
+      Check it at
+      %a{:href => "http://douglasallen.github.com/planets/"} http://douglasallen.github.com/planets/
+      for #{Time.now.utc}

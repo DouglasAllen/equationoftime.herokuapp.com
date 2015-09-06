@@ -1,0 +1,1 @@
+![Image of eot graph](/images/Equation_of_time.jpg)

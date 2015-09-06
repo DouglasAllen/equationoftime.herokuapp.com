@@ -1,0 +1,37 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<!-- $(document).ready(function(){
+function updateTime() {
+    var currtime = new Date();
+    var currtime1 = new Date(currtime.getTime());
+    var currtime2 = new Date(currtime.toGMTString());
+    var currtime3 = (currtime.getHours() + ":"+ currtime.getMinutes() + ":" + currtime.getSeconds());
+    $('#1').html(currtime1);
+    $('#2').html(currtime2);
+    $('#3').html(currtime3);
+    location.reload();       
+}
+setInterval(updateTime, 1000); // 1000 miliseconds 
+});  -->
+<script>
+
+  $.ajaxSetup ({  
+     cache: false  
+  });
+
+  $(document).ready(function() { 
+
+  // fetch text from the server, wait 5 secs and repeat
+  function update_time() {
+    $.get("/update", 
+          function(data) {
+            $("#update-div").html(data);            
+          }
+  }
+  setInterval(update_time(), 5000);
+  });
+</script>
+<div id='update-div'> 
+</div> 
+

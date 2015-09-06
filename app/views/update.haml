@@ -1,0 +1,17 @@
+%link{ :rel  => 'stylesheet',
+       :type => 'text/css', 
+       :href => '/stylesheets/eot.css' }
+%script{:type => 'text/javascript', :src => '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'}
+:javascript
+  $.ajaxSetup ({ cache: false });
+  $(document).ready(function() { update_lst(); });
+  // fetch text from the server, wait 5 secs and repeat
+  function update_lst() {  
+  $.get("/update", function(data) {
+  $("#lst").html(data);
+  setInterval(update_lst, 1000);
+  }, 'text');
+  }
+
+%div{:id=>'lst'} 
+= @html

@@ -1,0 +1,14 @@
+.DS_Store
+.rvmrc
+.idea
+.bundle
+gemfiles/*.lock
+log
+pkg
+spec/app/**/db/*.sqlite*
+spec/app/**/log/
+spec/app/**/tmp/
+spec/app/**/.sass-cache
+tmp
+Gemfile.lock
+*.gem

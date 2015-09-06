@@ -1,0 +1,45 @@
+%html
+  %head
+    %title julian_time
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
+  %body
+    - if @solar
+      - ajd = @solar.ajd
+      - jd = @solar.ajd + 0.5
+      - now = @solar.day_fraction_time(Time.now.utc)
+    %h1
+      The Astronomical Julian Period Day Number(ajd) =
+      Julian Period Day Number(jd) - 0.5 = midnight the day before.
+      The time reference we need starts at midnight UTC the day before.
+      Normally we use just Julian Period Day Number (Midday)
+      for calculations like Sunrise and Sunset.
+      Astronomers use Julian Period Day Number (Midday) for logging of astronomical observations
+      as this would be the start and end of a nightly session.
+    %p
+    %h2
+      These terms are calculated with the Universal Time Coordinate
+      %br/
+      or GMT of the current time.
+    %p      
+      %input{:style => "font-weight: bold; color: #00a", :value => "  #{jd}"} : Julian Day Number today at noon.
+    %p
+    %h1 class Date, method ajd()
+    %h2 today = @solar.ajd(t = Time.now.utc)
+    %p    
+      %input{:style => "font-weight: bold; color: #00a", :value => "  #{ajd * 1.0}"} : Astronomical Julian Day Number is previous midnight.
+    %p
+    %h1 class Time, methods now() and utc
+    %h2 now = @solar.day_fraction_time(t = Time.now.utc)    
+    %p
+      %input{:style => "font-weight: bold; color: #00a", :value => "  #{now}"} : Day fraction of Julian Day Number is hours decimal / 24.0
+    %p
+    %h1 Combined
+    %h2 today + now
+    %p
+      %input{:style => "font-weight: bold; color: #00a", :value => "  #{ajd + now}"} : Astronomical Julian Day Number + julian day fraction.
+    %p
+      This is the calculated value passed as a parameter to the julian_century_time calculation method.
+      %br/
+      see: Julian Century Time

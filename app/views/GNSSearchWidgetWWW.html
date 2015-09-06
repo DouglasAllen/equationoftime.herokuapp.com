@@ -1,0 +1,135 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta HTTP-EQUIV="Content-Type" content="text/html; charset=UTF-8" /><title>
+
+</title></head>
+
+<script type="text/javascript" language="javascript">
+
+    var sGGMAGazSite = 'http://geonames.nga.mil/namesgaz';
+    var SearchWindows = new Array();
+    var curWin = 0;
+
+    function CloseSearchWindows() {
+        for (i = 0; i < SearchWindows.length; i++) {
+            if (SearchWindows[i] && !SearchWindows[i].closed) {
+                SearchWindows[i].close();
+            }
+        }
+    }
+
+    function waitSearchFrame(sWindowName) 
+    {
+        document.frmSearchTarget.target = sWindowName;
+        document.frmSearchTarget.submit();
+    }
+
+    function SearchDatabase() 
+    {
+        var timer;
+        var sAction;
+        var sSTN;
+        var sCC1;
+        var sCriteria;
+        var windowTop;
+        var windowLeft;
+        var lWidth = 1000;
+        var lHeight = 675;
+
+        if (screen.availHeight < lHeight) 
+        {
+            lHeight = screen.availHeight;
+        }
+
+        if (screen.availWidth < lWidth) 
+        {
+            lWidth = screen.availWidth;
+        }
+
+        windowTop = ((screen.height / 2) - (lHeight / 2)) - 50;
+        windowLeft = ((document.body.clientWidth / 2) + (window.screenLeft)) - (lWidth / 2);
+
+        sSTN = escape(document.getElementById("idSTN").value);
+        sCC1 = escape(document.getElementById("idCC1").value);
+        sCriteria = escape(document.getElementById("idCriteria").value);
+        sAction = sGGMAGazSite + "/gnsquicksearch.asp?STN=" + sSTN + "&CC1=" + sCC1 + "&Criteria=" + sCriteria;
+        document.frmSearchTarget.action = sAction;
+        document.frmSearchTarget.target = "GNSQuickSearchWindow";
+
+        SearchWindows[curWin++] = window.open(sGGMAGazSite + '/quicksearchmain.html', 'GNSQuickSearchWindow', 'toolbar=no, location=no, directories=no, status=yes, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, top=' + windowTop + ', left=' + windowLeft + ', width=' + lWidth + ', height=' + lHeight);
+        timer = setTimeout('waitSearchFrame("GNSQuickSearchWindow")', 500);
+    }
+
+    function InterpretKeyPress(event) 
+    {
+        var code = 0;
+
+        code = event.keyCode;
+        window.status = code;
+
+        if (code == 13)  
+        {
+            event = null;
+            SearchDatabase()
+        }
+    }
+
+    function OpenNewWindow()
+    {
+        var vNewWindow;
+        var sToolbar;
+        var sMenubar;
+
+        sToolbar = "no"
+        sMenubar = "no"
+
+        vNewWindow = window.open(sGGMAGazSite, '', 'toolbar=' + sToolbar + ', location=yes, directories=yes, status=yes, menubar=' + sMenubar + ', scrollbars=yes, resizable=yes, copyhistory=no');
+    }
+
+
+</script>
+
+<body onunload="CloseSearchWindows()" style="overflow-x:hidden; overflow-y:auto;">
+    NGA GEOnet Names Server (GNS)<br /> 
+    <br />Quick GNS search; enter name and/or country below... 
+    <form name="frmSearchTarget" method="post" id="frmSearchTarget">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTEzNDM3NzkxOWRkb5OIxZqhhEz/5eBN1pSKRM73sDw=" />
+</div>
+<br />
+    <table>
+        <tr>
+            <td>
+                <label for="CC1">Name: </label>
+            </td>
+            <td>
+                <input id="idSTN" type="text" name="STN" size="31" maxlength="255" value="" onkeypress="InterpretKeyPress(event)" />
+            </td>
+            <td>
+                <select id="idCriteria"  name="Criteria"
+                style="font-size:10pt; width:100px;" title="Select the Search Criteria.">
+                <option value="3" selected="selected"> Starts With </option>
+                <option value="1">Exact Match</option>
+                <option value="2">Contains</option>
+                <option value="4">Ends With</option>
+                </select>
+            </td>
+         </tr>
+    <tr>
+            <td>
+                <label for="CC1">Country Name: </label>
+            </td>
+            <td>
+                 <input id="idCC1" type="text" name="CC1" size="31" maxlength="255" value="" onkeypress="InterpretKeyPress(event)" />
+            </td>
+        </tr></table>
+    <br />
+    <input id="idSearchGNS" type="button" value="Search GNS" onclick="SearchDatabase();" />
+    </form> 
+    <br />
+    For more search options, go to <a href="#" onclick="OpenNewWindow()" >NGA GNS Search Page</a> 
+</body>
+</html>
