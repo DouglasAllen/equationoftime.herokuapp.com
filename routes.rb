@@ -1,3 +1,7 @@
+# routes.rb #
+#############
+
+=begin
 # root page
 get "/" do   
   haml :stonehenge, :layout => (request.xhr? ? false : :layout)
@@ -88,3 +92,5 @@ post "/mysuntimes" do
   @solar.longitude =  @longitude		
   haml :mysuntimes
 end
+
+=end
