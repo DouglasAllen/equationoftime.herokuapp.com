@@ -1,30 +1,94 @@
-# routes.rb
-#
+# routes.rb #
+#############
+ngn = {:layout_engine => :erb} 
+mdk = ngn.keys[0]
+mdv = ngn.values[0]
 
-get "/" do
-  markdown :"eot", :layout_engine => :erb  
+def md_arr
+  @md_arr = get_files('./app/views/md')
 end
 
-get '/md' do
-  @arr = get_files('./app/views/md')  
-  erb :md
+def rd_arr
+  @rd_arr = get_files('./app/views/rdoc')
+end  
+
+# this might go in a controller in app/controllers like Rails.
+home = lambda do ; markdown :"eot", mdk => mdv ; end
+
+tutorial = lambda do ; markdown :"tut", mdk => mdv ; end
+
+get "/", &home
+
+get "/tut" do ; markdown :"tut", :layout_engine => :erb ; end
+
+get "/datetime" do ; haml :datetime ; end
+ 
+get "/jcft" do ; haml :jcft ; end
+
+get "/mean" do ; haml :mean ; end
+
+get "/eqc" do ; haml :eqc ; end
+
+get "/ecliplong" do ; haml :ecliplong ; end
+
+get "/rghtascn" do ; haml :rghtascn ; end
+
+get "/links" do ; haml :links ; end
+
+get "/graph" do ; markdown :"graph", mdk => mdv ; end
+
+get "/analemma" do
+    
+  @html = @adt.page
+  #@html = "<h2>The module AnalemmaDataTable has been diconnected until a new script is built.
+  #</br>Thanks for checking us out.</h2>"
+
+  haml :analemma
 end
 
-get '/rdoc' do
-   @arr = get_files('./app/views/rdoc')
-   erb :rdoc
-end
+get "/gm" do ; markdown :"gm", mdk => mdv ; end
+
+get '/md' do ; md_arr ; erb :md ; end
+
+get '/rdoc' do ; rd_arr ; erb :rdoc ; end
+
+get "/suntimes" do ; haml :suntimes ;end
+
+get "/julian" do ; haml :julian ; end
+
+get "/solar" do ; haml :solar ; end
+
+get "/final" do ; haml :final ; end
+
+get "/factor" do ; haml :star_time ; end
+
+get "/eot" do ; haml :eot, :layout => (request.xhr? ? false : :layout) ; end
+
+get "/mysuntimes" do ; haml :mysuntimes ; end
+
+get "/gist" do ; markdown :"gist" ; end
+
+get '/gist1' do ; haml :gist1 ; end
+
+get '/sider' do ; haml :sider ; end
+
+post "/sider2" do ; haml :stonehenge ; end
+
+get '/alex' do ; haml :alex ; end
+
+get '/hello' do ; haml :hello ; end
+
+get '/hellos' do ; end
+
+get "/oopsa" do ; raise "oops" ; end
+
+#get "/public" do ; /docs ; end
 
 get "/home" do
   "Hello World"  
   haml :index
 end
-
-get "/gm" do
-  #haml :gm #, :layout => (request.xhr? ? false : :layout)
-  markdown :"gm", :layout_engine => :erb
-end
-
+  
 post "/index" do
   # params[:address] 
   @geo.addr = params[:address].to_s 
@@ -43,20 +107,12 @@ post "/index" do
   haml :index
 end
 
-get '/gist1' do
-  haml :gist1
-end
-
 get '/update' do
   @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
   s, ihmsf = Celes.a2tf(3, @solar.tl_aries + -88.743 * Eot::D2R)  
   @lst = "#{s} #{ihmsf[0]}:#{ihmsf[1]}:#{ihmsf[2]}.#{ihmsf[3]}"
   @html = "<h1><b>My LST = #{@lst}</b></h1>"
   haml :update, :layout => (request.xhr? ? false : :layout)  
-end
-
-get '/sider' do
-  haml :sider 
 end
 
 get '/lst' do
@@ -70,54 +126,6 @@ get '/lst' do
   erb :lst, :layout => (request.xhr? ? false : :layout)
 end
 
-get "/tut" do
-  markdown :"tut", :layout_engine => :erb 
-end
-
-get "/graph" do
-  markdown :"graph", :layout_engine => :erb
-end
-
-get "/gist" do
-  markdown :"gist"
-end
-
-get "/eot" do
-  haml :eot, :layout => (request.xhr? ? false : :layout)
-end
-
-get "/date" do	
-  haml :date
-end
-
-get "/time" do	
-  haml :time
-end
-
-get "/mean" do	
-  haml :mean
-end
-
-get "/eqc" do	
-  haml :eqc
-end
-
-get "/ecliplong" do	
-  haml :ecliplong
-end
-
-get "/rghtascn" do	
-  haml :rghtascn
-end
-
-get "/links" do	
-  haml :links
-end
-
-get "/mysuntimes" do	
-  haml :mysuntimes
-end
-
 post "/mysuntimes" do
   p params[:address] 
   @geo.addr = params[:address].to_s 
@@ -127,43 +135,6 @@ post "/mysuntimes" do
   @solar.latitude = @latitude
   @solar.longitude =  @longitude		
   haml :mysuntimes
-end
-
-get "/suntimes" do
-  haml :suntimes
-end
-
-get "/julian" do
-  haml :julian
-end
-
-get "/solar" do
-  haml :solar
-end
-
-get "/final" do
-  haml :final
-end
-
-get "/factor" do
-  haml :star_time
-end
-
-get "/analemma" do
-    
-  @html = @adt.page
-  #@html = "<h2>The module AnalemmaDataTable has been diconnected until a new script is built.
-  #</br>Thanks for checking us out.</h2>"
-
-  haml :analemma
-end
-
-get '/hello' do
-  haml :hello
-end
-
-get '/hellos' do
-  
 end
 
 get '/frank' do
@@ -186,11 +157,6 @@ get '/what/time/is/it/in/:number/hours' do
   "The time in #{number} hours will be #{time.strftime('%I:%M %p')}"
 end
 
-get '/gist1' do
-  haml :gist1
-end
-
-
 post '/new' do
   @message = Message.new
   @message.message = "#{params[:will]} will #{params[:you]} you"
@@ -198,8 +164,6 @@ post '/new' do
   
   @message.message
 end 
-
-
 
 get '/mdview/:link' do
    halt 404 unless File.exist?("app/views/md/#{params[:link]}.md")
@@ -227,10 +191,12 @@ end
 
 get '/http', &http
 
-post "/sider2" do
-  haml :stonehenge
-end
-
-get '/alex' do
-  haml :alex
+get '/stream' do
+  stream do |out|
+    out << "It's gonna be legen -\n"
+    sleep 5
+    out << " (wait for it) \n"
+    sleep 1
+    out << "- dary!\n"
+  end
 end

@@ -2,6 +2,10 @@
 #
 
 require 'find'
+require 'logger'
+require 'uri'
+require 'yaml'
+
 # Require gems we care about
 require 'rubygems'
 
@@ -14,31 +18,42 @@ require 'rubygems'
 
 Bundler.require(:default)
 
+# This will load your environment variables from .env when your apps starts
+# Dotenv.load  
+
+APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
+
 if development?
+  Bundler.require(:development)
+  #require "sinatra/reloader"
+  set :environment, ENV["RACK_ENV"].to_sym || :development
+  configure do
+    use BetterErrors::Middleware    
+    BetterErrors.application_root = __dir__
+  end
   #configure do
   #  Sinatra::Application.reset!
   #  use Rack::Reloader
-  #end
-  #require 'awesome_print'
-  # This will load your environment variables from .env when your apps starts
-  #require 'dotenv'
-  #Dotenv.load
-  #require 'faker'
-  #require 'guard'
-  require 'pry-byebug'
-  require "sinatra/reloader"
-  #require 'sqlite3'  
-  #require 'terminal-notifier-guard'
-  
-  #disable :run
+  #end  
+  #disable :run # uncomment to use irb see below.
 end
 
-# Some helper constants for path-centric logic
-APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
+
+
+# By default, Sinatra assumes that the root is the file that calls the configure block.
+# Since this is not the case for us, we set it manually.
+set :root, APP_ROOT.to_path
+set :public_dir, File.join(APP_ROOT, 'public')
+set :views, File.join(APP_ROOT, 'app', 'views')
+
+#enable :static, :logging, :dump_errors
+#disable :sessions, :run
+#set :raise_errors, Proc.new { settings.environment == :development }
+#set :show_exceptions, Proc.new {settings.environment == :development }
 
 APP_NAME = APP_ROOT.basename.to_s
 
 require APP_ROOT.join('config', 'application')
 
 require 'irb'
-#IRB.start
+#IRB.start # uncomment to use irb

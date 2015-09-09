@@ -26,18 +26,10 @@
             These terms are calculated with the Universal Time Coordinate or GMT 
           of the current time.
           
-          DateTime.now.to_time.utc.to_datetime = 
-    %h5
-      #{@current}    
-    %h3
-      %pre 
-        :preserve
-          The ta array = 
-    %h5		
-      #{@now}      
-    %h3
-      %pre 
-        :preserve
+          DateTime.now.to_time.utc.to_datetime = #{@current} 
+ 
+          The ta array = #{@now} 
+ 
           Note: This was replaced by @ma = Celes.falp03(@ta)
           The Ruby Eot#ma_Sun method:
           
@@ -49,19 +41,18 @@
             # mod_360 delta_equinox( ta )[ 2 ] / ARCSEC      
           end
           
-          Note: The actual algorithm is in nutation.rb which is only using ta[0]
+          Note: The actual algorithm was in nutation.rb which was only using ta[0]
                 thanks to astro-algo gem. see /rghtascn page. Also Mean Anomaly 
                 is sent back as the third argument of an array from delta_equinox( )
-                method.
+                method. You may see all this if you download an older version of this gem. 
 
-          mu or Mean Anomaly of Sun in decimal degrees =           
-    %h5
-      #{@ma}      
-    %h3
-      %pre 
-        :preserve
-          mu or Mean Anomaly of Sun in degrees:minutes:seconds =
-    %h5
-      #{@ma_string}
-    %h3
-      %a{:href => "/eqc"} Equation of Center
+          mu or Mean Anomaly of Sun in decimal degrees = #{@ma}
+          mu or Mean Anomaly of Sun in degrees:minutes:seconds = #{@ma_string}
+          
+          Check it at the /analemma link. The data should be close to whatever date today is.
+          Oh! But wait! That's in time difference for the two angles of mean and true
+          Anomaly. See the last term Orbital. The sine wave graph gives you a better idea
+          for an orbital angle if you can get the right perspective in your mind. After all,
+          sine waves are nothing but graphs of a path around a circle.
+      
+          %a{:href => "/eqc"} Equation of Center

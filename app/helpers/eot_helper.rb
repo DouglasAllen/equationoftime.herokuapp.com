@@ -33,7 +33,7 @@ before do
   @solar.ajd      = @current.jd.to_f
   @solar.date     = DateTime.now.to_time.utc.to_date
   @solar.jd       = @solar.date.jd   
-  @now            = @solar.t
+  @now            = @solar.ta
   @ma             = @solar.ma_sun()   * @r2d  
   @eqc            = @solar.center()   * @r2d  
   @ta             = @solar.ta_sun()   * @r2d 

@@ -1,35 +1,48 @@
 <title> Equation of Time </title>
 
 <link rel='icon', type='image/icon', href='/images/favicon.ico'></link>
+
 <link href="/stylesheets/normalize.css" media="all" 
-      rel="stylesheet" type="text/css" />
-<link href="/stylesheets/eot.css" media="all" 
-      rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="/stylesheets/application.css" 
+      rel="stylesheet" type="text/css" >
+      
+<link rel="stylesheet" href="/stylesheets/foundation.css" 
       type="text/css" media="screen" charset="utf-8">
-<link rel="stylesheet" href="/stylesheets/syntax.css" 
+
+<!--<link rel="stylesheet" href="/stylesheets/syntax.css" 
       type="text/css" media="screen" charset="utf-8">
+      
 <link rel="stylesheet" href="/stylesheets/coderay.css" 
-      type="text/css" media="screen" charset="utf-8">
+      type="text/css" media="screen" charset="utf-8">-->
+
 <link rel="stylesheet" href="/stylesheets/uv.css" 
       type="text/css" media="screen" charset="utf-8">
-<link rel="stylesheet" href="/stylesheets/pygments.css" 
+
+<!--<link rel="stylesheet" href="/stylesheets/pygments.css" 
       type="text/css" media="screen" charset="utf-8">
+
 <link rel="stylesheet" href="/stylesheets/censor.css" 
       type="text/css" media="screen" charset="utf-8"/>
+
 <link rel="stylesheet" href="/stylesheets/prettify.css" 
-      type="text/css" media="screen" charset="utf-8"/>
+      type="text/css" media="screen" charset="utf-8"/>-->
+      
+<link href="/stylesheets/eot.css" media="all" 
+      rel="stylesheet" type="text/css" charset="utf-8">
 
 
-<div class="horizontal">
- <ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/tut", TARGET = "_blank">Tutorial</a></li>
-  <li><a href="/graph",TARGET = "_blank">Graph</a></li>
-  <li><a href="/analemma",TARGET = "_blank">Data</a></li>
-  <li><a href="/md", TARGET = "_blank">READMEs-md</a></li>
-  <li><a href="/rdoc",TARGET = "_blank">READMEs-rdoc</a></li>
-  <li><a href="/gm",TARGET = "_blank">Museum</a></li>
- </ul>
+<div class="navcontainer">
+  <div class="navrow">
+    <ul>
+      <li><a href="/", class="button success">Home</a></li>
+      <li><a href="/tut", TARGET="_blank", class="button success">Tutorial</a></li>
+      <li><a href="/graph",TARGET="_blank", class="button success">Graph</a></li>
+      <li><a href="/analemma",TARGET="_blank", class="button success">Data</a></li>
+      <li><a href="/md", TARGET="_blank", class="button success">App files</a></li>
+      <li><a href="/rdoc",TARGET="_blank", class="button success">Rdoc</a></li>
+      <li><a href="/gm",TARGET="_blank", class="button success">Museum</a></li>
+    </ul>
+  </div>
 </div>
+</br>
+<hr/>
 <%= yield %>

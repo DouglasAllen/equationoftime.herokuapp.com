@@ -1,17 +1,20 @@
 ## Tutorial
-========================================================
+
 
 ##&Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
 
 The above reads:
 delta = mu - nu + lambda - alpha    
-true noon (solar transit of local meridian) and clock noon difference.  
+true noon (solar transit of local meridian) and clock noon difference.
+  
 mu = Mean Solar Anomaly
+
 nu = True Solar Anomaly  
+
 lambda = Apparent Solar Longitude
+
 alpha = Apparent Solar Right Ascension 
     
-========================================================    
         
    The "Equation of Time" is a formula to align solar time with clock time. 
 ( see: Graph link above. ) So who would care if you don't use a sundial to find 
@@ -21,7 +24,6 @@ to find or write a program that would do that because I got lazy about putting u
 and taking down the "Red, White, and Blue". You may just keep it up if it is 
 displayed with a light at night. But then when to turn that light on and off?  
 	
-=======================================================
            
    I found a BASIC program written by a Canadian amateur radio operator.
 It was kind of hard for me to get into it beacuse it's like what they call 
@@ -34,14 +36,12 @@ don't want to deal with pattents and all so go ahead and please make one for us 
 It might make a few bucks from the real patriotic malibu light lovers.  I eventually
 opted for a light sensor circuit. Maybe I could ajust it to twilight for the pc.
          
-==========================================================
         
    I found that the "Equation of Time" was needed to complete these calculations.
 It all made sense when I realized that almost equal amounts of daylight 
 from daybreak to noon and from noon to nightfall are used.  But when does 
 "Noon" for my location actually occur?  Keep this in mind as you read further.
 
-==========================================================
 
    Looking at the graph you'll see three wave forms.  The two dashed
 wave forms sum together to form the solid red wave form.  Notice that one occurs
@@ -51,7 +51,6 @@ the sky at different seasons.  Notice that it crosses zero at four times
 a year.  You may be familiar with these times.  They are the Equinoxes of Spring and
 Fall and Solstices of Summer and Winter.  Check the data for it at Data
 
-============================================================
 
    Again looking at the graph we see a one cycle wave form.  This is the Elliptic
 cycle or sometimes called the orbital time change.  It's the Earth orbit around 
@@ -62,7 +61,6 @@ graph of time but of solar altitude.  You could trace it from time laps photos
 creating what is known as an Analemma.  There's a link about it at Links
 http://www.analemma.com/.
 	         
-=================================================================
 
    Your longitude is needed first to calculate what is termed "Mean local noon".
 If you are west of the Greenwich Prime Meridian then your longitude has a 
@@ -70,8 +68,7 @@ minus sign.  If you are east of the Greenwich Prime Meridian then your
 longitude has a positive sign.( not needed though )   
 Longitude can be converted to a time by just dividing it by 15.0.      
 Your longitude converted to time will tell you your Mean local noon time.
-
-==================================================================	
+	
       
 Example: You are at 75.324 degrees longitude west = -75.324
 
@@ -87,7 +84,6 @@ Example: You are at 75.324 degrees longitude west = -75.324
                    
 [Ruby code](/gist)
 
-====================================================================
 
    UTC is the reference Time Zone throughout the world and so is often called
 "zulu" time for the Zero time zone.      
@@ -96,7 +92,6 @@ This is what you may see at the top of the graph above but
 pay careful attention to the sign.  People often cunfuse this.
 And time is more often not used but the difference in angle is.
 
-===================================================================
       
 Lets say that True - Mean = - 4 minutes and 40 seconds. ( -0.0777778 ) hr.
 Example :
@@ -111,7 +106,6 @@ Example :
       
 Note: This time is in decimal format.  You will have to convert it.
 
-===================================================================            
 
 This will be the actual clock time of your "True Solar Transit Time".      
 This time can then be converted to your time zone by adding your zone offset.
@@ -120,7 +114,6 @@ Example :
 
  -5.0 if West or +5.0 if East of the Prime Meridian by 5 time zones.      
       
-============================================================================
             
    Now we have a reasonable place to start if we wish to calculate the sunrise      
 or sunset for your location.  It works for most locations except those at or 
@@ -128,7 +121,6 @@ past the arctic circles.  (+/- 90.0 degrees latitude).
 Note: Of course you will want to know your latitude as well when it comes to 
 calculating rise and set times.
 
-=================================================================================
                   
    I have included methods in this Ruby gem to do exactly that. See below:
 There are a couple of methods you can try out once you have the ajd set for the
@@ -140,7 +132,6 @@ location. It subtracts the equation of time from your mean noon time.
 One quick note on the graph. It shows that clock time is fast or slow and not
 how much time to add or subtract.
 
-====================================================================================
            
 Please note: 
 
@@ -148,13 +139,12 @@ Please note:
 I'll just add notes on each page about them and leave much of the original
 information in tact.  Thank you for your interest in this gem.               
    
-===================================================================================
 
-[Julian Numbers](/date) Explains about using Julian Numbers in Ruby                    
+[Julian Numbers and DateTime](/datetime) live page explains about using them in Ruby                    
 
-[Julian Century](/time) Use of time_julian_century( ) method       
+[Julian Century Fractional Time](/jcft) for use of datetime in angle calculations.    
                 
-[&Mu;](/mean) Use of mean_anomaly( ) method.                  
+[&Mu; Mean Anomaly](/mean) for use of mean anomaly calculations.                  
 
 [&nu;](/eqc) Use of true_anomaly( ) method.
 

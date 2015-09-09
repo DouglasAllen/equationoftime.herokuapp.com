@@ -10,59 +10,92 @@ source "https://rubygems.org"
 ruby '2.2.2'
 
 #gem 'activerecord'
+#gem 'activemodel'
 #gem 'activesupport'
-gem 'addressable'
-#gem 'awesome_print'
+
+#gem 'addressable'
+
 #gem 'bcrypt'
 #gem 'bluecloth'
-#gem 'celes'
-gem 'coderay'
+
+#gem 'coderay'
 #gem 'config'
 #gem 'crack'
+
 #gem 'daemons'
 #gem 'dm-core'
 #gem 'dm-migrations'
-#gem 'dm-sqlite-adapter'
 #gem 'dotenv'
+
 #gem 'erubis'
-gem 'equationoftime', 
-    :git => 'https://github.com/DouglasAllen/equationoftime.git',
-    :require => 'eot'
+
+#gem 'equationoftime', :require => 'eot',
+#    :git => 'https://github.com/DouglasAllen/equationoftime.git'
+gem 'eot'
 #gem 'execjs'
-#gem 'faker'
-#gem 'flowdock'
-#gem 'guard'
+
 gem 'haml'
+
 #gem 'httparty'
 #gem 'http_router'
+
 #gem 'json'
 #gem 'json_pure'
 #gem 'jquery'
+
 #gem 'kramdown'
+
 #gem 'liquid'
 #gem 'logger'
+
 #gem 'maruku'
 #gem 'multi_xml'
+
 #gem 'nokogiri'
+
 #gem 'omniauth-github'
+
 #gem 'pg'
-gem 'pry-byebug'
 #gem 'pygments'
-gem 'rygments'
+
+#gem 'rygments'
 gem 'rack-codehighlighter', :require => 'rack/codehighlighter'
-gem 'rdiscount'
-#gem 'RedCloth'
+
+gem 'redcarpet'
 #gem 'rest-client'
+
 #gem 'safe_yaml'
+
 #gem 'sass'
-gem 'shotgun'
 gem 'sinatra'
 #gem 'sinatra-activerecord'
-gem 'sinatra-contrib'
+
 #gem 'sinatra-flash'
-#gem 'sqlite3'
-#gem 'terminal-notifier-guard'
+
 #gem 'textacular'
-#gem 'therubyracer'
-gem 'thin'
+
 gem 'uv'
+
+group :development do
+  #gem 'awesome_print'
+  gem 'better_errors'
+  #gem 'compass'
+  #gem 'dm-sqlite-adapter'
+  #gem 'faker'
+  #gem 'flowdock'
+  gem 'foreman'
+  #gem 'guard'
+  #gem 'pry-byebug'
+  #gem 'rake'
+  #gem 'rb-fsevent'
+  #gem 'rdiscount'
+  #gem 'RedCloth'  
+  #gem 'sass-globbing'
+  gem 'shotgun'
+  #gem 'sinatra-contrib'
+  #gem 'sqlite3' 
+  #gem 'stringex'
+  #gem 'terminal-notifier-guard' 
+  #gem 'therubyracer'
+  #gem 'thin'
+end

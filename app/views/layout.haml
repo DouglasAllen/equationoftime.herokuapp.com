@@ -11,6 +11,10 @@
     %link{ :rel  => 'stylesheet',
            :type => 'text/css', 
            :href => '/stylesheets/foundation.css' }
+           
+    %link{ :rel  => 'stylesheet',
+           :type => 'text/css', 
+           :href => '/stylesheets/eot.css' }
 
     %script{:type => 'text/javascript', :src => 'javascript/jquery-latest.js'}
 
@@ -22,7 +26,7 @@
        //setTimeout(getUpdate,1000);
     // }
   
-  %navcontainer
+  %div.navcontainer
     %navrow    
       %ul
         %li
@@ -39,7 +43,7 @@
           %a{ :href => '/eot', :target => '_blank', :class => 'button success'  } eot today
         %li
           %a{ :href => 'http://douglasallen.github.io/gh-pages/aboutme2/', :target => '_blank', :class => 'button success'  } About me
-    %br
-    %hr
+  %br
+  %hr
    
   %body= yield
