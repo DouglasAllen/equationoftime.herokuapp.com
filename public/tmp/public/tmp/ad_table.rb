@@ -1,4 +1,7 @@
+# ad_table.rb #
+###############
 
+=begin
 require 'eot'
 require 'bigdecimal'
 
@@ -69,3 +72,4 @@ end
 #   adt = AnalemmaDataTable.new
   
 # end
+=end

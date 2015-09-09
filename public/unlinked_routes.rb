@@ -1,3 +1,8 @@
+# unlinked_routes.rb #
+######################
+
+=begin
+
 get '/gist1' do
   haml :gist1
 end
@@ -106,3 +111,4 @@ get '/alex' do
   haml :alex
 end
 
+=end

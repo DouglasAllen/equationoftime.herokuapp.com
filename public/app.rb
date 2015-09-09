@@ -1,5 +1,7 @@
-# app.rb
-#
+# app.rb #
+##########
+
+=begin
 # require 'dm-core'
 # require 'dm-migrations'
 require 'cgi'
@@ -327,3 +329,4 @@ end
 get '/alex' do
   haml :alex
 end
+=end
