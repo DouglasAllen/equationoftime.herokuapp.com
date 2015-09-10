@@ -1,41 +1,31 @@
 # routes.rb #
 #############
-ngn = {:layout_engine => :erb} 
-mdk = ngn.keys[0]
-mdv = ngn.values[0]
 
-def md_arr
-  @md_arr = get_files('./app/views/md')
-end
+get "/", &block = lambda { markdown :"eot", to_erb }
 
-def rd_arr
-  @rd_arr = get_files('./app/views/rdoc')
-end  
+get "/tut", &bolck = lambda { markdown :"tut", to_erb }
 
-# this might go in a controller in app/controllers like Rails.
-home = lambda do ; markdown :"eot", mdk => mdv ; end
+get "/graph", &block = lambda { markdown :"graph", to_erb }
 
-tutorial = lambda do ; markdown :"tut", mdk => mdv ; end
-
-get "/", &home
-
-get "/tut" do ; markdown :"tut", :layout_engine => :erb ; end
-
-get "/datetime" do ; haml :datetime ; end
+get "/datetime", &block = lambda { haml :datetime }
  
-get "/jcft" do ; haml :jcft ; end
+get "/jcft", &block = lambda { haml :jcft }
 
-get "/mean" do ; haml :mean ; end
+get "/mean", &block = lambda { haml :mean }
 
-get "/eqc" do ; haml :eqc ; end
+get "/eqc", &block = lambda { haml :eqc }
 
-get "/ecliplong" do ; haml :ecliplong ; end
+get "/ecliplong", &block = lambda { haml :ecliplong }
 
-get "/rghtascn" do ; haml :rghtascn ; end
+get "/rghtascn", &block = lambda { haml :rghtascn }
 
-get "/links" do ; haml :links ; end
+get "/links", &block = lambda { haml :links }
 
-get "/graph" do ; markdown :"graph", mdk => mdv ; end
+get "/gm", &block = lambda { markdown :"gm", to_erb }
+
+get "/final", &block = lambda { haml :final }
+
+get "/eot", &block = lambda { haml :eot } 
 
 get "/analemma" do
     
@@ -46,7 +36,7 @@ get "/analemma" do
   haml :analemma
 end
 
-get "/gm" do ; markdown :"gm", mdk => mdv ; end
+
 
 get '/md' do ; md_arr ; erb :md ; end
 
@@ -58,11 +48,9 @@ get "/julian" do ; haml :julian ; end
 
 get "/solar" do ; haml :solar ; end
 
-get "/final" do ; haml :final ; end
-
 get "/factor" do ; haml :star_time ; end
 
-get "/eot" do ; haml :eot, :layout => (request.xhr? ? false : :layout) ; end
+
 
 get "/mysuntimes" do ; haml :mysuntimes ; end
 
