@@ -2,7 +2,7 @@
 require 'eot'
 require 'bigdecimal'
 
-helpers do
+module AnalemmaDataTableHelper
 
   if ENV.fetch("RACK_ENV") == "development"
     p "you're in #{__FILE__}"
