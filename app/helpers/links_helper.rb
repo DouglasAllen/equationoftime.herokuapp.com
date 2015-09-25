@@ -1,4 +1,4 @@
-helpers do
+module LinksHelper
 
   if ENV.fetch("RACK_ENV") == "development"
     p "you're in #{__FILE__}"
