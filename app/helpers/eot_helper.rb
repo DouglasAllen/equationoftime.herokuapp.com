@@ -7,7 +7,7 @@ module EotHelper
 
   @pi             = Math::PI
   
-  @adt            = AnalemmaDataTable.new
+  @adt            = AnalemmaDataTableHelper::AnalemmaDataTable.new
   @r2d            = Eot::R2D
   @henge          = Eot.new
  
