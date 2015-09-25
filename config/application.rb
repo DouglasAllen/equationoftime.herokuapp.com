@@ -1,38 +1,29 @@
-configure do  
-  
-  # See: http://www.sinatrarb.com/faq.html#sessions
-  enable :sessions
-  set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
+require File.expand_path('../boot', __FILE__)
+    
+class EotSite < Sinatra::Base
 
-  # Set up the controllers, views, and helpers
-  Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
-  
-  # Set up the helpers
-  Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
-  
-  # get helpers first because routes needs to use find files method
-  require APP_ROOT.join('config', 'routes')
-  
-  # Set up the database and models
-  # require APP_ROOT.join('config', 'database')  
-  
-  #register Config 
-  #SafeYAML::OPTIONS[:safe]# option (to :safe or :unsafe).
-  #config_file File.join( [APP_ROOT, 'config', 'config.yml'] ) 
+  if ENV.fetch("RACK_ENV") == "development"
+    p "you're in #{__FILE__}"
+  end
 
-  # register do
-    # def auth(type)
-      # condition do
-        # unless send("current_#{type}")
-          # redirect '/login'
-          # add_error!("Not authorized, please login.")
-        # end
-      # end
-    # end
-  # end 
+  APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
+  
+  configure do 
+    
+    set :root, APP_ROOT.to_path
 
-  # use OmniAuth::Builder do
-  #   provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
-  # end
+    Tilt.prefer Sinatra::Glorify::Template
+    register Sinatra::Glorify 
 
+    set :views,    lambda { File.join(APP_ROOT, 'app/views') }
+    Dir[APP_ROOT.join('app', 'views', '*.rb')].each { |file| require file }
+
+    Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
+   
+    Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }         
+
+    #load_routes
+    require APP_ROOT.join('config', 'routes')
+
+  end
 end
