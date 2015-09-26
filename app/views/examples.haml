@@ -1,0 +1,62 @@
+- @solar = Eot.new
+%title equationoftime.herokuapp.com/examples.haml
+:markdown
+
+  ## Examples
+  
+  ```ruby
+
+   require 'eot'
+   @solar = Eot.new
+  
+   puts "Enter your latitude in decimal. ex: 5.238 or -5.238"
+   @solar.latitude = gets.strip.to_f # + in Northern Hemishere, - in Southern Hemisphere
+   puts "Enter your longitude in decimal. ex: 55.555 or -55.555"
+   @solar.longitude = gets.strip.to_f # + East of zulu time zone, - West of zulu time zone
+     
+   @solar.jd = Date.today.jd
+  
+   puts "Sunrise today:", @solar.sunrise_dt.to_time 
+   puts "Sunset today:", @solar.sunset_dt.to_time 
+   "Sunrise today = #{@solar.sunrise_dt.to_time}"  # defaults to 0.0 lat and lon because 
+   "Sunset today = #{@solar.sunset_dt.to_time}"   # gets here will not eval input.
+  ```
+
+%br
+%hr
+:markdown
+
+  ```ruby
+
+   require 'eot'
+
+   # Eot right now not noon like sun times would use.
+   # Test it by refreshing this page after several seconds.
+   Eot.new.now = #{Eot.new.now}
+
+   Time.now = #{Time.now}
+
+   Eot.new.string_eot # would be the value in minutes and seconds at the local transit.
+   Eot.new.string_eot = #{Eot.new.string_eot} # default lat and lon are 0.0
+  
+   @solar = Eot.new
+   @solar.latitude = #{@solar.latitude=0.0} # because it won't matter much
+   @solar.longitude = #{@solar.longitude=179.9} # about half way around from 0.0
+   @solar.string_eot = #{@solar.string_eot}
+  
+   # So we see that eot is not effected by any longitude changes.
+   # The one way to get eot_string to change is by changing the eot.ajd and setting it.
+   # Use eot.ma_ta_set to do just that.
+   @solar.ajd = #{@solar.ajd = 2457026.0} # taken from /analemma data page Jan. 03, 2015
+   @solar.ma_ta_set #{@solar.ma_ta_set}  # @ma was the last evaluated term in the method.
+   @solar.ma = #{@solar.ma} # nearing 2 Pi and zeros before noon Jan 04. 
+   @solar.string_eot = #{@solar.string_eot}
+   # It is common to think that perihelion occurs on Jan. 03 but the time of day varies each year.
+  ```
+%br
+%hr
+:markdown
+  Note: Does not work by just copy and paste into IRB or any Ruby program. 
+        Too much of this is running live in Haml:markdown
+
+  Get the gem installed and there are examples included.

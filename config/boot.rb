@@ -1,5 +1,5 @@
 if ENV.fetch("RACK_ENV") == "development"
-  p "you're in #{__FILE__}"
+  #p "you're in #{__FILE__}"
 end
 
 require 'find'

@@ -24,7 +24,7 @@
       Compare to
       %a{:href => "http://www.esrl.noaa.gov/gmd/grad/solcalc/"} web calculator
     - if @solar
-      %form{"accept-charset" => "utf-8", :action => "/times", :method => "post"}
+      %form{"accept-charset" => "utf-8", :action => "/suntimes", :method => "post"}
         / <p>
         / <b>Time Zone : ( Country/City )</b><br />
         / <input type="text" name="timezone"  />
@@ -40,11 +40,11 @@
         %p
           %b Sunrise :
           %br/
-          %input{:name => "sunrise", :size => "24", :type => "text", :value => "&nbsp&nbsp;#{@sunrise}"}/
+          %input{:name => "sunrise", :size => "24", :type => "text", :value => "   #{@sunrise}"}/
         %p
           %b Sunset :
           %br/
-          %input{:name => "sunset", :size => "24", :type => "text", :value => "&nbsp&nbsp;#{@sunset}"}/
+          %input{:name => "sunset", :size => "24", :type => "text", :value => "   #{@sunset}"}/
         %input{:type => "submit", :value => "calculate"}/
     %p
     %p

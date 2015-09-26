@@ -1,0 +1,1244 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-3">CHAPTER 3</h2>
+
+<h3 id="datatypes-and-objects">Datatypes and Objects</h3>
+
+<h4 id="integer-literals">3.1.1 Integer Literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">0</span>
+<span style="color:#00D">123</span>
+<span style="color:#00D">12345678901234567890</span>
+
+<span style="color:#00D">1_000_000_000</span>     <span style="color:#777"># One billion (or 1,000 million in the UK)</span>
+
+<span style="color:#00D">0377</span>           <span style="color:#777"># Octal representation of 255</span>
+<span style="color:#00D">0b1111_1111</span>    <span style="color:#777"># Binary representation of 255</span>
+<span style="color:#00D">0xFF</span>           <span style="color:#777"># Hexadecimal representation of 255</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="floating-point-literals">3.1.2 Floating-Point Literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#60E">0.0</span>      
+<span style="color:#60E">-3.14</span>
+<span style="color:#60E">6.02e23</span>       <span style="color:#777"># This means 6.02 &amp;#xD7; 10&lt;superscript&gt;23&lt;/superscript&gt;</span>
+<span style="color:#60E">1_000_000.01</span>  <span style="color:#777"># One million and a little bit more</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="arithmetic-in-ruby">3.1.3 Arithmetic in Ruby</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">5</span>/<span style="color:#00D">2</span>     <span style="color:#777"># result is 2</span>
+y = <span style="color:#60E">5.0</span>/<span style="color:#00D">2</span>   <span style="color:#777"># result is 2.5</span>
+z = <span style="color:#00D">5</span>/<span style="color:#60E">2.0</span>   <span style="color:#777"># result is 2.5</span>
+
+x = <span style="color:#00D">5</span>%<span style="color:#00D">2</span>     <span style="color:#777"># result is 1</span>
+
+x = <span style="color:#60E">1.5</span>%<span style="color:#60E">0.4</span>   <span style="color:#777"># result is 0.3</span>
+
+x**<span style="color:#00D">4</span>          <span style="color:#777"># This is the same thing as x*x*x*x</span>
+x**<span style="color:#00D">-1</span>         <span style="color:#777"># The same thing as 1/x</span>
+x**(<span style="color:#00D">1</span>/<span style="color:#60E">3.0</span>)    <span style="color:#777"># The cube root of x</span>
+x**(<span style="color:#00D">1</span>/<span style="color:#00D">4</span>)      <span style="color:#777"># Oops! Integer division means this is x**0, which is always 1</span>
+x**(<span style="color:#60E">1.0</span>/<span style="color:#60E">4.0</span>)  <span style="color:#777"># This is the fourth-root of x</span>
+
+even = (x[<span style="color:#00D">0</span>] == <span style="color:#00D">0</span>)  <span style="color:#777"># A number is even if the least-significant bit is 0</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="binary-floating-point-and-rounding-errors">3.1.4 Binary Floating-Point and Rounding Errors</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#60E">0.4</span> - <span style="color:#60E">0.3</span> == <span style="color:#60E">0.1</span>    <span style="color:#777"># Evaluates to false in most implementations</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="single-quoted-string-literals">3.2.1.1 Single-quoted string literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is a simple Ruby string literal</span><span style="color:#710">'</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Won</span><span style="color:#b0b">\'</span><span style="color:#D20">t you read O</span><span style="color:#b0b">\'</span><span style="color:#D20">Reilly</span><span style="color:#b0b">\'</span><span style="color:#D20">s book?</span><span style="color:#710">'</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This string literal ends with a single backslash: </span><span style="color:#b0b">\\</span><span style="color:#710">'</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is a backslash-quote: </span><span style="color:#b0b">\\</span><span style="color:#b0b">\'</span><span style="color:#710">'</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Two backslashes: </span><span style="color:#b0b">\\</span><span style="color:#b0b">\\</span><span style="color:#710">'</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#D20">\b</span><span style="color:#710">'</span></span> == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#b0b">\\</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is a long string literal </span><span style="color:#D20">\
+</span><span style="color:#D20">that includes a backslash and a newline</span><span style="color:#710">'</span></span>
+
+message = 
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">These three literals are </span><span style="color:#710">'</span></span>\
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">concatenated into one by the interpreter. </span><span style="color:#710">'</span></span>\
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">The resulting string contains no newlines.</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="double-quoted-string-literals">3.2.1.2 Double-quoted string literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\t</span><span style="color:#b0b">\&quot;</span><span style="color:#D20">This quote begins with a tab and ends with a newline</span><span style="color:#b0b">\&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\\</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># A single backslash</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">360 degrees=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#00D">2</span>*<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> radians</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># &quot;360 degrees=6.28318530717959 radians&quot;</span>
+
+<span style="color:#d70">$salutation</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>     <span style="color:#777"># Define a global variable</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">My phone #: 555-1234</span><span style="color:#710">&quot;</span></span>                <span style="color:#777"># No escape needed</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Use </span><span style="color:#b0b">\#</span><span style="color:#D20">{ to interpolate expressions</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Escape #{ with backslash</span>
+
+sprintf(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pi is about %.4f</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>) <span style="color:#777"># Returns &quot;pi is about 3.1416&quot;</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pi is about %.4f</span><span style="color:#710">&quot;</span></span> % <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span> <span style="color:#777"># Same as example above</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">%s: %f</span><span style="color:#710">&quot;</span></span> % [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pi</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>]   <span style="color:#777"># Array on righthand side for multiple args</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This string literal
+has two lines </span><span style="color:#b0b">\
+</span><span style="color:#D20">but is written on three</span><span style="color:#710">&quot;</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This string has three lines.</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> \
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It is written as three adjacent literals</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> \
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">separated by escaped newlines</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="unicode-escapes">3.2.1.3 Unicode escapes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">00D7</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># =&gt; &quot;&amp;#xD7;&quot;: leading zeros cannot be dropped</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">20ac</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># =&gt; &quot;&amp;#x20AC;&quot;: lowercase letters are okay</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{A5}</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># =&gt; &quot;&amp;#xA5;&quot;: same as &quot;\u00A5&quot;</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{3C0}</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Greek lowercase pi: same as &quot;\u03C0&quot;</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{10ffff}</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># The largest Unicode codepoint</span>
+
+money = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{20AC A3 A5}</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># =&gt; &quot;&amp;#x20AC;&amp;#xA3;&amp;#xA5;&quot;</span>
+
+money = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">{20AC 20 A3 20 A5}</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># =&gt; &quot;&amp;#x20AC; &amp;#xA3; &amp;#xA5;&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="arbitrary-delimiters-for-string-literals">3.2.1.4 Arbitrary delimiters for string literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%q(</span><span style="color:#D20">Don't worry about escaping ' characters!</span><span style="color:#710">)</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q|</span><span style="color:#D20">&quot;How are you?&quot;, he said</span><span style="color:#710">|</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%-</span><span style="color:#D20">This string literal ends with a newline</span><span style="color:#b0b">\n</span><span style="color:#710">-</span></span>  <span style="color:#777"># Q omitted in this one</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%q_</span><span style="color:#D20">This string literal contains </span><span style="color:#b0b">\_</span><span style="color:#D20">underscores</span><span style="color:#b0b">\_</span><span style="color:#710">_</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q!</span><span style="color:#D20">Just use a _different_ delimiter</span><span style="color:#b0b">\!</span><span style="color:#710">!</span></span>
+
+<span style="color:#777"># XML uses paired angle brackets:</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%&lt;</span><span style="color:#D20">&lt;</span><span style="color:#D20">book</span><span style="color:#D20">&gt;</span><span style="color:#D20">&lt;</span><span style="color:#D20">title</span><span style="color:#D20">&gt;</span><span style="color:#D20">Ruby in a Nutshell</span><span style="color:#D20">&lt;</span><span style="color:#D20">/title</span><span style="color:#D20">&gt;</span><span style="color:#D20">&lt;</span><span style="color:#D20">/book</span><span style="color:#D20">&gt;</span><span style="color:#710">&gt;</span></span>  <span style="color:#777"># This works</span>
+<span style="color:#777"># Expressions use paired, nested parens:</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%(</span><span style="color:#D20">(</span><span style="color:#D20">1+</span><span style="color:#D20">(</span><span style="color:#D20">2*3</span><span style="color:#D20">)</span><span style="color:#D20">)</span><span style="color:#D20"> = </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>(<span style="color:#00D">1</span>+(<span style="color:#00D">2</span>*<span style="color:#00D">3</span>))<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">)</span></span>                        <span style="color:#777"># This works, too</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%(</span><span style="color:#D20">A mismatched paren </span><span style="color:#b0b">\(</span><span style="color:#D20"> must be escaped</span><span style="color:#710">)</span></span>           <span style="color:#777"># Escape needed here</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="here-documents">3.2.1.5 Here documents</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;HERE</span></span>        <span style="color:#777"># This is how we begin a here document</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+This is a string literal.
+It has two lines and abruptly ends...</span><span style="color:#710">
+HERE</span></span>
+
+greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;HERE</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;THERE</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+Hello</span><span style="color:#710">
+HERE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+There</span><span style="color:#710">
+THERE</span></span>
+
+empty = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;END</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">
+END</span></span>
+
+document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;'THIS IS THE END, MY ONLY FRIEND, THE END'</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+    .
+    . lots and lots of text goes here
+    . with no escaping at all.
+    .</span><span style="color:#710">
+THIS IS THE END, MY ONLY FRIEND, THE END</span></span>
+
+document = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-&quot;# # #&quot;</span></span>    <span style="color:#777"># This is the only place we can put a comment</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+&lt;html&gt;&lt;head&gt;&lt;title&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/h1&gt;
+</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>body<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">
+&lt;/body&gt;
+&lt;/html&gt;</span><span style="color:#710">
+               # # #</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="backtick-command-execution">3.2.1.6 Backtick command execution</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2">ls</span><span style="color:#161">`</span></span>
+
+<span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">%x[</span><span style="color:#2B2">ls</span><span style="color:#161">]</span></span>
+
+<span style="color:#080;font-weight:bold">if</span> windows
+  listcmd = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">dir</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">else</span>
+  listcmd = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+listing = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>listcmd<span style="font-weight:bold;color:#666">}</span></span><span style="color:#161">`</span></span>
+
+listing = <span style="color:#036;font-weight:bold">Kernel</span>.`(listcmd)
+</pre></div>
+</div>
+</div>
+
+<h4 id="string-literals-and-mutability">3.2.1.7 String literals and mutability</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">10</span>.times { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>.object_id }
+</pre></div>
+</div>
+</div>
+
+<h4 id="character-literals">3.2.2 Character Literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">?A</span>   <span style="color:#777"># Character literal for the ASCII character A</span>
+<span style="color:#00D">?&quot;</span>   <span style="color:#777"># Character literal for the double-quote character</span>
+<span style="color:#00D">??</span>   <span style="color:#777"># Character literal for the question mark character</span>
+
+<span style="color:#00D">?\u</span><span style="color:#00D">20</span><span style="color:#036;font-weight:bold">AC</span> == <span style="color:#00D">?&amp;</span><span style="color:#777">#x20AC;    # =&gt; true: Ruby 1.9 only</span>
+<span style="color:#00D">?&amp;</span><span style="color:#777">#x20AC; == &quot;\u20AC&quot;   # =&gt; true</span>
+
+<span style="color:#00D">?\t</span>      <span style="color:#777"># Character literal for the TAB character</span>
+<span style="color:#00D">?\C-x</span>    <span style="color:#777"># Character literal for Ctrl-X</span>
+<span style="color:#00D">?\111</span>    <span style="color:#777"># Literal for character whose encoding is 0111 (octal)</span>
+
+planet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Earth</span><span style="color:#710">&quot;</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> + planet    <span style="color:#777"># Produces &quot;Hello Earth&quot;</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="color:#710">&quot;</span></span> + planet_number.to_s  <span style="color:#777"># to_s converts to a string</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>planet_number<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>
+greeting &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span>
+puts greeting   <span style="color:#777"># Outputs &quot;Hello World&quot;</span>
+
+alphabet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A</span><span style="color:#710">&quot;</span></span>
+alphabet &lt;&lt; <span style="color:#00D">?B</span>   <span style="color:#777"># Alphabet is now &quot;AB&quot;</span>
+alphabet &lt;&lt; <span style="color:#00D">67</span>   <span style="color:#777"># And now it is &quot;ABC&quot;</span>
+alphabet &lt;&lt; <span style="color:#00D">256</span>  <span style="color:#777"># Error in Ruby 1.8: codes must be &gt;=0 and &lt; 256</span>
+
+ellipsis = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>*<span style="color:#00D">3</span>    <span style="color:#777"># Evaluates to '...'</span>
+
+a = <span style="color:#00D">0</span>;
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>a=a+<span style="color:#00D">1</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>   <span style="color:#777"># Returns &quot;1 1 1 &quot;, not &quot;1 2 3 &quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="string-operators">3.2.3 String Operators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>planet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Earth</span><span style="color:#710">&quot;</span></span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> + planet    <span style="color:#777"># Produces &quot;Hello Earth&quot;</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="color:#710">&quot;</span></span> + planet_number.to_s  <span style="color:#777"># to_s converts to a string</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello planet #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>planet_number<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>
+greeting &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span>
+puts greeting   <span style="color:#777"># Outputs &quot;Hello World&quot;</span>
+
+alphabet = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A</span><span style="color:#710">&quot;</span></span>
+alphabet &lt;&lt; <span style="color:#00D">?B</span>   <span style="color:#777"># Alphabet is now &quot;AB&quot;</span>
+alphabet &lt;&lt; <span style="color:#00D">67</span>   <span style="color:#777"># And now it is &quot;ABC&quot;</span>
+alphabet &lt;&lt; <span style="color:#00D">256</span>  <span style="color:#777"># Error in Ruby 1.8: codes must be &gt;=0 and &lt; 256</span>
+
+ellipsis = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>*<span style="color:#00D">3</span>    <span style="color:#777"># Evaluates to '...'</span>
+
+a = <span style="color:#00D">0</span>;
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>a=a+<span style="color:#00D">1</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> * <span style="color:#00D">3</span>   <span style="color:#777"># Returns &quot;1 1 1 &quot;, not &quot;1 2 3 &quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="accessing-characters-and-substrings">3.2.4 Accessing Characters and Substrings</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>;   <span style="color:#777"># Ruby 1.8</span>
+s[<span style="color:#00D">0</span>]           <span style="color:#777"># 104: the ASCII character code for the first character 'h'</span>
+s[s.length-<span style="color:#00D">1</span>]  <span style="color:#777"># 111: the character code of the last character 'o'</span>
+s[<span style="color:#00D">-1</span>]          <span style="color:#777"># 111: another way of accessing the last character</span>
+s[<span style="color:#00D">-2</span>]          <span style="color:#777"># 108: the second-to-last character</span>
+s[-s.length]   <span style="color:#777"># 104: another way of accessing the first character</span>
+s[s.length]    <span style="color:#777"># nil: there is no character at that index</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello</span><span style="color:#710">'</span></span>;   <span style="color:#777"># Ruby 1.9</span>
+s[<span style="color:#00D">0</span>]           <span style="color:#777"># 'h': the first character of the string, as a string</span>
+s[s.length-<span style="color:#00D">1</span>]  <span style="color:#777"># 'o': the last character 'o'</span>
+s[<span style="color:#00D">-1</span>]          <span style="color:#777"># 'o': another way of accessing the last character</span>
+s[<span style="color:#00D">-2</span>]          <span style="color:#777"># 'l': the second-to-last character</span>
+s[-s.length]   <span style="color:#777"># 'h': another way of accessing the first character</span>
+s[s.length]    <span style="color:#777"># nil: there is no character at that index</span>
+
+s[<span style="color:#00D">0</span>] = <span style="color:#00D">?H</span>        <span style="color:#777"># Replace first character with a capital H</span>
+s[<span style="color:#00D">-1</span>] = <span style="color:#00D">?O</span>       <span style="color:#777"># Replace last character with a capital O</span>
+s[s.length] = <span style="color:#00D">?!</span> <span style="color:#777"># ERROR! Can't assign beyond the end of the string</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># Begin with a greeting</span>
+s[<span style="color:#00D">-1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># Delete the last character; s is now &quot;hell&quot;</span>
+s[<span style="color:#00D">-1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">p!</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Change new last character and add one; s is now &quot;help!&quot;</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
+s[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>]          <span style="color:#777"># &quot;he&quot;</span>
+s[<span style="color:#00D">-1</span>,<span style="color:#00D">1</span>]         <span style="color:#777"># &quot;o&quot;: returns a string, not the character code ?o</span>
+s[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>]          <span style="color:#777"># &quot;&quot;: a zero-length substring is always empty</span>
+s[<span style="color:#00D">0</span>,<span style="color:#00D">10</span>]         <span style="color:#777"># &quot;hello&quot;: returns all the characters that are available</span>
+s[s.length,<span style="color:#00D">1</span>]   <span style="color:#777"># &quot;&quot;: there is an empty string immediately beyond the end</span>
+s[s.length+<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] <span style="color:#777"># nil: it is an error to read past that</span>
+s[<span style="color:#00D">0</span>,<span style="color:#00D">-1</span>]         <span style="color:#777"># nil: negative lengths don't make any sense</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
+s[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">H</span><span style="color:#710">&quot;</span></span>              <span style="color:#777"># Replace first letter with a capital letter</span>
+s[s.length,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> world</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Append by assigning beyond the end of the string</span>
+s[<span style="color:#00D">5</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">,</span><span style="color:#710">&quot;</span></span>              <span style="color:#777"># Insert a comma, without deleting anything</span>
+s[<span style="color:#00D">5</span>,<span style="color:#00D">6</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>               <span style="color:#777"># Delete with no insertion; s == &quot;Hellod&quot;</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
+s[<span style="color:#00D">2</span>..<span style="color:#00D">3</span>]           <span style="color:#777"># &quot;ll&quot;: characters 2 and 3</span>
+s[<span style="color:#00D">-3</span>..<span style="color:#00D">-1</span>]         <span style="color:#777"># &quot;llo&quot;: negative indexes work, too</span>
+s[<span style="color:#00D">0</span>..<span style="color:#00D">0</span>]           <span style="color:#777"># &quot;h&quot;: this Range includes one character index</span>
+s[<span style="color:#00D">0</span>...<span style="color:#00D">0</span>]          <span style="color:#777"># &quot;&quot;: this Range is empty</span>
+s[<span style="color:#00D">2</span>..<span style="color:#00D">1</span>]           <span style="color:#777"># &quot;&quot;: this Range is also empty</span>
+s[<span style="color:#00D">7</span>..<span style="color:#00D">10</span>]          <span style="color:#777"># nil: this Range is outside the string bounds</span>
+s[<span style="color:#00D">-2</span>..<span style="color:#00D">-1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">p!</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Replacement: s becomes &quot;help!&quot;</span>
+s[<span style="color:#00D">0</span>...<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please </span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Insertion: s becomes &quot;Please help!&quot;</span>
+s[<span style="color:#00D">6</span>..<span style="color:#00D">10</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># Deletion: s becomes &quot;Please!&quot;</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># Start with the word &quot;hello&quot;</span>
+<span style="color:#080;font-weight:bold">while</span>(s[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">l</span><span style="color:#710">&quot;</span></span>])     <span style="color:#777"># While the string contains the substring &quot;l&quot;</span>
+  s[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">l</span><span style="color:#710">&quot;</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">L</span><span style="color:#710">&quot;</span></span>;   <span style="color:#777"># Replace first occurrence of &quot;l&quot; with &quot;L&quot;</span>
+<span style="color:#080;font-weight:bold">end</span>               <span style="color:#777"># Now we have &quot;heLLo&quot;</span>
+
+s[<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[aeiou]</span><span style="color:#404">/</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*</span><span style="color:#710">'</span></span>      <span style="color:#777"># Replace first vowel with an asterisk</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="iterating-strings">3.2.5 Iterating Strings</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&amp;#xA5;1000</span><span style="color:#710">&quot;</span></span>
+s.each_char {|x| print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> }         <span style="color:#777"># Prints &quot;&amp;#xA5; 1 0 0 0&quot;. Ruby 1.9 </span>
+<span style="color:#00D">0</span>.upto(s.size-<span style="color:#00D">1</span>) {|i| print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s[i]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>}  <span style="color:#777"># Inefficient with multibyte chars</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="multibyte-characters-in-ruby-19">3.2.6.1 Multibyte characters in Ruby 1.9</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># -*- coding: utf-8 -*-   # Specify Unicode UTF-8 characters</span>
+
+<span style="color:#777"># This is a string literal containing a multibyte multiplication character</span>
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2&amp;#xD7;2=4</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#777"># The string contains 6 bytes which encode 5 characters</span>
+s.length        <span style="color:#777"># =&gt; 5: Characters:  '2'   '&amp;#xD7;'   '2'   '='   '4'</span>
+s.bytesize      <span style="color:#777"># =&gt; 6: Bytes (hex): 32   c3 97  32    3d    34 </span>
+
+<span style="color:#777"># -*- coding: utf-8 -*-</span>
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2&amp;#xD7;2=4</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Note multibyte multiplication character</span>
+s.encoding      <span style="color:#777"># =&gt; &lt;Encoding: UTF-8&gt;</span>
+t = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2+2=4</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># All characters are in the ASCII subset of UTF-8</span>
+t.encoding      <span style="color:#777"># =&gt; &lt;Encoding: ASCII-8BIT&gt;</span>
+
+text = stream.readline.force_encoding(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)
+bytes = text.dup.force_encoding(<span style="color:#069">nil</span>)   <span style="color:#777"># nil encoding means binary</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\xa4</span><span style="color:#710">&quot;</span></span>.force_encoding(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># This is not a valid UTF-8 string</span>
+s.valid_encoding?                   <span style="color:#777"># =&gt; false</span>
+
+<span style="color:#777"># -*- coding: utf-8 -*-</span>
+euro1 = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">20AC</span><span style="color:#710">&quot;</span></span>                     <span style="color:#777"># Start with the Unicode Euro character</span>
+puts euro1                           <span style="color:#777"># Prints &quot;&amp;#x20AC;&quot;</span>
+euro1.encoding                       <span style="color:#777"># =&gt; &lt;Encoding:UTF-8&gt;</span>
+euro1.bytesize                       <span style="color:#777"># =&gt; 3</span>
+
+euro2 = euro1.encode(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">iso-8859-15</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># Transcode to Latin-15</span>
+puts euro2.inspect                   <span style="color:#777"># Prints &quot;\xA4&quot;</span>
+euro2.encoding                       <span style="color:#777"># =&gt; &lt;Encoding:iso-8859-15&gt;</span>
+euro2.bytesize                       <span style="color:#777"># =&gt; 1</span>
+
+euro3 = euro2.encode(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)        <span style="color:#777"># Transcode back to UTF-8</span>
+euro1 == euro3                       <span style="color:#777"># =&gt; true</span>
+
+<span style="color:#777"># Interpret a byte as an iso-8859-15 codepoint, and transcode to UTF-8</span>
+byte = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\xA4</span><span style="color:#710">&quot;</span></span>
+char = byte.encode(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">iso-8859-15</span><span style="color:#710">&quot;</span></span>)
+
+text = bytes.encode(to, from)
+text = bytes.dup.force_encoding(from).encode(to)
+
+<span style="color:#777"># The iso-8859-1 encoding doesn't have a Euro sign, so this raises an exception</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\u</span><span style="color:#D20">20AC</span><span style="color:#710">&quot;</span></span>.encode(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">iso-8859-1</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-encoding-class">3.2.6.2 The Encoding class</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Encoding</span>::<span style="color:#036;font-weight:bold">ASCII_8BIT</span>     <span style="color:#777"># Also ::BINARY</span>
+<span style="color:#036;font-weight:bold">Encoding</span>::<span style="color:#036;font-weight:bold">UTF_8</span>          <span style="color:#777"># UTF-8-encoded Unicode characters</span>
+<span style="color:#036;font-weight:bold">Encoding</span>::<span style="color:#036;font-weight:bold">EUC_JP</span>         <span style="color:#777"># EUC-encoded Japanese</span>
+<span style="color:#036;font-weight:bold">Encoding</span>::<span style="color:#036;font-weight:bold">SHIFT_JIS</span>      <span style="color:#777"># Japanese: also ::SJIS, ::WINDOWS_31J, ::CP932</span>
+
+encoding = <span style="color:#036;font-weight:bold">Encoding</span>.find(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="multibyte-characters-in-ruby-18">3.2.6.3 Multibyte characters in Ruby 1.8</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#d70">$KCODE</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">u</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># Specify Unicode UTF-8, or start Ruby with -Ku option</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jcode</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Load multibyte character support</span>
+
+mb = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#b0b">\303</span><span style="color:#b0b">\227</span><span style="color:#D20">2=4</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># This is &quot;2&amp;#xD7;2=4&quot; with a Unicode multiplication sign</span>
+mb.length           <span style="color:#777"># =&gt; 6: there are 6 bytes in this string</span>
+mb.jlength          <span style="color:#777"># =&gt; 5: but only 5 characters</span>
+mb.mbchar?          <span style="color:#777"># =&gt; 1: position of the first multibyte char, or nil</span>
+mb.each_byte <span style="color:#080;font-weight:bold">do</span> |c| <span style="color:#777"># Iterate through the bytes of the string.</span>
+  print c, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># c is Fixnum</span>
+<span style="color:#080;font-weight:bold">end</span>                 <span style="color:#777"># Outputs &quot;50 195 151 50 61 52 &quot;</span>
+mb.each_char <span style="color:#080;font-weight:bold">do</span> |c| <span style="color:#777"># Iterate through the characters of the string</span>
+  print c, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># c is a String with jlength 1 and variable length</span>
+<span style="color:#080;font-weight:bold">end</span>                 <span style="color:#777"># Outputs &quot;2 &amp;#xD7; 2 = 4 &quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="arrays">3.3 Arrays</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]         <span style="color:#777"># An array that holds three Fixnum objects</span>
+[<span style="color:#00D">-10</span>...<span style="color:#00D">0</span>, <span style="color:#00D">0</span>..<span style="color:#00D">10</span>,] <span style="color:#777"># An array of two ranges; trailing commas are allowed</span>
+[[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">3</span>,<span style="color:#00D">4</span>],[<span style="color:#00D">5</span>]] <span style="color:#777"># An array of nested arrays</span>
+[x+y, x-y, x*y]   <span style="color:#777"># Array elements can be arbitrary expressions</span>
+[]                <span style="color:#777"># The empty array has size 0</span>
+
+words = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w[</span><span style="color:#D20">this is a test</span><span style="color:#710">]</span></span>  <span style="color:#777"># Same as: ['this', 'is', 'a', 'test']</span>
+open = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w|</span><span style="color:#D20"> ( [ { &lt; </span><span style="color:#710">|</span></span>        <span style="color:#777"># Same as: ['(', '[', '{', '&lt;']</span>
+white = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%W(</span><span style="color:#b0b">\s</span><span style="color:#D20"> </span><span style="color:#b0b">\t</span><span style="color:#D20"> </span><span style="color:#b0b">\r</span><span style="color:#D20"> </span><span style="color:#b0b">\n</span><span style="color:#710">)</span></span>     <span style="color:#777"># Same as: [&quot;\s&quot;, &quot;\t&quot;, &quot;\r&quot;, &quot;\n&quot;]</span>
+
+empty = <span style="color:#036;font-weight:bold">Array</span>.new       <span style="color:#777"># []: returns a new empty array</span>
+nils = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#00D">3</span>)     <span style="color:#777"># [nil, nil, nil]: new array with 3 nil elements</span>
+zeros = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#00D">4</span>, <span style="color:#00D">0</span>) <span style="color:#777"># [0, 0, 0, 0]: new array with 4 0 elements</span>
+copy = <span style="color:#036;font-weight:bold">Array</span>.new(nils)  <span style="color:#777"># Make a new copy of an existing array</span>
+count = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#00D">3</span>) {|i| i+<span style="color:#00D">1</span>}  <span style="color:#777"># [1,2,3]: 3 elements computed from index</span>
+
+a = [<span style="color:#00D">0</span>, <span style="color:#00D">1</span>, <span style="color:#00D">4</span>, <span style="color:#00D">9</span>, <span style="color:#00D">16</span>]   <span style="color:#777"># Array holds the squares of the indexes</span>
+a[<span style="color:#00D">0</span>]        <span style="color:#777"># First element is 0</span>
+a[<span style="color:#00D">-1</span>]       <span style="color:#777"># Last element is 16</span>
+a[<span style="color:#00D">-2</span>]       <span style="color:#777"># Second to last element is 9</span>
+a[a.size-<span style="color:#00D">1</span>] <span style="color:#777"># Another way to query the last element</span>
+a[-a.size]  <span style="color:#777"># Another way to query the first element</span>
+a[<span style="color:#00D">8</span>]        <span style="color:#777"># Querying beyond the end returns nil</span>
+a[<span style="color:#00D">-8</span>]       <span style="color:#777"># Querying before the start returns nil, too</span>
+
+a[<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">zero</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># a is [&quot;zero&quot;, 1, 4, 9, 16]</span>
+a[<span style="color:#00D">-1</span>] = <span style="color:#00D">1</span>..<span style="color:#00D">16</span>   <span style="color:#777"># a is [&quot;zero&quot;, 1, 4, 9, 1..16]</span>
+a[<span style="color:#00D">8</span>] = <span style="color:#00D">64</span>       <span style="color:#777"># a is [&quot;zero&quot;, 1, 4, 9, 1..16, nil, nil, nil, 64]</span>
+a[<span style="color:#00D">-9</span>] = <span style="color:#00D">81</span>      <span style="color:#777"># Error: can't assign before the start of an array</span>
+
+a = (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">e</span><span style="color:#710">'</span></span>).to_a   <span style="color:#777"># Range converted to ['a', 'b', 'c', 'd', 'e']</span>
+a[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>]                <span style="color:#777"># []: this subarray has zero elements</span>
+a[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]                <span style="color:#777"># ['b']: a one-element array</span>
+a[<span style="color:#00D">-2</span>,<span style="color:#00D">2</span>]               <span style="color:#777"># ['d','e']: the last two elements of the array</span>
+a[<span style="color:#00D">0</span>..<span style="color:#00D">2</span>]               <span style="color:#777"># ['a', 'b', 'c']: the first three elements</span>
+a[<span style="color:#00D">-2</span>..<span style="color:#00D">-1</span>]             <span style="color:#777"># ['d','e']: the last two elements of the array</span>
+a[<span style="color:#00D">0</span>...<span style="color:#00D">-1</span>]             <span style="color:#777"># ['a', 'b', 'c', 'd']: all but the last element</span>
+
+a[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>] = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">B</span><span style="color:#710">'</span></span>]      <span style="color:#777"># a becomes ['A', 'B', 'c', 'd', 'e']</span>
+a[<span style="color:#00D">2</span>...<span style="color:#00D">5</span>]=[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">C</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">D</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">E</span><span style="color:#710">'</span></span>] <span style="color:#777"># a becomes ['A', 'B', 'C', 'D', 'E']</span>
+a[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>] = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]         <span style="color:#777"># Insert elements at the beginning of a</span>
+a[<span style="color:#00D">0</span>..<span style="color:#00D">2</span>] = []             <span style="color:#777"># Delete those elements</span>
+a[<span style="color:#00D">-1</span>,<span style="color:#00D">1</span>] = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span>]          <span style="color:#777"># Replace last element with another</span>
+a[<span style="color:#00D">-1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span>            <span style="color:#777"># For single elements, the array is optional</span>
+a[<span style="color:#00D">-2</span>,<span style="color:#00D">2</span>] = <span style="color:#069">nil</span>  <span style="color:#777"># Delete last 2 elements in 1.8; replace with nil in 1.9</span>
+
+a = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>] + [<span style="color:#00D">4</span>, <span style="color:#00D">5</span>]    <span style="color:#777"># [1, 2, 3, 4, 5]</span>
+a = a + [[<span style="color:#00D">6</span>, <span style="color:#00D">7</span>, <span style="color:#00D">8</span>]]       <span style="color:#777"># [1, 2, 3, 4, 5, [6, 7, 8]]</span>
+a =
+a + <span style="color:#00D">9</span>                 <span style="color:#777"># Error: righthand side must be an array</span>
+
+[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>] - [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">d</span><span style="color:#710">'</span></span>]    <span style="color:#777"># ['a', 'a']</span>
+
+a = []        <span style="color:#777"># Start with an empty array</span>
+a &lt;&lt; <span style="color:#00D">1</span>        <span style="color:#777"># a is [1]</span>
+a &lt;&lt; <span style="color:#00D">2</span> &lt;&lt; <span style="color:#00D">3</span>   <span style="color:#777"># a is [1, 2, 3]</span>
+a &lt;&lt; [<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">6</span>]  <span style="color:#777"># a is [1, 2, 3, [4, 5, 6]]</span>
+
+a = [<span style="color:#00D">0</span>] * <span style="color:#00D">8</span>    <span style="color:#777"># [0, 0, 0, 0, 0, 0, 0, 0]</span>
+
+a = [<span style="color:#00D">1</span>, <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>, <span style="color:#00D">3</span>, <span style="color:#00D">4</span>]
+b = [<span style="color:#00D">5</span>, <span style="color:#00D">5</span>, <span style="color:#00D">4</span>, <span style="color:#00D">4</span>, <span style="color:#00D">3</span>, <span style="color:#00D">3</span>, <span style="color:#00D">2</span>]
+a | b    <span style="color:#777"># [1, 2, 3, 4, 5]: duplicates are removed</span>
+b | a    <span style="color:#777"># [5, 4, 3, 2, 1]: elements are the same, but order is different</span>
+a &amp; b    <span style="color:#777"># [2, 3, 4]</span>
+b &amp; a    <span style="color:#777"># [4, 3, 2]</span>
+
+a = (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span>).to_a    <span style="color:#777"># Begin with an array of letters</span>
+a.each {|x| print x }  <span style="color:#777"># Print the alphabet, one letter at a time</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="hashes">3.4 Hashes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This hash will map the names of digits to the digits themselves</span>
+numbers = <span style="color:#036;font-weight:bold">Hash</span>.new     <span style="color:#777"># Create a new, empty, hash object</span>
+numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>] = <span style="color:#00D">1</span>     <span style="color:#777"># Map the String &quot;one&quot; to the Fixnum 1</span>
+numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>] = <span style="color:#00D">2</span>     <span style="color:#777"># Note that we are using array notation here</span>
+numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>] = <span style="color:#00D">3</span>
+
+sum = numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>] + numbers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>]  <span style="color:#777"># Retrieve values like this</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="hash-literals">3.4.1 Hash Literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>numbers = { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">1</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">2</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#00D">3</span> }
+
+numbers = { <span style="color:#A60">:one</span> =&gt; <span style="color:#00D">1</span>, <span style="color:#A60">:two</span> =&gt; <span style="color:#00D">2</span>, <span style="color:#A60">:three</span> =&gt; <span style="color:#00D">3</span> }
+
+numbers = { <span style="color:#A60">:one</span>, <span style="color:#00D">1</span>, <span style="color:#A60">:two</span>, <span style="color:#00D">2</span>, <span style="color:#A60">:three</span>, <span style="color:#00D">3</span> } <span style="color:#777"># Same, but harder to read</span>
+
+numbers = { <span style="color:#A60">:one</span> =&gt; <span style="color:#00D">1</span>, <span style="color:#A60">:two</span> =&gt; <span style="color:#00D">2</span>, } <span style="color:#777"># Extra comma ignored</span>
+
+numbers = { <span style="color:#606">one</span>: <span style="color:#00D">1</span>, <span style="color:#606">two</span>: <span style="color:#00D">2</span>, <span style="color:#606">three</span>: <span style="color:#00D">3</span> }
+</pre></div>
+</div>
+</div>
+
+<h4 id="ranges">3.5 Ranges</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span>..<span style="color:#00D">10</span>      <span style="color:#777"># The integers 1 through 10, including 10</span>
+<span style="color:#60E">1.0</span>...<span style="color:#60E">10.0</span> <span style="color:#777"># The numbers between 1.0 and 10.0, excluding 10.0 itself</span>
+
+cold_war = <span style="color:#00D">1945</span>..<span style="color:#00D">1989</span>
+cold_war.include? birthdate.year
+
+r = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>
+r.each {|l| print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">[</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>l<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">]</span><span style="color:#710">&quot;</span></span>}     <span style="color:#777"># Prints &quot;[a][b][c]&quot;</span>
+r.step(<span style="color:#00D">2</span>) { |l| print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">[</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>l<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">]</span><span style="color:#710">&quot;</span></span>} <span style="color:#777"># Prints &quot;[a][c]&quot;</span>
+r.to_a                          <span style="color:#777"># =&gt; ['a','b','c']: Enumerable defines to_a</span>
+
+<span style="color:#00D">1</span>..<span style="color:#00D">3</span>.to_a    <span style="color:#777"># Tries to call to_a on the number 3</span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">3</span>).to_a  <span style="color:#777"># =&gt; [1,2,3]</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="testing-membership-in-a-range">3.5.1 Testing Membership in a Range</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">begin</span> &lt;= x &lt;= <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">begin</span> &lt;= x &lt; <span style="color:#080;font-weight:bold">end</span>
+
+r = <span style="color:#00D">0</span>...<span style="color:#00D">100</span>      <span style="color:#777"># The range of integers 0 through 99</span>
+r.member? <span style="color:#00D">50</span>     <span style="color:#777"># =&gt; true: 50 is a member of the range</span>
+r.include? <span style="color:#00D">100</span>   <span style="color:#777"># =&gt; false: 100 is excluded from the range</span>
+r.include? <span style="color:#60E">99.9</span>  <span style="color:#777"># =&gt; true: 99.9 is less than 100</span>
+
+triples = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">AAA</span><span style="color:#710">&quot;</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ZZZ</span><span style="color:#710">&quot;</span></span>
+triples.include? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ABC</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># true; fast in 1.8 and slow in 1.9</span>
+triples.include? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ABCD</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># true in 1.8, false in 1.9</span>
+triples.cover?   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ABCD</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># true and fast in 1.9</span>
+triples.to_a.include? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ABCD</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># false and slow in 1.8 and 1.9</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="symbols">3.6 Symbols</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#A60">:symbol</span>                   <span style="color:#777"># A Symbol literal</span>
+<span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">symbol</span><span style="color:#740">&quot;</span></span>                 <span style="color:#777"># The same literal</span>
+<span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">'</span><span style="color:#A60">another long symbol</span><span style="color:#740">'</span></span>    <span style="color:#777"># Quotes are useful for symbols with spaces</span>
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">string</span><span style="color:#710">&quot;</span></span>
+sym = <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#740">&quot;</span></span>             <span style="color:#777"># The Symbol :string</span>
+
+<span style="color:#A60"><span style="color:#740">%s[</span><span style="color:#A60">&quot;</span><span style="color:#740">]</span></span>     <span style="color:#777"># Same as :'&quot;'</span>
+
+o.respond_to? <span style="color:#A60">:each</span>
+
+name = <span style="color:#A60">:size</span>
+<span style="color:#080;font-weight:bold">if</span> o.respond_to? name
+  o.send(name)
+<span style="color:#080;font-weight:bold">end</span>
+
+str = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">string</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Begin with a string</span>
+sym = str.intern   <span style="color:#777"># Convert to a symbol</span>
+sym = str.to_sym   <span style="color:#777"># Another way to do the same thing</span>
+str = sym.to_s     <span style="color:#777"># Convert back to a string</span>
+str = sym.id2name  <span style="color:#777"># Another way to do it</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="true-false-and-nil">3.7 True, False, and Nil</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o == <span style="color:#069">nil</span>   <span style="color:#777"># Is o nil?</span>
+o.n
+il?     <span style="color:#777"># Another way to test</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="object-references">3.8.1 Object References</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Create a String object. Store a reference to it in s.</span>
+t = s      <span style="color:#777"># Copy the reference to t. s and t both refer to the same object.</span>
+t[<span style="color:#00D">-1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Modify the object through the reference in t.</span>
+print s    <span style="color:#777"># Access the modified object through s. Prints &quot;Rub&quot;. </span>
+t = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Java</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># t now refers to a different object.</span>
+print s,t  <span style="color:#777"># Prints &quot;RubJava&quot;.</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="object-lifetime">3.8.2 Object Lifetime</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>myObject = myClass.new
+</pre></div>
+</div>
+</div>
+
+<h4 id="object-class-and-object-type">3.8.4 Object Class and Object Type</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># This is a value</span>
+o.class     <span style="color:#777"># Returns an object representing the String class</span>
+
+o.class                       <span style="color:#777"># String: o is a String object</span>
+o.class.superclass            <span style="color:#777"># Object: superclass of String is Object</span>
+o.class.superclass.superclass <span style="color:#777"># nil: Object has no superclass</span>
+
+<span style="color:#777"># Ruby 1.9 only</span>
+<span style="color:#036;font-weight:bold">Object</span>.superclass             <span style="color:#777"># BasicObject: Object has a superclass in 1.9</span>
+<span style="color:#036;font-weight:bold">BasicObject</span>.superclass        <span style="color:#777"># nil: BasicObject has no superclass</span>
+
+o.class == <span style="color:#036;font-weight:bold">String</span>       <span style="color:#777"># true if is o a String</span>
+
+o.instance_of? <span style="color:#036;font-weight:bold">String</span>   <span style="color:#777"># true if o is a String</span>
+
+x = <span style="color:#00D">1</span>                    <span style="color:#777"># This is the value we're working with</span>
+x.instance_of? <span style="color:#036;font-weight:bold">Fixnum</span>    <span style="color:#777"># true: is an instance of Fixnum</span>
+x.instance_of? <span style="color:#036;font-weight:bold">Numeric</span>   <span style="color:#777"># false: instance_of? doesn't check inheritance</span>
+x.is_a? <span style="color:#036;font-weight:bold">Fixnum</span>           <span style="color:#777"># true: x is a Fixnum</span>
+x.is_a? <span style="color:#036;font-weight:bold">Integer</span>          <span style="color:#777"># true: x is an Integer</span>
+x.is_a? <span style="color:#036;font-weight:bold">Numeric</span>          <span style="color:#777"># true: x is a Numeric</span>
+x.is_a? <span style="color:#036;font-weight:bold">Comparable</span>       <span style="color:#777"># true: works with mixin modules, too</span>
+x.is_a? <span style="color:#036;font-weight:bold">Object</span>           <span style="color:#777"># true for any value of x</span>
+
+<span style="color:#036;font-weight:bold">Numeric</span> === x            <span style="color:#777"># true: x is_a Numeric</span>
+
+o.respond_to? <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">&lt;&lt;</span><span style="color:#740">&quot;</span></span>  <span style="color:#777"># true if o has an &lt;&lt; operator</span>
+
+o.respond_to? <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">&lt;&lt;</span><span style="color:#740">&quot;</span></span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> o.is_a? <span style="color:#036;font-weight:bold">Numeric</span> 
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-equal-method">3.8.5.1 The equal? method</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># One reference to one String object</span>
+b = c = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Two references to another String object</span>
+a.equal?(b)      <span style="color:#777"># false: a and b are different objects</span>
+b.equal?(c)      <span style="color:#777"># true: b and c refer to the same object</span>
+
+a.object_id == b.object_id   <span style="color:#777"># Works like a.equal?(b)</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the--operator">3.8.5.2 The == operator</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># One String object</span>
+b = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># A different String object with the same content</span>
+a.equal?(b)   <span style="color:#777"># false: a and b do not refer to the same object</span>
+a == b        <span style="color:#777"># true: but these two distinct objects have equal values</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-eql-method">3.8.5.3 The eql? method</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span> == <span style="color:#60E">1.0</span>    <span style="color:#777"># true: Fixnum and Float objects can be ==</span>
+<span style="color:#00D">1</span>.eql?(<span style="color:#60E">1.0</span>) <span style="color:#777"># false: but they are never eql!</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the--operator-1">3.8.5.4 The === operator</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>) === <span style="color:#00D">5</span>    <span style="color:#777"># true: 5 is in the range 1..10</span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\d</span><span style="color:#808">+</span><span style="color:#404">/</span></span> === <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">123</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># true: the string matches the regular expression</span>
+<span style="color:#036;font-weight:bold">String</span> === <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># true: &quot;s&quot; is an instance of the class String</span>
+<span style="color:#A60">:s</span> === <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># true in Ruby 1.9</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="object-order">3.8.6 Object Order</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span> &lt;=&gt; <span style="color:#00D">5</span>     <span style="color:#777"># -1</span>
+<span style="color:#00D">5</span> &lt;=&gt; <span style="color:#00D">5</span>     <span style="color:#777"># 0</span>
+<span style="color:#00D">9</span> &lt;=&gt; <span style="color:#00D">5</span>     <span style="color:#777"># 1</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> &lt;=&gt; <span style="color:#00D">5</span>   <span style="color:#777"># nil: integers and strings are not comparable</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&lt; Less than
+&lt;= Less than or equal
+== Equal
+&gt;= Greater than or equal
+&gt; Greater than
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span>.between?(<span style="color:#00D">0</span>,<span style="color:#00D">10</span>)  <span style="color:#777"># true: 0 &lt;= 1 &lt;= 10</span>
+
+nan = <span style="color:#60E">0.0</span>/<span style="color:#60E">0.0</span>;     <span style="color:#777"># zero divided by zero is not-a-number</span>
+nan &lt; <span style="color:#00D">0</span>            <span style="color:#777"># false: it is not less than zero</span>
+nan &gt; <span style="color:#00D">0</span>            <span style="color:#777"># false: it is not greater than zero</span>
+nan == <span style="color:#00D">0</span>           <span style="color:#777"># false: it is not equal to zero</span>
+nan == nan         <span style="color:#777"># false: it is not even equal to itself!</span>
+nan.equal?(nan)    <span style="color:#777"># this is true, of course</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="implicit-conversions">3.8.7.2 Implicit conversions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Ruby 1.8 only</span>
+e = <span style="color:#036;font-weight:bold">Exception</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">not really an exception</span><span style="color:#710">&quot;</span></span>)
+msg = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Error: </span><span style="color:#710">&quot;</span></span> + e  <span style="color:#777"># String concatenation with an Exception</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="arithmetic-operator-type-coercions">3.8.7.4 Arithmetic operator type coercions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#60E">1.1</span>.coerce(<span style="color:#00D">1</span>)      <span style="color:#777"># [1.0, 1.1]: coerce Fixnum to Float</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rational</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Use Rational numbers</span>
+r = Rational(<span style="color:#00D">1</span>,<span style="color:#00D">3</span>)  <span style="color:#777"># One third as a Rational number</span>
+r.coerce(<span style="color:#00D">2</span>)        <span style="color:#777"># [Rational(2,1), Rational(1,3)]: Fixnum to Rational</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="boolean-type-conversions">3.8.7.5 Boolean type conversions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> x != <span style="color:#069">nil</span>   <span style="color:#777"># Expression &quot;x != nil&quot; returns true or false to the if</span>
+  puts x      <span style="color:#777"># Print x if it is defined</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">if</span> x       <span style="color:#777"># If x is non-nil</span>
+  puts x   <span style="color:#777"># Then print it</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="marshaling-objects">3.8.9 Marshaling Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">deepcopy</span>(o)
+  <span style="color:#036;font-weight:bold">Marshal</span>.load(<span style="color:#036;font-weight:bold">Marshal</span>.dump(o))
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="freezing-objects">3.8.10 Freezing Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ice</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># Strings are mutable objects</span>
+s.freeze       <span style="color:#777"># Make this string immutable</span>
+s.frozen?      <span style="color:#777"># true: it has been frozen</span>
+s.upcase!      <span style="color:#777"># TypeError: can't modify frozen string</span>
+s[<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ni</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># TypeError: can't modify frozen string</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="tainting-objects">3.8.11 Tainting Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">untrusted</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Objects are normally untainted</span>
+s.taint           <span style="color:#777"># Mark this untrusted object as tainted</span>
+s.tainted?        <span style="color:#777"># true: it is tainted</span>
+s.upcase.tainted? <span style="color:#777"># true: derived objects are tainted</span>
+s[<span style="color:#00D">3</span>,<span style="color:#00D">4</span>].tainted?   <span style="color:#777"># true: substrings are tainted</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

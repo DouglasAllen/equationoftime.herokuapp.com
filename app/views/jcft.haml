@@ -1,86 +1,212 @@
-%body
-  %h1
-    Time Julian Century (deprecated)
-  %h3
-    %pre
-      :preserve
-           Calculations are made with the Universal Time Coordinate or GMT of the current time.
-        
-        DateTime.now.to_time.utc.to_datetime = #{@current}     
-      
-        This method is not used anymore.  
-              
-        The Ruby Equation_of_Time#time_julian_century( ) method was:                   
-          
-        def  time_julian_century( dt = DT2000 )
-            
-        # DT2000 is a default DateTime for the J2000 epoch.
-        # The TT ( Terrestrial Time ) = January 1, 2000, 12:00 pm.
-            
-        # Julian Period Day Number J2000.0 is subtracted from the
-        # Julian Number we get from dt.jd or dt.ajd
-        # The J2000.0 epoch is precisely Julian date 2451545.0
-        # A check for nils and zeros is made which add defaults
-        # if there are any. (whiny nil?) 
-        # A default array of [0.0, 0.0, 0.0, 0.0, 0.0]
-        # would get returned.
-        # a check for DateTime is made and is possible to pass in
-        # a Julian Number also. If dt is not a Julian Number then
-        # we make one out of the dt class.
+%title equationoftime.herokuapp.com/jcft.haml
+:markdown
 
-        # dt  = check_t_zero( dt )      	  
-        # dt.class == DateTime ? jd = dt.ajd : jd = dt   
+  ## Time Julian Century (deprecated)
+
+  Calculations are made with the Universal Time Coordinate or GMT of the current time.
+        
+  ```ruby
+
+   DateTime.now.to_time.utc.to_datetime = #{DateTime.now.to_time.utc.to_datetime}
+  ```     
+%br
+:markdown       
+  This method is not used anymore and the class name was changed to Eot also.  
+              
+  The Ruby Equation\_of\_Time#time\_julian\_century( ) method was:                   
+      
+  ```ruby    
+
+   def  time_julian_century( dt = DT2000 )
             
-        # An array of powers is returned to keep things dry or we
-        # would do this for every angle calculation.
-        t1 = ( jd - 2451545.0 ) / 36525.0
-        # t2  = t1 * t1
-        # t3  = t1 * t2
-        # t4  = t1 * t3
-        # t5  = t1 * t4
-        # t6  = t1 * t5
-        # t7  = t1 * t6
-        # t8  = t1 * t7
-        # t9  = t1 * t8
-        # t10 = t1 * t9
-        # [ t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 ] 
+     # DT2000 is a default DateTime for the J2000 epoch.
+     # The TT ( Terrestrial Time ) = January 1, 2000, 12:00 pm.
+            
+     # Julian Period Day Number J2000.0 is subtracted from the
+     # Julian Number we get from dt.jd or dt.ajd
+     # The J2000.0 epoch is precisely Julian date 2451545.0
+     # A check for nils and zeros is made which add defaults
+     # if there are any. (whiny nil?) 
+     # A default array of [0.0, 0.0, 0.0, 0.0, 0.0]
+     # would get returned.
+     # a check for DateTime is made and is possible to pass in
+     # a Julian Number also. If dt is not a Julian Number then
+     # we make one out of the dt class.
+      
+     dt  = check_t_zero( dt )      	  
+     dt.class == DateTime ? jd = dt.ajd : jd = dt   
+             
+     # An array of powers is returned to keep things dry or we
+     # would do this for every angle calculation.
+     t1 = ( jd - 2451545.0 ) / 36525.0
+     t2  = t1 * t1
+     t3  = t1 * t2
+     t4  = t1 * t3
+     t5  = t1 * t4
+     t6  = t1 * t5
+     t7  = t1 * t6
+     t8  = t1 * t7
+     t9  = t1 * t8
+     t10 = t1 * t9
+     [ t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 ] 
                
-        end          
+   end
+  ```          
+%br
+:markdown           
+  The t1 is being set in the Eot class constructor now as @ta and all the methods that received
+  this array as a parameter only need t1. We'll see some of them later but many of them are now
+  in C Ruby code. The @ta attribute is also set with ma\_ta\_set method now. See the gem at 
+  github.  No dates or times are needed as parameteres to initialize a new Eot object.
           
-           An @ta attribute is being set in the class constructor that is just the 
-        same as for t1 return used in the code above.
-        @ta and @ma are also set with ma_ta_set method now. See the gem at github.
-        No dates or times are needed as parameteres to create a new object.
-          
-           The datetime now displayed above was the parameter passed to this method.
-        We now use just ta = ( jd - 2451545.0 ) / 36525.0 after we convert the
-        datetime to an ajd in the initalize method of init.rb 
-          
-           The returned value:
-        #{"Eot.new.ta"} = #{Eot.new.ta}
-        is a number representing time as a fractional century.
+  The datetime now displayed above was the parameter passed to this method.
+  We now use just 
+  
+  ```ruby
+
+   @ta = ( @ajd - 2451545.0 ) / 36525.0 
+  ```
+%br
+:markdown       
+  after we convert the datetime to an ajd in the initalize method of init.rb Here's that code
+  
+  ```ruby
+
+   #{"def initialize"}
+     #{"d = DateTime.now.to_time.utc.to_datetime"}
+     #{"djm0, djm = cal2jd(d.year, d.month, d.day)"} # the first use of celes gem
+     #{"@ajd = djm0 + djm + d.day_fraction"}
+     #{"ma_ta_set"}
+     #{"@jd = djm0 + djm + 0.5"}
+     #{"@date = d.to_date"}
+     #{"@latitude,  @longitude = 0.0,  0.0"}
+   #{"end"}
+  ```
+%br
+:markdown       
+  The ma\_ta\_set method is
+  
+  ```ruby
+
+   #{"def ma_ta_set"}
+     #{"@t = jc(@ajd)"}
+     #{"@ma = falp03(@t)"} # another celes method
+   #{"end"}
+  ```
+%br
+:markdown       
+  The jc() method there is my own C extension method so it's in "gem-root"/ext/eot/eot.c and "gem-root"/
+  ext/eot/ceot.c as
+  
+  ```c
+
+   double jc(double ajd)
+   {
+     return (ajd - DJ00)/DJC;
+   }
+  ```
+%br
+:markdown       
+  I showed you that in Ruby code above because that's just what it used to be.
+  We used those magic numbers there as contants because they are standard or common to use in lots
+  of code like this.
+  
+  ```ruby
+
+   DJ00 = 2451545.0 # Julian Day Number for the year 2000 at 12:00 UTC
+   DJC  = 36525     # number of days in a century
+  ```
+%br
+:markdown                     
+  The returned value for a new object instance right now is:
+
+  ```ruby
+
+   #{"Eot.new.ta"} = #{Eot.new.ta}
+  ```
+%br
+:markdown   
+  is a number representing time as a fractional century or just t for most of the astronomical
+  algorithms.
         
-           We'll set the @solar.ajd to the time now.
-        #{"@solar = Eot.new"}
-        #{@solar = Eot.new}
-        #{"@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f"}
-        #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+  We'll get the @solar.ajd to the time now.
+  
+  ```ruby
+
+   #{"@solar = Eot.new"}
+   #{@solar = Eot.new}
+   #{"@solar.ajd"}
+   #{@solar.ajd}
+  ```
+%br
+:markdown       
+  But this isn't what we want. That's for getting suntimes.
+  We have to set it ourselves.
+  
+  ```ruby
+
+   #{"@solar = Eot.new"}
+   #{@solar = Eot.new}
+   #{"@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f"}
+   #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+  ```
+%br
+:markdown         
+  Now we'll just plug that into that @ta calculation.
+  
+  ```ruby
+
+   #{"@solar.ta = ( @solar.ajd - 2451545.0 ) / 36525.0"}
+   #{@solar.ta = ( @solar.ajd - 2451545.0 ) / 36525.0}
+   #{"@solar.ta = Eot.new.ta"}
+   #{@solar.ta = Eot.new.ta}
+  ```
+%br
+:markdown         
+  Why are they different?  
+  Remember the default for a new instance of the Eot class is for daily UTC noon (the jd of 12:00).
+  That confused me at first too. So I added a little method to help us out.
         
-           Now we'll just plug it into that @ta calculation.
-        #{"jcft = ( @solar.ajd - 2451545.0 ) / 36525.0"}
-        #{jcft = ( @solar.ajd - 2451545.0 ) / 36525.0}
-        
-           Why are they different? Remember the default for a new instance of the Eot class
-        is for daily UTC noon (the jd of 12:00)
-        
-          Up next are those four values in the beginning formula (see Tutorial link)
+  ```ruby
+
+   #{"def ajd_to_datetime(ajd)"}
+     #{"DateTime.jd(ajd + 0.5)"}
+   #{"end"}
+  ```
+%br
+:markdown       
+  That one is in the gem. Let's see what it does.
+  
+  ```ruby
+
+   #{"@solar.ajd_to_datetime(@solar.ajd)"}
+   #{@solar.ajd_to_datetime(@solar.ajd)}
+  ```
+%br
+:markdown   
+  Hey! That's the time we got at the top here, right? Close enough. Good! Now why didn't I just use DateTime.jd() 
+  without adding 0.5? I'll show you. But first let's get our ajd set for time now.
+  
+  ```ruby
+
+   #{"@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f"}
+   #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+   #{"DateTime.jd(@solar.ajd)"}
+   #{DateTime.jd(@solar.ajd)}
+  ```
+%br
+:markdown       
+  What? That's off by 12 hours. Is that the right time now?
+      
+  Up next are those four values in the beginning formula (see Tutorial link)
           
-          Note I plan on changing @ta to just @t to represent t like in so many
-        formuli that you'll probably see if you go look for these astronomical calculations
-        online. One good source is the IAU SOFA library. SOFA means Standards of Fundamental
-        Astronomy. The celes gem is based on these and is Ruby C extension code which I used
-        and learned so much about using C in Ruby with along with of course the Pragmatic book
-        Programming Ruby (Pick Ax book is free on line at http://ruby-doc.com/docs/ProgrammingRuby/
-          
-    %h3
-      %a{:href => "/mean"} Mean Anomaly
+  Note I plan on changing @ta to just @t to represent t like in so many
+  formuli that you'll probably see if you go look for these astronomical calculations
+  online. The gem that gets used here is version 4.1.8 but 4.1.9 will get changed. 
+  One good source is the IAU SOFA library. SOFA means Standards of Fundamental
+  Astronomy. The celes gem is based on these and is Ruby C extension code which I used
+  and learned so much about using C in Ruby along with of course the Pragmatic book
+  Programming Ruby (Pick Ax book is free on line at http://ruby-doc.com/docs/ProgrammingRuby/
+%hr          
+%h3
+  %a{:href => "/mean"} Mean Anomaly

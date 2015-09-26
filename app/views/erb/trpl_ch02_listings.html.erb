@@ -1,0 +1,826 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    
+<h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-2">CHAPTER 2</h2>
+
+<h3 id="the-structure-and-execution-of-ruby-programs">The Structure and Execution of Ruby Programs</h3>
+
+<h4 id="comments">2.1.1 Comments</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This entire line is a comment</span>
+x = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#This is a string</span><span style="color:#710">&quot;</span></span>               <span style="color:#777"># And this is a comment</span>
+y = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">#This is a regular expression</span><span style="color:#404">/</span></span>   <span style="color:#777"># Here's another comment</span>
+
+<span style="color:#777">#</span>
+<span style="color:#777"># This class represents a Complex number</span>
+<span style="color:#777"># Despite its name, it is not complex at all.</span>
+<span style="color:#777">#</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="embedded-documents">2.1.1.1 Embedded documents</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">=begin Someone needs to fix the broken code below!
+    &lt;emphasis&gt;Any code here is commented out&lt;/emphasis&gt;
+=end</span>
+---------------------------
+<span style="color:#777"># =begin This used to begin a comment. Now it is itself commented out!</span>
+    &lt;emphasis&gt;<span style="color:#036;font-weight:bold">The</span> code that goes here is no longer commented out&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">emphasis&gt;
+# =end
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="documentation-comments">2.1.1.2 Documentation comments</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>
+   Rdoc comments use a simple markup grammar like those used in wikis.
+ 
+   Separate paragraphs with a blank line.
+
+   Headings begin with an equals sign
+ 
+   = Headings
+</pre></div>
+</div>
+</div>
+
+<h1 id="headings">Headings</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>   == Sub-Headings
+</pre></div>
+</div>
+</div>
+
+<h2 id="sub-headings">Sub-Headings</h2>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    The line above produces a subheading.
+    === Sub-Sub-Heading
+</pre></div>
+</div>
+</div>
+
+<h3 id="sub-sub-heading">Sub-Sub-Heading</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    And so on.
+ 
+    = Examples
+</pre></div>
+</div>
+</div>
+
+<h1 id="examples">Examples</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre> 
+   Indented lines are displayed verbatim in code font.
+     Be careful not to indent your headings and lists, though.
+ 
+   = Lists and Fonts
+</pre></div>
+</div>
+</div>
+
+<h1 id="lists-and-fonts">Lists and Fonts</h1>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    List items begin with * or -. Indicate fonts with punctuation or HTML:
+    * _italic_ or &lt;i&gt;multi-word italic&lt;/i&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><em>italic</em> or <i>multi-word italic</i></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    * *bold* or &lt;b&gt;multi-word bold&lt;/b&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><strong>bold</strong> or <b>multi-word bold</b></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    * +code+ or &lt;tt&gt;multi-word code&lt;/tt&gt;
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li><code>code</code> or <tt>multi-word code</tt></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    1. Numbered lists begin with numbers.
+    99. Any number will do; they don't have to be sequential.
+    1. There is no way to do nested lists.
+</pre></div>
+</div>
+</div>
+
+<ol>
+  <li>Numbered lists begin with numbers.</li>
+  <li>Any number will do; they don’t have to be sequential.</li>
+  <li>There is no way to do nested lists.</li>
+</ol>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    The terms of a description list are bracketed:
+
+    [item 1]  This is a description of item 1
+    [item 2]  This is a description of item 2
+</pre></div>
+</div>
+</div>
+<dl>
+  <dt><strong>item 1</strong></dt>
+  <dd>This is a description of item 1</dd>
+  <dt><strong>item 2</strong></dt>
+  <dd>This is a description of item 2</dd>
+</dl>
+
+<h4 id="literals">2.1.2 Literals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">1</span>                      <span style="color:#777"># An integer literal</span>
+<span style="color:#60E">1.0</span>                    <span style="color:#777"># A floating-point literal</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">one</span><span style="color:#710">'</span></span>                  <span style="color:#777"># A string literal</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>                  <span style="color:#777"># Another string literal</span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">three</span><span style="color:#404">/</span></span>                <span style="color:#777"># A regular expression literal</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="identifiers">2.1.4 Identifiers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>i
+x2
+old_value
+_internal    <span style="color:#777"># Identifiers may begin with underscores</span>
+<span style="color:#036;font-weight:bold">PI</span>           <span style="color:#777"># Constant</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="unicode-characters-in-identifiers">2.1.4.2 Unicode characters in identifiers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&amp;</span><span style="color:#777">#xD7;(x,y)  # The name of this method is the Unicode multiplication sign</span>
+  x*y       <span style="color:#777"># The body of this method multiplies its arguments</span>
+<span style="color:#080;font-weight:bold">end</span>         
+</pre></div>
+</div>
+</div>
+
+<h4 id="punctuation-in-identifiers">2.1.4.3 Punctuation in identifiers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#d70">$files</span>          <span style="color:#777"># A global variable</span>
+<span style="color:#33B">@data</span>           <span style="color:#777"># An instance variable</span>
+<span style="color:#369">@@counter</span>       <span style="color:#777"># A class variable</span>
+empty?          <span style="color:#777"># A Boolean-valued method or predicate</span>
+sort!           <span style="color:#777"># An in-place alternative to the regular sort method</span>
+timeout=        <span style="color:#777"># A method invoked by assignment</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="keywords">2.1.5 Keywords</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>__LINE__      case         ensure       not          then
+
+__ENCODING__  class        false        or           true
+
+__FILE__      def          for          redo         undef
+
+BEGIN         defined?     if           rescue       unless
+
+END           do           in           retry        until
+
+alias         else         module       return       when
+
+and           elsif        next         self         while
+
+begin         end          nil          super        yield
+
+break
+
+
+=begin    =end      __END__
+
+
+# These are methods that appear to be statements or keywords
+
+at_exit        catch          private        require
+
+attr           include        proc           throw
+
+attr_accessor  lambda         protected
+
+attr_reader    load           public
+
+attr_writer    loop           raise
+
+
+# These are commonly used global functions
+
+Array          chomp!         gsub!          select
+
+Float          chop           iterator?      sleep
+
+Integer        chop!          load           split
+
+String         eval           open           sprintf
+
+URI            exec           p              srand
+
+abort          exit           print          sub
+
+autoload       exit!          printf         sub!
+
+autoload?      fail           putc           syscall
+
+binding        fork           puts           system
+
+block_given?   format         rand           test
+
+callcc         getc           readline       trap
+
+caller         gets           readlines      warn
+
+chomp          gsub           scan
+
+
+# These are commonly used object methods
+
+allocate       freeze         kind_of?       superclass
+
+clone          frozen?        method         taint
+
+display        hash           methods        tainted?
+
+dup            id             new            to_a
+
+enum_for       inherited      nil?           to_enum
+
+eql?           inspect        object_id      to_s
+
+equal?         instance_of?   respond_to?    untaint
+
+extend         is_a?          send           
+</pre></div>
+</div>
+</div>
+
+<h4 id="newlines-as-statement-terminators">2.1.6.1 Newlines as statement terminators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>total = x +     <span style="color:#777"># Incomplete expression, parsing continues</span>
+  y
+
+total = x  <span style="color:#777"># This is a complete expression</span>
+  + y      <span style="color:#777"># A useless but complete expression</span>
+
+var total = first_long_variable_name + second_long_variable_name \
+  + third_long_variable_name <span style="color:#777"># Note no statement terminator above</span>
+
+animals = <span style="color:#036;font-weight:bold">Array</span>.new
+  .push(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dog</span><span style="color:#710">&quot;</span></span>)   <span style="color:#777"># Does not work in Ruby 1.8</span>
+  .push(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cow</span><span style="color:#710">&quot;</span></span>)
+  .push(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cat</span><span style="color:#710">&quot;</span></span>)
+  .sort
+</pre></div>
+</div>
+</div>
+
+<h4 id="spaces-and-method-invocations">2.1.6.2 Spaces and method invocations</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>f(<span style="color:#00D">3</span>+<span style="color:#00D">2</span>)+<span style="color:#00D">1</span>
+f (<span style="color:#00D">3</span>+<span style="color:#00D">2</span>)+<span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="syntactic-structure">2.2 Syntactic Structure</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]                <span style="color:#777"># An Array literal</span>
+{<span style="color:#00D">1</span>=&gt;<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">2</span>=&gt;<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>}   <span style="color:#777"># A Hash literal</span>
+<span style="color:#00D">1</span>..<span style="color:#00D">3</span>                   <span style="color:#777"># A Range literal</span>
+
+<span style="color:#00D">1</span>         <span style="color:#777"># A primary expression</span>
+x         <span style="color:#777"># Another primary expression</span>
+x = <span style="color:#00D">1</span>     <span style="color:#777"># An assignment expression</span>
+x = x + <span style="color:#00D">1</span> <span style="color:#777"># An expression with two operators</span>
+
+<span style="color:#080;font-weight:bold">if</span> x &lt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">then</span>   <span style="color:#777"># If this expression is true</span>
+  x = x + <span style="color:#00D">1</span>      <span style="color:#777"># Then execute this statement</span>
+<span style="color:#080;font-weight:bold">end</span>              <span style="color:#777"># Marks the end of the conditional</span>
+
+<span style="color:#080;font-weight:bold">while</span> x &lt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">do</span>  <span style="color:#777"># While this expression is true...</span>
+  print x        <span style="color:#777"># Execute this statement</span>
+  x = x + <span style="color:#00D">1</span>      <span style="color:#777"># Then execute this statement</span>
+<span style="color:#080;font-weight:bold">end</span>              <span style="color:#777"># Marks the end of the loop</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="block-structure-in-ruby">2.2.1 Block Structure in Ruby</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">3</span>.times { print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby! </span><span style="color:#710">&quot;</span></span> }
+
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) <span style="color:#080;font-weight:bold">do</span> |x|
+  print x
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Stats</span>                          <span style="color:#777"># A module</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Dataset</span>                       <span style="color:#777"># A class in the module</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(filename)          <span style="color:#777"># A method in the class</span>
+      <span style="color:#036;font-weight:bold">IO</span>.foreach(filename) <span style="color:#080;font-weight:bold">do</span> |line|  <span style="color:#777"># A block in the method</span>
+        <span style="color:#080;font-weight:bold">if</span> line[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>           <span style="color:#777"># An if statement in the block</span>
+          <span style="color:#080;font-weight:bold">next</span>                        <span style="color:#777"># A simple statement in the if</span>
+        <span style="color:#080;font-weight:bold">end</span>                           <span style="color:#777"># End the if body</span>
+      <span style="color:#080;font-weight:bold">end</span>                             <span style="color:#777"># End the block</span>
+    <span style="color:#080;font-weight:bold">end</span>                               <span style="color:#777"># End the method body</span>
+  <span style="color:#080;font-weight:bold">end</span>                                 <span style="color:#777"># End the class body</span>
+<span style="color:#080;font-weight:bold">end</span>                                   <span style="color:#777"># End the module body</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="file-structure">2.3 File Structure</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>#!/usr/bin/ruby -w          &lt;lineannotation&gt;shebang comment&lt;/lineannotation&gt;
+# -*- coding: utf-8 -*-     &lt;lineannotation&gt;coding comment&lt;/lineannotation&gt;
+require 'socket'            &lt;lineannotation&gt;load networking library&lt;/lineannotation&gt;
+
+  ...                       &lt;lineannotation&gt;program code goes here&lt;/lineannotation&gt;
+
+__END__                     &lt;lineannotation&gt;mark end of code&lt;/lineannotation&gt;
+  ...                       &lt;lineannotation&gt;program data goes here&lt;/lineannotation&gt;
+</pre></div>
+</div>
+</div>
+
+<h4 id="specifying-program-encoding">2.4.1 Specifying Program Encoding</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre># coding: utf-8
+
+# -*- coding: utf-8 -*-
+
+# vi: set fileencoding=utf-8 :
+
+#!/usr/bin/ruby -w
+# coding: utf-8
+</pre></div>
+</div>
+</div>
+
+<h4 id="source-encoding-and-default-external-encoding">2.4.2 Source Encoding and Default External Encoding</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby -E utf-8            # Encoding name follows -E
+ruby -Eutf-8             # The space is optional
+ruby --encoding utf-8    # Encoding following --encoding with a space
+ruby --encoding=utf-8    # Or use an equals sign with --encoding
+
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

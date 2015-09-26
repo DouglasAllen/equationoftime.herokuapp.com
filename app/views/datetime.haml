@@ -1,135 +1,217 @@
-%body
-- if @solar
-  %h1 Julian Numbers and DateTime
-  %h3
-    %pre
-      :preserve
-          Astronomers sometimes use Julian Period Day Numbers for logging of their        
-        astronomical observations. The time reference we need starts at midnight UTC
-        for the day but "Julian Day Numbers" begin at noon or 12:00 considering a 24
-        hour day. There is only a half day difference for what is termed 
-        "The Astronomical Julian Day Number" and it is the Julian Day Number with 1/2
-        or 0.5 day(12 hours fractional day) subtracted.
-        
-        #{"ajd = jd - 0.5"}
-        #{"Date.today.jd.to_f = "}#{Date.today.jd.to_f}
-        #{"Date.today.jd.to_f - 0.5 = "}#{Date.today.jd.to_f - 0.5}
-        #{"Date.today.ajd.to_f = "}#{Date.today.ajd.to_f}            
-            
-          Midnight is where we normally start counting hours for any day and it 
-        just happens to be 12 hours from the International Date Line where we 
-        start counting days globally. Time is referenced from the Greenwhich Prime 
-        Meridian established in Greenwich, England in the late 1800s. We wind up 
-        adding on the current time to this ajd as a fraction of the day to get a 
-        correct Julian Period Day Number for the time period of interest.        
- 
-          The calculated terms used for this Ruby back-end site are done with 
-        "Universal Time Coordinate" (UTC) of the current server time.
+%title equationoftime.herokuapp.com/datetime.haml
+:markdown
 
-         In Ruby we can use the Date class and many of the methods or functions
-        from this class. One method used here is Date.jd( ) which gives us a 
-        Julian Day Number. We can set the jd attribute for Equation_of_Time class
-        using an instance method of the class defined as say eot_instance.
-        Hence eot_instance.jd=( ) is the method we can use to set it.
-        This is just a convenience method for setting the jd attribute and allows
-        us to keep it handy for all the calculations that this gem will use to
-        find the equation of time and rise and set sun times. 
-        Use the Date.jd() or DateTime.jd() to find it first.
-        (Note:) You will not need to do this if you let Eot default to today.
-         
-          DateTime is a class included in the Ruby Standard Library Date class. 
-        It can be used like the Time class to find the current time  
-        ( time = Time.now ) but you will have to require 'date' lib first.           
-   
-        #{"require 'date'"}
-         
-        #{"DateTime.now = "}#{DateTime.now}                
+  ## Julian Numbers and DateTime
+
+  &nbsp;&nbsp;&nbsp; Astronomers sometimes use Julian Period Day Numbers for logging of their astronomical
+  observations. The time reference we need starts at midnight UTC
+  for the day but "Julian Day Numbers" begin at noon or 12:00 considering a 24
+  hour day. There is only a half day difference for what is termed 
+  "The Astronomical Julian Day Number" and it is the Julian Day Number with 1/2
+  or 0.5 day(12 hours fractional day) subtracted. 
            
-        Note: If you do this on your system it will be in local time.
+  ```ruby
 
-          To ensure that we get time in UTC there are further methods available.            
-        Let's convert it to a Time class with the to_time() method as shown.
-            
-        #{"DateTime.now.class = "}#{DateTime.now.class}
-        #{"DateTime.now.to_time = "}#{DateTime.now.to_time}
-        #{"DateTime.now.to_time.class = "}#{DateTime.now.to_time.class}
-        
-        Note: it is still in local time or the time on the server.
-              But doesn't it look nicer now with whitespace?
+   #{"ajd = jd - 0.5"}
+   #{"Date.today.jd.to_f = "}#{Date.today.jd.to_f}
+   #{"Date.today.jd.to_f - 0.5 = "}#{Date.today.jd.to_f - 0.5}
+   #{"Date.today.ajd.to_f = "}#{Date.today.ajd.to_f}
+  ```              
+%br
+:markdown            
+  &nbsp;&nbsp;&nbsp; Midnight is where we normally start counting 'Hours' for any day and it 
+  just happens to be 12 hours from the International Date Line where we 
+  start counting 'Days' globally. 'Time' is referenced from the Prime Meridian established at
+  Greenwich, England in the late 1800s. So adding on the current time to this ajd as a fraction 
+  of the day will give us the correct Julian Period Day Number for any 'Time' period of interest.
+  Then all the angle calculations will be correct for the time you want them at.        
+  
+  &nbsp;&nbsp;&nbsp; The calculated terms used for this Ruby back-end site are done with 
+  "Universal Time Coordinate" (UTC) of the current server time.
+  
+  &nbsp;&nbsp;&nbsp; In Ruby we can use the Date class and many of the methods or functions
+  from this class. One method used here is Date.jd( ) which gives us a 
+  Julian Day Number. We can set the jd attribute for Eot class
+  using an instance method of the class defined as say eot or @solar as I have used for this site.
+  Hence eot.jd=( ) is the method we can use to set the 'JD' inside the Eot class.
+  This is just a convenience method for setting the @jd attribute and allows
+  us to keep it handy for all the calculations that this gem will use to
+  find the equation of time and rise and set sun times. 
+  Use the Date.jd() or DateTime.jd() to find it first.
+  (Note:) You will not need to do this if you let Eot default to today which happens on any 'new' instance ie.
+  Eot.new
          
-          Let's make sure we have a time in UTC with utc() method.
+  &nbsp;&nbsp;&nbsp; DateTime is a class included in the Ruby Standard Library Date class. 
+  It can be used like the Time class to find the current time  
+  ( time = Time.now ) but you will have to require 'date' lib first.           
+   
+   
+  ```ruby
+   
+   #{"require 'date'"}
+         
+   #{"DateTime.now = "}#{DateTime.now}                
+  ```
+%br
+:markdown          
+  Note: If you do this on your system it will be in local time.
+
+  &nbsp;&nbsp;&nbsp; To ensure that we get time in UTC there are further methods available.            
+  Let's convert it to a Time class with the to_time() method as shown.
             
-        #{"DateTime.now.to_time.utc = "}#{DateTime.now.to_time.utc}
-                             
-          Do you see any difference? If the server is set at UTC it will have 00:00
-        on the end for local time. Universal time will show UTC on the end for it.
+  ```ruby
+   
+   #{"DateTime.now.class = "}#{DateTime.now.class}
+   #{"DateTime.now.to_time = "}#{DateTime.now.to_time}
+   #{"DateTime.now.to_time.class = "}#{DateTime.now.to_time.class}
+  ```
+%br
+:markdown       
+  Note: it is still in local time or the time on the server.
+  But doesn't it look nicer now with whitespace?
+         
+  &nbsp;&nbsp;&nbsp; Let's make sure we have a time in UTC with utc() method.
             
-        time = #{DateTime.now.to_time.utc}
+  ```ruby
+   
+   #{"DateTime.now.to_time.utc = "}#{DateTime.now.to_time.utc}
+  ```
+%br
+:markdown                            
+  Do you see any difference? If the server is set at UTC it will have 00:00
+  on the end for local time. Universal time will show UTC on the end for it.
+            
+  ```ruby
+   
+   time = #{DateTime.now.to_time.utc}
+  ```
+%br
+:markdown       
+  &nbsp;&nbsp;&nbsp; This is a Time class showing the real server time.
+  Let's just see if we can get a valid Astronomical Julian Day Number with 
+  the time as a day fraction to add on to the ajd.
+  We'll get the fraction first by dividing the time by 24.0.
+  But wait! Ruby will do that for us so let's just chain in some more methods. 
+            
+  &nbsp;&nbsp;&nbsp; We'll use the ajd() method from the DateTime class.
+  But first we have to convert it back to a DateTime or Date class.
+            
+  ```ruby
+   
+   #{"DateTime.now.to_time.utc.to_datetime.class = "}#{DateTime.now.to_time.utc.to_datetime.class}
+   #{"DateTime.now.to_time.utc.to_date.class = "}#{DateTime.now.to_time.utc.to_date.class}             
+           
+   #{"DateTime.now.to_time.utc.to_datetime.ajd = "}#{DateTime.now.to_time.utc.to_datetime.ajd} 
+   #{"DateTime.now.to_time.utc.to_date.ajd = "}#{DateTime.now.to_time.utc.to_date.ajd}
+  ```
+%br
+:markdown             
+  &nbsp;&nbsp;&nbsp; But wait! Why are these two results different? Well it is simply that the Date class
+  is only for the date and so we need DateTime class if we wish to include the time also.         
       
-          This is a Time class showing the real server time.
-        Let's just see if we can get a valid Astronomical Julian Day Number with 
-        the time as a day fraction to add on to the ajd.
-        We'll get the fraction first by dividing the time by 24.0.
-        But wait! Ruby will do that for us so let's just chain in some more methods. 
-            
-          We'll use the ajd() method from the DateTime class.
-        But first we have to convert it back to a DateTime or Date class.
-            
-        #{"DateTime.now.to_time.utc.to_datetime.class = "}#{DateTime.now.to_time.utc.to_datetime.class}
-        #{"DateTime.now.to_time.utc.to_date.class = "}#{DateTime.now.to_time.utc.to_date.class}             
-            
-        #{"DateTime.now.to_time.utc.to_datetime.ajd = "}#{DateTime.now.to_time.utc.to_datetime.ajd} 
-        #{"DateTime.now.to_time.utc.to_date.ajd = "}#{DateTime.now.to_time.utc.to_date.ajd}
-            
-          But wait! Why are these two results different? Well it is simply that the Date class
-        is only for the date and so we need DateTime class if we wish to include the time also.         
-      
-          It looks like we got some fractions though. These results are in the Rational class.
+  &nbsp;&nbsp;&nbsp; It looks like we got some fractions though. These results are in the Rational class.
               
-        #{"DateTime.now.to_time.utc.to_datetime.ajd.class = "}#{DateTime.now.to_time.utc.to_datetime.ajd.class} 
-              
-          Let's fix this by making it a Float class.
+  ```ruby
+   
+   #{"DateTime.now.to_time.utc.to_datetime.ajd.class = "}#{DateTime.now.to_time.utc.to_datetime.ajd.class} 
+  ```
+%br
+:markdown               
+  &nbsp;&nbsp;&nbsp; Let's fix this by making it a Float class.
             
-        #{"DateTime.now.to_time.utc.to_datetime.ajd.to_f.class = "}#{DateTime.now.to_time.utc.to_datetime.ajd.to_f.class}          
-      
-          (Note:) That was just to prove it. We want the value in a Float and then
-        we'll quit chaining on so many methods.
+  ```ruby
+   
+   #{"DateTime.now.to_time.utc.to_datetime.ajd.to_f.class = "}#{DateTime.now.to_time.utc.to_datetime.ajd.to_f.class}          
+  ```
+%br
+:markdown       
+  (Note:) That was just to prove it. We want the value in a Float and then
+  we'll quit chaining on so many methods.
             
-        #{"DateTime.now.to_time.utc.to_datetime.ajd.to_f = "}#{DateTime.now.to_time.utc.to_datetime.ajd.to_f}
-             
-           Hurray! We have a fraction in decimal now and is the day fraction portion 
-        which is the current time divided by 24.0 added to 
-        "The Astronomical Julian Day Number".
+  ```ruby
+ 
+   #{"DateTime.now.to_time.utc.to_datetime.ajd.to_f = "}#{DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+  ```
+%br
+:markdown              
+  &nbsp;&nbsp;&nbsp;  Hurray! We have a fraction in decimal now and is the day fraction portion 
+  which is the current time divided by 24.0 added to "The Astronomical Julian Day Number".
+  Remember that? 
+  
+  DateTime class also gives us a method to find the day fraction ie. DateTime.day_fraction
+  
+  ```ruby
+  
+   #{"Date.today.ajd.to_f = "}#{Date.today.ajd.to_f}
+   #{"DateTime.now.day_fraction.to_f = "}#{DateTime.now.to_time.utc.to_datetime.day_fraction.to_f}
+   #{Date.today.ajd.to_f} + #{DateTime.now.to_time.utc.to_datetime.day_fraction.to_f}
+  ```
+%br
+:markdown       
+  But those day fractions don't match. Well the faster the machine the closer they will be but it takes time to find them.    
             
-           Now let's save it in an instance of the Eot class as the ajd attribute. 
-        I used @solar = Eot.new as an Object instance for this site. We used UTC time 
-        for the date because it keeps it consistant when UTC could change over to the 
-        next day or vice versa if you're in a different time zone. 
-        But that is just how you should use this Ruby gem and is what I made sure 
-        was done for this site.
+  &nbsp;&nbsp;&nbsp;  Now let's save it in an instance of the Eot class as the @ajd attribute. 
+  I used @solar = Eot.new as an Object instance for this site. We used UTC time 
+  for the date because it keeps it consistant when UTC could change over to the 
+  next day or vice versa if you're in a different time zone. 
+  But that is just how you should use this Ruby gem and is what I made sure 
+  was done for this site.
             
-           Finally set the Eot class attribute with the ajd=( ) method.
-              
-        #{"@solar = Eot.new "}  this is an Object id number #{@solar = Eot.new} Refresh the page. It 
-        should change along with all the times if you needed an update.
-            
-        #{"@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f"} from this page's Ruby:
-        #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+  &nbsp;&nbsp;&nbsp; Finally set the Eot class attribute with the ajd=( ) method.
         
-        #{"Eot.new.ajd"} from the gem's Ruby:
-        #{Eot.new.ajd} 
-          Note that no time is added here because a default is set for noon so that
-        we may get suntimes for today right away. Remember we only need EoT for this purpose.
-        But there is a method we may use to get it for the current time.
+  ```ruby     
+  
+   #{"@solar = Eot.new "} 
+  ```
+%br
+:markdown         
+  this is an Object id number 
+  
+  ```ruby
+  
+   #{@solar = Eot.new} 
+  ```
+%br
+:markdown         
+  Refresh the page and it 
+  should change along with all the times if you needed an update.
+            
+  ```ruby
+  
+   #{"@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f"} from this page's Ruby:
+   #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
         
-        #{"@solar.now"}
-        #{@solar.now}
-          This is EoT in decimal minutes.
-        It is used if we want to calculate all the angles for the current time. I'll explain
-        all these angle calculations in the next pages.
+   #{"Eot.new.ajd"} # from the eot gem's Ruby:
+   #{Eot.new.ajd}
+  ```
+
+%br
+:markdown          
+  &nbsp;&nbsp;&nbsp; Note that no time is added here because a default is set for noon so that
+  we may get suntimes for today right away. Remember we only need Eot for this purpose.
+  But there is a method we may use to get it for the current time.
         
-          For now just keep in mind what our goals are for using this gem. We either want to 
-        set the DateTime for exactly now or the Local Mean Solar Transit. (see Tutorial link) 
-        
-  %h3
-    %a{:href => "/jcft"} Julian Century Fractional Time
+  ```ruby
+  
+   #{"@solar.now"}
+   #{@solar.now}
+  ```
+%br
+:markdown         
+  &nbsp;&nbsp;&nbsp; This is Eot in decimal minutes.
+  It is used if we want to calculate all the angles for the current time. I'll explain
+  all these angle calculations in the next pages. There is a method to show Eot in time format too.
+  
+  ```ruby
+  
+   #{"@solar.string_eot"}
+   #{@solar.string_eot}
+  ```
+%br
+:markdown         
+  &nbsp;&nbsp;&nbsp; For now just keep in mind what our goals are for using this gem. We either want to 
+  set the DateTime for exactly now or the Local Mean Solar Transit. (see Tutorial link) 
+
+%hr
+%h3
+  %a{:href => "/jcft"} Julian Century Fractional Time

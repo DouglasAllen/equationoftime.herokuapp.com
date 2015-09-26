@@ -1,70 +1,129 @@
-%html
-  %head
-    %title suntimes
-    %link{ :rel  => 'stylesheet',
-           :type => 'text/css', 
-           :href => '/stylesheets/eot.css' }
-  %body
-    %h1 Sun Times
-    %h3
-      %pre
-        :preserve
-            This uses equation of time gem and Google Geocoding API.
-          If you have Ruby installed then install the gem if you like.
+- @geo            = GeoLatLng.new
+- @solar          = Eot.new
+%title equationoftime.herokuapp.com/mysuntimes.haml
+:markdown
+  ## Sun Times
+  
+  &nbsp;&nbsp;&nbsp;This uses equation of time gem and Google Geocoding API.
+  If you have Ruby installed then install the gem if you like.
             
-          cmd prompt> gem install equation_of_time
+       gem install equation_of_time
       
-          Or clone it from here      
-          https://github.com/DouglasAllen/equation_of_time
+%br
+:markdown  
+  Or clone it from here      
+  https://github.com/DouglasAllen/equation_of_time
           
-          cmd prompt> git clone git@github.com:DouglasAllen/equation_of_time.git
+       git clone git@github.com:DouglasAllen/equation_of_time.git
     
-            The default date is today. Time Zone is not used here. 
-          All time results will be in UTC time.
-          The default Sunrise and Sunset are from Latitude and Longitude of the
-          Royal Observatory, Greenwich, England.
-          Make your entries as precise as possible using comma separated parts 
-          or you may experience errors.
+%br
+:markdown  
+  &nbsp;&nbsp;&nbsp; The default date is today. Time Zone is not used here. 
+  All time results will be in UTC time.
+  The default Sunrise and Sunset are from Latitude and Longitude of the
+  Royal Observatory, Greenwich, England.
+  Make your entries as precise as possible using comma separated parts 
+  or you may experience errors.
           
-          EX: 1600 Amphitheatre Parkway, Mountain View, CA
+  EX: 1600 Amphitheatre Parkway, Mountain View, CA
           
-          But you don't need any caps.            
-          
-    - if @solar
-          
-      %form{"accept-charset" => "utf-8", :action => "/mysuntimes", :method => "post"}
-        %p
-          %b Enter an address
-          %br/           
-          %input{:style => "font-weight: bold; width :850px; color: #00a", :name => "address", :type => "text", :value => "#{@geo.addr}"}/           
-        %p
-          %input{:type => "submit", :value => "calculate"}/
-        %p
-          %b 
-          %br/
-          %input{:style => "font-weight: bold; color: #00a", :name => "latitude", :type => "text", :value => "  #{@solar.latitude}"} Resulting Latitude : ( minus if south )          
-        %p
-          %b 
-          %br/
-          %input{:style => "font-weight: bold; color: #00a", :name => "longitude", :type => "text", :value => "  #{@solar.longitude}"}Resulting Longitude : ( minus if west )            
-        %p
-          %b 
-          %br/
-          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunrise", :size => "24", :type => "text", :value => "   #{@solar.sunrise_dt().to_time.httpdate}"}Resulting Sunrise
-        %p
-          %b 
-          %br/
-          %input{:style => "font-weight: bold; width :240px; color: #00a", :name => "sunset", :size => "24", :type => "text", :value => "   #{@solar.sunset_dt().to_time.httpdate}"}Resulting Sunset
-    %h3      
-      %pre
-        :preserve
-        
-          Compare these results with a well known web calculator.
-          http://www.esrl.noaa.gov/gmd/grad/solcalc/
-          and
-          http://www.esrl.noaa.gov/gmd/grad/solcalc/sunrise.html
+  But you don't need any caps.
 
-          Those are all done in Javascript but this site is pure Ruby.
-          https://www.ruby-lang.org/en/          
-    %h5
-      %a{:href => "/links"} External Links
+  # Oops! Sorry! The controller and helper is under development.
+
+  In the mean time if you know Ruby then check out the Examples link.
+
+  There is a new Eot class object here though and a new GeoLatLng too.
+
+  ```ruby
+
+   #{@solar}
+   #{@geo}
+  ```
+  &nbsp;&nbsp;&nbsp; You get this with the gem. It's just the form below isn't hooked up yet
+  because of so many changes to this web app. But we can show you some Ruby code now.
+
+  ```ruby
+
+   @geo            = GeoLatLng.new
+   @solar          = Eot.new
+  ```
+%br
+:markdown 
+  &nbsp;&nbsp;&nbsp;  All you need to do is supply a valid address string.
+
+  ```ruby
+
+   @geo.addr = "Blackheath Ave, London SE10 8XJ, UK"
+   #{@geo.addr = "Blackheath Ave, London SE10 8XJ, UK"}
+  ```
+
+%br
+:markdown  
+  &nbsp;&nbsp;&nbsp;Then you activate it by using the set_coordinates method.
+
+  ```ruby
+
+   @geo.set_coordinates  = #{@geo.set_coordinates}
+   # your getting the longitude from this because it was the last term evaluated in this lookup method.
+   # view them with @geo.lat and @geo.lng
+   @geo.lat = #{@geo.lat}
+   @geo.lng = #{@geo.lng}
+  ```
+
+%br
+:markdown  
+  &nbsp;&nbsp;&nbsp; Then you just plug those in to an instance of Eot latitude and longitude
+  along with the date if you don't want just today's date that is the default. I showed how to
+  set it in the tutorial and it's in the documentation for the gem.
+ 
+  http://www.rubydoc.info/gems/equationoftime/4.1.8/
+          
+  Again just look at the Examples link in the menu. The form used to work but that was a classic
+  style Sinatra app and now I have gone to modular with controllers and helpers. During the rewrite
+  of all these web pages I just used the haml and some markdown to give you Ruby code. So I'm not
+  going to try to impress you with my web skills anymore. :-D
+  And besides there is a daily quota on the Google lookup service. But you should get the idea here
+  by just looking at the form below. See the disclaimer above.
+%br   
+                    
+  %form{"accept-charset" => "utf-8", :action => "/mysuntimes", :method => "post"}
+  %p
+  %b Enter an address
+  %br           
+  %input{:style => "font-weight: bold; color: #00a", :name => "address", :type => "text", :value => "#{@geo.addr}"}           
+  %p
+  %input{:type => "submit", :value => "calculate"}
+  %p
+  %b 
+  %br
+  %input{:style => "font-weight: bold; color: #00a", :name => "latitude", :type => "text", :value => " #{@solar.latitude}"} Resulting Latitude : ( minus if south )          
+  %p
+  %b 
+  %br
+  %input{:style => "font-weight: bold; color: #00a", :name => "longitude", :type => "text", :value => " #{@solar.longitude}"}Resulting Longitude : ( minus if west )            
+  %p
+  %b 
+  %br
+  %input{:style => "font-weight: bold; color: #00a", :name => "sunrise", :type => "text", :value => " #{@solar.sunrise_dt().to_time.httpdate}"}Resulting Sunrise
+  %p
+  %b 
+  %br
+  %input{:style => "font-weight: bold; color: #00a", :name => "sunset", :type => "text", :value => " #{@solar.sunset_dt().to_time.httpdate}"}Resulting Sunset
+%p
+
+%br
+:markdown  
+  Compare these results with a well known web calculator.
+  http://www.esrl.noaa.gov/gmd/grad/solcalc/
+  and
+  http://www.esrl.noaa.gov/gmd/grad/solcalc/sunrise.html
+
+  Those are all done in Javascript but this site is pure Ruby. Well except for one page
+  that I tucked away in here. /sider
+
+  https://www.ruby-lang.org/en/
+
+%hr          
+%h3
+  %a{:href => "/links"} External Links

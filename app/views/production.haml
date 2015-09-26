@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title JRuby sinatra sample app running on Shelly Cloud
+    %link{href: "bootstrap.min.css", rel: "stylesheet", media: "screen"}
+  %body
+    .container
+      .page-header
+        %h1 Congratulations, you're on Shelly Cloud!
+
+      %h2 1. Test it
+      %p.lead
+        %pre= "ab -c 16 -n 1000 #{request.url}"
+        Puma web server easily handles up to 16 concurrent connections.
+
+      %h2 2. Develop it
+      %p.lead
+        Good place to start is
+        %a{href: 'http://www.sinatrarb.com/intro.html'} Sinatra documentation.
+
+      %h2 3. Scale it
+      %p.lead
+        Simply
+        %a{href: 'https://shellycloud.com/documentation/cloudfile'} add servers to Cloudfile
+        when needed and git push to reconfigure your cloud.
+
+      %h2 4. Monitor it
+      %p.lead
+        Visit
+        %a{href: "https://shellycloud.com/dashboard"} Shelly Cloud dashboard
+        to check your application status and cost. New users get enough credit to use a small server for a month for free.

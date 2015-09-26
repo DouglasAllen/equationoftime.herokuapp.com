@@ -1,0 +1,25 @@
+    %div.ul
+      %div.li
+        %a{ :href => '/', :target => '_blank', :class => 'button success'} Home
+      %div.li
+        %a{ :href => '/tutorial', :target => '_blank', :class => 'button success'  } Tutorial
+      %li
+        %a{ :href => '/graph', :TARGET => '_blank', :class => 'button success' } Graph
+      %li        
+        %a{ :href => '/analemma', :target => '_blank', :class => 'button success' } Data
+      %li 
+        %a{ :href => '/eot', :target => '_blank', :class => 'button success'  } EOT Now
+      %li
+        %a{ :href => '/md', :TARGET => '_blank', :class => 'button success' } Markdown
+      %li
+        %a{ :href => '/rdoc', :TARGET => '_blank', :class => 'button success' } Rdoc
+      %li
+        %a{ :href => '/gm', :TARGET => '_blank', :class => 'button success' } Museum
+      %li
+        %a{ :href => '/links', :target => '_blank', :class => 'button success'  } Links
+      %li       
+        %a{ :href => 'http://douglasallen.github.io/gh-pages/aboutme2/', :target => '_blank', :class => 'button success'  } About me
+      %li
+        %a{ :href => 'https://rubygems.org/gems/equationoftime/', :target => '_blank', :class => 'button success'  } EOT gem
+      %li
+        %a{ :href => '/examples', :target => '_blank', :class => 'button success'  } Examples

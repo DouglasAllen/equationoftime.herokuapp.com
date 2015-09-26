@@ -1,0 +1,902 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-4">CHAPTER 4</h2>
+
+<h3 id="expressions-and-operators">Expressions and Operators</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">2</span>                  <span style="color:#777"># A numeric literal</span>
+x                  <span style="color:#777"># A local variable reference</span>
+<span style="color:#036;font-weight:bold">Math</span>.sqrt(<span style="color:#00D">2</span>)       <span style="color:#777"># A method invocation</span>
+x = <span style="color:#036;font-weight:bold">Math</span>.sqrt(<span style="color:#00D">2</span>)   <span style="color:#777"># Assignment</span>
+x*x                <span style="color:#777"># Multiplication with the * operator</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="variable-references">4.2 Variable References</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>one = <span style="color:#60E">1.0</span>     <span style="color:#777"># This is an assignment expression</span>
+one           <span style="color:#777"># This variable reference expression evaluates to 1.0</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="uninitialized-variables">4.2.1 Uninitialized Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = <span style="color:#60E">0.0</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">false</span>    <span style="color:#777"># This assignment is never executed</span>
+print a             <span style="color:#777"># Prints nil: the variable exists but is not assigned</span>
+print b             <span style="color:#777"># NameError: no variable or method named b exists</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="constant-references">4.3 Constant References</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">CM_PER_INCH</span> = <span style="color:#60E">2.54</span>  <span style="color:#777"># Define a constant.</span>
+<span style="color:#036;font-weight:bold">CM_PER_INCH</span>         <span style="color:#777"># Refer to the constant. Evaluates to 2.54.</span>
+
+<span style="color:#036;font-weight:bold">Conversions</span>::<span style="color:#036;font-weight:bold">CM_PER_INCH</span> <span style="color:#777"># Constant defined in the Conversions module</span>
+modules[<span style="color:#00D">0</span>]::<span style="color:#036;font-weight:bold">NAME</span>         <span style="color:#777"># Constant defined by an element of an array</span>
+
+<span style="color:#036;font-weight:bold">Conversions</span>::<span style="color:#036;font-weight:bold">Area</span>::<span style="color:#036;font-weight:bold">HECTARES_PER_ACRE</span>
+
+::<span style="color:#036;font-weight:bold">ARGV</span>      <span style="color:#777"># The global constant ARGV</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="method-invocations">4.4 Method Invocations</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># &quot;puts&quot; invoked on self, with one string arg</span>
+<span style="color:#036;font-weight:bold">Math</span>.sqrt(<span style="color:#00D">2</span>)        <span style="color:#777"># &quot;sqrt&quot; invoked on object Math with one arg</span>
+message.length      <span style="color:#777"># &quot;length&quot; invoked on object message; no args</span>
+a.each {|x| p x }   <span style="color:#777"># &quot;each&quot; invoked on object a, with an associated block</span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>
+
+message.length=(<span style="color:#00D">3</span>)    <span style="color:#777"># Traditional method invocation</span>
+message.length = <span style="color:#00D">3</span>    <span style="color:#777"># Method invocation masquerading as assignment</span>
+
+a[<span style="color:#00D">0</span>]
+
+a.[](<span style="color:#00D">0</span>)
+
+x
+</pre></div>
+</div>
+</div>
+
+<h4 id="assignments">4.5 Assignments</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">1</span>     <span style="color:#777"># Set the lvalue x to the value 1</span>
+
+x += <span style="color:#00D">1</span>    <span style="color:#777"># Set the lvalue x to the value x + 1</span>
+
+x,y,z = <span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>   <span style="color:#777"># Set x to 1, y to 2 and z to 3</span>
+
+x = y = <span style="color:#00D">0</span>   <span style="color:#777"># Set x and y to 0</span>
+
+x + y
+<span style="color:#036;font-weight:bold">Math</span>.sqrt(<span style="color:#00D">2</span>)
+
+x = <span style="color:#00D">1</span>       <span style="color:#777"># Affects the value of other expressions that use x</span>
+x += <span style="color:#00D">1</span>      <span style="color:#777"># Returns a different value each time it is evaluated</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="assigning-to-variables">4.5.1 Assigning to Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>point.x, point.y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Ambiguous</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>; <span style="color:#00D">1</span>; <span style="color:#080;font-weight:bold">end</span> <span style="color:#777"># A method named &quot;x&quot;. Always returns 1</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+    puts x      <span style="color:#777"># No variable has been seen; refers to method above: prints 1</span>
+
+    <span style="color:#777"># The line below is never evaluated, because of the &quot;if false&quot; clause. But</span>
+    <span style="color:#777"># the parser sees it and treats x as a variable for the rest of the method.</span>
+    x = <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">false</span>
+
+    puts x    <span style="color:#777"># x is a variable, but has never been assigned to: prints nil</span>
+
+    x = <span style="color:#00D">2</span>     <span style="color:#777"># This assignment does get evaluated</span>
+    puts x    <span style="color:#777"># So now this line prints 2</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="assigning-to-constants">4.5.2 Assigning to Constants</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">N</span> = <span style="color:#00D">100</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">false</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="assigning-to-attributes-and-array-elements">4.5.3 Assigning to Attributes and Array Elements</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o.m = v
+
+o.m=(v)  <span style="color:#777"># If we omit the parens and add a space, this looks like assignment!</span>
+
+o.[]=(x,y)
+
+o[x,y] = z
+o.[]=(x,y,z)
+</pre></div>
+</div>
+</div>
+
+<h4 id="abbreviated-assignment">4.5.4 Abbreviated Assignment</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x += <span style="color:#00D">1</span>
+
+x = x + <span style="color:#00D">1</span>
+
+o.m += <span style="color:#00D">1</span>
+o.m=(o.m()+<span style="color:#00D">1</span>)
+
+o[x] -= <span style="color:#00D">2</span>
+o.[]=(x, o.[](x) - <span style="color:#00D">2</span>)
+
+results ||= []
+
+results = results || []
+</pre></div>
+</div>
+</div>
+
+<h4 id="same-number-of-lvalues-and-rvalues">4.5.5.1 Same number of lvalues and rvalues</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x, y, z = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>   <span style="color:#777"># x=1; y=2; z=3</span>
+
+x,y = y,x     <span style="color:#777"># Parallel: swap the value of two variables</span>
+x = y; y = x  <span style="color:#777"># Sequential: both variables have same value</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="one-lvalue-multiple-rvalues">4.5.5.2 One lvalue, multiple rvalues</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>      <span style="color:#777"># x = [1,2,3]</span>
+
+x, = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>     <span style="color:#777"># x = 1; other values are discarded</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="multiple-lvalues-single-array-rvalue">4.5.5.3 Multiple lvalues, single array rvalue</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x, y, z = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]  <span style="color:#777"># Same as x,y,z = 1,2,3</span>
+
+x = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>]    <span style="color:#777"># x becomes [1,2]: this is not parallel assignment</span>
+x, = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>]   <span style="color:#777"># x becomes 1: the trailing comma makes it parallel</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="different-numbers-of-lvalues-and-rvalues">4.5.5.4 Different numbers of lvalues and rvalues</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x, y, z = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>  <span style="color:#777"># x=1; y=2; z=nil</span>
+
+x, y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span> <span style="color:#777"># x=1; y=2; 3 is not assigned anywhere</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-splat-operator">4.5.5.5 The splat operator</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x, y, z = <span style="color:#00D">1</span>, *[<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]  <span style="color:#777"># Same as x,y,z = 1,2,3</span>
+
+x,y = **[[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>]]   <span style="color:#777"># SyntaxError!</span>
+
+x,*y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>  <span style="color:#777"># x=1; y=[2,3]</span>
+x,*y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>     <span style="color:#777"># x=1; y=[2]</span>
+x,*y = <span style="color:#00D">1</span>        <span style="color:#777"># x=1; y=[]</span>
+
+<span style="color:#777"># Ruby 1.9 only</span>
+*x,y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>  <span style="color:#777"># x=[1,2]; y=3</span>
+*x,y = <span style="color:#00D">1</span>, <span style="color:#00D">2</span>     <span style="color:#777"># x=[1]; y=2</span>
+*x,y = <span style="color:#00D">1</span>        <span style="color:#777"># x=[]; y=1</span>
+
+x, y, *z = <span style="color:#00D">1</span>, *[<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>]  <span style="color:#777"># x=1; y=2; z=[3,4].</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="parentheses-in-parallel-assignment">4.5.5.6 Parentheses in parallel assignment</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x,(y,z) = a, b
+
+x = a
+y,z = b
+
+x,y,z = <span style="color:#00D">1</span>,[<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]             <span style="color:#777"># No parens: x=1;y=[2,3];z=nil</span>
+x,(y,z) = <span style="color:#00D">1</span>,[<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]           <span style="color:#777"># Parens: x=1;y=2;z=3</span>
+
+a,b,c,d = [<span style="color:#00D">1</span>,[<span style="color:#00D">2</span>,[<span style="color:#00D">3</span>,<span style="color:#00D">4</span>]]]     <span style="color:#777"># No parens: a=1;b=[2,[3,4]];c=d=nil</span>
+a,(b,(c,d)) = [<span style="color:#00D">1</span>,[<span style="color:#00D">2</span>,[<span style="color:#00D">3</span>,<span style="color:#00D">4</span>]]] <span style="color:#777"># Parens: a=1;b=2;c=3;d=4</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-value-of-parallel-assignment">4.5.5.7 The value of parallel assignment</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>puts x,y=<span style="color:#00D">1</span>,<span style="color:#00D">2</span>
+
+puts (x,y=<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)
+
+puts((x,y=<span style="color:#00D">1</span>,<span style="color:#00D">2</span>))
+</pre></div>
+</div>
+</div>
+
+<h4 id="operators">4.6 Operators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">2</span> * <span style="color:#036;font-weight:bold">Math</span>.sqrt(<span style="color:#00D">2</span>) &lt; limit
+
+<span style="color:#00D">1</span> + <span style="color:#00D">2</span> * <span style="color:#00D">3</span>     <span style="color:#777"># =&gt; 7</span>
+
+(<span style="color:#00D">1</span> + <span style="color:#00D">2</span>) * <span style="color:#00D">3</span>   <span style="color:#777"># =&gt; 9</span>
+</pre></div>
+</div>
+</div>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$&gt; irb
+ 
+help
+
+String.*
+
+$&gt; pry
+
+ri String.*
+
+=
+**= *= /= %= += -=
+&lt;&lt;= &gt;&gt;=
+&amp;&amp;= &amp;= ||= |= ^=
+</pre></div>
+</div>
+</div>
+
+<h4 id="shift-and-append--and-">4.6.4 Shift and Append: « and »</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>(<span style="color:#00D">0b1011</span> &lt;&lt; <span style="color:#00D">1</span>).to_s(<span style="color:#00D">2</span>)   <span style="color:#777"># =&gt; &quot;10110&quot;   11 &lt;&lt; 1 =&gt; 22</span>
+(<span style="color:#00D">0b10110</span> &gt;&gt; <span style="color:#00D">2</span>).to_s(<span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; &quot;101&quot;     22 &gt;&gt; 2 =&gt; 5</span>
+
+message = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># A string</span>
+messages = []            <span style="color:#777"># An empty array</span>
+message &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> world</span><span style="color:#710">&quot;</span></span>      <span style="color:#777"># Append to the string</span>
+messages &lt;&lt; message      <span style="color:#777"># Append message to the array</span>
+<span style="color:#069">STDOUT</span> &lt;&lt; message        <span style="color:#777"># Print the message to standard output stream</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="complement-union-intersection----and-">4.6.5 Complement, Union, Intersection: ~, &amp;, |, and ^</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>(<span style="color:#00D">0b1010</span> &amp; <span style="color:#00D">0b1100</span>).to_s(<span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; &quot;1000&quot;</span>
+
+(<span style="color:#00D">0b1010</span> | <span style="color:#00D">0b1100</span>).to_s(<span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; &quot;1110&quot;</span>
+
+(<span style="color:#00D">0b1010</span> ^ <span style="color:#00D">0b1100</span>).to_s(<span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; &quot;110&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="comparison-----and-">4.6.6 Comparison: &lt;, &lt;=, &gt;, &gt;=, and &lt;=&gt;</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Declare class A as a subclass of B</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">A</span> &lt; <span style="color:#036;font-weight:bold">B</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">String</span> &lt; <span style="color:#036;font-weight:bold">Object</span>        <span style="color:#777"># true: String is more specialized than Object</span>
+<span style="color:#036;font-weight:bold">Object</span> &gt; <span style="color:#036;font-weight:bold">Numeric</span>       <span style="color:#777"># true: Object is more general than Numeric</span>
+<span style="color:#036;font-weight:bold">Numeric</span> &lt; <span style="color:#036;font-weight:bold">Integer</span>      <span style="color:#777"># false: Numeric is not more specialized than Integer</span>
+<span style="color:#036;font-weight:bold">String</span> &lt; <span style="color:#036;font-weight:bold">Numeric</span>       <span style="color:#777"># nil: String and Numeric are not related</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="boolean-operators----and-or-not">4.6.8 Boolean Operators: &amp;&amp;, ||, !, and, or, not</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x == <span style="color:#00D">0</span> &amp;&amp; y &gt; <span style="color:#00D">1</span>
+
+x &amp;&amp; y
+
+x &amp;&amp; print(x.to_s)
+
+print(x.to_s) <span style="color:#080;font-weight:bold">if</span> x &lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">programlisting&gt;
+        &lt;</span><span style="color:#404">/</span></span>footnote&gt;&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">para&gt;
+
+      &lt;para&gt;The &lt;literal&gt;||&lt;</span><span style="color:#404">/</span></span>literal&gt; operator returns the <span style="color:#036;font-weight:bold">Boolean</span> <span style="color:#036;font-weight:bold">OR</span> of its
+      operands. It returns a <span style="color:#069">true</span> value <span style="color:#080;font-weight:bold">if</span> either of its operands is a <span style="color:#069">true</span>
+      value. If both operands are <span style="color:#069">false</span> values, <span style="color:#080;font-weight:bold">then</span> it returns a <span style="color:#069">false</span> value.
+      Like &lt;literal&gt;&amp;&amp;&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">literal&gt;, the &lt;literal&gt;||&lt;</span><span style="color:#404">/</span></span>literal&gt; operator
+      ignores its righthand operand <span style="color:#080;font-weight:bold">if</span> its value has no impact on the value of
+      the operation. The &lt;literal&gt;||&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">literal&gt; operator works like this:
+      first, it evaluates its lefthand operand. If this is any value other
+      than &lt;literal&gt;nil&lt;</span><span style="color:#404">/</span></span>literal&gt; <span style="color:#080;font-weight:bold">or</span> &lt;literal&gt;<span style="color:#069">false</span>&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">literal&gt;, it simply
+      returns that value. Otherwise, it evaluates its righthand operand and
+      returns that value.&lt;</span><span style="color:#404">/</span></span>para&gt;
+
+      &lt;para&gt;&lt;literal&gt;||&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">literal&gt; can be used as a conjunction to join
+      multiple comparison or equality expressions:&lt;</span><span style="color:#404">/</span></span>para&gt;
+
+      &lt;programlisting&gt;x &lt; <span style="color:#00D">0</span> || y &lt; <span style="color:#00D">0</span> || z &lt; <span style="color:#00D">0</span>   <span style="color:#777"># Are any of the coordinates negative?</span>
+
+<span style="color:#777"># If the argument x is nil, then get its value from a hash of user preferences</span>
+<span style="color:#777"># or from a constant default value.</span>
+x = x || preferences[<span style="color:#A60">:x</span>] || <span style="color:#036;font-weight:bold">Defaults</span>::<span style="color:#036;font-weight:bold">X</span>
+
+<span style="color:#00D">1</span> || <span style="color:#00D">2</span> &amp;&amp; <span style="color:#069">nil</span>     <span style="color:#777"># =&gt; 1</span>
+
+(<span style="color:#00D">1</span> || <span style="color:#00D">2</span>) &amp;&amp; <span style="color:#069">nil</span>   <span style="color:#777"># =&gt; nil</span>
+
+!(a &amp;&amp; b)
+
+!a || !b
+
+<span style="color:#080;font-weight:bold">if</span> x &gt; <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">and</span> y &gt; <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> <span style="color:#080;font-weight:bold">defined?</span> d <span style="color:#080;font-weight:bold">then</span> d = <span style="color:#036;font-weight:bold">Math</span>.sqrt(x*x + y*y) <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">if</span> a = f(x) <span style="color:#080;font-weight:bold">and</span> b = f(y) <span style="color:#080;font-weight:bold">and</span> c = f(z) <span style="color:#080;font-weight:bold">then</span> d = g(a,b,c) <span style="color:#080;font-weight:bold">end</span>
+
+x || y &amp;&amp; <span style="color:#069">nil</span>        <span style="color:#777"># &amp;&amp; is performed first   =&gt; x</span>
+x <span style="color:#080;font-weight:bold">or</span> y <span style="color:#080;font-weight:bold">and</span> <span style="color:#069">nil</span>       <span style="color:#777"># evaluated left-to-right =&gt; nil </span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="ranges-and-flip-flops--and-">4.6.9 Ranges and Flip-Flops: .. and …</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x+<span style="color:#00D">1</span>..x*x
+
+<span style="color:#036;font-weight:bold">Range</span>.new(x,y)
+
+<span style="color:#036;font-weight:bold">Range</span>.new(x,y,<span style="color:#069">true</span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="boolean-flip-flops">4.6.9.1 Boolean flip-flops</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">3</span>..x==<span style="color:#00D">5</span> }
+
+<span style="color:#777"># Prints &quot;3&quot;. Flips and flops back when x==3</span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">3</span>..x&gt;=<span style="color:#00D">3</span> }  
+<span style="color:#777"># Prints &quot;34&quot;. Flips when x == 3 and flops when x==4</span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">3</span>...x&gt;=<span style="color:#00D">3</span> } <span style="color:#777"># Prints &quot;34&quot;</span>
+
+<span style="color:#069">ARGF</span>.each <span style="color:#080;font-weight:bold">do</span> |line|   <span style="color:#777"># For each line of standard in or of named files</span>
+  print line <span style="color:#080;font-weight:bold">if</span> line=~<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">TODO</span><span style="color:#404">/</span></span>..line=~<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^$</span><span style="color:#404">/</span></span> <span style="color:#777"># Print lines when flip-flop is true</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#d70">$state</span> = <span style="color:#069">false</span>            <span style="color:#777"># Global storage for flip-flop state</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">flipflop</span>(x)           <span style="color:#777"># Test value of x against flip-flop</span>
+  <span style="color:#080;font-weight:bold">if</span> !<span style="color:#d70">$state</span>              <span style="color:#777"># If saved state is false</span>
+    result = (x == <span style="color:#00D">3</span>)     <span style="color:#777"># Result is value of lefthand operand</span>
+    <span style="color:#080;font-weight:bold">if</span> result             <span style="color:#777"># If that result is true</span>
+      <span style="color:#d70">$state</span> = !(x == <span style="color:#00D">5</span>)  <span style="color:#777"># Then saved state is not of the righthand operand</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    result                <span style="color:#777"># Return result</span>
+  <span style="color:#080;font-weight:bold">else</span>                    <span style="color:#777"># Otherwise, if saved state is true</span>
+    <span style="color:#d70">$state</span> = !(x == <span style="color:#00D">5</span>)    <span style="color:#777"># Then save the inverse of the righthand operand</span>
+    <span style="color:#069">true</span>                  <span style="color:#777"># And return true without testing lefthand</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> flipflop(x) }
+
+<span style="color:#d70">$state2</span> = <span style="color:#069">false</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">flipflop2</span>(x)
+  <span style="color:#080;font-weight:bold">if</span> !<span style="color:#d70">$state2</span>
+    <span style="color:#d70">$state2</span> = (x == <span style="color:#00D">3</span>)
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#d70">$state2</span> = !(x &gt;= <span style="color:#00D">3</span>)
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Now try it out</span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> x==<span style="color:#00D">3</span>...x&gt;=<span style="color:#00D">3</span> }  <span style="color:#777"># Prints &quot;34&quot; </span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).each {|x| print x <span style="color:#080;font-weight:bold">if</span> flipflop2(x) } <span style="color:#777"># Prints &quot;34&quot; </span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="conditional-">4.6.10 Conditional: ?:</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>n<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>n==<span style="color:#00D">1</span> ? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">message</span><span style="color:#710">'</span></span> : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">messages</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+x==<span style="color:#00D">3</span>?y<span style="color:#A60">:z</span>      <span style="color:#777"># This is legal</span>
+<span style="color:#00D">3</span>==x?<span style="color:#606">y</span>:z      <span style="color:#777"># Syntax error: x? is interpreted as a method name</span>
+(<span style="color:#00D">3</span>==x)?y<span style="color:#A60">:z</span>    <span style="color:#777"># Okay: parentheses fix the problem</span>
+<span style="color:#00D">3</span>==x <span style="color:#00D">?y</span><span style="color:#A60">:z</span>     <span style="color:#777"># Spaces also resolve the problem</span>
+
+a ? b : c ? d : e    <span style="color:#777"># This expression...</span>
+a ? b : (c ? d : e)  <span style="color:#777"># is evaluated like this..</span>
+(a ? b : c) ? d : e  <span style="color:#777"># NOT like this</span>
+
+max = x&gt;y ? x&gt;z ? x : z : y&gt;z ? y : z
+max = x&gt;y ? (x&gt;z ? x : z) : (y&gt;z ? y : z)  <span style="color:#777"># With explicit parentheses</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="assignment-operators">4.6.11 Assignment Operators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = y = z = <span style="color:#00D">0</span>      <span style="color:#777"># Assign zero to variables x, y, and z</span>
+x = (y = (z = <span style="color:#00D">0</span>))  <span style="color:#777"># This equivalent expression shows order of evaluation</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-defined-operator">4.6.12 The defined? Operator</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Compute f(x), but only if f and x are both defined</span>
+y = f(x) <span style="color:#080;font-weight:bold">if</span> <span style="color:#080;font-weight:bold">defined?</span> f(x)
+
+<span style="color:#080;font-weight:bold">defined?</span> a <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">defined?</span> b    <span style="color:#777"># This works</span>
+<span style="color:#080;font-weight:bold">defined?</span> a &amp;&amp; <span style="color:#080;font-weight:bold">defined?</span> b     <span style="color:#777"># Evaluated as: defined?((a &amp;&amp; defined? b))</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="statement-modifiers">4.6.13 Statement Modifiers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>print x <span style="color:#080;font-weight:bold">if</span> x
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

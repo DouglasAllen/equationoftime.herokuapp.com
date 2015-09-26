@@ -1,0 +1,105 @@
+= equationoftime
+
+Home    :: http://equationoftime.herokuapp.com/
+Code    :: https://github.com/DouglasAllen/equationoftime
+RDoc    :: http://rubydoc.info/gems/equationoftime/4.1.5/frames
+Issues  :: https://github.com/DouglasAllen/equationoftime/issues
+
+
+== DESCRIPTION:
+
+Calculate Sunrise and Sunset. Now uses native C wrappers.
+Lots of examples to play with for learning about Eot.
+
+== FEATURES/PROBLEMS:
+
+* Use GeoLatLng class to set coordinates or set them manually.
+
+== SYNOPSIS:
+
+  $ irb --simple-prompt
+
+        require 'eot'
+        eot = Eot.new
+        eot.string_eot          # todays eot
+        eot.ajd                 # was initialized to noon today ei. jd
+        # Try the real AJD
+        eot.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
+
+        eot.string_eot          # nothing changes so...
+        eot.ma_ta_set           # recalculate ma and ta after initialization
+        eot.string_eot          # should be different than before
+
+        # check and set a new address                        
+        geo = GeoLatLng.new
+        geo.addr
+        geo.addr = "houston, tx"     # set new location
+        geo.set_coordinates          # set new coordinates
+        eot.latitude = geo.lat       # set the Eot class attributes
+        eot.longitude = geo.lng
+
+        # Be shure you have the date set right
+        eot.ajd = DateTime.new(2014,11,07).to_time.utc.to_datetime.jd.to_f
+
+        eot.ma_ta_set           # recalculate ma and ta after initialization
+
+        eot.sunrise_jd          # the dates sunrise as a jd
+        eot.sunset_jd           # the dates sunset as a jd
+        eot.sunrise_dt          # the dates sunrise as DateTime
+        eot.sunset_dt           # the dates sunset as a DateTime
+
+
+        eot.ajd += 1            # the days after times can be read
+        eot.ma_ta_set           # recalculate ma and ta after initialization 
+        eot.ajd = 2451545       # ajd set to 2001-01-01 12:00 
+        
+
+== Gem patch:
+
+  $ gem install eot
+
+After realizing this name was available I decided to use it.
+It installs the needed requirements as for some reason
+gem install equationoftime doesn't always. Hoe hoe hoe!
+
+== REQUIREMENTS:
+
+  $ bundle install
+
+== INSTALL:
+
+  $ bundle exec rake install
+
+== DEVELOPERS:
+
+After checking out the source, run:
+
+  $ bundle exec rake newb
+
+This task will install any missing dependencies, run the tests/specs,
+and generate the RDoc.
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2014
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -15,6 +15,7 @@ module EotHelper
   @henge.longitude= -1.8264
   @henge.ajd      = DateTime.now.to_time.utc.to_datetime.jd.to_f
   
+  @geo            = GeoLatLng.new
   @gst            = Eot.new
   @gst.ajd        = DateTime.now.to_time.utc.to_datetime.ajd.to_f
   @gst.ma_ta_set  
@@ -55,7 +56,7 @@ module EotHelper
   @et             = @solar.string_eot()
   @s_min          = 4.0 * 360 / 360.98564736629 # 3.989078265
   @e1             = (@ma - @ta) * @s_min
-  @geo            = GeoLatLng.new
+
 end
 
 class HelpTime

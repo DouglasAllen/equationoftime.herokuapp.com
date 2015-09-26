@@ -1,4 +1,4 @@
-<title> Equation of Time </title>
+<title><%= title %></title>
 
 <link rel='icon', type='image/icon', href='/images/favicon.ico'></link>
 
@@ -8,41 +8,50 @@
 <link rel="stylesheet" href="/stylesheets/foundation.css" 
       type="text/css" media="screen" charset="utf-8">
 
-<!--<link rel="stylesheet" href="/stylesheets/syntax.css" 
+<link rel="stylesheet" href="/stylesheets/pygments.css" 
+      type="text/css" media="screen" charset="utf-8">
+      
+<link href="/stylesheets/app.css" media="all" 
+      rel="stylesheet" type="text/css" charset="utf-8">
+
+<!--
+<link rel="stylesheet" href="/stylesheets/syntax.css" 
       type="text/css" media="screen" charset="utf-8">
       
 <link rel="stylesheet" href="/stylesheets/coderay.css" 
-      type="text/css" media="screen" charset="utf-8">-->
-
-<link rel="stylesheet" href="/stylesheets/uv.css" 
-      type="text/css" media="screen" charset="utf-8">
-
-<!--<link rel="stylesheet" href="/stylesheets/pygments.css" 
       type="text/css" media="screen" charset="utf-8">
 
 <link rel="stylesheet" href="/stylesheets/censor.css" 
       type="text/css" media="screen" charset="utf-8"/>
 
 <link rel="stylesheet" href="/stylesheets/prettify.css" 
-      type="text/css" media="screen" charset="utf-8"/>-->
-      
-<link href="/stylesheets/eot.css" media="all" 
-      rel="stylesheet" type="text/css" charset="utf-8">
+      type="text/css" media="screen" charset="utf-8"/>
 
+<link rel="stylesheet" href="/stylesheets/uv.css" 
+      type="text/css" media="screen" charset="utf-8">-->
 
-<div class="navcontainer">
-  <div class="navrow">
-    <ul>
-      <li><a href="/", class="button success">Home</a></li>
-      <li><a href="/tut", TARGET="_blank", class="button success">Tutorial</a></li>
-      <li><a href="/graph",TARGET="_blank", class="button success">Graph</a></li>
-      <li><a href="/analemma",TARGET="_blank", class="button success">Data</a></li>
-      <li><a href="/md", TARGET="_blank", class="button success">App files</a></li>
-      <li><a href="/rdoc",TARGET="_blank", class="button success">Rdoc</a></li>
-      <li><a href="/gm",TARGET="_blank", class="button success">Museum</a></li>
-    </ul>
-  </div>
-</div>
+<hr/>
+</br>
+<div id="bg"> 
+<ul class="button-group round" >
+  <li><a href="/", class="button success">Home</a></li>
+  <li><a href="/tutorial", TARGET="_blank", class="button success">Tutorial</a></li>
+  <li><a href="/graph", TARGET="_blank", class="button success">Graph</a></li>
+  <li><a href="/examples", TARGET="_blank", class="button success">Examples</a></li>
+  <li><a href="https://rubygems.org/gems/equationoftime/", TARGET="_blank", class="button success">EOT gem</a></li>
+   
+  <li><a href="/md", TARGET="_blank", class="button success">Markdown</a></li>
+</ul>
+<ul class="button-group round"> 
+  <li><a href="/links", TARGET="_blank", class="button success">Links</a></li> 
+  <li><a href="/gm", TARGET="_blank", class="button success">Museum</a></li> 
+  <li><a href="/rdoc", TARGET="_blank", class="button success">Rdoc</a></li> 
+  <li><a href="http://douglasallen.github.io/gh-pages/aboutme2/", TARGET="_blank", class="button success">About&nbsp;&nbsp;me</a></li>
+  <li><a href="/eot", TARGET="_blank", class="button success">EOT Now</a></li>
+  <li><a href="/analemma", TARGET="_blank", class="button success">Data</a></li>
+</ul>
+</div
+
 </br>
 <hr/>
 <%= yield %>

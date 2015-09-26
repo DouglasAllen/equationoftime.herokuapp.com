@@ -1,0 +1,395 @@
+---
+comment: ''
+fileTypes:
+- sass
+foldingStartMarker: ^\s*([-%#\:\.\w\=].*)\s$
+foldingStopMarker: ^\s*$
+keyEquivalent: ^~S
+name: Ruby Sass
+patterns:
+- begin: ^(\!|\$)([a-zA-Z0-9_-]+)\s*((?:\|\|)?=|:)
+  beginCaptures:
+    '1':
+      name: punctuation.definition.entity.sass
+    '2':
+      name: variable.other.sass
+    '3':
+      name: punctuation.definition.entity.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.variable-declaration.sass
+  patterns:
+  - include: ! '#property-value'
+- begin: ^(=|@mixin\s+)([a-zA-Z0-9_-]+)
+  beginCaptures:
+    '1':
+      name: keyword.control.at-rule.mixin.sass
+    '2':
+      name: variable.other.sass
+    '3':
+      name: punctuation.definition.entity.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.variable-declaration.sass.mixin
+  patterns:
+  - include: ! '#property-value'
+- begin: ^\s*(\+|@include\s+)([a-zA-Z0-9_-]+)
+  beginCaptures:
+    '1':
+      name: keyword.control.at-rule.import.sass
+    '2':
+      name: variable.other.sass
+    '3':
+      name: punctuation.definition.entity.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.function.include.sass
+  patterns:
+  - include: ! '#property-value'
+- captures:
+    '1':
+      name: keyword.control.at-rule.extend.sass
+    '2':
+      name: variable.other.sass
+    '3':
+      name: invalid.illegal.punctuation.sass
+  match: ^\s*(@extend)\s+([.*&#a-zA-Z][:.*&#a-zA-Z]*)\s*(;)?\s*$
+  name: meta.function.extend.sass
+- begin: ^\s*(\+)([a-zA-Z0-9_-]+)
+  beginCaptures:
+    '1':
+      name: punctuation.definition.entity.sass
+    '2':
+      name: variable.other.sass
+    '3':
+      name: punctuation.definition.entity.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.variable-usage.sass
+  patterns:
+  - captures:
+      '1':
+        name: punctuation.definition.entity.css
+      '2':
+        name: variable.other.sass
+    match: (\!|\$)([a-zA-Z0-9_-]+)
+    name: meta.variable-usage.sass
+  - include: ! '#string-single'
+  - include: ! '#string-double'
+- begin: (?=[.*&#a-zA-Z][:.*&#a-zA-Z]*)
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.selector.css
+  patterns:
+  - include: ! '#comment-block'
+  - match: (&)
+    name: keyword.other.parent-reference.sass
+  - match: ! "(?x)\\b\n\t\t\t\t\t         (a|abbr|acronym|address|area|article|aside|audio|b|base|big|blockquote|body|\n\t\t\t\t
+      \             br|button|canvas|caption|cite|code|col|colgroup|command|datalist|dd|del|\n\t\t\t\t
+      \             details|dfn|div|dl|dt|em|embed|fieldset|figure|footer|form|frame|frameset|\n\t\t\t\t
+      \             (h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|\n\t\t\t\t
+      \             label|legend|li|link|map|mark|meta|meter|nav|noframes|noscript|object|\n\t\t\t\t
+      \             ol|optgroup|option|output|p|param|pre|progress|q|rp|rt|ruby|samp|script|\n\t\t\t\t
+      \             section|select|small|source|span|strike|strong|sub|sup|table|tbody|td|\n\t\t\t\t
+      \             textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video)\\b"
+    name: entity.name.tag.css.sass
+  - captures:
+      '1':
+        name: punctuation.definition.entity.css
+    match: (\.)[a-zA-Z0-9_-]+
+    name: entity.other.attribute-name.class.sass
+  - captures:
+      '1':
+        name: punctuation.definition.entity.sass
+    match: (#)[a-zA-Z][a-zA-Z0-9_-]*
+    name: entity.other.attribute-name.id.css.sass
+  - match: \*
+    name: entity.name.tag.wildcard.sass
+  - captures:
+      '1':
+        name: punctuation.definition.entity.sass
+    match: (:+)\b(after|before|first-child|first-letter|first-line|last-child|selection)\b
+    name: entity.other.attribute-name.pseudo-element.sass
+  - captures:
+      '1':
+        name: punctuation.definition.entity.sass
+    match: (:)\b(active|hover|link|visited|focus)\b
+    name: entity.other.attribute-name.pseudo-class.css.sass
+  - captures:
+      '1':
+        name: punctuation.definition.entity.sass
+      '2':
+        name: entity.other.attribute-name.attribute.sass
+      '3':
+        name: punctuation.separator.operator.sass
+      '4':
+        name: string.unquoted.attribute-value.sass
+      '5':
+        name: string.quoted.double.attribute-value.sass
+      '6':
+        name: punctuation.definition.string.begin.sass
+      '7':
+        name: punctuation.definition.string.end.sass
+    match: (?i)(\[)\s*(-?[_a-z\\[[:^ascii:]]][_a-z0-9\-\\[[:^ascii:]]]*)(?:\s*([~|^$*]?=)\s*(?:(-?[_a-z\\[[:^ascii:]]][_a-z0-9\-\\[[:^ascii:]]]*)|((?>(['"])(?:[^\\]|\\.)*?(\6)))))?\s*(\])
+    name: meta.attribute-selector.css.sass
+- include: ! '#comment-block'
+- begin: ^\s*((@)import\b)
+  beginCaptures:
+    '1':
+      name: keyword.control.at-rule.import.sass
+    '2':
+      name: punctuation.definition.keyword.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.at-rule.import.sass
+  patterns:
+  - include: ! '#string-double'
+  - begin: (url)\s*(\()\s*
+    beginCaptures:
+      '1':
+        name: support.function.url.sass
+      '2':
+        name: punctuation.section.function.sass
+    end: \s*(\))\s*
+    endCaptures:
+      '1':
+        name: punctuation.section.function.sass
+    patterns:
+    - match: ! '[^''") \t]+'
+      name: variable.parameter.url.sass
+    - include: ! '#string-single'
+    - include: ! '#string-double'
+  - match: ([^"'\n;]+)
+    name: variable.parameter.url.sass
+- begin: ^\s*((@)media)\s+(((all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)\s*,?\s*)+)\s*{
+  captures:
+    '1':
+      name: keyword.control.at-rule.media.sass
+    '2':
+      name: punctuation.definition.keyword.sass
+    '3':
+      name: support.constant.media.sass
+  end: \s*((?=;|\}))
+  name: meta.at-rule.media.sass
+  patterns:
+  - include: $self
+- begin: (?<!|\$[-a-z])(:)(?=[-a-z])
+  beginCaptures:
+    '1':
+      name: punctuation.definition.entity.css.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.property-name.sass
+  patterns:
+  - match: ! "(?x)\n\t\t\t\t\t         (azimuth|background-attachment|background-color|background-image|\n\t\t\t\t
+      \             background-position|background-repeat|background|border-bottom-color|\n\t\t\t\t
+      \             border-bottom-style|border-bottom-width|border-bottom|border-collapse|\n\t\t\t\t
+      \             border-color|border-left-color|border-left-style|border-left-width|\n\t\t\t\t
+      \             border-left|border-radius|border-right-color|border-right-style|\n\t\t\t\t
+      \             border-right-width|border-right|border-spacing|border-style|border-top-color|\n\t\t\t\t
+      \             border-top-style|border-top-width|border-top|border-width|border|bottom|\n\t\t\t\t
+      \             box-shadow|caption-side|clear|clip|color|content|counter-increment|\n\t\t\t\t
+      \             counter-reset| cue-after|cue-before|cue|cursor|decoration|direction|display|\n\t\t\t\t
+      \             elevation|empty-cells|family|float|font-family|font-size-adjust|font-size|\n\t\t\t\t
+      \             font-stretch|font-style|font-variant|font-weight|font|height|image|indent|\n\t\t\t\t
+      \             left|letter-spacing|line-height|list-style-image|list-style-position|\n\t\t\t\t
+      \             list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|\n\t\t\t\t
+      \             marker-offset|margin|marks|max-height|max-width|min-height|min-width|\n\t\t\t\t
+      \             -moz-border-radius|-moz-box-shadow|opacity|orphans|outline-color|\n\t\t\t\t
+      \             outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|\n\t\t\t\t
+      \             padding-left|padding-right|padding-top|padding|page-break-after|\n\t\t\t\t
+      \             page-break-before|page-break-inside|page|pause-after|pause-before|pause|\n\t\t\t\t
+      \             pitch-range|pitch|play-during|position|quotes|repeat|richness|right|shadow|\n\t\t\t\t
+      \             size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|src|\n\t\t\t\t
+      \             stress|style|table-layout|text|text-align|text-decoration|text-indent|\n\t\t\t\t
+      \             text-shadow|text-transform|top|transform|unicode-bidi|vertical-align|\n\t\t\t\t
+      \             visibility|voice-family|volume|weight|white-space|widows|width|word-spacing|\n\t\t\t\t
+      \             z-index)\\b"
+    name: support.type.property-name.css.sass
+  - include: ! '#property-value'
+- begin: ! "(?x)^[\\s\\t]+\n\t\t\t         (align|azimuth|background-attachment|background-color|background-image|\n\t\t\t
+    \         background-position|background-repeat|background|border-bottom-color|\n\t\t\t
+    \         border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|\n\t\t\t
+    \         border-left-color|border-left-style|border-left-width|border-left|border-radius|\n\t\t\t
+    \         border-right-color|border-right-style|border-right-width|border-right|border-spacing|\n\t\t\t
+    \         border-style|border-top-color|border-top-style|border-top-width|border-top|\n\t\t\t
+    \         border-width|border|bottom|box-shadow|caption-side|clear|clip|color|content|\n\t\t\t
+    \         counter-increment|counter-reset|cue-after|cue-before|cue|cursor|decoration|direction|\n\t\t\t
+    \         display|elevation|empty-cells|family|float|font-family|font-size-adjust|font-size|\n\t\t\t
+    \         font-stretch|font-style|font-variant|font-weight|font|height|image|indent|left|\n\t\t\t
+    \         letter-spacing|line-height|list-style-image|list-style-position|list-style-type|\n\t\t\t
+    \         list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|\n\t\t\t
+    \         marks|max-height|max-width|min-height|min-width|-moz-border-radius|-moz-box-shadow|\n\t\t\t
+    \         opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|\n\t\t\t
+    \         padding-bottom|padding-left|padding-right|padding-top|padding|page-break-after|\n\t\t\t
+    \         page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|\n\t\t\t
+    \         pitch|play-during|position|quotes|repeat|richness|right|shadow|size|speak-header|\n\t\t\t
+    \         speak-numeral|speak-punctuation|speech-rate|speak|src|stress|style|table-layout|text|\n\t\t\t
+    \         text-align|text-decoration|text-indent|text-shadow|text-transform|top|transform|\n\t\t\t
+    \         unicode-bidi|vertical-align|visibility|voice-family|volume|-webkit-border-radius|\n\t\t\t
+    \         -webkit-box-shadow|weight|white-space|widows|width|word-spacing|z-index\n\t\t\t
+    \        )\\b(:|\\s?=)"
+  beginCaptures:
+    '1':
+      name: support.type.property-name.css.sass
+    '2':
+      name: punctuation.definition.entity.css.sass
+  end: (;)?$
+  endCaptures:
+    '1':
+      name: invalid.illegal.punctuation.sass
+  name: meta.property-name.sass
+  patterns:
+  - include: ! '#property-value'
+repository:
+  comment-block:
+    begin: ^(\s*)(\/\/|\/\*)
+    captures:
+      '0':
+        name: punctuation.definition.comment.sass
+    end: ^(?!\1\s)
+    name: comment.sass
+  property-value:
+    begin: (:)?\s?+
+    beginCaptures:
+      '1':
+        name: invalid.illegal.punctuation.sass
+    end: (;)?$
+    endCaptures:
+      '1':
+        name: invalid.illegal.punctuation.sass
+    name: meta.property-value.sass
+    patterns:
+    - match: ([-=+*/])
+      name: punctuation.definition.entity.css
+    - captures:
+        '1':
+          name: punctuation.definition.entity.css
+        '2':
+          name: variable.other.sass
+      match: (\!|\$)([a-zA-Z0-9_-]+)
+      name: meta.variable-usage.sass
+    - match: ! "(?x)\\b(absolute|all-scroll|always|auto|baseline|below|bidi-override|block|bold|\n\t\t\t\t\t
+        \         bolder|both|bottom|break-all|break-word|capitalize|center|char|circle|\n\t\t\t\t\t
+        \         col-resize|collapse|crosshair|dashed|decimal|default|disabled|disc|\n\t\t\t\t\t
+        \         distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|\n\t\t\t\t\t
+        \         double|e-resize|ellipsis|fixed|groove|hand|help|hidden|horizontal|\n\t\t\t\t\t
+        \         ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|\n\t\t\t\t\t
+        \         inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|\n\t\t\t\t\t
+        \         inter-word|italic|justify|keep-all|left|lighter|line-edge|line-through|\n\t\t\t\t\t
+        \         line|list-item|loose|lower-alpha|lower-roman|lowercase|lr-tb|ltr|medium|\n\t\t\t\t\t
+        \         middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|\n\t\t\t\t\t
+        \         normal|not-allowed|nowrap|oblique|outset|outside|overline|pointer|progress|\n\t\t\t\t\t
+        \         relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|\n\t\t\t\t\t
+        \         scroll|se-resize|separate|small-caps|solid|square|static|strict|super|\n\t\t\t\t\t
+        \         sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|\n\t\t\t\t\t
+        \         text|thick|thin|top|transparent|underline|upper-alpha|upper-roman|uppercase|\n\t\t\t\t\t
+        \         vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace\n\t\t\t\t\t
+        \        )\\b"
+      name: support.constant.property-value.css.sass
+    - match: ! "(?x)(\\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|\n\t\t\t\t\t
+        \   lucida(?: sans)?|symbol|system|tahoma|times(?: new roman)?|trebuchet|utopia|verdana|\n\t\t\t\t\t
+        \   webdings|sans-serif|serif|mono|monospace)\\b)"
+      name: support.constant.font-name.css.sass
+    - match: (\b((?:x{1,2}-)?small|smaller|medium|(?:x{1,2}-)?large|larger)\b)
+      name: support.constant.font-size.css.sass
+    - comment: http://www.w3schools.com/css/css_colors.asp
+      match: ! "(?x)\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|purple|\n\t\t\t\t\t
+        \   red|silver|teal|white|yellow)\\b"
+      name: support.constant.color.w3c-standard-color-name.css.sass
+    - comment: ! 'These colours are mostly recognised but will not validate. ref:
+        http://www.w3schools.com/css/css_colornames.asp'
+      match: ! "(?x)\\b(seagreen|hotpink|lawngreen|darkgreen|violet|darkred|crimson|green|\n\t\t\t\t\t
+        \   sandybrown|navy|magenta|darkslategray|steelblue|silver|darkgrey|mistyrose|gray|\n\t\t\t\t\t
+        \   aliceblue|blueviolet|lightpink|saddlebrown|chocolate|limegreen|lightslategray|\n\t\t\t\t\t
+        \   yellowgreen|pink|lightskyblue|indigo|lightblue|floralwhite|navajowhite|\n\t\t\t\t\t
+        \   mediumvioletred|honeydew|aquamarine|blue|olivedrab|palegreen|slategray|lavenderblush|\n\t\t\t\t\t
+        \   wheat|moccasin|mediumturquoise|mediumspringgreen|lightcoral|mintcream|tomato|\n\t\t\t\t\t
+        \   lightgrey|black|darkmagenta|dimgray|darkturquoise|midnightblue|plum|indianred|coral|\n\t\t\t\t\t
+        \   lightcyan|mediumslateblue|darkcyan|darkslateblue|darkkhaki|ivory|azure|khaki|\n\t\t\t\t\t
+        \   powderblue|darkgoldenrod|orangered|burlywood|turquoise|royalblue|maroon|cornsilk|\n\t\t\t\t\t
+        \   antiquewhite|yellow|teal|orange|grey|darkslategrey|slateblue|seashell|darkorchid|\n\t\t\t\t\t
+        \   snow|lightslategrey|cyan|greenyellow|palevioletred|goldenrod|deepskyblue|lightyellow|\n\t\t\t\t\t
+        \   lightseagreen|sienna|lemonchiffon|darkviolet|paleturquoise|slategrey|skyblue|purple|\n\t\t\t\t\t
+        \   mediumpurple|cadetblue|fuchsia|chartreuse|darksalmon|lightgoldenrodyellow|white|\n\t\t\t\t\t
+        \   springgreen|olive|forestgreen|peachpuff|peru|dimgrey|mediumseagreen|thistle|firebrick|\n\t\t\t\t\t
+        \   darkgray|mediumaquamarine|darkolivegreen|mediumblue|palegoldenrod|blanchedalmond|\n\t\t\t\t\t
+        \   ghostwhite|gold|gainsboro|darkseagreen|cornflowerblue|lime|lavender|beige|orchid|\n\t\t\t\t\t
+        \   mediumorchid|whitesmoke|bisque|lightgray|tan|salmon|rosybrown|red|dodgerblue|brown|\n\t\t\t\t\t
+        \   aqua|oldlace|deeppink|papayawhip|lightsalmon|lightsteelblue|darkorange|darkblue|linen|\n\t\t\t\t\t
+        \   lightgreen)\\b"
+      name: invalid.deprecated.color.w3c-non-standard-color-name.css.sass
+    - match: (-|\+)?\s*[0-9]+(\.[0-9]+)?
+      name: constant.numeric.css
+    - match: (?<=[\d])(px|pt|cm|mm|in|em|ex|pc)\b|%
+      name: keyword.other.unit.css
+    - captures:
+        '1':
+          name: punctuation.definition.constant.css
+      match: (#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b
+      name: constant.other.color.rgb-value.css
+    - include: ! '#string-double'
+    - include: ! '#string-single'
+    - begin: (rgb|url|attr|counter|counters|local|format)\s*(\()
+      beginCaptures:
+        '1':
+          name: support.function.misc.sass
+        '2':
+          name: punctuation.section.function.sass
+      end: (\))
+      endCaptures:
+        '1':
+          name: punctuation.section.function.sass
+      patterns:
+      - include: ! '#string-single'
+      - include: ! '#string-double'
+      - match: (\b0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\s*,\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\s*,\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\b)
+        name: constant.other.color.rgb-value.sass
+      - match: \b([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%
+        name: constant.other.color.rgb-percentage.sass
+      - match: ! '[^''") \t]+'
+        name: variable.parameter.misc.sass
+    - match: \!\s*important
+      name: keyword.other.important.sass
+  string-double:
+    begin: ! '"'
+    beginCaptures:
+      '0':
+        name: punctuation.definition.string.begin.sass
+    end: ! '"'
+    endCaptures:
+      '0':
+        name: punctuation.definition.string.end.sass
+    name: string.quoted.double.sass
+    patterns:
+    - match: \\.
+      name: constant.character.escape.sass
+  string-single:
+    begin: ! ''''
+    beginCaptures:
+      '0':
+        name: punctuation.definition.string.begin.sass
+    end: ! ''''
+    endCaptures:
+      '0':
+        name: punctuation.definition.string.end.sass
+    name: string.quoted.single.sass
+    patterns:
+    - match: \\.
+      name: constant.character.escape.sass
+scopeName: source.sass
+uuid: F73505F1-0CD8-4ED1-93AA-B88050B3D8D4

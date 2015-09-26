@@ -1,0 +1,11 @@
+---
+fileTypes:
+- Gemfile
+foldingStartMarker: /\*\*|\{\s*$
+foldingStopMarker: \*\*/|^\s*\}
+keyEquivalent: ^~B
+name: Bundler
+patterns:
+- include: source.ruby
+scopeName: source.bundler
+uuid: 57038843-9D98-459B-877C-4823FF016C3B

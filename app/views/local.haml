@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title JRuby sinatra sample app running locally
+    %link{href: "bootstrap.min.css", rel: "stylesheet", media: "screen"}
+  %body
+    .container
+      .page-header
+        %h1 Your app is running!
+
+      %p.lead Now it's time to put it online.
+
+      %h2 1. Create an account on Shelly
+      .row-fluid
+        %pre shelly register
+        %p Only an email address is needed.
+
+      %h2 2. Confirm your email address
+      .row-fluid
+        %p You should get an email with confirmation link right away. Click on it to complete the registration.
+
+      %h2 3. Put the application on Shelly
+      .row-fluid
+        %pre rake shellyit
+        %p You only need to provide a unique code name for your app.
+
+      %h2
+        4. Visit
+        %a{href: "http://#{ENV['USER']}-jruby-starter.shellyapp.com"}your production site
+      .row-fluid
+        %p Note: you will have to change the URL if you have changed app's code name in the previous step.

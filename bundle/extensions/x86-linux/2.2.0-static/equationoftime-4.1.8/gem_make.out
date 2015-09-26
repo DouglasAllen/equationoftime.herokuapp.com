@@ -1,0 +1,12 @@
+/home/kb9agt/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150906-24561-1hzzilq.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling ceot.c
+compiling eot.c
+linking shared-object eot/eot.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 eot.so ./.gem.20150906-24561-1rvq0kr/eot

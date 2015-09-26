@@ -1,0 +1,54 @@
+pre.spacecadet {
+   color: #DDE6CF;
+   background-color: #0D0D0D;
+}
+pre.spacecadet .line-numbers {
+   background-color: #40002F;
+   color: #FFFFFF;
+}
+pre.spacecadet .Comment {
+   color: #473C45;
+}
+pre.spacecadet .String {
+   color: #805978;
+}
+pre.spacecadet .Constant {
+   color: #A8885A;
+}
+pre.spacecadet .Variable {
+   color: #596380;
+}
+pre.spacecadet .Keyword {
+   color: #728059;
+}
+pre.spacecadet .Storage {
+   color: #9EBF60;
+}
+pre.spacecadet .Entity {
+   color: #6078BF;
+}
+pre.spacecadet .InheritedClass {
+   font-style: italic;
+}
+pre.spacecadet .Support {
+   color: #8A4B66;
+}
+pre.spacecadet .Exception {
+   color: #893062;
+}
+pre.spacecadet .TagName {
+}
+pre.spacecadet .TagAttribute {
+}
+pre.spacecadet .LibraryConstant {
+}
+pre.spacecadet .LibraryClassType {
+}
+pre.spacecadet .LibraryVariable {
+}
+pre.spacecadet .Invalid {
+   background-color: #5F0047;
+}
+pre.spacecadet .FunctionSection {
+   background-color: #371D28;
+}

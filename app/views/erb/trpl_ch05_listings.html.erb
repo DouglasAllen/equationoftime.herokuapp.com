@@ -1,0 +1,1748 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-5">CHAPTER 5</h2>
+
+<h3 id="statements-and-control-structures">Statements and Control Structures</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#069">ARGV</span>[<span style="color:#00D">0</span>].to_f  <span style="color:#777"># Convert first argument to a number</span>
+y = <span style="color:#069">ARGV</span>[<span style="color:#00D">1</span>].to_f  <span style="color:#777"># Convert second argument to a number</span>
+sum = x + y       <span style="color:#777"># Add the arguments</span>
+puts sum          <span style="color:#777"># Print the sum</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="if">5.1.1 if</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> &lt;replaceable&gt;expression&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># If x is less than 10, increment it</span>
+<span style="color:#080;font-weight:bold">if</span> x &lt; <span style="color:#00D">10</span>                     <span style="color:#777"># newline separator</span>
+  x += <span style="color:#00D">1</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">if</span> x &lt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">then</span> x += <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">end</span>     <span style="color:#777"># then separator</span>
+
+<span style="color:#080;font-weight:bold">if</span> x &lt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">then</span>
+  x += <span style="color:#00D">1</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="else">5.1.1.1 else</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> &lt;replaceable&gt;expression&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">else</span>
+  &lt;replaceable&gt;code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+end
+
+if data         # If the array exists
+  data &lt;&lt; x     #   then append a value to it.
+else            # Otherwise...
+  data = [x]    #   create a new array that holds the value.
+end             # This is the end of the conditional.
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="elsif">5.1.1.2 elsif</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> &lt;replaceable&gt;expression1&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code1&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">elsif</span> &lt;replaceable&gt;expression2&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code2&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+      .
+      .
+      .
+elsif &lt;replaceable&gt;expressionN&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;codeN&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">else</span>
+  &lt;replaceable&gt;code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+end
+
+if x == 1
+  name = &quot;one&quot;
+elsif x == 2
+  name = &quot;two&quot;
+elsif x == 3 then name = &quot;three&quot;
+elsif x == 4; name = &quot;four&quot;
+else
+  name = &quot;many&quot;
+end
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="return-value">5.1.1.3 Return value</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>name = <span style="color:#080;font-weight:bold">if</span>    x == <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">4</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">four</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">else</span>              <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">many</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="if-as-a-modifier">5.1.2 if As a Modifier</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> &lt;replaceable&gt;expression&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt; then &lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt; <span style="color:#080;font-weight:bold">end</span>
+
+&lt;replaceable&gt;code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt; if &lt;replaceable&gt;expression&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+
+puts message <span style="color:#080;font-weight:bold">if</span> message    <span style="color:#777"># Output message, if it is defined</span>
+
+puts message        <span style="color:#777"># Unconditional</span>
+<span style="color:#080;font-weight:bold">if</span> message          <span style="color:#777"># Incomplete!</span>
+
+y = x.invert <span style="color:#080;font-weight:bold">if</span> x.respond_to? <span style="color:#A60">:invert</span>
+y = (x.invert <span style="color:#080;font-weight:bold">if</span> x.respond_to? <span style="color:#A60">:invert</span>)
+
+<span style="color:#080;font-weight:bold">if</span> expression     <span style="color:#080;font-weight:bold">begin</span>                (
+  line1             line1                line1
+  line2             line2                line2
+<span style="color:#080;font-weight:bold">end</span>               <span style="color:#080;font-weight:bold">end</span> <span style="color:#080;font-weight:bold">if</span> expression    ) <span style="color:#080;font-weight:bold">end</span> <span style="color:#080;font-weight:bold">if</span> expression
+
+<span style="color:#777"># Output message if message exists and the output method is defined</span>
+puts message <span style="color:#080;font-weight:bold">if</span> message <span style="color:#080;font-weight:bold">if</span> <span style="color:#080;font-weight:bold">defined?</span> puts
+
+puts message <span style="color:#080;font-weight:bold">if</span> message <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">defined?</span> puts
+</pre></div>
+</div>
+</div>
+
+<h4 id="unless">5.1.3 unless</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># single-way unless statement</span>
+<span style="color:#080;font-weight:bold">unless</span> &lt;replaceable&gt;condition&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># two-way unless statement</span>
+<span style="color:#080;font-weight:bold">unless</span> &lt;replaceable&gt;condition&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+  &lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt;
+<span style="color:#080;font-weight:bold">else</span>
+  &lt;replaceable&gt;code&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+end
+
+# unless modifier
+&lt;replaceable&gt;code&lt;</span><span style="color:#404">/</span></span>replaceable&gt; <span style="color:#080;font-weight:bold">unless</span> &lt;replaceable&gt;condition&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+
+# Call the to_s method on object o, unless o is nil
+s = unless o.nil?                        # newline separator
+  o.to_s
+end
+s = unless o.nil? then o.to_s end        # then separator
+
+s = o.to_s unless o.nil?
+
+unless x == 0
+  puts &quot;x is not 0&quot;
+else
+  unless y == 0
+    puts &quot;y is not 0&quot;
+  else
+    unless z == 0
+      puts &quot;z is not 0&quot;
+    else
+      puts &quot;all are 0&quot;
+    end
+  end
+end
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="case">5.1.4 case</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>name = <span style="color:#080;font-weight:bold">case</span>                           name = <span style="color:#080;font-weight:bold">if</span>    x == <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>                <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>                <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>              <span style="color:#080;font-weight:bold">elsif</span> x == <span style="color:#00D">4</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">four</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">4</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">four</span><span style="color:#710">&quot;</span></span>               <span style="color:#080;font-weight:bold">else</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">many</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">else</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">many</span><span style="color:#710">&quot;</span></span>                           <span style="color:#080;font-weight:bold">end</span>
+       <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">case</span> 
+<span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">1</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">2</span> 
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">3</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">case</span>
+<span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">1</span>, y == <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">then</span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x is one or y is zero</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Obscure syntax</span>
+<span style="color:#080;font-weight:bold">when</span> x == <span style="color:#00D">2</span> || y == <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x is two or y is one</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Easier to understand</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+name = <span style="color:#080;font-weight:bold">case</span> x
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span>             <span style="color:#777"># Just the value to compare to x</span>
+         <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Then keyword instead of newline</span>
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">3</span>; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># Semicolon instead of newline</span>
+       <span style="color:#080;font-weight:bold">else</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">many</span><span style="color:#710">&quot;</span></span>        <span style="color:#777"># Optional else clause at end</span>
+       <span style="color:#080;font-weight:bold">end</span>
+
+name = <span style="color:#080;font-weight:bold">case</span>
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span> === x <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">2</span> === x <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">two</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">3</span> === x <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">three</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">else</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">many</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Take different actions depending on the class of x</span>
+puts <span style="color:#080;font-weight:bold">case</span> x
+     <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">String</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">string</span><span style="color:#710">&quot;</span></span>
+     <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">Numeric</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">number</span><span style="color:#710">&quot;</span></span>
+     <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">TrueClass</span>, <span style="color:#036;font-weight:bold">FalseClass</span> <span style="color:#080;font-weight:bold">then</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">boolean</span><span style="color:#710">&quot;</span></span>
+     <span style="color:#080;font-weight:bold">else</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">other</span><span style="color:#710">&quot;</span></span>
+     <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Compute 2006 U.S. income tax using case and Range objects</span>
+tax = <span style="color:#080;font-weight:bold">case</span> income
+      <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span>..<span style="color:#00D">7550</span>
+        income * <span style="color:#60E">0.1</span>
+      <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">7550</span>..<span style="color:#00D">30650</span>
+        <span style="color:#00D">755</span> + (income-<span style="color:#00D">7550</span>)*<span style="color:#60E">0.15</span>
+      <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">30650</span>..<span style="color:#00D">74200</span>
+        <span style="color:#00D">4220</span> + (income-<span style="color:#00D">30655</span>)*<span style="color:#60E">0.25</span>
+      <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">74200</span>..<span style="color:#00D">154800</span>
+        <span style="color:#60E">15107.5</span> + (income-<span style="color:#00D">74201</span>)*<span style="color:#60E">0.28</span>
+      <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">154800</span>..<span style="color:#00D">336550</span>
+        <span style="color:#60E">37675.5</span> + (income-<span style="color:#00D">154800</span>)*<span style="color:#60E">0.33</span>
+      <span style="color:#080;font-weight:bold">else</span>
+        <span style="color:#00D">97653</span> + (income-<span style="color:#00D">336550</span>)*<span style="color:#60E">0.35</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Get user's input and process it, ignoring comments and exiting</span>
+<span style="color:#777"># when the user enters the word &quot;quit&quot;</span>
+<span style="color:#080;font-weight:bold">while</span> line=gets.chomp <span style="color:#080;font-weight:bold">do</span>  <span style="color:#777"># Loop, asking the user for input each time</span>
+  <span style="color:#080;font-weight:bold">case</span> line
+  <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">*#</span><span style="color:#404">/</span></span>            <span style="color:#777"># If input looks like a comment...</span>
+      <span style="color:#080;font-weight:bold">next</span>                <span style="color:#777">#   skip to the next line.</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^quit$</span><span style="color:#404">/</span><span style="color:#C2C">i</span></span>          <span style="color:#777"># If input is &quot;quit&quot; (case insensitive)...</span>
+    <span style="color:#080;font-weight:bold">break</span>                 <span style="color:#777">#   exit the loop.</span>
+  <span style="color:#080;font-weight:bold">else</span>                    <span style="color:#777"># Otherwise...</span>
+    puts line.reverse     <span style="color:#777">#   reverse the user's input and print it.</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hasValue?</span>(x)         <span style="color:#777"># Define a method named hasValue?</span>
+  <span style="color:#080;font-weight:bold">case</span> x                 <span style="color:#777"># Multiway conditional based on value of x</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#069">nil</span>, [], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">0</span>    <span style="color:#777"># if nil===x || []===x || &quot;&quot;===x || 0===x then</span>
+    <span style="color:#069">false</span>                <span style="color:#777">#   method return value is false</span>
+  <span style="color:#080;font-weight:bold">else</span>                   <span style="color:#777"># Otherwise</span>
+    <span style="color:#069">true</span>                 <span style="color:#777">#   method return value is true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the--operator">5.1.5 The ?: Operator</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">how_many_messages</span>(n) <span style="color:#777"># Handle singular/plural </span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have </span><span style="color:#710">&quot;</span></span> + n.to_s + (n==<span style="color:#00D">1</span> ? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> message.</span><span style="color:#710">&quot;</span></span> : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> messages.</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="while-and-until">5.2.1 while and until</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">10</span>               <span style="color:#777"># Initialize a loop counter variable</span>
+<span style="color:#080;font-weight:bold">while</span> x &gt;= <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">do</span>      <span style="color:#777"># Loop while x is greater than or equal to 0</span>
+  puts x             <span style="color:#777">#   Print out the value of x</span>
+  x = x - <span style="color:#00D">1</span>          <span style="color:#777">#   Subtract 1 from x</span>
+<span style="color:#080;font-weight:bold">end</span>                  <span style="color:#777"># The loop ends here</span>
+
+<span style="color:#777"># Count back up to 10 using an until loop</span>
+x = <span style="color:#00D">0</span>                <span style="color:#777"># Start at 0 (instead of -1)</span>
+<span style="color:#080;font-weight:bold">until</span> x &gt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">do</span>      <span style="color:#777"># Loop until x is greater than 10</span>
+  puts x
+  x = x + <span style="color:#00D">1</span>
+<span style="color:#080;font-weight:bold">end</span>                  <span style="color:#777"># Loop ends here</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="while-and-until-as-modifiers">5.2.2 while and until As Modifiers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">0</span>                          <span style="color:#777"># Initialize loop variable</span>
+puts x = x + <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">while</span> x &lt; <span style="color:#00D">10</span>    <span style="color:#777"># Output and increment in a single expression</span>
+
+x = <span style="color:#00D">0</span>
+<span style="color:#080;font-weight:bold">while</span> x &lt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">do</span> puts x = x + <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">end</span>
+
+a = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]                 <span style="color:#777"># Initialize an array</span>
+puts a.pop <span style="color:#080;font-weight:bold">until</span> a.empty?   <span style="color:#777"># Pop elements from array until empty</span>
+
+x = <span style="color:#00D">10</span>              <span style="color:#777"># Initialize loop variable</span>
+<span style="color:#080;font-weight:bold">begin</span>               <span style="color:#777"># Start a compound expression: executed at least once</span>
+  puts x            <span style="color:#777">#   output x</span>
+  x = x - <span style="color:#00D">1</span>         <span style="color:#777">#   decrement x</span>
+<span style="color:#080;font-weight:bold">end</span> <span style="color:#080;font-weight:bold">until</span> x == <span style="color:#00D">0</span>    <span style="color:#777"># End compound expression and modify it with a loop</span>
+
+x = <span style="color:#00D">0</span>               <span style="color:#777"># Initialize loop variable</span>
+(                   <span style="color:#777"># Start a compound expression: may be executed 0 times</span>
+  puts x            <span style="color:#777">#   output x</span>
+  x = x - <span style="color:#00D">1</span>         <span style="color:#777">#   decrement x</span>
+) <span style="color:#080;font-weight:bold">until</span> x == <span style="color:#00D">0</span>      <span style="color:#777"># End compound expression and modify it with a loop</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-forin-loop">5.2.3 The for/in Loop</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">for</span> &lt;replaceable&gt;var&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt; in &lt;replaceable&gt;collection&lt;</span><span style="color:#404">/</span></span>replaceable&gt; <span style="color:#080;font-weight:bold">do</span>
+  &lt;replaceable&gt;body&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+end
+
+# Print the elements in an array
+array = [1,2,3,4,5]
+for element in array 
+  puts element
+end
+
+# Print the keys and values in a hash
+hash = {:a=&gt;1, :b=&gt;2, :c=&gt;3}
+for key,value in hash
+  puts &quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#808"> =&gt; </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#808">&quot;
+end
+
+hash = {:a=&gt;1, :b=&gt;2, :c=&gt;3}
+hash.each do |key,value|
+  puts &quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#808"> =&gt; </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#808">&quot;
+end
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="iterators-and-enumerable-objects">5.3 Iterators and Enumerable Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">3</span>.times { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">thank you!</span><span style="color:#710">&quot;</span></span> }  <span style="color:#777"># Express gratitude three times</span>
+data.each {|x| puts x }        <span style="color:#777"># Print each element x of data</span>
+[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].map {|x| x*x }         <span style="color:#777"># Compute squares of array elements</span>
+factorial = <span style="color:#00D">1</span>                  <span style="color:#777"># Compute the factorial of n</span>
+<span style="color:#00D">2</span>.upto(n) {|x| factorial *= x }
+
+chars = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>.tap {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">original object: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>}
+  .each_char         .tap {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">each_char returns: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>}
+  .to_a              .tap {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">to_a returns: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>}
+  .map {|c| c.succ } .tap {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">map returns: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }
+  .sort              .tap {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sort returns: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>}
+</pre></div>
+</div>
+</div>
+
+<h4 id="numeric-iterators">5.3.1 Numeric Iterators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">4</span>.upto(<span style="color:#00D">6</span>) {|x| print x}   <span style="color:#777"># =&gt; prints &quot;456&quot;</span>
+
+<span style="color:#00D">3</span>.times {|x| print x }    <span style="color:#777"># =&gt; prints &quot;012&quot;</span>
+
+<span style="color:#00D">0</span>.step(<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>, <span style="color:#60E">0.1</span>) {|x| puts <span style="color:#036;font-weight:bold">Math</span>.sin(x) }
+</pre></div>
+</div>
+</div>
+
+<h4 id="enumerable-objects">5.3.2 Enumerable Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].each {|x| print x }   <span style="color:#777"># =&gt; prints &quot;123&quot;</span>
+(<span style="color:#00D">1</span>..<span style="color:#00D">3</span>).each  {|x| print x }   <span style="color:#777"># =&gt; prints &quot;123&quot; Same as 1.upto(3)</span>
+
+<span style="color:#036;font-weight:bold">File</span>.open(filename) <span style="color:#080;font-weight:bold">do</span> |f|       <span style="color:#777"># Open named file, pass as f</span>
+  f.each {|line| print line }    <span style="color:#777"># Print each line in f</span>
+<span style="color:#080;font-weight:bold">end</span>                              <span style="color:#777"># End block and close file</span>
+
+<span style="color:#036;font-weight:bold">File</span>.open(filename) <span style="color:#080;font-weight:bold">do</span> |f|
+  f.each_with_index <span style="color:#080;font-weight:bold">do</span> |line,number|
+    print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>number<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>line<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+squares = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].collect {|x| x*x}   <span style="color:#777"># =&gt; [1,4,9]</span>
+
+evens = (<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).select {|x| x%<span style="color:#00D">2</span> == <span style="color:#00D">0</span>} <span style="color:#777"># =&gt; [2,4,6,8,10]</span>
+
+odds = (<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).reject {|x| x%<span style="color:#00D">2</span> == <span style="color:#00D">0</span>}  <span style="color:#777"># =&gt; [1,3,5,7,9]</span>
+
+data = [<span style="color:#00D">2</span>, <span style="color:#00D">5</span>, <span style="color:#00D">3</span>, <span style="color:#00D">4</span>]
+sum = data.inject {|sum, x| sum + x }      <span style="color:#777"># =&gt; 14    (2+5+3+4)</span>
+floatprod = data.inject(<span style="color:#60E">1.0</span>) {|p,x| p*x }  <span style="color:#777"># =&gt; 120.0 (1.0*2*5*3*4)</span>
+max = data.inject {|m,x| m&gt;x ? m : x }     <span style="color:#777"># =&gt; 5     (largest element)</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="writing-custom-iterators">5.3.3 Writing Custom Iterators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">twice</span>
+  <span style="color:#080;font-weight:bold">yield</span>
+  <span style="color:#080;font-weight:bold">yield</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This method expects a block. It generates n values of the form</span>
+<span style="color:#777"># m*i + c, for i from 0..n-1, and yields them, one at a time, </span>
+<span style="color:#777"># to the associated block.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence</span>(n, m, c)
+  i = <span style="color:#00D">0</span>
+  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)      <span style="color:#777"># Loop n times</span>
+    <span style="color:#080;font-weight:bold">yield</span> m*i + c   <span style="color:#777"># Invoke the block, and pass a value to it</span>
+    i += <span style="color:#00D">1</span>          <span style="color:#777"># Increment i each time</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Here is an invocation of that method, with a block.</span>
+<span style="color:#777"># It prints the values 1, 6, and 11</span>
+sequence(<span style="color:#00D">3</span>, <span style="color:#00D">5</span>, <span style="color:#00D">1</span>) {|y| puts y }
+
+<span style="color:#777"># Generate n points evenly spaced around the circumference of a </span>
+<span style="color:#777"># circle of radius r centered at (0,0). Yield the x and y coordinates</span>
+<span style="color:#777"># of each point to the associated block.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">circle</span>(r,n)
+  n.times <span style="color:#080;font-weight:bold">do</span> |i|    <span style="color:#777"># Notice that this method is implemented with a block</span>
+    angle = <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span> * <span style="color:#00D">2</span> * i / n
+    <span style="color:#080;font-weight:bold">yield</span> r*<span style="color:#036;font-weight:bold">Math</span>.cos(angle), r*<span style="color:#036;font-weight:bold">Math</span>.sin(angle)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This invocation of the iterator prints:</span>
+<span style="color:#777"># (1.00, 0.00) (0.00, 1.00) (-1.00, 0.00) (-0.00, -1.00)</span>
+circle(<span style="color:#00D">1</span>,<span style="color:#00D">4</span>) {|x,y| printf <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(%.2f, %.2f) </span><span style="color:#710">&quot;</span></span>, x, y }
+
+<span style="color:#777"># Return an array with n elements of the form m*i+c</span>
+<span style="color:#777"># If a block is given, also yield each element to the block</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence</span>(n, m, c)
+  i, s = <span style="color:#00D">0</span>, []                  <span style="color:#777"># Initialize variables</span>
+  <span style="color:#080;font-weight:bold">while</span>(i &lt; n)                  <span style="color:#777"># Loop n times</span>
+    y = m*i + c                 <span style="color:#777"># Compute value</span>
+    <span style="color:#080;font-weight:bold">yield</span> y <span style="color:#080;font-weight:bold">if</span> block_given?     <span style="color:#777"># Yield, if block</span>
+    s &lt;&lt; y                      <span style="color:#777"># Store the value</span>
+    i += <span style="color:#00D">1</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  s                             <span style="color:#777"># Return the array of values</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="enumerators">5.3.4 Enumerators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Call this method with an Enumerator instead of a mutable array.</span>
+<span style="color:#777"># This is a useful defensive strategy to avoid bugs.</span>
+process(data.to_enum)  <span style="color:#777"># Instead of just process(data)</span>
+
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
+s.enum_for(<span style="color:#A60">:each_char</span>).map {|c| c.succ }  <span style="color:#777"># =&gt; [&quot;i&quot;, &quot;f&quot;, &quot;m&quot;, &quot;m&quot;, &quot;p&quot;]</span>
+
+process(data.each_char)  <span style="color:#777"># Instead of just process(data)</span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.chars.map {|c| c.succ }  <span style="color:#777"># =&gt; [&quot;i&quot;, &quot;f&quot;, &quot;m&quot;, &quot;m&quot;, &quot;p&quot;]</span>
+
+enumerator = <span style="color:#00D">3</span>.times             <span style="color:#777"># An enumerator object</span>
+enumerator.each {|x| print x }   <span style="color:#777"># Prints &quot;012&quot;</span>
+
+<span style="color:#777"># downto returns an enumerator with a select method</span>
+<span style="color:#00D">10</span>.downto(<span style="color:#00D">1</span>).select {|x| x%<span style="color:#00D">2</span>==<span style="color:#00D">0</span>}  <span style="color:#777"># =&gt; [10,8,6,4,2]</span>
+
+<span style="color:#777"># each_byte iterator returns an enumerator with a to_a method</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.each_byte.to_a            <span style="color:#777"># =&gt; [104, 101, 108, 108, 111]</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">twice</span>
+  <span style="color:#080;font-weight:bold">if</span> block_given?
+    <span style="color:#080;font-weight:bold">yield</span>
+    <span style="color:#080;font-weight:bold">yield</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#069">self</span>.to_enum(<span style="color:#A60">:twice</span>)    
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+enumerator = s.each_char.with_index
+
+<span style="color:#080;font-weight:bold">for</span> line, number <span style="color:#080;font-weight:bold">in</span> text.each_line.with_index
+  print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>number+<span style="color:#00D">1</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>line<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="external-iterators">5.3.5 External Iterators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>iterator = <span style="color:#00D">9</span>.downto(<span style="color:#00D">1</span>)             <span style="color:#777"># An enumerator as external iterator</span>
+<span style="color:#080;font-weight:bold">begin</span>                              <span style="color:#777"># So we can use rescue below</span>
+  print iterator.next <span style="color:#080;font-weight:bold">while</span> <span style="color:#069">true</span>   <span style="color:#777"># Call the next method repeatedly</span>
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">StopIteration</span>               <span style="color:#777"># When there are no more values</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...blastoff!</span><span style="color:#710">&quot;</span></span>              <span style="color:#777"># An expected, nonexceptional condition</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+iterator = <span style="color:#00D">9</span>.downto(<span style="color:#00D">1</span>)
+loop <span style="color:#080;font-weight:bold">do</span>                 <span style="color:#777"># Loop until StopIteration is raised</span>
+  print iterator.next   <span style="color:#777"># Print next item</span>
+<span style="color:#080;font-weight:bold">end</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...blastoff!</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Iterable</span>
+  include <span style="color:#036;font-weight:bold">Enumerable</span>          <span style="color:#777"># Define iterators on top of each</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>                    <span style="color:#777"># And define each on top of next</span>
+    loop { <span style="color:#080;font-weight:bold">yield</span> <span style="color:#069">self</span>.next }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">iterate</span>(iterator)
+  loop { <span style="color:#080;font-weight:bold">yield</span> iterator.next }
+<span style="color:#080;font-weight:bold">end</span>
+
+iterate(<span style="color:#00D">9</span>.downto(<span style="color:#00D">1</span>)) {|x| print x }
+
+<span style="color:#777"># Call the each method of each collection in turn.</span>
+<span style="color:#777"># This is not a parallel iteration and does not require enumerators.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sequence</span>(*enumerables, &amp;block)
+  enumerables.each <span style="color:#080;font-weight:bold">do</span> |enumerable|
+    enumerable.each(&amp;block)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Iterate the specified collections, interleaving their elements.</span>
+<span style="color:#777"># This can't be done efficiently without external iterators.</span>
+<span style="color:#777"># Note the use of the uncommon else clause in begin/rescue.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">interleave</span>(*enumerables)
+  <span style="color:#777"># Convert enumerable collections to an array of enumerators.</span>
+  enumerators = enumerables.map {|e| e.to_enum }
+  <span style="color:#777"># Loop until we don't have any more enumerators.</span>
+  <span style="color:#080;font-weight:bold">until</span> enumerators.empty?
+    <span style="color:#080;font-weight:bold">begin</span>
+      e = enumerators.shift   <span style="color:#777"># Take the first enumerator</span>
+      <span style="color:#080;font-weight:bold">yield</span> e.next            <span style="color:#777"># Get its next and pass to the block</span>
+    <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">StopIteration</span>      <span style="color:#777"># If no more elements, do nothing</span>
+    <span style="color:#080;font-weight:bold">else</span>                      <span style="color:#777"># If no exception occurred</span>
+      enumerators &lt;&lt; e        <span style="color:#777"># Put the enumerator back</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Iterate the specified collections, yielding tuples of values,</span>
+<span style="color:#777"># one value from each of the collections. See also Enumerable.zip.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bundle</span>(*enumerables)
+  enumerators = enumerables.map {|e| e.to_enum }
+  loop { <span style="color:#080;font-weight:bold">yield</span> enumerators.map {|e| e.next} }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Examples of how these iterator methods work</span>
+a,b,c = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>], <span style="color:#00D">4</span>..<span style="color:#00D">6</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>..<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">e</span><span style="color:#710">'</span></span>
+sequence(a,b,c) {|x| print x}   <span style="color:#777"># prints &quot;123456abcde&quot;</span>
+interleave(a,b,c) {|x| print x} <span style="color:#777"># prints &quot;14a25b36cde&quot;</span>
+bundle(a,b,c) {|x| print x}     <span style="color:#777"># '[1, 4, &quot;a&quot;][2, 5, &quot;b&quot;][3, 6, &quot;c&quot;]'</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="iteration-and-concurrent-modification">5.3.6 Iteration and Concurrent Modification</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>]
+a.each {|x| puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">,</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>a.shift<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }  <span style="color:#777"># prints &quot;1,1\n3,2\n5,3&quot;</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Enumerable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each_in_snapshot</span> &amp;block
+    snapshot = <span style="color:#069">self</span>.dup    <span style="color:#777"># Make a private copy of the Enumerable object</span>
+    snapshot.each &amp;block   <span style="color:#777"># And iterate on the copy</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="block-syntax">5.4.1 Block Syntax</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Print the numbers 1 to 10</span>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) {|x| puts x }   <span style="color:#777"># Invocation and block on one line with braces</span>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) <span style="color:#080;font-weight:bold">do</span> |x|          <span style="color:#777"># Block delimited with do/end</span>
+  puts x
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>)                 <span style="color:#777"># No block specified</span>
+ {|x| puts x }             <span style="color:#777"># Syntax error: block not after an invocation</span>
+
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">3</span>) {|x| puts x }    <span style="color:#777"># Parens and curly braces work</span>
+<span style="color:#00D">1</span>.upto <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">do</span> |x| puts x <span style="color:#080;font-weight:bold">end</span> <span style="color:#777"># No parens, block delimited with do/end</span>
+<span style="color:#00D">1</span>.upto <span style="color:#00D">3</span> {|x| puts x }     <span style="color:#777"># Syntax Error: trying to pass a block to 3!</span>
+
+<span style="color:#777"># The Hash.each iterator passes two arguments to its block</span>
+hash.each <span style="color:#080;font-weight:bold">do</span> |key, value|   <span style="color:#777"># For each (key,value) pair in the hash</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Print the key and the value</span>
+<span style="color:#080;font-weight:bold">end</span>                         <span style="color:#777"># End of the block</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-value-of-a-block">5.4.2 The Value of a Block</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># The block takes two words and &quot;returns&quot; their relative order</span>
+words.sort! {|x,y| y &lt;=&gt; x }
+
+array.collect <span style="color:#080;font-weight:bold">do</span> |x|
+  <span style="color:#080;font-weight:bold">next</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">if</span> x == <span style="color:#069">nil</span>  <span style="color:#777"># Return prematurely if x is nil</span>
+  <span style="color:#080;font-weight:bold">next</span> x, x*x         <span style="color:#777"># Return two values</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+array.collect <span style="color:#080;font-weight:bold">do</span> |x|
+  <span style="color:#080;font-weight:bold">if</span> x == <span style="color:#069">nil</span>
+    <span style="color:#00D">0</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    [x, x*x]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="blocks-and-variable-scope">5.4.3 Blocks and Variable Scope</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>total = <span style="color:#00D">0</span>   
+data.each {|x| total += x }  <span style="color:#777"># Sum the elements of the data array</span>
+puts total                   <span style="color:#777"># Print out that sum</span>
+
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) <span style="color:#080;font-weight:bold">do</span> |i|         <span style="color:#777"># 10 rows</span>
+  <span style="color:#00D">1</span>.upto(<span style="color:#00D">10</span>) <span style="color:#080;font-weight:bold">do</span> |i|       <span style="color:#777"># Each has 10 columns</span>
+    print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># Print column number</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> ==&gt; Row </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Try to print row number, but get column number</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+x = y = <span style="color:#00D">0</span>            <span style="color:#777"># local variables</span>
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">4</span>) <span style="color:#080;font-weight:bold">do</span> |x;y|   <span style="color:#777"># x and y are local to block</span>
+                     <span style="color:#777"># x and y &quot;shadow&quot; the outer variables</span>
+  y = x + <span style="color:#00D">1</span>          <span style="color:#777"># Use y as a scratch variable</span>
+  puts y*y           <span style="color:#777"># Prints 4, 9, 16, 25</span>
+<span style="color:#080;font-weight:bold">end</span>
+[x,y]                <span style="color:#777"># =&gt; [0,0]: block does not alter these</span>
+
+hash.each {|key,value; i,j,k| ... }
+</pre></div>
+</div>
+</div>
+
+<h4 id="passing-arguments-to-a-block">5.4.4 Passing Arguments to a Block</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>key,value = k,v
+
+{<span style="color:#A60">:one</span>=&gt;<span style="color:#00D">1</span>}.each_pair {|key,value| ... } <span style="color:#777"># key=:one, value=1</span>
+
+{<span style="color:#A60">:one</span>=&gt;<span style="color:#00D">1</span>}.each_pair {|<span style="color:#d70">$key</span>, <span style="color:#33B">@value</span>| ... } <span style="color:#777"># No longer works in Ruby 1.9</span>
+
+hash.each {|k,v| ... }  <span style="color:#777"># key and value assigned to params k and v</span>
+
+k,v = [key, value]
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">two</span>; <span style="color:#080;font-weight:bold">yield</span> <span style="color:#00D">1</span>,<span style="color:#00D">2</span>; <span style="color:#080;font-weight:bold">end</span>  <span style="color:#777"># An iterator that yields two values</span>
+two {|x| p x }     <span style="color:#777"># Ruby 1.8: warns and prints [1,2],</span>
+two {|x| p x }     <span style="color:#777"># Ruby 1.9: prints 1, no warning</span>
+two {|*x| p x }    <span style="color:#777"># Either version: prints [1,2]; no warning</span>
+two {|x,| p x }    <span style="color:#777"># Either version: prints 1; no warning</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">five</span>; <span style="color:#080;font-weight:bold">yield</span> <span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>; <span style="color:#080;font-weight:bold">end</span>     <span style="color:#777"># Yield 5 values</span>
+five <span style="color:#080;font-weight:bold">do</span> |head, *body, tail|        <span style="color:#777"># Extra values go into body array</span>
+  print head, body, tail           <span style="color:#777"># Prints &quot;1[2,3,4]5&quot;</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hashiter</span>; <span style="color:#080;font-weight:bold">yield</span> <span style="color:#A60">:a</span>=&gt;<span style="color:#00D">1</span>, <span style="color:#A60">:b</span>=&gt;<span style="color:#00D">2</span>; <span style="color:#080;font-weight:bold">end</span>  <span style="color:#777"># Note no curly braces</span>
+hashiter {|hash| puts hash[<span style="color:#A60">:a</span>] }       <span style="color:#777"># Prints 1</span>
+
+<span style="color:#777"># This Proc expects a block </span>
+printer = lambda {|&amp;b| puts b.call } <span style="color:#777"># Print value returned by b</span>
+printer.call { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span> }                <span style="color:#777"># Pass a block to the block!</span>
+
+[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].each {|x,y=<span style="color:#00D">10</span>| print x*y }     <span style="color:#777"># SyntaxError!</span>
+
+[<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].each &amp;-&gt;(x,y=<span style="color:#00D">10</span>) { print x*y }  <span style="color:#777"># Prints &quot;102030&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="return">5.5.1 return</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Return two copies of x, if x is not nil</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">double</span>(x)
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">nil</span> <span style="color:#080;font-weight:bold">if</span> x == <span style="color:#069">nil</span>   <span style="color:#777"># Return prematurely</span>
+  <span style="color:#080;font-weight:bold">return</span> x, x.dup          <span style="color:#777"># Return multiple values</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Return the index of the first occurrence of target within array or nil</span>
+<span style="color:#777"># Note that this code just duplicates the Array.index method</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">find</span>(array, target)
+  array.each_with_index <span style="color:#080;font-weight:bold">do</span> |element,index|
+    <span style="color:#080;font-weight:bold">return</span> index <span style="color:#080;font-weight:bold">if</span> (element == target)  <span style="color:#777"># return from find</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#069">nil</span>  <span style="color:#777"># If we didn't find the element, return nil</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="break">5.5.2 break</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">while</span>(line = gets.chop)     <span style="color:#777"># A loop starts here</span>
+  <span style="color:#080;font-weight:bold">break</span> <span style="color:#080;font-weight:bold">if</span> line == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">quit</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># If this break statement is executed...</span>
+  puts eval(line)
+<span style="color:#080;font-weight:bold">end</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Good bye</span><span style="color:#710">&quot;</span></span>             <span style="color:#777"># ...then control is transferred here</span>
+
+f.each <span style="color:#080;font-weight:bold">do</span> |line|             <span style="color:#777"># Iterate over the lines in file f</span>
+  <span style="color:#080;font-weight:bold">break</span> <span style="color:#080;font-weight:bold">if</span> line == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">quit</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># If this break statement is executed...</span>
+  puts eval(line)
+<span style="color:#080;font-weight:bold">end</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Good bye</span><span style="color:#710">&quot;</span></span>              <span style="color:#777"># ...then control is transferred here</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="next">5.5.3 next</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">while</span>(line = gets.chop)     <span style="color:#777"># A loop starts here</span>
+  <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> line[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># If this line is a comment, go on to the next</span>
+  puts eval(line)
+  <span style="color:#777"># Control goes here when the next statement is executed</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+f.each <span style="color:#080;font-weight:bold">do</span> |line|              <span style="color:#777"># Iterate over the lines in file f</span>
+  <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> line[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># If this line is a comment, go to the next</span>
+  puts eval(line)
+  <span style="color:#777"># Control goes here when the next statement is executed</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="next-and-block-value">5.5.3.1 next and block value</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>squareroots = data.collect <span style="color:#080;font-weight:bold">do</span> |x|
+  <span style="color:#080;font-weight:bold">next</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">if</span> x &lt; <span style="color:#00D">0</span>  <span style="color:#777"># Return 0 for negative values</span>
+  <span style="color:#036;font-weight:bold">Math</span>.sqrt(x)
+<span style="color:#080;font-weight:bold">end</span>
+
+squareroots = data.collect <span style="color:#080;font-weight:bold">do</span> |x|
+  <span style="color:#080;font-weight:bold">if</span> (x &lt; <span style="color:#00D">0</span>) <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">else</span> <span style="color:#036;font-weight:bold">Math</span>.sqrt(x) <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="redo">5.5.4 redo</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>i = <span style="color:#00D">0</span>
+<span style="color:#080;font-weight:bold">while</span>(i &lt; <span style="color:#00D">3</span>)   <span style="color:#777"># Prints &quot;0123&quot; instead of &quot;012&quot;</span>
+  <span style="color:#777"># Control returns here when redo is executed</span>
+  print i
+  i += <span style="color:#00D">1</span>
+  <span style="color:#080;font-weight:bold">redo</span> <span style="color:#080;font-weight:bold">if</span> i == <span style="color:#00D">3</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please enter the first word you think of</span><span style="color:#710">&quot;</span></span>
+words = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">apple banana cherry</span><span style="color:#710">)</span></span>   <span style="color:#777"># shorthand for [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]</span>
+response = words.collect <span style="color:#080;font-weight:bold">do</span> |word|
+  <span style="color:#777"># Control returns here when redo is executed</span>
+  print word + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&gt; </span><span style="color:#710">&quot;</span></span>               <span style="color:#777"># Prompt the user</span>
+  response = gets.chop            <span style="color:#777"># Get a response</span>
+  <span style="color:#080;font-weight:bold">if</span> response.size == <span style="color:#00D">0</span>           <span style="color:#777"># If user entered nothing</span>
+    word.upcase!                  <span style="color:#777"># Emphasize the prompt with uppercase</span>
+    <span style="color:#080;font-weight:bold">redo</span>                          <span style="color:#777"># And skip to the top of the block</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  response                        <span style="color:#777"># Return the response</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="retry">5.5.5 retry</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>n = <span style="color:#00D">10</span>
+n.times <span style="color:#080;font-weight:bold">do</span> |x|   <span style="color:#777"># Iterate n times from 0 to n&amp;#x2013;1</span>
+  print x        <span style="color:#777"># Print iteration number</span>
+  <span style="color:#080;font-weight:bold">if</span> x == <span style="color:#00D">9</span>      <span style="color:#777"># If we've reached 9</span>
+    n -= <span style="color:#00D">1</span>       <span style="color:#777"># Decrement n (we won't reach 9 the next time!)</span>
+    <span style="color:#080;font-weight:bold">retry</span>        <span style="color:#777"># Restart the iteration</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This method behaves like a while loop: if x is non-nil and non-false,</span>
+<span style="color:#777"># invoke the block and then retry to restart the loop and test the</span>
+<span style="color:#777"># condition again. This method is slightly different than a true while loop: </span>
+<span style="color:#777"># you can use C-style curly braces to delimit the loop body. And</span>
+<span style="color:#777"># variables used only within the body of the loop remain local to the block.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">repeat_while</span>(x)
+  <span style="color:#080;font-weight:bold">if</span> x     <span style="color:#777"># If the condition was not nil or false</span>
+    <span style="color:#080;font-weight:bold">yield</span>  <span style="color:#777"># Run the body of the loop</span>
+    <span style="color:#080;font-weight:bold">retry</span>  <span style="color:#777"># Retry and re-evaluate loop condition</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="throw-and-catch">5.5.6 throw and catch</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">for</span> matrix <span style="color:#080;font-weight:bold">in</span> data <span style="color:#080;font-weight:bold">do</span>             <span style="color:#777"># Process a deeply nested data structure.</span>
+  catch <span style="color:#A60">:missing_data</span> <span style="color:#080;font-weight:bold">do</span>          <span style="color:#777"># Label this statement so we can break out.</span>
+    <span style="color:#080;font-weight:bold">for</span> row <span style="color:#080;font-weight:bold">in</span> matrix <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#080;font-weight:bold">for</span> value <span style="color:#080;font-weight:bold">in</span> row <span style="color:#080;font-weight:bold">do</span>
+        throw <span style="color:#A60">:missing_data</span> <span style="color:#080;font-weight:bold">unless</span> value <span style="color:#777"># Break out of two loops at once.</span>
+        <span style="color:#777"># Otherwise, do some actual data processing here.</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#777"># We end up here after the nested loops finish processing each matrix.</span>
+  <span style="color:#777"># We also get here if :missing_data is thrown.</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="exception-classes-and-exception-objects">5.6.1 Exception Classes and Exception Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Object</span>
+ +--<span style="color:#036;font-weight:bold">Exception</span>
+     +--<span style="color:#036;font-weight:bold">NoMemoryError</span>
+     +--<span style="color:#036;font-weight:bold">ScriptError</span>
+     |   +--<span style="color:#036;font-weight:bold">LoadError</span>
+     |   +--<span style="color:#036;font-weight:bold">NotImplementedError</span>
+     |   +--<span style="color:#036;font-weight:bold">SyntaxError</span>
+     +--<span style="color:#036;font-weight:bold">SecurityError</span>         <span style="color:#777"># Was a StandardError in 1.8</span>
+     +--<span style="color:#036;font-weight:bold">SignalException</span>
+     |   +--<span style="color:#036;font-weight:bold">Interrupt</span>
+     +--<span style="color:#036;font-weight:bold">SystemExit</span>
+     +--<span style="color:#036;font-weight:bold">SystemStackError</span>      <span style="color:#777"># Was a StandardError in 1.8</span>
+     +--<span style="color:#036;font-weight:bold">StandardError</span>
+         +--<span style="color:#036;font-weight:bold">ArgumentError</span>
+         +--<span style="color:#036;font-weight:bold">FiberError</span>        <span style="color:#777"># New in 1.9</span>
+         +--<span style="color:#036;font-weight:bold">IOError</span>
+         |   +--<span style="color:#036;font-weight:bold">EOFError</span>
+         +--<span style="color:#036;font-weight:bold">IndexError</span>
+         |   +--<span style="color:#036;font-weight:bold">KeyError</span>      <span style="color:#777"># New in 1.9</span>
+         |   +--<span style="color:#036;font-weight:bold">StopIteration</span> <span style="color:#777"># New in 1.9</span>
+         +--<span style="color:#036;font-weight:bold">LocalJumpError</span>
+         +--<span style="color:#036;font-weight:bold">NameError</span>
+         |   +--<span style="color:#036;font-weight:bold">NoMethodError</span>
+         +--<span style="color:#036;font-weight:bold">RangeError</span>
+         |   +--<span style="color:#036;font-weight:bold">FloatDomainError</span>
+         +--<span style="color:#036;font-weight:bold">RegexpError</span>
+         +--<span style="color:#036;font-weight:bold">RuntimeError</span>
+         +--<span style="color:#036;font-weight:bold">SystemCallError</span>
+         +--<span style="color:#036;font-weight:bold">ThreadError</span>
+         +--<span style="color:#036;font-weight:bold">TypeError</span>
+         +--<span style="color:#036;font-weight:bold">ZeroDivisionError</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-methods-of-exception-objects">5.6.1.1 The methods of exception objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&lt;replaceable&gt;filename&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt; : &lt;replaceable&gt;linenumber&lt;</span><span style="color:#404">/</span></span>replaceable&gt; <span style="color:#080;font-weight:bold">in</span> &lt;replaceable&gt;methodname&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="defining-new-exception-classes">5.6.1.3 Defining new exception classes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MyError</span> &lt; <span style="color:#036;font-weight:bold">StandardError</span>; <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>5.6.2 Raising Exceptions with raise</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">factorial</span>(n)                 <span style="color:#777"># Define a factorial method with argument n</span>
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bad argument</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>  <span style="color:#777"># Raise an exception for bad n</span>
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> n == <span style="color:#00D">1</span>             <span style="color:#777"># factorial(1) is 1</span>
+  n * factorial(n-<span style="color:#00D">1</span>)             <span style="color:#777"># Compute other factorials recursively</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+raise <span style="color:#036;font-weight:bold">RuntimeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bad argument</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+raise <span style="color:#036;font-weight:bold">RuntimeError</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bad argument</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+raise <span style="color:#036;font-weight:bold">RuntimeError</span>.exception(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bad argument</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+
+raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+
+raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Expected argument &gt;= 1. Got </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>n<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+
+<span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">1</span>
+  raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Expected argument &gt;= 1. Got </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>n<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>, caller
+<span style="color:#080;font-weight:bold">end</span>
+
+raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Integer argument expected</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#080;font-weight:bold">not</span> n.is_a? <span style="color:#036;font-weight:bold">Integer</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="handling-exceptions-with-rescue">5.6.3 Handling Exceptions with rescue</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">begin</span>
+  <span style="color:#777"># Any number of Ruby statements go here.</span>
+  <span style="color:#777"># Usually, they are executed without exceptions and</span>
+  <span style="color:#777"># execution continues after the end statement.</span>
+<span style="color:#080;font-weight:bold">rescue</span>
+  <span style="color:#777"># This is the rescue clause; exception-handling code goes here.</span>
+  <span style="color:#777"># If an exception is raised by the code above, or propagates up</span>
+  <span style="color:#777"># from one of the methods called above, then execution jumps here.</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="naming-the-exception-object">5.6.3.1 Naming the exception object</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">English</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">rescue</span> =&gt; ex
+
+<span style="color:#080;font-weight:bold">begin</span>                                <span style="color:#777"># Handle exceptions in this block</span>
+  x = factorial(<span style="color:#00D">-1</span>)                  <span style="color:#777"># Note illegal argument</span>
+<span style="color:#080;font-weight:bold">rescue</span> =&gt; ex                         <span style="color:#777"># Store exception in variable ex</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>ex.class<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>ex.message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Handle exception by printing message</span>
+<span style="color:#080;font-weight:bold">end</span>                                  <span style="color:#777"># End the begin/rescue block</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="handling-exceptions-by-type">5.6.3.2 Handling exceptions by type</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">Exception</span>
+
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">ArgumentError</span> =&gt; e
+
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="color:#036;font-weight:bold">TypeError</span> =&gt; error
+
+<span style="color:#080;font-weight:bold">begin</span>
+  x = factorial(<span style="color:#00D">1</span>)
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">ArgumentError</span> =&gt; ex
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Try again with a value &gt;= 1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">TypeError</span> =&gt; ex
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Try again with an integer</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="propagation-of-exceptions">5.6.3.3 Propagation of exceptions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">explode</span>        <span style="color:#777"># This method raises a RuntimeError 10% of the time</span>
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bam!</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> rand(<span style="color:#00D">10</span>) == <span style="color:#00D">0</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">risky</span>   
+  <span style="color:#080;font-weight:bold">begin</span>            <span style="color:#777"># This block</span>
+    <span style="color:#00D">10</span>.times <span style="color:#080;font-weight:bold">do</span>    <span style="color:#777"># contains another block</span>
+      explode      <span style="color:#777"># that might raise an exception.</span>
+    <span style="color:#080;font-weight:bold">end</span>            <span style="color:#777"># No rescue clause here, so propagate out.</span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">TypeError</span> <span style="color:#777"># This rescue clause cannot handle a RuntimeError..</span>
+    puts <span style="color:#d70">$!</span>        <span style="color:#777"># so skip it and propagate out.</span>
+  <span style="color:#080;font-weight:bold">end</span>              
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>          <span style="color:#777"># This is the normal return value, if no exception occurs.</span>
+<span style="color:#080;font-weight:bold">end</span>                <span style="color:#777"># No rescue clause here, so propagate up to caller.</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">defuse</span>
+  <span style="color:#080;font-weight:bold">begin</span>                     <span style="color:#777"># The following code may fail with an exception.</span>
+    puts risky              <span style="color:#777"># Try to invoke print the return value.</span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">RuntimeError</span> =&gt; e  <span style="color:#777"># If we get an exception</span>
+    puts e.message          <span style="color:#777"># print the error message instead.</span>
+  <span style="color:#080;font-weight:bold">end</span>                       
+<span style="color:#080;font-weight:bold">end</span>
+
+defuse
+</pre></div>
+</div>
+</div>
+
+<h4 id="retry-in-a-rescue-clause">5.6.3.5 retry in a rescue clause</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">open-uri</span><span style="color:#710">'</span></span>
+
+tries = <span style="color:#00D">0</span>       <span style="color:#777"># How many times have we tried to read the URL</span>
+<span style="color:#080;font-weight:bold">begin</span>           <span style="color:#777"># This is where a retry begins</span>
+  tries += <span style="color:#00D">1</span>    <span style="color:#777"># Try to print out the contents of a URL</span>
+  open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http://www.example.com/</span><span style="color:#710">'</span></span>) {|f| puts f.readlines }
+<span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">OpenURI</span>::<span style="color:#036;font-weight:bold">HTTPError</span> =&gt; e  <span style="color:#777"># If we get an HTTP error</span>
+  puts e.message                <span style="color:#777"># Print the error message</span>
+  <span style="color:#080;font-weight:bold">if</span> (tries &lt; <span style="color:#00D">4</span>)                <span style="color:#777"># If we haven't tried 4 times yet...</span>
+    sleep(<span style="color:#00D">2</span>**tries)             <span style="color:#777"># Wait for 2, 4, or 8 seconds</span>
+    <span style="color:#080;font-weight:bold">retry</span>                       <span style="color:#777"># And then try again!</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-ensure-clause">5.6.5 The ensure Clause</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">begin</span>
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span>     <span style="color:#777"># Skip to the ensure clause before returning to caller</span>
+<span style="color:#080;font-weight:bold">ensure</span>
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">2</span>     <span style="color:#777"># Replace the return value with this new value</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test</span>
+  <span style="color:#080;font-weight:bold">begin</span> <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">ensure</span> <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="rescue-with-method-class-and-module-definitions">5.6.6 rescue with Method, Class, and Module Definitions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_name</span>(x)
+  <span style="color:#777"># The body of the method goes here.</span>
+  <span style="color:#777"># Usually, the method body runs to completion without exceptions</span>
+  <span style="color:#777"># and returns to its caller normally.</span>
+<span style="color:#080;font-weight:bold">rescue</span> 
+  <span style="color:#777"># Exception-handling code goes here.</span>
+  <span style="color:#777"># If an exception is raised within the body of the method, or if</span>
+  <span style="color:#777"># one of the methods it calls raises an exception, then control</span>
+  <span style="color:#777"># jumps to this block.</span>
+<span style="color:#080;font-weight:bold">else</span>
+  <span style="color:#777"># If no exceptions occur in the body of the method</span>
+  <span style="color:#777"># then the code in this clause is executed.</span>
+<span style="color:#080;font-weight:bold">ensure</span>
+  <span style="color:#777"># The code in this clause is executed no matter what happens in the</span>
+  <span style="color:#777"># body of the method. It is run if the method runs to completion, if </span>
+  <span style="color:#777"># it throws an exception, or if it executes a return statement.</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="rescue-as-a-statement-modifier">5.6.7 rescue As a Statement Modifier</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Compute factorial of x, or use 0 if the method raises an exception</span>
+y = factorial(x) <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#00D">0</span>
+
+y = <span style="color:#080;font-weight:bold">begin</span>
+      factorial(x)
+    <span style="color:#080;font-weight:bold">rescue</span>
+      <span style="color:#00D">0</span>
+    <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="begin-and-end">5.7 BEGIN and END</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">BEGIN</span> {
+  <span style="color:#777"># Global initialization code goes here</span>
+}
+
+<span style="color:#080;font-weight:bold">END</span> {
+  <span style="color:#777"># Global shutdown code goes here</span>
+}
+
+<span style="color:#080;font-weight:bold">if</span> (<span style="color:#069">false</span>) 
+  <span style="color:#080;font-weight:bold">BEGIN</span> {
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">if</span><span style="color:#710">&quot;</span></span>;                   <span style="color:#777"># This will be printed</span>
+    a = <span style="color:#00D">4</span>;                       <span style="color:#777"># This variable only defined here</span>
+  }
+<span style="color:#080;font-weight:bold">else</span>
+  <span style="color:#080;font-weight:bold">BEGIN</span> { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">else</span><span style="color:#710">&quot;</span></span> }          <span style="color:#777"># Also printed</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#00D">10</span>.times {<span style="color:#080;font-weight:bold">BEGIN</span> { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">loop</span><span style="color:#710">&quot;</span></span> }} <span style="color:#777"># Only printed once</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="begin-and-end-1">5.7 BEGIN and END</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = <span style="color:#00D">4</span>;
+<span style="color:#080;font-weight:bold">if</span> (<span style="color:#069">true</span>) 
+  <span style="color:#080;font-weight:bold">END</span> {                        <span style="color:#777"># This END is executed</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">if</span><span style="color:#710">&quot;</span></span>;                 <span style="color:#777"># This code is registered</span>
+    puts a                     <span style="color:#777"># The variable is visible; prints &quot;4&quot;</span>
+  }
+<span style="color:#080;font-weight:bold">else</span>
+  <span style="color:#080;font-weight:bold">END</span> { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">else</span><span style="color:#710">&quot;</span></span> }          <span style="color:#777"># This is not executed</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#00D">10</span>.times {<span style="color:#080;font-weight:bold">END</span> { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">loop</span><span style="color:#710">&quot;</span></span> }} <span style="color:#777"># Only executed once</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="threads-for-concurrency">5.8.1 Threads for Concurrency</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This method expects an array of filenames.</span>
+<span style="color:#777"># It returns an array of strings holding the content of the named files.</span>
+<span style="color:#777"># The method creates one thread for each named file.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">readfiles</span>(filenames)
+  <span style="color:#777"># Create an array of threads from the array of filenames.</span>
+  <span style="color:#777"># Each thread starts reading a file.</span>
+  threads = filenames.map <span style="color:#080;font-weight:bold">do</span> |f|
+    <span style="color:#036;font-weight:bold">Thread</span>.new { <span style="color:#036;font-weight:bold">File</span>.read(f) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Now create an array of file contents by calling the value</span>
+  <span style="color:#777"># method of each thread. This method blocks, if necessary,</span>
+  <span style="color:#777"># until the thread exits with a value.</span>
+  threads.map {|t| t.value }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="fibers-for-coroutines">5.8.2 Fibers for Coroutines</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>f = <span style="color:#036;font-weight:bold">Fiber</span>.new {              <span style="color:#777"># Line  1: Create a new fiber</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fiber says Hello</span><span style="color:#710">&quot;</span></span>    <span style="color:#777"># Line  2:</span>
+  <span style="color:#036;font-weight:bold">Fiber</span>.yield                <span style="color:#777"># Line  3: goto line 9 </span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fiber says Goodbye</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Line  4:</span>
+}                            <span style="color:#777"># Line  5: goto line 11</span>
+                             <span style="color:#777"># Line  6:</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Caller says Hello</span><span style="color:#710">&quot;</span></span>     <span style="color:#777"># Line  7:</span>
+f.resume                     <span style="color:#777"># Line  8: goto line 2</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Caller says Goodbye</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Line  9:</span>
+f.resume                     <span style="color:#777"># Line 10: goto line 4</span>
+                             <span style="color:#777"># Line 11:</span>
+
+<span style="color:#036;font-weight:bold">Caller</span> says <span style="color:#036;font-weight:bold">Hello</span>
+<span style="color:#036;font-weight:bold">Fiber</span> says <span style="color:#036;font-weight:bold">Hello</span>
+<span style="color:#036;font-weight:bold">Caller</span> says <span style="color:#036;font-weight:bold">Goodbye</span>
+<span style="color:#036;font-weight:bold">Fiber</span> says <span style="color:#036;font-weight:bold">Goodbye</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="fiber-arguments-and-return-values">5.8.2.1 Fiber arguments and return values</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>f = <span style="color:#036;font-weight:bold">Fiber</span>.new <span style="color:#080;font-weight:bold">do</span> |message|
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Caller said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  message2 = <span style="color:#036;font-weight:bold">Fiber</span>.yield(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>)    <span style="color:#777"># &quot;Hello&quot; returned by first resume</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Caller said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message2<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fine</span><span style="color:#710">&quot;</span></span>                             <span style="color:#777"># &quot;Fine&quot; returned by second resume</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+response = f.resume(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>)         <span style="color:#777"># &quot;Hello&quot; passed to block </span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fiber said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>response<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+response2 = f.resume(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">How are you?</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># &quot;How are you?&quot; returned by Fiber.yield</span>
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fiber said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>response2<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#036;font-weight:bold">Caller</span> <span style="color:#606">said</span>: <span style="color:#036;font-weight:bold">Hello</span>
+<span style="color:#036;font-weight:bold">Fiber</span> <span style="color:#606">said</span>: <span style="color:#036;font-weight:bold">Hello</span>
+<span style="color:#036;font-weight:bold">Caller</span> <span style="color:#606">said</span>: <span style="color:#036;font-weight:bold">How</span> are you?
+<span style="color:#036;font-weight:bold">Fiber</span> <span style="color:#606">said</span>: <span style="color:#036;font-weight:bold">Fine</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="implementing-generators-with-fibers">5.8.2.2 Implementing generators with fibers</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Return a Fiber to compute Fibonacci numbers</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">fibonacci_generator</span>(x0,y0)   <span style="color:#777"># Base the sequence on x0,y0</span>
+  <span style="color:#036;font-weight:bold">Fiber</span>.new <span style="color:#080;font-weight:bold">do</span>
+    x,y = x0, y0                 <span style="color:#777"># Initialize x and y</span>
+    loop <span style="color:#080;font-weight:bold">do</span>                      <span style="color:#777"># This fiber runs forever</span>
+      <span style="color:#036;font-weight:bold">Fiber</span>.yield y              <span style="color:#777"># Yield the next number in the sequence</span>
+      x,y = y,x+y                <span style="color:#777"># Update x and y</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+g = fibonacci_generator(<span style="color:#00D">0</span>,<span style="color:#00D">1</span>)     <span style="color:#777"># Create a generator </span>
+<span style="color:#00D">10</span>.times { print g.resume, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> } <span style="color:#777"># And use it</span>
+
+<span style="color:#00D">1</span> <span style="color:#00D">1</span> <span style="color:#00D">2</span> <span style="color:#00D">3</span> <span style="color:#00D">5</span> <span style="color:#00D">8</span> <span style="color:#00D">13</span> <span style="color:#00D">21</span> <span style="color:#00D">34</span> <span style="color:#00D">55</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FibonacciGenerator</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = <span style="color:#00D">0</span>,<span style="color:#00D">1</span>
+    <span style="color:#33B">@fiber</span> = <span style="color:#036;font-weight:bold">Fiber</span>.new <span style="color:#080;font-weight:bold">do</span>
+      loop <span style="color:#080;font-weight:bold">do</span> 
+        <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = <span style="color:#33B">@y</span>, <span style="color:#33B">@x</span>+<span style="color:#33B">@y</span>
+        <span style="color:#036;font-weight:bold">Fiber</span>.yield <span style="color:#33B">@x</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">next</span>           <span style="color:#777"># Return the next Fibonacci number</span>
+    <span style="color:#33B">@fiber</span>.resume
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">rewind</span>         <span style="color:#777"># Restart the sequence</span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = <span style="color:#00D">0</span>,<span style="color:#00D">1</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+g = <span style="color:#036;font-weight:bold">FibonacciGenerator</span>.new      <span style="color:#777"># Create a generator</span>
+<span style="color:#00D">10</span>.times { print g.next, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> }  <span style="color:#777"># Print first 10 numbers</span>
+g.rewind; puts                  <span style="color:#777"># Start over, on a new line</span>
+<span style="color:#00D">10</span>.times { print g.next, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> }  <span style="color:#777"># Print the first 10 again</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>
+   loop { <span style="color:#080;font-weight:bold">yield</span> <span style="color:#069">self</span>.next }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Generator</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(enumerable)
+    <span style="color:#33B">@enumerable</span> = enumerable  <span style="color:#777"># Remember the enumerable object</span>
+    create_fiber              <span style="color:#777"># Create a fiber to enumerate it</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">next</span>                    <span style="color:#777"># Return the next element</span>
+    <span style="color:#33B">@fiber</span>.resume             <span style="color:#777"># by resuming the fiber</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">rewind</span>                  <span style="color:#777"># Start the enumeration over</span>
+    create_fiber              <span style="color:#777"># by creating a new fiber</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create_fiber</span>            <span style="color:#777"># Create the fiber that does the enumeration</span>
+    <span style="color:#33B">@fiber</span> = <span style="color:#036;font-weight:bold">Fiber</span>.new <span style="color:#080;font-weight:bold">do</span>     <span style="color:#777"># Create a new fiber</span>
+      <span style="color:#33B">@enumerable</span>.each <span style="color:#080;font-weight:bold">do</span> |x| <span style="color:#777"># Use the each method</span>
+        <span style="color:#036;font-weight:bold">Fiber</span>.yield(x)        <span style="color:#777"># But pause during enumeration to return values</span>
+      <span style="color:#080;font-weight:bold">end</span>              
+      raise <span style="color:#036;font-weight:bold">StopIteration</span>     <span style="color:#777"># Raise this when we're out of values</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+g = <span style="color:#036;font-weight:bold">Generator</span>.new(<span style="color:#00D">1</span>..<span style="color:#00D">10</span>)  <span style="color:#777"># Create a generator from an Enumerable like this</span>
+loop { print g.next }     <span style="color:#777"># And use it like an enumerator like this</span>
+g.rewind                  <span style="color:#777"># Start over like this</span>
+g = (<span style="color:#00D">1</span>..<span style="color:#00D">10</span>).to_enum       <span style="color:#777"># The to_enum method does the same thing</span>
+loop { print g.next }
+</pre></div>
+</div>
+</div>
+
+<h4 id="advanced-fiber-features">5.8.2.3 Advanced fiber features</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">fiber</span><span style="color:#710">'</span></span>
+
+f = g = <span style="color:#069">nil</span>
+
+f = <span style="color:#036;font-weight:bold">Fiber</span>.new {|x|        <span style="color:#777"># 1: </span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">f1: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># 2: print &quot;f1: 1&quot;</span>
+  x = g.transfer(x+<span style="color:#00D">1</span>)     <span style="color:#777"># 3: pass 2 to line 8</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">f2: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># 4: print &quot;f2: 3&quot;</span>
+  x = g.transfer(x+<span style="color:#00D">1</span>)     <span style="color:#777"># 5: return 4 to line 10</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">f3: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># 6: print &quot;f3: 5&quot;</span>
+  x + <span style="color:#00D">1</span>                   <span style="color:#777"># 7: return 6 to line 13</span>
+}
+g = <span style="color:#036;font-weight:bold">Fiber</span>.new {|x|        <span style="color:#777"># 8:</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">g1: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># 9: print &quot;g1: 2&quot;</span>
+  x = f.transfer(x+<span style="color:#00D">1</span>)     <span style="color:#777">#10: return 3 to line 3</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">g2: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>         <span style="color:#777">#11: print &quot;g2: 4&quot;</span>
+  x = f.transfer(x+<span style="color:#00D">1</span>)     <span style="color:#777">#12: return 5 to line 5</span>
+}
+puts f.transfer(<span style="color:#00D">1</span>)        <span style="color:#777">#13: pass 1 to line 1</span>
+
+<span style="color:#606">f1</span>: <span style="color:#00D">1</span>
+<span style="color:#606">g1</span>: <span style="color:#00D">2</span>
+<span style="color:#606">f2</span>: <span style="color:#00D">3</span>
+<span style="color:#606">g2</span>: <span style="color:#00D">4</span>
+<span style="color:#606">f3</span>: <span style="color:#00D">5</span>
+<span style="color:#00D">6</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="continuations">5.8.3 Continuations</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">continuation</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Global hash for mapping line numbers (or symbols) to continuations</span>
+<span style="color:#d70">$lines</span> = {}  
+
+<span style="color:#777"># Create a continuation and map it to the specified line number</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">line</span>(symbol)
+  callcc  {|c| <span style="color:#d70">$lines</span>[symbol] = c }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Look up the continuation associated with the number, and jump there</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">goto</span>(symbol)
+  <span style="color:#d70">$lines</span>[symbol].call
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Now we can pretend we're programming in BASIC</span>
+i = <span style="color:#00D">0</span>
+line <span style="color:#00D">10</span>              <span style="color:#777"># Declare this spot to be line 10</span>
+puts i += <span style="color:#00D">1</span>
+goto <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">if</span> i &lt; <span style="color:#00D">5</span>     <span style="color:#777"># Jump back to line 10 if the condition is met</span>
+
+line <span style="color:#00D">20</span>              <span style="color:#777"># Declare this spot to be line 20</span>
+puts i -= <span style="color:#00D">1</span>
+goto <span style="color:#00D">20</span> <span style="color:#080;font-weight:bold">if</span> i &gt; <span style="color:#00D">0</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>
