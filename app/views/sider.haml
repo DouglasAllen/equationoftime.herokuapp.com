@@ -1,11 +1,9 @@
-%link{ :rel  => 'stylesheet',
-       :type => 'text/css', 
-       :href => '/stylesheets/eot.css' }
-%h1
- %div{:id => "utc"}
- %div{:id => "gmst"}
- %div{:id => "cst"}
- %div{:id => "lmst"}
+%title /sider
+
+%div{:id => "utc", :style => "font: 42px arial, sans-serif; font-weight: 900;"}
+%div{:id => "gmst", :style => "font: 42px arial, sans-serif; font-weight: 900;"}
+%div{:id => "cst", :style => "font: 42px arial, sans-serif; font-weight: 900;"}
+%div{:id => "lmst", :style => "font: 42px arial, sans-serif; font-weight: 900;"}
 
 :javascript
  function calculate() {
@@ -67,13 +65,21 @@
   if ( secs < 10 ) var gmt_csecs = "0" + secs.toString(); 
 
   var utc_div = document.getElementById('utc');
-  utc_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Coordinated Universal Time (UTC) &nbsp;" +cuth + ":"  +cutm+":"+cuts+"<br>"+"</font>"
+  utc_div.innerHTML =
+  cuth + ":" + cutm + ":" + cuts + 
+  " UTC ( Coordinated Universal Time )" + "<br>"
   var gmst_div = document.getElementById('gmst');
-  gmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Greenwich Sidereal Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +gmt_ch + ":"  + gmt_cmin  + ":" +gmt_csecs+"<br>"+"</font>"
+  gmst_div.innerHTML = 
+  gmt_ch + ":"  + gmt_cmin  + ":" + gmt_csecs +
+  " GMST ( Greenwich Sidereal Time )" + "<br>"
   var cst_div = document.getElementById('cst');
-  cst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> De Kalb Time &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +dch + ":"  + dcmin  + ":" +dcsecs+ "</font>";
+  cst_div.innerHTML =
+  dch + ":"  + dcmin  + ":" + dcsecs + 
+  " CST ( Central Standard Time )" + "<br>";
   var lmst_div = document.getElementById('lmst');
-  lmst_div.innerHTML = "<font face=Courier color=#000000 weight=bold> Local Sidereal Time De Kalb &nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +ch + ":"  + cmin  + ":" +csecs+ "</font>";
+  lmst_div.innerHTML = 
+  ch + ":"  + cmin  + ":" + csecs + 
+  " LMST ( Local Mean Sidereal Time )" + "<br>";
   setTimeout("calculate()",997);
  }
 
@@ -89,7 +95,11 @@
    MJD0 = Math.floor(MJD);
    ut = (MJD - MJD0)*24.0;		
    t_eph  = (MJD0-51544.5)/36525.0;			
-   return  6.697374558 + 1.0027379093*ut + (8640184.812866 + (0.093104 - 0.0000062*t_eph)*t_eph)*t_eph/3600.0;		
+   return  6.697374558     + 
+           1.0027379093*ut + 
+    (8640184.812866 + 
+          (0.093104 - 
+           0.0000062*t_eph)*t_eph)*t_eph / 3600.0;		
  }
 
  function JulDay (date, month, year, UT) {
@@ -97,7 +107,9 @@
   if (month<=2) { month=month+12; year=year-1 }
   A = Math.floor(year/100);
   B = -13;
-  JD =  Math.floor(365.25*(year+4716)) + Math.floor(30.6001*(month+1)) + date + B -1524.5 + UT/24.0;
+  JD =  Math.floor(365.25*(year+4716)) + 
+        Math.floor(30.6001*(month+1)) + 
+        date + B -1524.5 + UT/24.0;
   return JD
  }
 
@@ -108,3 +120,5 @@
  }
 
  calculate();
+
+

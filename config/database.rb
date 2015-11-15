@@ -1,5 +1,5 @@
 if ENV.fetch("RACK_ENV") == "development"
-  #p "you're in #{__FILE__}"
+  "you're in #{__FILE__}"
 end
 
 configure do   

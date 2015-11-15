@@ -12,9 +12,9 @@
 %br
 :markdown  
   Or clone it from here      
-  https://github.com/DouglasAllen/equation_of_time
+  https://github.com/DouglasAllen/gem-equationoftime
           
-       git clone git@github.com:DouglasAllen/equation_of_time.git
+       git clone git@github.com:DouglasAllen/gem-equationoftime.git
     
 %br
 :markdown  
@@ -40,6 +40,8 @@
    #{@solar}
    #{@geo}
   ```
+%br
+:markdown 
   &nbsp;&nbsp;&nbsp; You get this with the gem. It's just the form below isn't hooked up yet
   because of so many changes to this web app. But we can show you some Ruby code now.
 
@@ -55,20 +57,27 @@
   ```ruby
 
    @geo.addr = "Blackheath Ave, London SE10 8XJ, UK"
-   #{@geo.addr = "Blackheath Ave, London SE10 8XJ, UK"}
+   # => #{@geo.addr = "Blackheath Ave, London SE10 8XJ, UK"}
   ```
 
 %br
 :markdown  
-  &nbsp;&nbsp;&nbsp;Then you activate it by using the set_coordinates method.
+  &nbsp;&nbsp;&nbsp;That's the museum. see link.
+  Then you activate it by using the set_coordinates method.
 
   ```ruby
 
-   @geo.set_coordinates  = #{@geo.set_coordinates}
+   @geo.set_coordinates
+   # => #{@geo.set_coordinates}
+
    # your getting the longitude from this because it was the last term evaluated in this lookup method.
    # view them with @geo.lat and @geo.lng
-   @geo.lat = #{@geo.lat}
-   @geo.lng = #{@geo.lng}
+
+   @geo.lat
+   # => #{@geo.lat}
+
+   @geo.lng
+   # => #{@geo.lng}
   ```
 
 %br
@@ -84,7 +93,9 @@
   of all these web pages I just used the haml and some markdown to give you Ruby code. So I'm not
   going to try to impress you with my web skills anymore. :-D
   And besides there is a daily quota on the Google lookup service. But you should get the idea here
-  by just looking at the form below. See the disclaimer above.
+  by just looking at the form below. See the OOPS! disclaimer above. What you see for times is for 
+  the default latitude and longitude that was not set yet to any new values. Check that spot on your
+  globe if you have one.
 %br   
                     
   %form{"accept-charset" => "utf-8", :action => "/mysuntimes", :method => "post"}
@@ -124,6 +135,9 @@
 
   https://www.ruby-lang.org/en/
 
-%hr          
-%h3
-  %a{:href => "/links"} External Links
+  Well that's it for the tutorial. If you have any questions then just look me up in about me link.
+
+  Enjoy!
+
+  ### [External Links](/links)
+

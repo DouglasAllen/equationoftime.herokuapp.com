@@ -1,26 +1,14 @@
-- @solar = Eot.new
-- @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd
-- @solar.ma_ta_set
-- @r2d = Eot::R2D
-- @eqc = @solar.center() * @r2d
-- @s_min = 4.0 * 360 / 360.98564736629 # 3.989078265
-- @ma = @solar.ma * @r2d
-- @t = @solar.ta
-- @ta = @solar.ta_sun() * @r2d 
-- @eqc_string = @solar.string_eqc()
-- @e1 = (@ma - @ta) * @s_min 
 %title equationoftime.herokuapp.com/eqc.haml
 :markdown   
-  ## &nu; or nu = True Anomaly
-          
-  ## Mean Anomaly + Equation of Center = True Anomaly
+  ## nu = True Anomaly          
+  ## nu = Mean Anomaly + Equation of Center 
       
   The True Anomaly of the Sun is a correction to the Mean Anomaly via a formula 
   called the 'Equation of Center'. 
   Since: 
   True Anomaly = Mean Anomaly + Equation of Center
       
-  I will just show that Ruby method here. 
+  I will just show usage of that Ruby method here. 
   The Equation of Center is a sine series of the Mean Anomaly &Mu; or mu
      
   These terms are calculated with the Universal Time Coordinate(UTC)
@@ -28,8 +16,20 @@
         
   ```ruby
 
-   DateTime.now.to_time.utc.to_datetime = #{DateTime.now.to_time.utc.to_datetime}
-   The @ta value = #{@t}      
+   DateTime.now.to_time.utc.to_datetime
+   # => #{DateTime.now.to_time.utc.to_datetime}
+
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
+
+   @solar.t
+   # => #{@solar.t}
+
+   @solar.ma
+   # => #{@solar.ma}
+
+   @solar.jd_to_datetime(@solar.jd)
+   # => #{@solar.jd_to_datetime(@solar.jd)}   
   ```
 %br
 :markdown   
@@ -39,14 +39,14 @@
         
   ```ruby
 
-   def center( )
+   def equation_of_center
               
      sine_1M = sin( 1.0 * @ma )
      sine_2M = sin( 2.0 * @ma )
      sine_3M = sin( 3.0 * @ma )
      sine_4M = sin( 4.0 * @ma )
      sine_5M = sin( 5.0 * @ma )
-     e       = eccentricity_Earth()
+     e       = earth_orbital_eccentricity
      sine_1M * ( e     *    2.0         - e**3 * 1.0/4.0 + e**5 *  5.0/96.0 ) +  
      sine_2M * ( e * e *    5.0 /  4.0  - 0.0            - e**4 * 11.0/24.0 ) + 
      sine_3M * ( e**3  *   13.0 / 12.0  - 0.0            - e**5 * 43.0/64.0 ) +
@@ -54,29 +54,25 @@
      sine_5M *   e**5  * 1097.0 / 960.0 - 0.0            - 0.0
                  
    end
-        
-          
-   Equation of Center in radians = #{@eqc * Math::PI / 180.0}
- 
-   degrees:minutes:seconds = #{@eqc_string}
+
   ```
 %br
 :markdown 
   The above Ruby method was replaced by a C extension which does the same work
-  only is much faster. I'm not very good with C but it works. ( t is @ta from Ruby code)
+  only is much faster. I'm not very good with C but it works. ( t is @t from Ruby code)
 
   ```c
 
-   double eoe(double t)
+   double earth_orbital_eccentricity(double t)
    {
      return (0.016708617 + t * (-0.000042037 + t *  -0.0000001235));
    }
 
-   double eqc(double ma, double t)
+   double equation_of_center(double t)
    {             
-      double a1, a2, a3, a4, a5, s1, s2, s3, s4, s5, e;
-      /* eoe = Eccentricity of Earth orbit */
-      e   = eoe(t);  
+      double a1, a2, a3, a4, a5, e, ma, s1, s2, s3, s4, s5;
+      ma = mean_anomaly(t);
+      e   = earth_orbital_eccentricity(t);  
       s1  = sin( 1.0 * ma );
       s2  = sin( 2.0 * ma );
       s3  = sin( 3.0 * ma );
@@ -91,55 +87,71 @@
     }
   ```
 %br
-:markdown  
-  Then multiplying with 4.0 * 360.0 / 360.98564736629 (4 minutes to a degree)
-  360.0 / 360.98564736629 is a ratio of Earth rotation per 24 hour day.
-  A sidereal day is 360 degrees long. The Earth actually rotates 360.98564736629
-  in 24 hours approximately(see: the analemma site in links page for more info.)
+:markdown
+  Use the C extension also
                     
   ```ruby
     
-   minutes per degree in sidereal time = #{@s_min}    
-      
-   Delta t of the orbital component in minutes decimal = #{@s_min * @eqc}
-      
-   minutes:seconds = #{@solar.show_minutes(@s_min * @eqc)}      
+   @solar = Eot.new
+   # => #{@solar = Eot.new}           
+          
+   @solar.equation_of_center
+   # => #{@solar.center}
+
+   Helio.equation_of_center(@solar.t)
+   # => #{@solar.eqc(@solar.ma, @solar.t)}
+
+   @solar.degrees_equation_of_center
+   # => #{@solar.string_eqc}  
   ```
 %br
 :markdown
+  You may give the Helio module methods any time you want as long as they are in julian fractional century
+  
   Remember we added Equation of Center to Mean Anomaly? Here we need the difference for &Mu; - &nu;
   I only showed you equation_of_center() method.
-  There is a method in Eot class that yields &nu; or True Anomaly 
-  that adds Equation of Center to Mean Anomaly.
+  There is a method in Helio module that yields &nu; or True Anomaly 
+  that adds Equation of Center to Mean Anomaly. But we could also just change the sign
+  of the equation\_of\_center result and get the same thing.
       
   ```ruby
-    
-   def ta_Sun()    
-     @ma + centre()
-   end
 
-   decimal degrees = #{@ta}
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
 
-   Mean anomaly - true anomaly = delta orbital angle
-      
-   decimal degrees = #{@ma - @ta}
+   @solar.equation_of_center * -1.0
+   # => #{@solar.equation_of_center * -1.0}
 
-   minutes per degree in sidereal time = #{@s_min}  
+   @solar.mean_anomaly - @solar.true_anomaly
+   # => #{@solar.ma - @solar.ta_sun}
+
+   Helio.mean_anomaly - Helio.true_anomaly(@solar.t)
+   # => #{@solar.ma - Celes.anp(@solar.ma + @solar.eqc(@solar.ma, @solar.t))}
   ```
 %br
 :markdown
-  Multiplying we get
+  That is the first component to the equation of time and is known as the orbital component.
+  Eot#delta\_orbit does just that. It takes the opposite sign of equation\_of\_center.
    
   ```ruby
 
-   Delta t decimal minutes = #{@e1}
- 
-   Delta t minutes:seconds in orbital portion = #{@solar.show_minutes(@e1)}
+   @solar.delta_orbit
+   # => #{@solar.angle_delta_orbit}
   ```
 %br
-:markdown    
-  Check it at the Data link /analemma. It will be close enough for the right day. Remember this
-  is calculated for the DateTime right now.
+:markdown 
+  Sometimes angles are used to determine the time.
+
+  ```ruby
+
+   @solar.delta_orbit / 15.0
+   # => #{@solar.angle_delta_orbit / 15.0}
+  ```
+%br
+:markdown
+  But we probably don't want to do that for these kinds of angles because they aren't just
+  Earth longitudes. That is why I used sidereal minutes per degree to get there times.     
+  Check it at the Data link /analemma. It will be close enough for the right day.
 %hr
 :markdown            
-  ##[Ecliptic Longitude](/ecliplon) 
+  ### [Ecliptic Longitude](/ecliplon) 

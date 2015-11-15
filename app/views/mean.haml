@@ -1,103 +1,91 @@
-
-- @solar = Eot.new
-- @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd
-- @solar.ma_ta_set
-- @ma = @solar.ma
-- @ma_string      = @solar.string_ma_sun()
 %title equationoftime.herokuapp.com/mean.haml
-%h3
-  :markdown
+:markdown    
+  ## &Mu; or mu = Mean Anomaly of the Sun
     
-    ## &Mu; or mu = Mean Anomaly of the Sun
+  &nbsp;&nbsp;&nbsp; The Mean Anomaly of the Sun is a fictitious value based on an 
+  assumption that the Earth's orbit is circular rather than eliptical and that the 
+  Earth's velocity is also constant. Mean Anomaly is used as a starting point to 
+  calculate the Eccentric and True Anomalies. The mean anomaly is used to calculate 
+  the Equation of Center which will be used to calculate True Anomaly and True Longitude.
+  True Longitude is then used to calculate Right Ascension. On the Main page you see 
+  mu and nu. But as you will see in the next page that the Equation of Center 
+  is added to mu to get nu. We use Equation of Center again to calculate 
+  True Longitude. Lambda is the Apparent Longitude which comes from True Longitude
+  after we adjust for aberation.
     
-    &nbsp;&nbsp;&nbsp;    The Mean Anomaly of the Sun is a fictitious value based on an assumption that the 
-    Earth's orbit is circular rather than eliptical and that the Earth's velocity is 
-    also constant. Mean Anomaly is used as a starting point to calculate the Eccentric
-    and True Anomalies. The mean anomaly is used to calculate the Equation of Center
-    which will be used to calculate True Anomaly and True Longitude. True Longitude 
-    is then used to calculate Right Ascension. On the Main page you see mu and nu.
-    But as you will see in the next page that the Equation of Center 
-    is added to mu to get nu. We use Equation of Center again to calculate 
-    True Longitude which is the same as lambda. Lambda is the True Longitude.
+  See:  
     
-    See:  
+  ```sh
     
-    ```sh
-    
-     http://analemma.com/Pages/EllipticalOrbit/EllipticalOrbitEffect/EllipticalOrbitEffect.html
+   http://analemma.com/Pages/EllipticalOrbit/EllipticalOrbitEffect/EllipticalOrbitEffect.html
      
-     http://analemma.com/Pages/EllipticalOrbit/EllipticalOrbitEffect/E_vs_C_movie.html
-    ``` 
-    &nbsp;  
+   http://analemma.com/Pages/EllipticalOrbit/EllipticalOrbitEffect/E_vs_C_movie.html
+  ```   
 %br
-  :markdown        
-    These terms are calculated with the Universal Time Coordinate or GMT 
-    of the current time.
+:markdown        
+  These terms are calculated with the Universal Time Coordinate or GMT 
+  of the current time.
     
-    ```ruby
+  ```ruby
     
-     DateTime.now.to_time.utc.to_datetime = #{DateTime.now.to_time.utc.to_datetime}
-     @solar = Eot.new
-     @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
-     @solar.ta_ma_set 
-     @ta = @solar.ta 
-    ```
-    &nbsp;
-%br
-  :markdown
-        
-    The Ruby Eot#ma_Sun method was:
-      
-    ```ruby
-    
-     def ma_Sun( ta = A2000 )
-       ta = check_jct_zero( ta )
-       ade = delta_equinox( ta )[ 2 ] / ASD
-       # setting an attribute now because we use it so much.
-       @ma = mod_360 ade            
-     end
-    
-    ```
-    &nbsp;
-%br
-  :markdown
-    
-    Note: This was replaced by 
-      
-    ```ruby
-    
-     @ma = Celes.falp03(@ta)
-    ```
-    &nbsp;
-%br
-  :markdown
-    
-    &nbsp;&nbsp;&nbsp;  The actual algorithm was in nutation.rb which was only using ta[0]
-    thanks to astro-algo gem. see /rghtascn page. Also Mean Anomaly 
-    was sent back as the third argument of an array from delta_equinox( )
-    method. You may see all this if you download an older version of this gem.
-    The SOFA lib has all that precession and nutation code and so I used it from
-    celes gem now. 
-    
-    ```ruby
-    
-     Mean Anomaly of Sun in decimal degrees right now = #{@ma * 180.0 / Math::PI} degrees
-     Mean Anomaly of Sun in degrees:minutes:seconds = #{@ma_string}
-    ```
-    &nbsp;
-%br
-  :markdown  
-    &nbsp;&nbsp;&nbsp;  Check it at the /analemma link. The data should be close to whatever date today is.
-    Oh! But wait! That's in time difference for the two angles of mean and true
-    Anomaly. See the last term Orbital. The sine wave graph gives you a better idea
-    for an orbital angle if you can get the right perspective in your mind. After all,
-    sine waves are nothing but graphs of a path around a circle. The quicktime movie link
-    gives you an idea too. The orbital difference is zero when both paths, circle and elipse,
-    are equal distances from the foci.
+   DateTime.now.to_time.utc.to_datetime
+   # => #{DateTime.now.to_time.utc.to_datetime}
 
-    &nbsp;
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
+    
+   @solar.ajd
+   # => #{@solar.ajd}
 
-    ##[*Equation of Center*](/eqc)
+   @solar.t 
+   # => #{@solar.ta}
 
+   @solar.ma 
+   # => #{@solar.ma}
+  ```
+%br
+:markdown    
+  &nbsp;&nbsp;&nbsp; You saw earlier that we found Mean Anomaly from the Helio module
+  and that it gets @t set for noon today. But what if we want to change the time in other
+  words the t parameter passed to it and all the other angle calculations you saw on the
+  first page of the tutorial? 
 
-%a{:href => "/eqc", :class => "button round"} Equation of Center
+  &nbsp;&nbsp;&nbsp; Here's what we do.   
+    
+  ```ruby
+
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
+
+   # we need to know a new date or time say six hours from now.
+   DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0
+   # => #{DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0}
+
+   # we'll just plug that in to our setter method for ajd.
+   @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0
+   # => #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0}
+
+   # check it
+   @solar.ajd
+   # => #{@solar.ajd}
+
+   # we got that set okay. Now set @t and @ma
+   @solar.set_t_ma
+   # => #{@solar.ma_ta_set}
+
+   # check it
+   @solar.ma
+   # => #{@solar.ma}
+
+   # not the same as the first one up there on this page is it? Good!      
+
+  ```
+%br
+:markdown    
+  &nbsp;&nbsp;&nbsp; Now that's good for all the other angle equations that depend on it.
+  Why keep recalculating it and having to pass time in there as well? Why do I have that
+  set\_t\_ma method? Because I'm a control freak and I like buttons. :-D Because I'm a Java
+  reject. ;-( I just found that it was easier than messing up the attribute setter and getter.
+%hr
+:markdown
+  ### [*Equation of Center*](/eqc)

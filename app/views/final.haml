@@ -9,62 +9,131 @@
 - @gml            = @solar.gml_sun()  * @r2d
 - @ra             = @solar.ra_sun() * @r2d
 %title equationoftime.herokuapp.com/final.haml
-%h3
-  :markdown
+:markdown
 
-    Recall our equation for EOT?
+  Recall our equation for EOT?
       
-    &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
+  &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
       
-    &Mu; = Mean Anomaly
+  &Mu; = Mean Anomaly
       
-    &nu; = True Anomaly = Mean Anomaly + Equation of Center
+  &nu; = True Anomaly = Mean Anomaly + Equation of Center
       
-    Here I will call Equation of Center c
+  Here I will call Equation of Center c
       
-    c = Equation of Center
+  c = Equation of Center
       
-    so that
+  so that
       
-    &Delta;1 = &Mu; - ( &Mu; + c )
+  &Delta;1 = &Mu; - ( &Mu; + c )
           
-    or
+  or
           
-    &Delta;1 = -c
+  &Delta;1 = -c
       
-    and
+  and
       
-    &lambda; = Mean Longitude + Equation of Center
+  &lambda; = Mean Longitude + Equation of Center
       
-    I will call Mean Longitude L
+  I will call Mean Longitude L
       
-    &alpha; = Right Ascension
+  &alpha; = Right Ascension
       
-    &Delta;2 = ( L + c ) - &alpha;
+  &Delta;2 = ( L + c ) - &alpha;
       
-    Total = -c + L + c - &alpha;
+  Total = -c + L + c - &alpha;
       
-    Two terms cancel out, &Mu; and c
+  Two terms cancel out, &Mu; and c
       
-    Total = L - &alpha;      
+  Total = L - &alpha;      
     
-    Mean Longitude Sun decimal degrees = #{@gml}
+  Mean Longitude Sun decimal degrees = #{@gml}
     
-    &alpha; or Right Ascension decimal degrees = #{@ra}
+  &alpha; or Right Ascension decimal degrees = #{@ra}
  
-    &Delta; ( L - &alpha; ) decimal degrees = #{@gml - @ra}
+  &Delta; ( L - &alpha; ) decimal degrees = #{@gml - @ra}
 
-    &Delta; decimal minutes =  #{(@gml - @ra) * @s_min}
+  &Delta; decimal minutes =  #{(@gml - @ra) * @s_min}
  
-    &Delta; minutes and seconds =  #{@solar.show_minutes((@gml - @ra) * @s_min)}     
+  &Delta; minutes and seconds =  #{@solar.show_minutes((@gml - @ra) * @s_min)}     
  
-    This works most of the time except right after the Vernal Equinox, 
-    Mean Longitude is still approaching 360 degrees while Right Ascension has 
-    zeroed so I didn't do this. I'm just showing what might seem simple and I think
-    that I've seen this in the simple equation of time algorithms. But you still
-    need terms like c to calculate true longitude and &Mu; to get that so why not 
-    make the rest while you're at it. It's pretty simple too.
+  This works most of the time except right after the Vernal Equinox, 
+  Mean Longitude is still approaching 360 degrees while Right Ascension has 
+  zeroed so I didn't do this. I'm just showing what might seem simple and I think
+  that I've seen this in the simple equation of time algorithms. But you still
+  need terms like c to calculate true longitude and &Mu; to get that so why not 
+  make the rest while you're at it. It's pretty simple too.
 
-%hr
-%h3  
-  %a{:href => "/eot"} all values now
+  ```ruby
+
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
+
+   @solar.ajd = 2457102.45
+   # => #{@solar.ajd = 2457102.45}
+
+   @solar.set_t_ma
+   # => #{@solar.ma_ta_set}
+
+   @solar.mean_longitude * 180 / Math::PI
+   # => #{@solar.ml(@solar.ta) * 180 / Math::PI}
+
+   @solar.ra_sun * 180 / Math::PI
+   # => #{@solar.ra_sun * 180 / Math::PI}
+  ```
+%br
+:markdown
+  Iterate through a range of time changes and you will see this glitch in that formula.
+
+  Here's one of those solutions to EOT that is in javascript and java.
+  
+  ```java
+
+   EOT = 4*(Lsun_mean-0.0057183-0.0008-RAsun+delta_psi*cosd(eps));
+  ```
+%br
+:markdown
+  You could try that but be sure to itereate through a whole years worth of time to be sure
+  there are no wild looking values that show up. EOT should never be more than 20 minutes or
+  less than -20 minutes.
+
+  Another nice calculation that is done is this.
+
+  ```java
+
+   // 4 times the Greenwich Hour Angle plus 12 hours in minutes minus the day fraction in minutes 
+   EOT = 4 * GHAsun + 720 - 1440 * dayfraction;
+   if (EOT>20) EOT-=1440;
+   if (EOT<-20) EOT+=1440;
+  ```
+%br
+:markdown
+  I think we know by now what dayfraction is but be sure to remember that there is 0.5 days
+  added on to the decimal of an an AJD type Julian Day Number. Here GHAsun is:
+
+  ```java
+
+   GHAsun = GHAAtrue-RAsun;
+  ```
+%br
+:markdown
+  Those we have methods for. GHAAtrue is the Helio.true_longitude_aries(t). GHA just means
+  Greenwich Hour Angle which is more or less just a longitude. So we have that and we have
+  RAsun which is Helio.right_ascension(t). You can try that too and see if it is close to
+  what the gem gives you. But the jury is still out with the choice of time to use to multiply
+  by the EOT angle. I think that it should be Sidereal minutes and many others use 4 (four) because
+  that's how many minutes it takes the Earth to rotate one degree. But that's solar time and didn't
+  we just prove that it's not often what we desire to use while we are out in space? My how time 
+  flies while we are away. :-D
+
+  We didn't get into GHA much but it's the object's longitude from Greenwich without any sign.
+  So if the Sun where right on your local meridian then it could be the GHA of it except when
+  you're East of Greenwich. Then you need to add 180.0 degrees to your local meridian longitude 
+  value to have the GHA of the object overhead. GHA and LHA are convenient Astronomical terms that
+  give us a reference to something here on Earth. LHA is Local Hour Angle and of course I'll let
+  you research that on your own. It's time to wrap this discussion up so Best Regards for now.
+  I hope you enjoyed the tour of the Ruby equationoftime gem. 
+
+  ### [all values now](/eot)  
+
+ 

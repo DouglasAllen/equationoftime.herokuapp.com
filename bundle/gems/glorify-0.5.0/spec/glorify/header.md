@@ -1,1 +1,0 @@
-# a sip of glory

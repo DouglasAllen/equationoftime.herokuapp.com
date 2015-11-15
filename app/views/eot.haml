@@ -1,7 +1,9 @@
-- @solar     = Eot.new
-- @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
-- @solar.ma_ta_set
 - @r2d   = Eot::R2D
+- @solar     = Eot.new
+- @solar.jd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
+- @solar.ma_ta_set
+- @solar.date = DateTime.now.to_time.utc.to_date
+- @solar.new_date(@solar.date.to_s)
 - @al    = @solar.al_sun() * @r2d
 - @ma    = @solar.ma_sun() * @r2d
 - @ra    = @solar.ra_sun() * @r2d
@@ -10,18 +12,32 @@
 - @sma   = format("%3.9f", @ma)
 - @sra   = format("%3.9f", @ra)  
 - @sta   = format("%3.9f", @ta)
-- @sd1   = format("%3.9f", @ma - @ta)
+- @sd1   = format("%3.9f", @solar.delta_orbit * @r2d)
 - @sd2   = format("%3.9f", @al - @ra)
 - @sdt   = format("%3.9f", @sd1.to_f + @sd2.to_f)
 - @s_min = 4.0 * 360 / 360.98564736629 # 3.989078265
 - @smt   = format("%3.9f", @sdt.to_f * @s_min)
-- @mt    = @solar.show_minutes(@smt.to_f)
+- @st    = @sdt.to_f / 360 * 1440
+- @so    = 1
+- @mt    = @solar.show_minutes(@st)
 %title equationoftime.herokuapp.com/eot.haml
 :markdown
   ## &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )      
   ## Delta = ( Mu - nu ) + ( lambda - alpha )      
     
-  These terms are calculated using current date and time UTC.
+  These terms are calculated using current date at noon UTC (the JD for today).
+
+  ```ruby
+
+   JD = #{@solar.jd}
+   Mu = #{@solar.ma_sun() * @r2d} deg.
+   nu = #{@solar.ta_sun() * @r2d} deg.
+   d1 = #{@solar.delta_orbit * @r2d} deg.
+   l  = #{@solar.al_sun() * @r2d} deg.
+   a  = #{@solar.ra_sun() * @r2d} deg.   
+   d2 = #{@solar.delta_oblique * @r2d} deg.
+   dt = #{@solar.eot * @r2d} deg.
+  ```    
   
 %pre
   %div{style: "align: center"}
@@ -58,15 +74,15 @@
       %tr  
       %tr
         %td{style: "text-align: center"} #{@sdt}                   
-        %td{style: "text-align: center"} #{@smt}                  
+        %td{style: "text-align: center"} #{@st}                  
         %td{style: "text-align: center"} #{@mt}
            
   Check that at http://www.celnav.de/longterm.htm under Equation of Time    
        
 %div{style: "background-color: orange, color: #000, text-align: center"}      
         
-  Date and time #{@solar.ajd_to_datetime(@solar.ajd).to_time.httpdate} to enter there.
+  Date and time #{@solar.jd_to_datetime(@solar.jd).to_time.httpdate} to enter there.
 
 %hr     
 %h3
-  %a{href: "/mysuntimes"} Sunrise and Sunset    
+  %a{href: "/mysuntimes"} Sunrise and Sunset

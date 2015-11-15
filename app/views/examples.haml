@@ -1,30 +1,59 @@
-- @solar = Eot.new
-%title equationoftime.herokuapp.com/examples.haml
+- @title='/examples'
 :markdown
 
   ## Examples
+
+  Note: These should work by just copy and paste into IRB or any Ruby program. 
+        Much of this is running live in Haml:markdown and I'll try to keep IRB in mind.
+        You can run just about any Ruby code in Ruby web pages.
+
+  Get the gem installed and there are examples included.
   
   ```ruby
 
    require 'eot'
+   # => #{require 'eot'} (Eot is already required in this Haml:markdown. Your's should be true
+   # if you have equationoftime or eot gem installed.)
+
    @solar = Eot.new
+   # => #{@solar = Eot.new} (new Object instance id)
   
    puts "Enter your latitude in decimal. ex: 5.238 or -5.238"
-   @solar.latitude = gets.strip.to_f # + in Northern Hemishere, - in Southern Hemisphere
+   # #{"Enter your latitude in decimal. ex: 5.238 or -5.238"}
+   # => nil
+
+   # irb will expect input from the terminal after this.
+   # - in Southern Hemisphere, Northern Hemisphere no sign required.
+   @solar.latitude = gets.strip.to_f 
+   # 
+
    puts "Enter your longitude in decimal. ex: 55.555 or -55.555"
-   @solar.longitude = gets.strip.to_f # + East of zulu time zone, - West of zulu time zone
+   # #{"Enter your longitude in decimal. ex: 55.555 or -55.555"}
+   # => nil
+
+   # irb will expect input from the terminal after this.
+   # - West of longitude 0.0, East requires no sign.
+   @solar.longitude = gets.strip.to_f
+   #
      
-   @solar.jd = Date.today.jd
+   @solar.date
+   # => #{@solar.date}
+
+   # defaults to 0.0 lat and lon because gets here did not receive any input.
   
-   puts "Sunrise today:", @solar.sunrise_dt.to_time 
-   puts "Sunset today:", @solar.sunset_dt.to_time 
-   "Sunrise today = #{@solar.sunrise_dt.to_time}"  # defaults to 0.0 lat and lon because 
-   "Sunset today = #{@solar.sunset_dt.to_time}"   # gets here will not eval input.
+   puts "Sunrise today:", @solar.sunrise_dt.to_time
+   # => Sunrise today:
+   # => #{@solar.sunrise_dt.to_time}
+ 
+   puts "Sunset today:", @solar.sunset_dt.to_time
+   # => Sunset today:
+   # => #{@solar.sunset_dt.to_time} 
   ```
 
 %br
 %hr
 :markdown
+  Change from the default date.
 
   ```ruby
 
@@ -32,31 +61,205 @@
 
    # Eot right now not noon like sun times would use.
    # Test it by refreshing this page after several seconds.
-   Eot.new.now = #{Eot.new.now}
+   Eot.new.now
+   # => #{Eot.new.now}
 
-   Time.now = #{Time.now}
+   Time.now 
+   # => #{Time.now}
 
-   Eot.new.string_eot # would be the value in minutes and seconds at the local transit.
-   Eot.new.string_eot = #{Eot.new.string_eot} # default lat and lon are 0.0
+   # would be the value in minutes and seconds at the local transit.
+   # defaults to lat and lon of 0.0 as we didn't add any.
+   Eot.new.string_eot
+   # => #{Eot.new.string_eot} 
   
+   # make a new object instance
    @solar = Eot.new
-   @solar.latitude = #{@solar.latitude=0.0} # because it won't matter much
-   @solar.longitude = #{@solar.longitude=179.9} # about half way around from 0.0
-   @solar.string_eot = #{@solar.string_eot}
+   # => #{@solar = Eot.new}
+
+   @solar.latitude
+   # => #{@solar.latitude=0.0} we don't need to set our latitude for eot.
+
+   @solar.longitude = #{@solar.longitude=179.9} 
+   # => 179.9 about half way around from 0.0
+
+   @solar.string_eot
+   # => #{@solar.string_eot}
   
    # So we see that eot is not effected by any longitude changes.
-   # The one way to get eot_string to change is by changing the eot.ajd and setting it.
-   # Use eot.ma_ta_set to do just that.
-   @solar.ajd = #{@solar.ajd = 2457026.0} # taken from /analemma data page Jan. 03, 2015
-   @solar.ma_ta_set #{@solar.ma_ta_set}  # @ma was the last evaluated term in the method.
-   @solar.ma = #{@solar.ma} # nearing 2 Pi and zeros before noon Jan 04. 
-   @solar.string_eot = #{@solar.string_eot}
-   # It is common to think that perihelion occurs on Jan. 03 but the time of day varies each year.
+   # but let's make sure.
+   # we'll trigger the set method for new input.
+   @solar.set_t_ma 
+   # => #{@solar.ma_ta_set}  @ma was the last evaluated term in the method.
+
+   @solar.string_eot
+   # => #{@solar.string_eot} yep! I needed proof because I wasn't sure.
+
+   # We'll use the set method for it's intended purpose now.
+   @solar.ajd = #{@solar.ajd = 2457026.0} 
+   # => 2457026.0 taken from /analemma data page Jan. 03, 2015
+
+   @solar.set_t_ma 
+   # => #{@solar.ma_ta_set}  @ma was the last evaluated term in the method.
+
+   @solar.string_eot
+   # => #{@solar.string_eot}
+
+   # It is common to think that perihelion occurs on Jan. 03 but 
+   # the time of day varies each year. We could have given the jd some time
+   # with it in a day fraction. Maybe we could iterate some range in the day.
+   # There's an easier way though. Take Mean Anomaly and subtract Mean Longitude
+   # of the solar calculations for a date closest to Jan 03 for the year of interest.
+   # That will give us the Argument of Perihelion. You may want to look that up.
   ```
 %br
 %hr
 :markdown
-  Note: Does not work by just copy and paste into IRB or any Ruby program. 
-        Too much of this is running live in Haml:markdown
+  What's new?
 
-  Get the gem installed and there are examples included.
+  ```ruby
+
+   # here's what's new
+   @solar.t # changed from @ta to just @t for fractional century used in all algorithms.
+   # => #{@solar.ta}
+
+   Helio.mean_anomaly(@solar.t)
+   # => #{@solar.mean_anomaly}
+
+   # the new Helio module may be called directly.
+   Helio.methods(false).sort.each {|m| p m}
+   # => :a2af
+   # => :a2tf
+   # => :apparent_longitude
+   # => :cosine_apparent_longitude
+   # => :cosine_declination
+   # => :cosine_latitude
+   # => :cosine_true_longitude
+   # => :cosine_true_obliquity
+   # => :cosine_zenith
+   # => :date2ajd
+   # => :declination
+   # => :delta_epsilon
+   # => :delta_psi
+   # => :earth_orbital_eccentricity
+   # => :earth_rotation_angle
+   # => :equation_of_center
+   # => :equation_of_equinox
+   # => :horizon_angle
+   # => :mean_anomaly
+   # => :mean_longitude
+   # => :mean_longitude_aries
+   # => :mean_obliquity
+   # => :omega
+   # => :right_ascension
+   # => :sine_apparent_longitude
+   # => :sine_declination
+   # => :sine_latitude
+   # => :sine_true_longitude
+   # => :sine_true_obliquity
+   # => :true_anomaly
+   # => :true_longitude
+   # => :true_longitude_aries
+   # => :true_obliquity
+
+   # try one
+   Helio.true_obliquity(@solar.t)
+   # => #{@solar.true_obliquity}
+
+   # that's in radians. let's convert it
+   to_angle = Helio.true_obliquity(@solar.t)
+   # => #{to_angle = @solar.true_obliquity}
+
+   Helio.a2af(3, to_angle) # the first number is how many decimal places you want.   
+   # => #{Celes.a2af(3, to_angle)}
+   # that's +, degrees, arc minutes, arc seconds, arc seconds fraction to 3 decimal places
+  ```
+%br
+%hr
+:markdown
+  Our real goal behind all this is to find your apparent solar time or transit time considering
+  your local longitude.
+
+  ```ruby
+  
+   # your longitude
+   -75.302
+
+   # your mean solar transit
+   -75.302 / 15.0
+   # => #{-75.302 / 15.0}
+
+   # there's no time zone involved here so we need to subtract it from the UTC noon or 12:00 UTC.
+   12.0 - #{-75.302 / 15.0}
+   # => #{12.0 - -75.302 / 15.0}
+
+   # remember that if you're west of UTC then your longitude has a negative sign. Just think of
+   # it as you are at a later time. If East then you are at an earlier time.
+   12 - 45.4 / 15.0
+   # => #{12 - 45.4 / 15.0}
+  ```
+%br
+%hr
+:markdown
+  now for the date
+
+  ```ruby
+
+   # we can start for today and use EoT now.
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
+
+   @solar.date
+   # => #{@solar.date}
+
+   # great! we have today and noon at UTC. Now let's get the JD for today.
+   @solar.jd
+   # => #{@solar.jd}
+
+   # we'll convert your mean solar transit to a fractional day.
+   (12 - 45.4 / 15.0) / 24.0
+   # => #{(12 - 45.4 / 15.0) / 24.0}
+
+   # We'll subtract that from the noon time JD because we want your noon time JD.
+   @solar.jd - (12 - 45.4 / 15.0) / 24.0
+   # => #{@solar.jd - (12 - 45.4 / 15.0) / 24.0}
+
+   # now all we need is the EoT in JD form.
+   @solar.eot_jd
+   # => #{@solar.eot_jd}
+
+   # We'll subtract that from your mean solar JD
+   @solar.jd - (12 - 45.4 / 15.0) / 24.0 - @solar.eot_jd
+   # => #{@solar.jd - (12 - 45.4 / 15.0) / 24.0 - @solar.eot_jd}
+
+   # and there you have it. Looks like your true solar transit is a little earlier than
+   # your mean solar transit. No messy minutes to multiply either solar or sidereal.
+   # it's just an angle that we converted to a JD just like any time and date.
+   # Just to show it, let's convert the EoT JD to a time.
+   @solar.eot_jd * 24.0
+   # => #{@solar.eot_jd * 24.0}
+
+   # That's in hours so one more multiplication should give us minutes.
+   @solar.eot_jd * 24.0 * 60.0
+   # => #{@solar.eot_jd * 24.0 * 60.0}
+
+   # well it may hve been positive depending on what day of the year it is. 
+   # Let's just see what happens if the EoT should be negative.
+   # Taking a date we see as negative from the graph we'll use Feb 15. 
+   # The JD is on the Data page. /analemma
+   @solar.ajd = 2457069.0
+   # => #{@solar.ajd = 2457069.0}
+
+   # we have to set it for the rest of the methods to find it now.
+   @solar.set_t_ma
+   # => #{@solar.ma_ta_set}
+   # that was mean anomaly or @ma in radians.
+
+   # now let's see Eot JD
+   @solar.eot_jd
+   # => #{@solar.eot_jd}
+
+   # Yay! It has been conveniently set to reflect the fact that EoT is negative.
+   # when you subtract that the time will be later as the graph shows.
+   # plus is early Sun and minus is late Sun. I chose to do a lot of subtracting.
+   # And why not so because it is a difference. :-)
+  ```

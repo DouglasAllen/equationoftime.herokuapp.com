@@ -1,14 +1,3 @@
-- @solar = Eot.new
-- @universal_time = DateTime.now.to_time.utc
-- @current        = @universal_time.to_datetime
-- @solar.ajd = @current.ajd.to_f
-- @solar.ma_ta_set
-- @t = @solar.ta
-- @r2d = Eot::R2D
-- @gml = @solar.gml_sun() * @r2d
-- @eqc = @solar.center()  * @r2d
-- @tl = @solar.tl_sun()   * @r2d
-- @tl_string      = @solar.string_tl_sun() 
 %title equationoftime.herokuapp.com/epilong.haml
 :markdown
 
@@ -29,85 +18,58 @@
     
   ```ruby
 
-   DateTime.now.to_time.utc.to_datetime = #{@current} 
-   The @ta value = #{@t}        
+   DateTime.now.to_time.utc.to_datetime
+   # => #{DateTime.now.to_time.utc.to_datetime}         
   ```
 %br
 :markdown
-  Ruby Eot#gml_Sun( ) method:
-  This was put into a C extension.
-          
-  ```ruby
-
-   def gml_Sun( ta = A2000 )
-     ta = check_jct_zero( ta )
-      
-     #ta[ 4 ] *    -5.030e-7   +
-     #ta[ 3 ] *    -6.536e-5   +
-     #ta[ 2 ] *     2.003e-5   +
-     #ta[ 1 ] *   303.203e-6   +
-     #ta[ 0 ] * 36000.76982779 +
-     #            280.4664567  +
-     total = [ 1.0/-19880000.0,  1.0/-152990.0, 1.0/499310.0,
-               0.0003032028, 36000.76982779,  280.4664567 
-             ].inject(0.0) {|p, a| p * ta[ 0 ] + a}               
-     mod_360( total )
-   end
-
-   Mean Longitude Sun decimal degrees = #{@gml}
-  ```
-%br
-:markdown  
 
   ```c
-   double mlSun(double t)
+
+   /* Mean geocentric longitude of the Sun */
+   double mean_longitude(double t)
    {
-     double a;
-     double d2r = 0.017453292519943295769236907684886;
-      
-     /* Mean geocentric longitude of the Sun */
-     return fmod(             280.4664567    +
-            t * (           36000.76982779   +
-            t * (               0.0003032028 +
-            t * (    1.0 / 499310.0          +
-            t * (   1.0 / -152990.0          +
-            t * ( 1.0 / -19880000.0 ) ) ) ) ), 360.0 ) * d2r;
+     return fmod(      280.4664567    +
+        t * (        36000.76982779   +
+        t * (            0.0003032028 +
+        t * (   1.0/499310.0          +
+        t * (  1.0/-152990.0          +
+        t * (1.0/-19880000.0 ) ) ) ) ), 360.0 ) * 0.017453292519943295769236907684886;
    }
-            
   ```
 %br
 :markdown
   As with the Mean Anomaly we need to correct for elliptical Keplerian orbit.
-  We use Equation of Center as before with Mean Anomaly.
+  We use Equation of Center as before with Mean Longitude.
   True Longitude will be returned.
 
-  Ruby Eot#tl_Sun( ) method:
-  This was put into a C extension.
           
-  ```ruby
+  ```c
 
-   def tl_Sun( ta = A2000 )
-     ta = check_jct_zero( ta )
-     mod_360(
-              gml_Sun( ta ) + 
-               center( ta )
-            )            
-   end
-          
-   Equation of Center in decimal degrees = #{@eqc} 
-
-   After adding them together we get
-      
-   True Ecliptic Longitude of the Sun in decimal degrees = #{@tl} 
-      
-   degrees:minutes:seconds = #{@tl_string}
+   double true_longitude(double t)
+   {
+     return fmod( mean_longitude(t) + equation_of_center(t), 57.295779513082320876798154814105);
+   }
   ```
 %br
 :markdown
-  There is one more method that takes True Ecliptic Longitude of the Sun
-  and converts it to Apparent Longitude but for now I won't bore you with 
-  those details and it was put inta a C extension also.    
+  There is one more method that takes True Ecliptic Longitude of the Sun and converts it to Apparent Longitude.    
 
-%hr
-%h3
-  %a{:href => "/rghtascn"} Right Ascension
+  ```c
+
+   double apparent_longitude(double t)
+   {
+     return iauAnp(fmod(true_longitude(t) - 
+           0.00569 * 0.017453292519943295769236907684886 - 
+           0.00478 * 0.017453292519943295769236907684886 * 
+           sin(iauFaom03(t)), 57.295779513082320876798154814105));
+   }
+  ```
+%br
+:markdown
+  Use any of these from Helio module or Eot class. Repeating myself there a bit. We'll hook up
+  the SOFA lib constants soon. I derived those from the desktop calculator and they're nice and long
+  for more accuracy. You should be able to tell what they are but if not the little one is radians in a degree
+  and the big one is degrees in a radian. Two Pi of those in a circle.
+
+  ### [Right Ascension](/rghtascn)

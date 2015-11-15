@@ -1,0 +1,52 @@
+- @solar = Eot.new
+- @universal_time = DateTime.now.to_time.utc
+- @current        = @universal_time.to_datetime
+- @solar.jd       = @current.ajd.to_f
+- @solar.ma_ta_set
+- @r2d = Eot::R2D
+%title equationoftime.herokuapp.com/today.haml
+:markdown
+
+  ```ruby
+  
+   #{@current.to_time.utc}
+   Delta T = 68.184 sec.
+   GHA Sun = #{((@solar.tl_aries - @solar.ra_sun) * @r2d) % 360} deg.
+   SHA Sun = #{360 - (@solar.ra_sun * @r2d)} deg.
+   Dec Sun = #{@solar.dec_sun * @r2d} deg.
+   GHA Aries = #{@solar.degrees_to_s(@solar.tl_aries)} deg.
+   GAST = #{@solar.string_time((@solar.tl_aries * @r2d) / 15.0)}
+   GMST = #{@solar.string_time((@solar.ml_aries * @r2d) / 15.0)}
+   Eq. of Equinoxes = #{@solar.show_minutes(@solar.eq_of_equinox * 240.0)} sec.
+   Delta Psi = #{@solar.delta_psi * @r2d * 3600} arc sec   
+   Delta Epsilon = #{@solar.delta_epsilon * @r2d * 3600} arc sec.
+   Mean Obl. of Ecl. = #{@solar.degrees_to_s(@solar.mo_earth)} deg.
+   True Obl. of Ecl. = #{@solar.degrees_to_s(@solar.to_earth)} deg.  
+  ```
+
+  Fun with lambdas for Mean Longitude now 
+
+  ```ruby
+   require 'date'
+
+   num = DateTime.now.to_time.utc.to_datetime.ajd - 2451545.0
+   @t = num / 36525.0
+
+   # the terms in reverse order form for the array
+   @l0_a = [1.0/-19880000.0,
+            1.0/-152990.0,
+            1.0/499310.0,
+            0.0003032028,
+            36000.76982779,
+            280.4664567]
+
+    # make an enumerator
+    @l0_e = @l0_a.each
+
+    # make a lambda to pass the enumerator to.
+    def my_lambda
+      ->(x) {x.reduce {|acc, el| acc * @t + el} % 360}
+    end
+
+    puts  my_lambda.call(@l0_e)
+  ```

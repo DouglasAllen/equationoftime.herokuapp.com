@@ -2,83 +2,89 @@
 #  config/routes.rb  #
 ######################
 
+require File.expand_path('../../app/helpers/adt_helper', __FILE__)
 class EotSite
 
   if ENV.fetch("RACK_ENV") == "development"
-    p "you're in #{__FILE__}"
+    "you're in #{__FILE__}"
   end
 
-  get "/", &HOME
+  get "/" do
+    haml :home 
+  end
 
-  get "/tutorial", &TUTORIAL 
+  get "/examples" do
+    haml :examples
+  end
 
-  get "/graph", &GRAPH
+  get "/graph" do
+    haml :graph
+  end
 
-  get "/wikipedia", &WIKIPEDIA
+  get "/tutorial" do
+    haml :tutorial
+  end
 
-  get "/analemma", &DATA
+  get "/datetime" do
+    haml :datetime
+  end
 
-  get "/eot", &EOT
+  get "/jcft" do
+    haml :jcft
+  end
 
-  get '/md', &MD
+  get "/mean" do
+    haml :mean
+  end
 
-  get '/rdoc', &RDOC
+  get "/eqc" do
+    haml :eqc
+  end
 
-  get "/gm", &GM
+  get "/ecliplon" do
+    haml :ecliplon
+  end
 
-  get "/links", &LINKS
+  get "/rghtascn" do
+    haml :rghtascn
+  end
 
-  get "/examples", &EXAMPLES
+  get "/final" do
+    haml :final
+  end
 
-  get "/datetime", &DT
- 
-  get "/jcft", &JCFT
+  get "/eot" do
+    haml :eot
+  end
 
-  get "/mean", &MEAN
+  get "/mysuntimes" do
+    haml :mysuntimes
+  end
 
-  get "/eqc", &EQC
+  get "/links" do
+    haml :links
+  end
 
-  get "/ecliplon", &ELN
+  get "/gm" do
+    haml :gmm
+  end
 
-  get "/rghtascn", &RA
+  get "/analemma" do
+    @page = AnalemmaDataTable.new
+    haml :analemma
+  end
 
-  get "/final", &FIN
+  get "/sider" do
+    haml :sider
+  end
 
-  get "/suntimes", &block = lambda { haml :suntimes }
+  get "/today" do
+    haml :today
+  end
 
-  post "/suntimes", &block = lambda { haml :suntimes }
-
-  get "/julian", &block = lambda { haml :julian }
-
-  get "/solar", &block = lambda { haml :solar } 
-
-  get "/factor", &block = lambda { haml :star_time } 
-
-  get "/mysuntimes", &block = lambda { haml :mysuntimes } 
-
-  get "/gist", &block = lambda { markdown :"gist", to_erb }
-
-  get '/gist1', &block = lambda { haml :gist1 } 
-
-  get '/sider', &block = lambda { haml :sider } 
-
-  post "/sider2", &block = lambda { haml :stonehenge }
-
-  get '/alex', &block = lambda { haml :alex } 
-
-  get '/hello', &block = lambda { haml :hello }
-
-  get "/home", &block = lambda { haml :index }
-
-  get '/hellos' , &block = lambda { "Hello system!" }  
-
-  get "/oopsa", &block = lambda { raise "oops" }
-
-  get '/mdview/:link', &block = lambda { md_links }
-
-  get '/rdview/:link', &block = lambda { rd_links }
-
-  #get "/docs", &block = lambda {  }
+  get "/justin" do
+    haml :justin
+  end
 
   not_found do
     erb :not_found
@@ -86,6 +92,31 @@ class EotSite
 
   get "/example" do
     erb :example_view
+  end
+
+  get '/throw/:type' do
+    content_type :html
+    @defeat = {rock: :scissors, paper: :rock, scissors: :paper}
+    @throws = @defeat.keys
+    # the params[] hash stores querystring and form data.
+    player_throw = params[:type].to_sym
+    # in the case of a player providing a throw that is not valid,
+    # we halt with a status code of 403 (Forbidden) and let them
+    # know they need to make a valid throw to play.
+    if !@throws.include?(player_throw)
+      halt 403, "<h1>You must throw one of the following: #{@throws}</h1>"
+    end
+  
+    # now we can select a random throw for the computer
+    computer_throw = @throws.sample
+    # compare the player and computer throws to determine a winner
+    if player_throw == computer_throw
+      "<h1>You tied with the computer. Try again!</h1>"
+    elsif computer_throw == @defeat[player_throw]
+      "<h1>Nicely done; #{player_throw} beats #{computer_throw}!</h1>"
+    else
+      "<h1>Ouch; #{computer_throw} beats #{player_throw}. Better luck next time!</h1>"
+    end
   end
 
 end
