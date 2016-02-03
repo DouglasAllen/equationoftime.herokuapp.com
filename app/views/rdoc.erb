@@ -2,7 +2,7 @@
 <html>
  <head>
    <meta charset="UTF-8">
-   <% title("equationoftime.herokuapp.com/rdoc.erb") %> 
+   <% @title = "equationoftime.herokuapp.com/rdoc.erb" %> 
    <meta name="description" content="" />
    <meta name="keywords" content="" />
  </head>
@@ -11,7 +11,7 @@
    <h2>Ruby Rdocs</h2>
    </p>
    <ul> 
-   <% @rd_arr.each do |page| %>
+   <% rd_arr.each do |page| %>
      <li>
        <a href="/rdview/<%= page%>"><%= formatter(page) %></a>
      </li>

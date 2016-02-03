@@ -6,7 +6,7 @@
 - @t              = @solar.ta
 - @r2d            = Eot::R2D
 - @s_min          = 4.0 * 360 / 360.98564736629 # 3.989078265
-- @gml            = @solar.gml_sun()  * @r2d
+- @al            = @solar.apparent_longitude  * @r2d
 - @ra             = @solar.ra_sun() * @r2d
 %title equationoftime.herokuapp.com/final.haml
 :markdown
@@ -33,9 +33,9 @@
       
   and
       
-  &lambda; = Mean Longitude + Equation of Center
+  &lambda; = Mean Longitude + Equation of Center + abberation 
       
-  I will call Mean Longitude L
+  I will call lambda L
       
   &alpha; = Right Ascension
       
@@ -47,18 +47,18 @@
       
   Total = L - &alpha;      
     
-  Mean Longitude Sun decimal degrees = #{@gml}
+  Apparent Longitude Sun decimal degrees = #{@al}
     
   &alpha; or Right Ascension decimal degrees = #{@ra}
  
-  &Delta; ( L - &alpha; ) decimal degrees = #{@gml - @ra}
+  &Delta; ( L - &alpha; ) decimal degrees = #{@al - @ra}
 
-  &Delta; decimal minutes =  #{(@gml - @ra) * @s_min}
+  &Delta; decimal minutes =  #{(@al - @ra) * @s_min}
  
-  &Delta; minutes and seconds =  #{@solar.show_minutes((@gml - @ra) * @s_min)}     
+  &Delta; minutes and seconds =  #{@solar.show_minutes((@al - @ra) * @s_min)}     
  
   This works most of the time except right after the Vernal Equinox, 
-  Mean Longitude is still approaching 360 degrees while Right Ascension has 
+  Apparent Longitude is still approaching 360 degrees while Right Ascension has 
   zeroed so I didn't do this. I'm just showing what might seem simple and I think
   that I've seen this in the simple equation of time algorithms. But you still
   need terms like c to calculate true longitude and &Mu; to get that so why not 
@@ -75,7 +75,7 @@
    @solar.set_t_ma
    # => #{@solar.ma_ta_set}
 
-   @solar.mean_longitude * 180 / Math::PI
+   @solar.apparent_longitude * 180 / Math::PI
    # => #{@solar.ml(@solar.ta) * 180 / Math::PI}
 
    @solar.ra_sun * 180 / Math::PI
@@ -108,8 +108,10 @@
   ```
 %br
 :markdown
-  I think we know by now what dayfraction is but be sure to remember that there is 0.5 days
-  added on to the decimal of an an AJD type Julian Day Number. Here GHAsun is:
+  I think we know by now what dayfraction is but be sure to remember that there are 0.5 days
+  added on to the decimal of an an Astronomical Julian Day number to get a Julian Day number. 
+
+  Here GHAsun is: (Greenwich Hour Angle)
 
   ```java
 
@@ -127,13 +129,18 @@
   flies while we are away. :-D
 
   We didn't get into GHA much but it's the object's longitude from Greenwich without any sign.
-  So if the Sun where right on your local meridian then it could be the GHA of it except when
-  you're East of Greenwich. Then you need to add 180.0 degrees to your local meridian longitude 
-  value to have the GHA of the object overhead. GHA and LHA are convenient Astronomical terms that
+  So if the Sun where right on your local meridian then it would be the GHA.
+
+  GHA and LHA are convenient Astronomical terms that
   give us a reference to something here on Earth. LHA is Local Hour Angle and of course I'll let
   you research that on your own. It's time to wrap this discussion up so Best Regards for now.
   I hope you enjoyed the tour of the Ruby equationoftime gem. 
 
-  ### [all values now](/eot)  
+%br
+%hr
+%h3
+  next >
+:markdown
+  [all values now](/eot)  
 
  

@@ -1,12 +1,15 @@
 %title equationoftime.herokuapp.com/mean.haml
+%hr
+%h3
+  &Mu; or mu = Mean Anomaly of the Sun
+%hr
 :markdown    
-  ## &Mu; or mu = Mean Anomaly of the Sun
-    
   &nbsp;&nbsp;&nbsp; The Mean Anomaly of the Sun is a fictitious value based on an 
   assumption that the Earth's orbit is circular rather than eliptical and that the 
-  Earth's velocity is also constant. Mean Anomaly is used as a starting point to 
-  calculate the Eccentric and True Anomalies. The mean anomaly is used to calculate 
-  the Equation of Center which will be used to calculate True Anomaly and True Longitude.
+  Earth's velocity is also constant. (see https://en.wikipedia.org/wiki/Mean_anomaly)
+
+  Mean Anomaly is used as a starting point to calculate the Eccentric and True Anomalies. 
+  The mean anomaly is used to calculate the Equation of Center which will be used to calculate True Anomaly and True Longitude.
   True Longitude is then used to calculate Right Ascension. On the Main page you see 
   mu and nu. But as you will see in the next page that the Equation of Center 
   is added to mu to get nu. We use Equation of Center again to calculate 
@@ -34,8 +37,8 @@
    @solar = Eot.new
    # => #{@solar = Eot.new}
     
-   @solar.ajd
-   # => #{@solar.ajd}
+   @solar.jd
+   # => #{@solar.jd}
 
    @solar.t 
    # => #{@solar.ta}
@@ -50,6 +53,8 @@
   words the t parameter passed to it and all the other angle calculations you saw on the
   first page of the tutorial? 
 
+  Note: The JD is for Noon today and we will set it for a different time next.
+
   &nbsp;&nbsp;&nbsp; Here's what we do.   
     
   ```ruby
@@ -62,12 +67,12 @@
    # => #{DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0}
 
    # we'll just plug that in to our setter method for ajd.
-   @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0
-   # => #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0}
+   @solar.jd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0
+   # => #{@solar.jd = DateTime.now.to_time.utc.to_datetime.ajd.to_f + 6 / 24.0}
 
    # check it
-   @solar.ajd
-   # => #{@solar.ajd}
+   @solar.jd
+   # => #{@solar.jd}
 
    # we got that set okay. Now set @t and @ma
    @solar.set_t_ma
@@ -87,5 +92,7 @@
   set\_t\_ma method? Because I'm a control freak and I like buttons. :-D Because I'm a Java
   reject. ;-( I just found that it was easier than messing up the attribute setter and getter.
 %hr
+%h3
+  next >
 :markdown
-  ### [*Equation of Center*](/eqc)
+  [*Equation of Center*](/eqc)

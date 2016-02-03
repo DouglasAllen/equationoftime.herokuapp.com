@@ -1,7 +1,9 @@
 %title equationoftime.herokuapp.com/rightascn.haml
+%hr
+%h3
+  &alpha; or alpha = Right Ascension of the Sun
+%hr
 :markdown
-  ## &alpha; or alpha = Right Ascension of the Sun
-
   Right Ascension is measured along the imaginary celestial equator starting from 
   the First Point of Aries which is also known as the Vernal Equinox. The ecliptic 
   crosses the celestial equator two times a year. The Autumnal Equinox is the other 
@@ -68,8 +70,8 @@
    @solar = Eot.new
    # => #{@solar = Eot.new}
 
-   @solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
-   # => #{@solar.ajd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
+   @solar.jd = DateTime.now.to_time.utc.to_datetime.ajd.to_f
+   # => #{@solar.jd = DateTime.now.to_time.utc.to_datetime.ajd.to_f}
 
    @solar.set_t_ma
    # => #{@solar.ma_ta_set}
@@ -82,21 +84,21 @@
   ```
 %br
 :markdown
+  All the angles calculated so far have been in radians. Just an FYI. There is a method in this gem just
+  to give a better display for angles in radians named degrees_to_s(enter radians here).
 
-  
-  ```ruby    
-
-
-  ```
-%br
-:markdown             
-
-            
   ```ruby
 
+   @solar = Eot.new
+   # => #{@solar = Eot.new}
 
+   @solar.degrees_to_s(@solar.right_ascension)
+   # => #{@solar.degrees_to_s(@solar.right_ascension)}
   ```
 %br
+%hr
+%h3
+  next >
 :markdown  
 
-  ### [Final Equation](/final)
+  [Final Equation](/final)

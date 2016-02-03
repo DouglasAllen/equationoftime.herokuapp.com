@@ -1,13 +1,13 @@
 - @title = 'equationoftime.herokuapp.com/tutorial.haml'
-:markdown
-  
-  ## Tutorial
-    
-  ## &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
-    
+%hr
+%h3
+  &Delta; = ( &Mu; - &nu; ) + ( &lambda; - &alpha; )
+%hr
+:markdown    
   The above reads:
-  delta = mu - nu + lambda - alpha    
-  true noon (solar transit of local meridian) and mean noon (longitude crossing) difference.
+  delta = mu - nu + lambda - alpha
+
+  It is the difference of your true noon (solar transit time of longitude crossing) and your mean noon (clock time of longitude crossing).
   
   mu = Mean Solar Anomaly
   
@@ -45,13 +45,16 @@
 
    mu - nu + lambda - alpha
    # => #{mu - nu + lambda - alpha}
+
   ```
 %br
-:markdown  
-  &nbsp;&nbsp;&nbsp;Right! So what does all that mean? What do I do with it now?
-  I'm glad you asked. Kind of like the Jean Meeus 
-  book[http://www.willbell.com/math/mc1.htm] 'Astronomical Algorithms', I'm not going
-  to teach astronomy or computer programming. This site is just about the Ruby gem
+:markdown
+  Right! So what does all that mean?
+
+
+  What do I do with it now? I'm glad you asked. 
+  Kind of like the Jean Meeus book[http://www.willbell.com/math/mc1.htm] 'Astronomical Algorithms', 
+  I'm not going to teach astronomy or computer programming. This site is just about the Ruby gem
   'equationoftime' and how to use it. Oh! And did I mention, not even math or Ruby?
   Thanks for your interest in it by the way if I didn't already tell you that some place. 
   K nuff chit chat. let's get started.
@@ -60,7 +63,7 @@
   &nbsp;&nbsp;&nbsp; You may either continue reading here and the next links or just click
   on the examples link to see what it's good for.
 
-  ## So why do we need to calculate the equation of time?
+  So why do we need to calculate the equation of time?
 
   &nbsp;&nbsp;&nbsp; Do you want to know how to find when your sunrise and sunset occur?
   Well then this is why we need to know it. Like most of those calculators online, 
@@ -81,13 +84,10 @@
    # It will be minus if your longitude is west. Do nothing if it is East.
    # Got it as a decimal now?
 
-   longitude = gets.strip.to_f
-   # IRB will let you enter it now.
+   longitude = -76.54321
      
    @solar = Eot.new
    # => #{@solar = Eot.new}
-
-   # I'll have to use something because I won't enter it here.
 
    @solar.longitude = longitude
    # => #{@solar.longitude = -76.54321}
@@ -100,11 +100,32 @@
    @solar.longitude = 123.4567
    # => #{@solar.longitude = 123.4567}
 
-   @solar.mean_local_noon_jd
+   @solar.mean_local_noon_jd)
    # => #{@solar.mean_local_noon_jd}     
   ```
 %br  
-:markdown 
-  &nbsp;&nbsp;&nbsp; What is that? Carry on then. Ah the suspense!   
- 
-  ### [Julian Numbers and DateTime](/datetime) 
+:markdown
+  &nbsp;&nbsp;&nbsp;Of course those above are all for todays UTC date at noon. But they give you an idea of where to start
+  based on your location. 
+  
+  We can also convert those JD numbers to date times.
+
+  ```ruby
+
+    @solar.longitude = 0.0
+    # => #{@solar.longitude = 0.0}
+    
+    @solar.jd_to_datetime(@solar.mean_local_noon_jd)
+    # => #{@solar.jd_to_datetime(@solar.mean_local_noon_jd)}
+
+    @solar.jd_to_datetime(@solar.mean_local_noon_jd).to_time
+    # => #{@solar.jd_to_datetime(@solar.mean_local_noon_jd).to_time}
+
+    @solar.jd_to_datetime(@solar.mean_local_noon_jd).to_time.utc
+    # => #{@solar.jd_to_datetime(@solar.mean_local_noon_jd).to_time.utc}  
+  ```  
+%hr 
+%h3
+  Next >
+:markdown
+  [Julian Numbers and DateTime](/datetime) 

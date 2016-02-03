@@ -1,13 +1,15 @@
 - @title='/examples'
 :markdown
 
-  ## Examples
-
   Note: These should work by just copy and paste into IRB or any Ruby program. 
         Much of this is running live in Haml:markdown and I'll try to keep IRB in mind.
         You can run just about any Ruby code in Ruby web pages.
 
   Get the gem installed and there are examples included.
+
+  This next bit of code will be a simple Ruby program and not good for irb because of the gets methods.
+
+  We can set some variables first in the next one for irb.
   
   ```ruby
 
@@ -39,7 +41,7 @@
    @solar.date
    # => #{@solar.date}
 
-   # defaults to 0.0 lat and lon because gets here did not receive any input.
+   # defaults to 0.0 lat and lon because #gets here will not receive any input.
   
    puts "Sunrise today:", @solar.sunrise_dt.to_time
    # => Sunrise today:
@@ -49,6 +51,31 @@
    # => Sunset today:
    # => #{@solar.sunset_dt.to_time} 
   ```
+%br
+%hr
+:markdown
+
+  ```ruby
+
+   lat = #enter your latitude
+   lon = #enter your longitude
+
+   require 'eot'
+   
+   @solar = Eot.new
+   
+   @solar.latitude = lat
+ 
+   @solar.longitude = lon
+     
+   @solar.date
+  
+   @solar.sunrise_dt.to_time
+
+   @solar.sunset_dt.to_time
+
+  ```
+
 
 %br
 %hr
@@ -95,8 +122,8 @@
    # => #{@solar.string_eot} yep! I needed proof because I wasn't sure.
 
    # We'll use the set method for it's intended purpose now.
-   @solar.ajd = #{@solar.ajd = 2457026.0} 
-   # => 2457026.0 taken from /analemma data page Jan. 03, 2015
+   @solar.jd = #{@solar.jd = 2457026.0} 
+   # => 2457026.0 taken from /analemma data page Jan. 03, 2016
 
    @solar.set_t_ma 
    # => #{@solar.ma_ta_set}  @ma was the last evaluated term in the method.
@@ -114,7 +141,7 @@
 %br
 %hr
 :markdown
-  What's new?
+  What's new? This is for the 5.0.0 version if you get it installed. Helio is a module in the C code.
 
   ```ruby
 
@@ -231,7 +258,7 @@
    @solar.jd - (12 - 45.4 / 15.0) / 24.0 - @solar.eot_jd
    # => #{@solar.jd - (12 - 45.4 / 15.0) / 24.0 - @solar.eot_jd}
 
-   # and there you have it. Looks like your true solar transit is a little earlier than
+   # and there you have it. Your true solar transit is a little different than
    # your mean solar transit. No messy minutes to multiply either solar or sidereal.
    # it's just an angle that we converted to a JD just like any time and date.
    # Just to show it, let's convert the EoT JD to a time.
